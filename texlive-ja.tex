@@ -8,7 +8,8 @@
 \title{{\huge {\TL ガイド 2019}}}
 
 \author{%
-  Karl Berry編 \\[3mm]
+  Karl Berry編 \\
+  朝倉卓人 訳 \\[3mm]
   \url{https://tug.org/texlive/}
 }
 
@@ -16,11 +17,12 @@
 
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 
-%\begin{multicols}{2}
-%\tableofcontents
-%%\listoftables
-%\end{multicols}
+\begin{multicols}{2}
+\tableofcontents
+%\listoftables
+\end{multicols}
 
 \section{イントロダクション}\label{sec:intro}
 
@@ -44,79 +46,75 @@
 \TL のバージョンごとの主な変更点については，このドキュメントの末尾にある
 \ref{sec:history}節 (\p.\pageref{sec:history}) をご覧ください．
 
+\subsection{サポートOS}
+\label{sec:os-support}
 
-%\subsection{Operating system support}
-%\label{sec:os-support}
-%
-%\TL{} contains binaries for many Unix-based platforms, including
-%\GNU/Linux, \MacOSX, and Cygwin.  The included sources can be compiled
-%on platforms for which we do not provide binaries.
-%
-%As to Windows: Windows~7 and later are supported. Windows Vista
-%may still mostly work, but \TL{} will no longer even install on Windows
-%XP or earlier.  There are no special
-%64-bit executables for Windows, but the 32-bit executables should
-%run on 64-bit systems.
-%
-%See section~\ref{sec:tl-coll-dists} for alternate solutions
-%for Windows and \MacOSX.
-%
-%\subsection{Basic installation of \protect\TL{}}
-%\label{sec:basic}
-%
-%You can install \TL{} either from \DVD{} or over the Internet
-%(\url{http://tug.org/texlive/acquire.html}). The net installer itself is
-%small, and downloads everything requested from the Internet.
-%
-%The \DVD{} installer lets you install to a local disk.  You cannot run
-%\TL{} directly from the \TK{} \DVD{} (or its \code{.iso} image), but you
-%can prepare a runnable installation on, e.g., a \USB{} stick (see
-%section~\ref{sec:portable-tl}).  Installation is described in later
-%sections (\p.\pageref{sec:install}), but here is a quick start:
-%
-%\begin{itemize*}
-%
-%\item The installation script is named \filename{install-tl}.  It
-%  can operate in a ``gui mode'' given the option \code{-gui}
-%  (default for Windows and \MacOSX), a text mode given
-%  \code{-gui=text} (default for everything else). On Unix
-%  platforms, the former Perl/Tk and wizard modes are still available
-%  if Perl/Tk is installed; see section~\ref{sec:wininst} for
-%  Windows.
-%
-%\item One of the installed items is the `\TL\ Manager' program,
-%  named \prog{tlmgr}.  Like the installer, it can be used in both \GUI{}
-%  mode and in text mode. You can use it to install and uninstall
-%  packages and do various configuration tasks.
-%
-%\end{itemize*}
-%
-%
-%\htmlanchor{security}
-%\subsection{Security considerations}
-%\label{sec:security}
-%
-%To the best of our knowledge, the core \TeX\ programs themselves are
-%(and always have been) extremely robust.  However, the contributed
-%programs in \TeX\ Live may not reach the same level, despite everyone's
-%best efforts.  As always, you should be careful when running programs on
-%untrusted input; to improve safety, use a new subdirectory or chroot.
-%
-%This need for care is especially urgent on Windows, since in general
-%Windows finds programs in the current directory before anything else,
-%regardless of the search path.  This opens up a wide variety of possible
-%attacks.  We have closed many holes, but undoubtedly some remain,
-%especially with third-party programs.  Thus, we recommend checking for
-%suspicious files in the current directory, especially executables
-%(binaries or scripts).  Ordinarily they should not be present, and
-%definitely should not normally be created by merely processing a document.
-%
-%Finally, \TeX\ (and its companion programs) are able to write files when
-%processing documents, a feature that can also be abused in a wide
-%variety of ways.  Again, processing unknown documents in a new
-%subdirectory is the safest bet.
-%
-%
+\TL には\GNU/Linux, macOS, Cygwinを含む，多くのUNIXベースプラットフォーム向けの
+バイナリを含んでいます．同梱されているソースを用いれば，デフォルトではサポート
+されていないプラットフォームでコンパイルを行うこともできます．
+
+Windows については，Windows~7以上のバージョンをサポートしています．いまのところ
+Windows Vistaでも概ね動作すると思いますが，Windows XPよりも古いものについては
+\TL のインストールすら成功しません．Windowsについては64-bit向けに個別の実行
+ファイルを用意していませんが，32-bit実行ファイルは問題なく64-bit環境でも
+動作するはずです．
+
+WindowsおよびmacOSに特有のその他の事情については\ref{sec:tl-coll-dists}節を
+参照してください．
+
+\subsection{\TL のインストール（基本）}
+\label{sec:basic}
+
+\TL は\DVD またはインターネットを利用してインストールすることができます．
+(\url{http://tug.org/texlive/acquire.html})．ネットインストーラ自体はとても
+小さなプログラムで，これを実行すると必要とされるすべてのファイルを
+インターネットからダウンロードします．
+
+\DVD インストーラはあなたのローカルディスクに\TL をインストールします．
+\TeX コレクションDVD上にある\TL のデータ（またはその\code{.iso}イメージ）
+を直接実行することはできませんが，\USB ディスクなどにポータブルインストールを
+行うことも可能です（\ref{sec:portable-tl}節参照）．インストールについては
+後ほど詳述しますが (\p.\pageref{sec:install})，ここでは「クイックスタート」
+として簡単にご説明します：
+
+\begin{itemize*}
+\item インストールスクリプトの名称は\filename{install-tl}です．このプログラムに
+\code{-gui}オプションを与えると「GUIモード」（WindowsとmacOSでデフォルト），
+\code{-no-gui}を与えると「テキストモード」（その他のプラットフォームでデフォルト）
+で実行されます．UNIXプラットフォームでは，Perl/Tkがインストールされていれば旧来の
+Perl/Tkとwizardモードを利用することもできます．Windowsについては\ref{sec:wininst}節も
+ご参照ください．
+
+\item \TL をインストールすると「\TL マネージャ」(\filename{tlmgr}) も利用可能に
+なります．インストーラと同様，このプログラムにも\GUI モードとテキストモードが
+あります．\TL マネージャを用いてパッケージのインストールやアンインストール，
+その他さまざまな設定タスクを実行することができます．
+\end{itemize*}
+
+\subsection{セキュリティについて}
+\label{sec:security}
+
+私たちの知る限り，\TeX の主要なプログラムそれ自体はとても堅牢です（今までも
+ずっとそうでした）．しかしながら，\TL に含まれる多数のサードパーティ製
+プログラムは，多くの人の尽力があるとはいえ，それでも同じレベルに達していない
+かもしれません．一般論ですが，信頼できない入力についてプログラムを実行する際は
+十分にお気をつけください．なるべく安全に実行するためには，新しいサブディレクトリを
+作って実行したり，\code{chroot}を利用したりしてください．
+
+この注意はWindowsについては特に重要です．なぜならWindowsは，検索パスの設定に
+関わらず，常にカレントディレクトリにあるプログラムを他の何よりも優先して
+実行するからです．この挙動は様々な攻撃に悪用される恐れがあります．我々は多くの
+セキュリティホールを塞いできましたが，特にサードパーティ製プログラムについては，
+間違いなくまだ残っているものが数多くあるでしょう．したがって，カレントディレクトリ
+にある疑わしいファイル（特にバイナリとスクリプトファイル）は事前にチェックして
+おくことを推奨します．悪意のあるファイルはそもそも存在するべきでありませんが，
+単にドキュメントを処理するだけで生成されることなどあってはなりません．
+
+最後に，\TeX （およびその周辺ツール）はドキュメントの処理中にファイル書き込みを
+行うことができますが，その機能もまた様々な方法で利用され得ます．再度の注意に
+なりますが，ご自身で作成されたわけではないドキュメントは，必ず新しい
+サブディレクトリで実行するのが無難です．
+
 %\subsection{Getting help}
 %\label{sec:help}
 %

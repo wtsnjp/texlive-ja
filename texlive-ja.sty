@@ -76,7 +76,7 @@
 % textheight=718.0pt   topmargin=-38.68848pt    footskip=30.0pt
 
 % 
-%\pagestyle{headings}
+\pagestyle{headings}
 %
 % LaTeX parameters.
 \renewcommand{\topfraction}{0.85}
@@ -97,6 +97,22 @@
 %
 \def\slash{/\penalty\z@\hskip\z@skip }
 %
+% from pxghost.sty (https://gist.github.com/zr-tex8r/4461060)
+% use an arbitrary font available in T1 encoding
+\font\pxqgg@TI=ec-lmr10 at 1.23456pt
+\chardef\pxqgg@cwm=23 % compwordmark (in T1)
+\xspcode\pxqgg@cwm=3 % allow xkanjiskip around
+%%<*> \eghostguarded{<text>}
+\newcommand*\eghostguarded{%
+  \ifmmode \expandafter\@firstofone
+  \else \expandafter\pxqgg@eghostguarded@a
+  \fi
+}
+\def\pxqgg@eghostguarded@a#1{%
+  {\pxqgg@TI\pxqgg@cwm}%
+  #1%
+  {\pxqgg@TI\pxqgg@cwm}%
+}
 % various sorts of names
 \newcommand*{\pkgname}[1]{\textsf{#1}}% package name
 \newcommand*{\optname}[1]{\texttt{#1}}% (package,class) option name
@@ -105,7 +121,7 @@
 \newcommand*{\dirname}[1]{\path{#1}}%   directory name
 \def\filename#1{\path{#1}}%  file name
 \newcommand*{\envname}[1]{\texttt{#1}}% environment variable name
-\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\eghostguarded{\texttt{#1}}}
 \newcommand{\file}[1]{\texttt{#1}}
 \newcommand{\prog}[1]{\textsf{#1}}% same as \cmdname
 \newcommand{\samp}[1]{`\texttt{#1}'}
