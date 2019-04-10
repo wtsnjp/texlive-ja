@@ -2,7 +2,11 @@
 % TeX Live documentation.  Originally written by Sebastian Rahtz and
 % Michel Goossens, now maintained by Karl Berry and others.
 % Public domain.
-\documentclass[uplatex]{jsarticle}
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+
+% temporary hack
+\def\Status{1}
+
 \usepackage{texlive-ja}
 
 \title{{\huge {\TL ガイド 2019}}}
@@ -19,7 +23,7 @@
 \maketitle
 \thispagestyle{empty}
 
-\begin{multicols}{2}
+\begin{multicols}{1}
 \tableofcontents
 %\listoftables
 \end{multicols}
@@ -115,76 +119,98 @@ Perl/Tkとwizardモードを利用することもできます．Windowsについ
 なりますが，ご自身で作成されたわけではないドキュメントは，必ず新しい
 サブディレクトリで実行するのが無難です．
 
-%\subsection{Getting help}
-%\label{sec:help}
+\subsection{サポート情報}
+\label{sec:help}
+
+\TeX コミュニティはアクティブかつ親和的で，ほとんどの真剣な質問には回答を
+得ることができます．しかしながら，こうしたサポートは非公式で，ボランティアや
+一般の\TeX ユーザ有志によって行われているものですから，質問をする前にドキュメント
+や過去のQ\&Aをよく読んで，まずはご自分で解決できるよう最善を尽くしましょう（もし
+保証付きの有償サポートをご希望の場合は，\TL の利用は諦めて商用のシステムを
+ご利用ください．\url{http://tug.org/interest.html#vendors}には\TeX に関連する
+商用サービスを提供する団体の一覧があります）．
+
+以下に\TeX 関連の情報源をリストアップにしておきます．順番は概ねおすすめ順です：
 %
-%The \TeX{} community is active and friendly, and most serious questions
-%end up getting answered.  However, the support is informal, done by
-%volunteers and casual users, so it's especially important that you do
-%your homework before asking.  (If you prefer guaranteed commercial
-%support, you can forgo \TL{} completely and purchase a vendor's system;
-%\url{http://tug.org/interest.html#vendors} has a list.)
-%
-%Here is a list of resources, approximately in the order we recommend
-%using them:
-%
-%\begin{description}
-%\item [Getting started] If you are new to \TeX, the web page
-%\url{http://tug.org/begin.html} gives a brief introduction to the system.
-%
-%\item [\TeX{} FAQ] The \TeX{} FAQ is a huge compendium
-%  of answers to all sorts of questions, from the most basic to the
-%  most arcane.  It is included on \TL{} in
-%  \OnCD{texmf-dist/doc/generic/FAQ-en/}, and is available
-%  on the Internet through \url{http://www.tex.ac.uk/faq}.  Please
-%  check here first.
-%
-%\item [\TeX{} Catalogue] If you are looking for a particular package,
-%font, program, etc., the \TeX{} Catalogue is the place to look.  It is a
-%huge collection of all \TeX{}-related items.  See
-%\url{http://ctan.org/pkg/catalogue/}.
-%
-%\item [\TeX{} Web Resources] The web page
-%\url{http://tug.org/interest.html} has many \TeX{}-related links, in
-%particular for numerous books, manuals, and articles on all aspects of
-%the system.
-%
-%\item [support archives] Principal support forums for \TeX\ include
-%the \LaTeX{} community site at \url{http://latex-community.org/}, the
-%q\&a site \url{http://tex.stackexchange.com}, the Usenet newsgroup
-%\url{news:comp.text.tex}, and the mailing list \email{texhax@tug.org}.
-%Their archives have years of past questions and answers for your
-%searching pleasure, via, for the latter two,
-%\url{http://groups.google.com/group/comp.text.tex/topics} and
-%\url{http://tug.org/mail-archives/texhax}.  And a general web search,
-%for example on \url{http://google.com}, never hurts.
-%
-%\item [asking questions] If you cannot find an answer, you can post to 
-%\url{http://latex-community.org/} and
-%\url{http://tex.stackexchange.com/} through their web interfaces, to
-%\dirname{comp.text.tex} through Google or your newsreader, or to
-%\email{texhax@tug.org} through email.  But before you post anywhere,
-%please read this FAQ entry, to maximize your chances of getting a useful
-%answer:
-%\url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=askquestion}.
-%
-%\item [\TL{} support] If you want to report a bug or have
-%suggestions or comments on the \TL{} distribution, installation, or
-%documentation, the mailing list is \email{tex-live@tug.org}.  However,
-%if your question is about how to use a particular program included in
-%\TL{}, please write to that program's maintainer or
-%mailing list.  Often running a program with the \code{-{}-help} option
-%will provide a bug reporting address.
-%
-%\end{description}
-%
-%The other side of the coin is helping others who have questions.  All
-%the above resources are open to anyone, so feel free to join, start
-%reading, and help out where you can.
-%
-%
-%% don't use \TL so the \uppercase in the headline works.  Also so
-%% tex4ht ends up with the right TeX.  Likewise the \protect's.
+\begin{description}
+\item[はじめての方へ]
+これからはじめて\TeX をお使いになる場合は\url{http://tug.org/begin.html}に
+アクセスするとよいでしょう．\TeX システムについて簡潔なイントロダクションを
+読むことができます．
+
+\item[{\TeX} FAQ]
+\TeX に関するよくあるFAQを集めた巨大なデータベースです．最も基礎的な質問から
+とても難解な質問まで含まれています．\TL では\OnCD{texmf-dist/doc/generic/FAQ-en/}
+に含まれているほか，インターネット経由でも読むことができます (\url{%
+http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まずここをチェック
+してください．
+
+\item[\TeX カタログ]
+特定の\TeX パッケージやフォント，プログラム等を見つけたい場合は\TeX カタログを
+探すとよいでしょう．これは\TeX 関連の成果物を集めた巨大なコレクションです．
+\url{http://ctan.org/pkg/catalogue/}にアクセスしてみてください．
+
+\item[ウェブ上の情報源]
+ウェブサイト\url{http://tug.org/interest.html}には多数の\TeX 関連リンクが
+集められています．特に\TeX システムに関わるさまざまな話題についての多くの書籍，
+マニュアル，投稿記事を多数紹介しています．
+
+\item[サポート・アーカイブ]
+\LaTeX コミュニティ\url{http://latex-community.org/}やQ\&Aサイト
+\url{http://tex.stackexchange.com}，Usenetニュースグループ
+\url{news:comp.text.tex}，メーリングリスト\email{texhax@tug.org}などは
+\TeX コミュニティの擁する主なサポートフォーラムです．これらのアーカイブには
+過去数十年分の質問と回答が蓄積されています．特に後者2つのアーカイブは
+\url{http://groups.google.com/group/comp.text.tex/topics}と
+\url{http://tug.org/mail-archives/texhax}にて閲覧できます．また，より一般の
+検索エンジン（\url{http://google.com}など）ももちろん有用です．
+
+\item[質問する]
+もし答えの見つからない質問にぶつかったときは，\url{http://latex-community.org/}%
+や\url{http://tex.stackexchange.com/}，Googleグループ\dirname{comp.text.tex}%
+あるいはメーリングリスト\email{texhax@tug.org}に質問を投稿することもできます．
+ただし，どこで質問を投稿するにしても，必ず事前に「質問のしかた」
+(\url{https://texfaq.org/FAQ-askquestion}) を読むようにしましょう．この
+インストラクションに従うことで，有効な回答を得られる可能性を飛躍的に高めることが
+できます．
+
+\item[\TL サポート]
+もし\TL ディストリビューションに関してバグ報告や提案，コメントがある場合は
+\TL メーリングリスト\email{tex-live@tug.org}にメールを投稿してください．ただし
+\TL に含まれる個別のプログラムの使い方についての質問等は，\TL メーリングリスト
+ではなく，各プログラムのメンテナや専用のメーリングリストにご連絡ください．
+多くの場合，プログラムを\code{-{}-help}オプション付きで実行するとバグ報告用の
+メールアドレスを確認することができます．
+\end{description}
+
+以上のリストは主に英語での情報提供・コミュニケーションを行う場所ですが，日本語
+でのサポートが必要な場合は，次のようなウェブサイトが利用できます：
+
+\begin{description}
+\item[{\TeX} Wiki]
+\url{https://texwiki.texjp.org/}は日本語で読めるものとしては\TeX 関連情報を集めた
+最大の情報源です．現在は日本語\TeX 開発コミュニティ (texjporg) がサーバ管理を
+行っていますが，あくまでWikiなので編集は誰でも行うことができ，掲載情報は必ずしも
+公式のものではありません．
+
+\item[{\TeX} Forum]
+\url{https://oku.edu.mie-u.ac.jp/tex/}は歴史の長いQ\&Aサイトで，現在も日本語で\TeX
+に関連する質問ができる場所としては最もアクティブユーザが多く，熟練の\TeX ユーザが
+多数参加しています．上記{\TeX} Wikiに日本語版の「質問のしかた」
+(\url{https://texwiki.texjp.org/?質問のしかた}) ページがありますので，初めて質問を
+投稿する場合は，必ず先にこちらを一読するようにしましょう．
+
+\item[スタック・オーバーフロー]
+\url{https://ja.stackoverflow.com/}は\TeX に限らずあらゆる技術・プログラミング
+関連の質問を投稿することができるQ\&AサイトStack Overflowの日本語版です．最近は
+ここの\LaTeX タグ (\url{https://ja.stackoverflow.com/questions/tagged/latex})
+にも少しずつ\TeX/\LaTeX 関連の質問が投稿されるようになってきています．
+\end{description}
+
+\TeX ユーザは上記のような場所でサポートを受けることができる一方で，あなた自身が
+他の質問者の手助けをすることも可能です．いずれのコミュニティも全世界に開かれた
+ものですから，ぜひお気軽に参加・購読し，ヘルプが必要なユーザを助けてあげましょう．
+
 %\section{Overview of \protect\TeX\protect\ Live}
 %\label{sec:overview-tl}
 %
