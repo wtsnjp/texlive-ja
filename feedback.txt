@@ -1,0 +1,7 @@
+Sec. 1.3 (p.3)
+It still describes `-gui=text` but maybe `-no-gui` is newer?
+
+Sec. 2.2 (p.5)
+> In addition to the directories above, the installation scripts and README
+> files (in various languages) are at the top level of the distribution.
+Really? Maybe these have been moved to readme-* dirs?
