@@ -198,7 +198,7 @@ http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まず�
 に関連する質問ができる場所としては最もアクティブユーザが多く，熟練の\TeX ユーザが
 多数参加しています．上記{\TeX} Wikiに日本語版の「質問のしかた」
 (\url{https://texwiki.texjp.org/?質問のしかた}) ページがありますので，初めて質問を
-投稿する場合は，必ず先にこちらを一読するようにしましょう．
+投稿する場合は，必ず目を通すようにしましょう．
 
 \item[スタック・オーバーフロー]
 \url{https://ja.stackoverflow.com/}は\TeX に限らずあらゆる技術・プログラミング
@@ -211,172 +211,184 @@ http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まず�
 他の質問者の手助けをすることも可能です．いずれのコミュニティも全世界に開かれた
 ものですから，ぜひお気軽に参加・購読し，ヘルプが必要なユーザを助けてあげましょう．
 
-%\section{Overview of \protect\TeX\protect\ Live}
-%\label{sec:overview-tl}
+\section{\TL の概要}
+\label{sec:overview-tl}
+
+このセクションでは\TL と\TeX コレクションの収録物についてご説明します．
+
+\subsection{\TeX コレクション: \TL, pro\TeX{}t, Mac\TeX}
+\label{sec:tl-coll-dists}
+
+\TeX コレクション\DVD には以下のものが含まれています：
+
+\begin{description}
+\item[\TL]
+ディスクにインストールするための完全な\TeX システム（ディストリビューション）
+です．ウェブサイト：\url{http://tug.org/texlive/}
+
+\item[Mac\TeX]
+macOS向けの\TeX ディストリビューションで，専用のインストーラといくつかの
+Mac用アプリケーションを\TL に追加しています．
+ウェブサイト：\url{http://tug.org/mactex/}
+
+\item[\ProTeXt]
+\MIKTEX ディストリビューションのWindows向け拡張です．\ProTeXt は\MIKTEX に
+いくつかのツールを追加しているほかインストール手順を簡略化しています．
+これは完全に\TL とは独立で，独自の導入ガイドがあります．
+ウェブサイト：\url{http://tug.org/protext/}
+
+\item[\CTAN]
+\CTAN リポジトリ (\url{http://www.ctan.org/}) のスナップショットです．
+\end{description}
+
+\CTAN および\pkgname{protext}は\TL と同じライセンスで配布されているわけでは
+ないので，再配布や変更を行う場合は十分にご注意ください．
+
+\subsection{\TL のトップレベルディレクトリ}
+\label{sec:tld}
+
+ここに\TL ディストリビューションのトップレベル（最上位階層）にあるディレクトリ
+の一覧を示し，それぞれについて簡単に説明しておきます．
 %
-%This section describes the contents of \TL{} and the \TK{} of which it
-%is a part.
-%
-%\subsection{The \protect\TeX\protect\ Collection: \protect\TL,
-%           pro\protect\TeX{}t, Mac\protect\TeX}
-%\label{sec:tl-coll-dists}
-%
-%The \TK{} \DVD{} comprises the following:
-%
-%\begin{description}
-%
-%\item [\TL] A complete \TeX{} system to be installed to disk.  Home
-%page: \url{http://tug.org/texlive/}.
-%
-%\item [Mac\TeX] for \MacOSX\ (currently named macOS by Apple, but we
-%continue to use the older name in this document), this adds a native
-%\MacOSX\ installer and other Mac applications to \TL{}. Home page:
-%\url{http://tug.org/mactex/}.
-%
-%\item [pro\TeX{}t] An enhancement of the \MIKTEX\ distribution for Windows,
-%\ProTeXt\ adds a few extra tools to \MIKTEX, and simplifies
-%installation.  It is entirely independent of \TL{}, and has its own
-%installation instructions.  Home page:
-%\url{http://tug.org/protext/}.
-%
-%\item [CTAN] A snapshot of the \CTAN{} repository (\url{http://www.ctan.org/}).
-%
-%\end{description}
-%
-%\CTAN{} and \pkgname{protext} do not follow the same copying conditions
-%as \TL{}, so be careful when redistributing or modifying.
-%
-%
-%\subsection{Top level \protect\TL{} directories}
-%\label{sec:tld}
-%
-%Here is a brief listing and description of the top level directories in a
-%\TL{} installation.  
-%
-%\begin{ttdescription}
-%\item[bin] The \TeX{} system programs, arranged by platform.
-%%
-%\item[readme-*.dir] Quick overview and useful links for \TL{},
-%in various languages, in both \HTML{} and plain text.
-%%
-%\item[source] The source to all included programs, including the main
-%  \Webc{}-based \TeX{} distributions.
-%%
-%\item[texmf-dist] The principal tree; see \dirname{TEXMFDIST} below.
-%%
-%\item[tlpkg] Scripts, programs and data for managing the
-%  installation, and special support for Windows.
-%\end{ttdescription}
+\begin{ttdescription}
+\item[bin]
+\TeX 関連プログラムを格納しています．実行バイナリはプラットフォームによって
+異なります．
+
+\item[readme-*.dir]
+\TL の概要と有用なリンクを集めた多言語のREADMEを含んでいます．HTMLバージョンと
+テキストバージョンがあります．
+
+\item[source]
+\TL に含まれるすべてのプログラムのソースコードです．\Webc で記述された，\TeX
+ディストリビューションのコアプログラムのものも含みます．
+
+\item[texmf-dist]
+最も重要なTEXMFツリーです．詳しくは下にある\dirname{TEXMFDIST}の項目をご覧ください．
+
+\item[tlpkg]
+インストールに必要なスクリプトやWindows向けのサポートプログラムを含んでいます．
+\end{ttdescription}
 %
 %In addition to the directories above, the installation scripts and
 %\filename{README} files (in various languages) are at the top level of
 %the distribution.
 %
-%For documentation, the comprehensive links in the top-level file
-%\OnCD{doc.html} may be helpful.  The documentation for nearly everything
-%(packages, formats, fonts, program manuals, man pages, Info files) is in
-%\dirname{texmf-dist/doc}.  You can use the \cmdname{texdoc} program to
-%find documentation wherever it is located.
+ドキュメントを探す際には，同じくトップレベルにある\OnCD{doc.html}が役立ちます．
+このファイルには\dirname{texmf-dist/doc}以下に含まれるほとんどすべてのドキュメント
+（パッケージ，フォーマット，フォント，プログラムのマニュアルやmanページなど）が
+掲載されています．また\TL に含まれるドキュメントを検索するには\cmdname{texdoc}%
+プログラムを利用することもできます．
+
+この\TL ガイド自体は\dirname{texmf-dist/doc/texlive}以下にあり，多数の言語に翻訳
+されています：
+
+\begin{itemize*}
+\item チェコ・スロバキア語：\OnCD{texmf-dist/doc/texlive/texlive-cz}
+\item ドイツ語\OnCD{texmf-dist/doc/texlive/texlive-de}
+\item 英語：\OnCD{texmf-dist/doc/texlive/texlive-en}
+\item フランス語：\OnCD{texmf-dist/doc/texlive/texlive-fr}
+\item イタリア語：\OnCD{texmf-dist/doc/texlive/texlive-it}
+\item ポーランド語：\OnCD{texmf-dist/doc/texlive/texlive-pl}
+\item ロシア語：\OnCD{texmf-dist/doc/texlive/texlive-ru}
+\item セルビア語：\OnCD{texmf-dist/doc/texlive/texlive-sr}
+\item 簡体字中国語：\OnCD{texmf-dist/doc/texlive/texlive-zh-cn}
+\end{itemize*}
+
+\subsection{いろいろなTEXMFツリー（概要）}
+\label{sec:texmftrees}
+
+このセクションではシステムに利用される種々のTEXMFツリーを指定するために予め
+定義されている変数を一覧にします．これらのTEXMFツリーはそれぞれに使用目的が
+あり，また\TL のデフォルト構成を示すものでもあります．コマンド\code{tlmgr~%
+conf}を実行するとこれらの変数の値が表示されるので，各TEXMFツリーがあなたの
+コンピュータで実際にどのディレクトリを指し示すのか容易に確認することができ
+ます．
+
+すべてのTEXMFツリーは，例え個人的なものであっても，標準的な\TeX の
+ディレクトリ構成 (\TDS, \url{http://tug.org/tds}) にしたがうべきです．
+ただし必要のないサブディレクトリやファイルは存在していなくても構いません．
+詳細については\ref{sec:local-personal-macros}節 (\p.\pageref{%
+sec:local-personal-macros}) を参照してください．ここで列挙するのはツリー
+が検索される順序の逆順です．つまり，より後に登場するツリーによって，
+それより前のツリーの内容は上書きされます．
 %
-%This \TL\ documentation itself is in \dirname{texmf-dist/doc/texlive},
-%available in several languages:
+\begin{ttdescription}
+\item[TEXMFDIST]
+このツリーには\TL ディストリビューション自体に含まれるほとんどのファイル
+（設定ファイル，スクリプト，パッケージ，フォント，etc.）が配置されています．
+（主な例外はプラットフォーム毎の実行バイナリで，それらはトップレベルの
+\dirname{bin}ディレクトリに配置されています．）
+
+\item[TEXMFSYSVAR]
+この（システム用の）ツリーは\cmdname{texconfig-sys}, \cmdname{updmap-sys},
+\cmdname{fmtutil-sys}, \cmdname{tlmgr}などが，フォーマットや生成されたmap%
+ファイルなどの実行時（キャッシュ）データを保存するためのものです．
+
+\item[TEXMFSYSCONFIG]
+この（システム用の）ツリーは\cmdname{texconfig-sys}, \cmdname{updmap-sys},
+\cmdname{fmtutil-sys}などが，変更された設定データを保存するために利用する
+ものです．
+
+\item[TEXMFLOCAL]
+このツリーは，システム管理者が全ユーザに適用するためにマクロやフォントなどを
+追加または更新して配置するためのものです．
+
+\item[TEXMFHOME]
+このツリーは，一般のユーザが独自に追加または更新したいマクロやフォントを
+配置するためのものです．この変数の展開結果は，使用するユーザに合わせて動的に
+変化します．
+
+\item[TEXMFVAR]
+この（ユーザ向けの）ツリーは\cmdname{texconfig}, \cmdname{updmap},
+\cmdname{fmtutil}などがフォーマットや生成されたmapファイルなどの実行時
+（キャッシュ）データを保存するためのものです．
+
+\item[TEXMFCONFIG]
+この（ユーザ向けの）ツリーは\cmdname{texconfig}, \cmdname{updmap},
+\cmdname{fmtutil}などが変更された設定データを保存するために利用するものです．
+
+\item [TEXMFCACHE]
+このツリーは\ConTeXt\ MkIVおよびLua\LaTeX が実行時（キャッシュ）データを
+保存するためのものです．デフォルトでは\code{TEXMFSYSVAR}（またはこれが
+書き込み不能な場合は\code{TEXMFVAR}）に設定されています．
+\end{ttdescription}
+
+\noindent
+デフォルトの\TL 構成：
 %
-%\begin{itemize*}
-%\item{Czech/Slovak:} \OnCD{texmf-dist/doc/texlive/texlive-cz}
-%\item{German:} \OnCD{texmf-dist/doc/texlive/texlive-de}
-%\item{English:} \OnCD{texmf-dist/doc/texlive/texlive-en}
-%\item{French:} \OnCD{texmf-dist/doc/texlive/texlive-fr}
-%\item{Italian:} \OnCD{texmf-dist/doc/texlive/texlive-it}
-%\item{Polish:} \OnCD{texmf-dist/doc/texlive/texlive-pl}
-%\item{Russian:} \OnCD{texmf-dist/doc/texlive/texlive-ru}
-%\item{Serbian:} \OnCD{texmf-dist/doc/texlive/texlive-sr}
-%\item{Simplified Chinese:} \OnCD{texmf-dist/doc/texlive/texlive-zh-cn}
-%\end{itemize*}
-%
-%\subsection{Overview of the predefined texmf trees}
-%\label{sec:texmftrees}
-%
-%This section lists the predefined variables specifying the texmf trees
-%used by the system, and their intended purpose, and the default layout
-%of \TL{}. The command \texttt{tlmgr~conf} shows the values of these
-%variables, so that you can easily find out how they map to particular
-%directories in your installation.
-%
-%All of the trees, including the personal ones, should follow the \TeX\
-%Directory Structure (\TDS, \url{http://tug.org/tds}), with all its
-%myriad subdirectories, or files may not be found.  Section
-%\ref{sec:local-personal-macros} (\p.\pageref{sec:local-personal-macros})
-%describes this in more detail.  The order here is the reverse order in
-%which the trees are searched, that is, later trees in the list override
-%earlier ones.
-%
-%\begin{ttdescription}
-%\item [TEXMFDIST] The tree which holds nearly all of the files in the original
-%  distribution---configuration files, scripts, packages, fonts, etc.
-%  (The main exception are the per-platform executables, which are stored
-%  in a sibling directory \code{bin/}.)
-%\item [TEXMFSYSVAR] The (site-wide) tree used by \verb+texconfig-sys+,
-%  \verb+updmap-sys+ and \verb+fmtutil-sys+, and also by \verb+tlmgr+, to
-%  store (cached) runtime data such as format files and generated map files.
-%\item [TEXMFSYSCONFIG] The (site-wide) tree used by the utilities
-%  \verb+texconfig-sys+, \verb+updmap-sys+, and \verb+fmtutil-sys+ to
-%  store modified configuration data.
-%\item [TEXMFLOCAL] The tree which administrators can use for system-wide
-%  installation of additional or updated macros, fonts, etc.
-%\item [TEXMFHOME] The tree which users can use for their own individual
-%  installations of additional or updated macros, fonts, etc.
-%  The expansion of this variable dynamically adjusts for each user to
-%  their own individual directory.
-%\item [TEXMFVAR] The (personal) tree used by \verb+texconfig+,
-%  \verb+updmap+ and \verb+fmtutil+ to store (cached) runtime data such
-%  as format files and generated map files.
-%\item [TEXMFCONFIG] The (personal) tree used by the utilities
-%  \verb+texconfig+, \verb+updmap+, and \verb+fmtutil+ to store modified
-%  configuration data.
-%\item [TEXMFCACHE] The tree(s) used by \ConTeXt\ MkIV and Lua\LaTeX\
-%  to store (cached) runtime data; defaults to \code{TEXMFSYSVAR},
-%  or (if that's not writable), \code{TEXMFVAR}.
-%\end{ttdescription}
-%
-%\noindent
-%The default layout is:
-%\begin{description}
-%  \item[system-wide root] can span multiple \TL{} releases
-%  (\texttt{/usr/local/texlive} by default on Unix):
-%  \begin{ttdescription}
-%    \item[2018] A previous release.
-%    \item[2019] The current release.
-%    \begin{ttdescription}
-%      \item [bin] ~
-%      \begin{ttdescription}
-%        \item [i386-linux] \GNU/Linux binaries (32-bit)
-%        \item [...]
-%        \item [x86\_64-darwin] \MacOSX\ binaries
-%        \item [x86\_64-linux] \GNU/Linux binaries (64-bit)
-%        \item [win32] Windows binaries
-%      \end{ttdescription}
-%      \item [texmf-dist\ \ ]      \envname{TEXMFDIST} and \envname{TEXMFMAIN}
-%      \item [texmf-var \ \ ]      \envname{TEXMFSYSVAR}, \envname{TEXMFCACHE}
-%      \item [texmf-config]        \envname{TEXMFSYSCONFIG}
-%    \end{ttdescription}
-%    \item [texmf-local] \envname{TEXMFLOCAL}, intended to be
-%      retained from release to release.
-%  \end{ttdescription}
-%  \item[user's home directory] (\texttt{\$HOME} or
-%      \texttt{\%USERPROFILE\%})
-%    \begin{ttdescription}
-%      \item[.texlive2018] Privately generated and configuration data
-%        for a previous release.
-%      \item[.texlive2019] Privately generated and configuration data
-%        for the current release.
-%      \begin{ttdescription}
-%        \item [texmf-var\ \ \ ] \envname{TEXMFVAR}, \envname{TEXMFCACHE}
-%        \item [texmf-config]    \envname{TEXMFCONFIG}
-%      \end{ttdescription}
-%    \item[texmf] \envname{TEXMFHOME} Personal macros, etc.
-%  \end{ttdescription}
-%\end{description}
-%
+\begin{description}
+\item[システム用ルート] 複数の\TL を配置できます
+  （デフォルト値はUNIXでは\dirname{/usr/local/texlive}）
+  \begin{ttdescription}
+  \item[2018] 前年のリリース
+  \item[2019] 最新のリリース
+    \begin{ttdescription}
+    \item[bin] ~
+      \begin{ttdescription}
+      \item[i386-linux] \GNU/Linux向けバイナリ (32-bit)
+      \item[...]
+      \item[x86\_64-darwin] macOS向けバイナリ
+      \item[x86\_64-linux] \GNU/Linux向けバイナリ (64-bit)
+      \item[win32] Windows向けバイナリ
+      \end{ttdescription}
+    \item[texmf-dist] \envname{TEXMFDIST}, \envname{TEXMFMAIN}
+    \item[texmf-var] \envname{TEXMFSYSVAR}, \envname{TEXMFCACHE}
+    \item[texmf-config] \envname{TEXMFSYSCONFIG}
+    \end{ttdescription}
+  \item[texmf-local] \envname{TEXMFLOCAL}（リリースに依存しません）
+  \end{ttdescription}
+\item[ユーザのホームディレクトリ] （\code{\$HOME}または\code{\%USERPROFILE\%}）
+  \begin{ttdescription}
+  \item[.texlive2018] 前年リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[.texlive2019] 最新リリースに適用するユーザごとのデータ（設定や生成物）
+    \begin{ttdescription}
+    \item[texmf-var] \envname{TEXMFVAR}, \envname{TEXMFCACHE}
+    \item[texmf-config] \envname{TEXMFCONFIG}
+    \end{ttdescription}
+  \item[texmf] \envname{TEXMFHOME}（ユーザごとのマクロなどを配置）
+  \end{ttdescription}
+\end{description}
 %
 %\subsection{Extensions to \protect\TeX}
 %\label{sec:tex-extensions}
