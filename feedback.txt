@@ -5,3 +5,7 @@ Sec. 2.2 (p.5)
 > In addition to the directories above, the installation scripts and README
 > files (in various languages) are at the top level of the distribution.
 Really? Maybe these have been moved to readme-* dirs?
+
+Sec. 2.4 (p.6)
+texmf-dist/doc/pdftex/manual/samplepdf/samplepdf.tex
+-> texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex

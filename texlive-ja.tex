@@ -348,7 +348,7 @@ sec:local-personal-macros}) を参照してください．ここで列挙する�
 この（ユーザ向けの）ツリーは\cmdname{texconfig}, \cmdname{updmap},
 \cmdname{fmtutil}などが変更された設定データを保存するために利用するものです．
 
-\item [TEXMFCACHE]
+\item[TEXMFCACHE]
 このツリーは\ConTeXt\ MkIVおよびLua\LaTeX が実行時（キャッシュ）データを
 保存するためのものです．デフォルトでは\code{TEXMFSYSVAR}（またはこれが
 書き込み不能な場合は\code{TEXMFVAR}）に設定されています．
@@ -389,59 +389,56 @@ sec:local-personal-macros}) を参照してください．ここで列挙する�
   \item[texmf] \envname{TEXMFHOME}（ユーザごとのマクロなどを配置）
   \end{ttdescription}
 \end{description}
+
+\subsection{\TeX の拡張エンジン}
+\label{sec:tex-extensions}
+
+Knuthによるオリジナルの\TeX は既に開発が終了しており，ごく稀にバグ修正が
+入る程度です．\TL には現在もこのオリジナル処理系が\prog{tex}として含まれており，
+この状況は当面の間は変わることはないでしょう．一方で，\TL にはいくつかの\TeX を
+拡張したエンジン（それらも\TeX 処理系と呼ばれています）も収録されています：
 %
-%\subsection{Extensions to \protect\TeX}
-%\label{sec:tex-extensions}
-%
-%Knuth's original \TeX{} itself is frozen, apart from rare bug fixes. It
-%is present in \TL\ as the program \prog{tex}, and will remain so
-%for the foreseeable future.  \TL{} also contains several extended versions of
-%\TeX\ (also known as \TeX\ engines):
-%
-%\begin{description}
-%
-%\item [\eTeX] adds a set of new primitives
-%\label{text:etex} (related to macro expansion, character scanning,
-%classes of marks, additional debugging features, and more) and the
-%\TeXXeT{} extensions for bidirectional typesetting.  In default mode,
-%\eTeX{} is 100\% compatible with ordinary \TeX. See
-%\OnCD{texmf-dist/doc/etex/base/etex_man.pdf}.
-%
-%\item [pdf\TeX] builds on the \eTeX\ extensions, adding support for
-%writing PDF output as well as \dvi{}, and many non-output-related
-%extensions.  This is the program invoked for most formats, e.g.,
-%\prog{etex}, \prog{latex}, \prog{pdflatex}.  Its web site is
-%\url{http://www.pdftex.org/}.  See
-%\OnCD{texmf-dist/doc/pdftex/manual/pdftex-a.pdf} for the manual, and
-%\OnCD{texmf-dist/doc/pdftex/manual/samplepdf/samplepdf.tex} for example
-%usage of some of its features.
-%
-%\item [Lua\TeX] is the designated successor of pdf\TeX,
-%and is mostly (but not entirely) backward-compatible.  It is also
-%intended to be a functional superset of Aleph (see below), though
-%perfect compatibility is not intended. The incorporated Lua
-%interpreter (\url{http://www.lua.org/}) enables elegant solutions for
-%many thorny \TeX{} problems. When called as \filename{texlua}, it
-%functions as a standalone Lua interpreter, and is used as such
-%within \TL.  Its web site is \url{http://www.luatex.org/}, and the
-%reference manual is \OnCD{texmf-dist/doc/luatex/base/luatex.pdf}.
-%
-%\item [\XeTeX] adds support for Unicode input and OpenType- and system
-%fonts, implemented using standard third-party libraries.  See
-%\url{http://tug.org/xetex}.
-%
-%\item [\OMEGA\ (Omega)] is based on Unicode (16-bit characters), thus
-%supports working with almost all the world's scripts simultaneously. It
-%also supports so-called `\OMEGA{} Translation Processes' (OTPs),
-%for performing complex transformations on arbitrary input.  Omega is no
-%longer included in \TL{} as a separate program; only Aleph is provided:
-%
-%\item [Aleph] combines the \OMEGA\ and \eTeX\ extensions.
-%See \OnCD{texmf-dist/doc/aleph/base}.
-%
-%\end{description}
-%
-%
+\begin{description}
+\item[\eTeX]
+この処理系ではいくつかの追加プリミティブ（主としてマクロ展開，文字列スキャン，
+マークのクラス，デバッグに関わるもの）と双方向組版のための\TeXXeT 拡張が利用可能
+です．デフォルトモードでは，\eTeX はオリジナルの\TeX と完全な互換性があります．
+詳細については\OnCD{texmf-dist/doc/etex/base/etex_man.pdf}をご参照ください．
+
+\item[pdf\TeX]
+この処理系には，\eTeX の機能に加えて\dvi 同様にPDFを出力する機能と，その他出力とは
+関係のない多数の追加機能が搭載されています．この処理系は，\prog{etex}, \prog{latex},
+\prog{pdflatex}など多くのフォーマット（コマンド）から呼び出されています．pdf\TeX の
+ウェブサイトは\url{http://www.pdftex.org/}です．\TL にはマニュアル (\OnCD{texmf-dist/%
+doc/pdftex/manual/pdftex-a.pdf}) とpdf\TeX の拡張機能の利用例を示した文書 (\OnCD{%
+texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex}) も収録されています．
+
+\item[Lua\TeX]
+pdf\TeX の後継として開発されているもので，（完全ではありませんが）概ね後方互換性が
+あります．またAlephの上位互換となることも目標になっていますが，これについても完全な
+互換性があるわけではありません．この\TeX エンジンには軽量スクリプト言語Lua (\url{%
+http://www.lua.org/}) のインタプリタが組み込まれており，\TeX における厄介な問題に
+対処するのにとても役立ちます．\prog{texlua}として呼び出した場合は独立のLua処理系の
+ように振る舞います．そのため\TL に含まれる一部のプログラムもこのLua処理系によって
+実行されています．ウェブサイト：\url{http://www.luatex.org/}，マニュアル：\OnCD{%
+texmf-dist/doc/luatex/base/luatex.pdf}．
+
+\item[\XeTeX]
+Unicodeによる入力とOpenTypeフォントおよびシステムフォントの利用を，サードパーティ
+製のライブラリを利用してサポートする\TeX 処理系です．
+ウェブサイト：\url{http://tug.org/xetex}．
+
+\item[{\OMEGA} (Omega)]
+Unicode（16-bit文字）ベースの処理系で，すなわち世界中のほとんどあらゆる言語で
+用いられる文字に対応しています．この処理系はいわゆる `\OMEGA{} Translation
+Processes' (OTPs) もサポートしており，任意の入力について複雑な組版処理を施すことも
+可能です．
+
+\item[Aleph]
+\OMEGA と\eTeX を組み合わせた処理系です．詳細については\OnCD{texmf-dist/doc/aleph/%
+base}をご参照ください．
+\end{description}
+
 %\subsection{Other notable programs in \protect\TL}
 %
 %Here are a few other commonly-used programs included in \TL{}:
