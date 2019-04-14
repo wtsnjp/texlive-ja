@@ -436,6 +436,32 @@ Processes' (OTPs) もサポートしており，任意の入力について複�
 base}をご参照ください．
 \end{description}
 
+上記の\TeX 処理系は主として欧文組版を行うために開発されたもので，そのままでは日本語
+の組版には適しません．幸い\TL には日本語組版を行うために拡張されたエンジンもいくつか
+収録されています：
+%
+\begin{description}
+\item[\pTeX]
+Knuthによるオリジナルの\TeX 処理系を日本語組版用に拡張したものです．和文フォントを
+扱うことができるように拡張されているほか，禁則処理や縦組みにも対応しています．詳細に
+ついては\OnCD{texmf-dist/doc/ptex/ptex-manual/ptex-manual.pdf}をご参照ください．
+
+\item[\upTeX]
+\pTeX の派生エンジンで，内部コードがUnicodeに変更されています．基本的には\upTeX は
+\pTeX の上位互換となっており，UTF-8入力が活用できるほかにもいくつかの機能が追加
+されています．
+
+\item[\epTeX, \eupTeX]
+\pTeX と\upTeX に\eTeX 相当の拡張機能を追加したエンジンです．現在\TL に含まれる
+\prog{platex}, \prog{uplatex}コマンドではデフォルトでこれらの処理系が呼び出されます．
+最近は\pdfTeX 由来の機能も一部利用できます．詳細は\OnCD{texmf-dist/doc/ptex/ptex-%
+base/eptexdoc.pdf}をご覧ください．
+\end{description}
+
+また\LuaTeX-jaというマクロパッケージを用いると\LuaTeX でも日本語組版を実現できます．
+詳しくはウェブサイト\url{https://ja.osdn.net/projects/luatex-ja/}またはドキュメント
+\OnCD{texmf-dist/doc/luatex/luatexja/luatexja-ja.pdf}をご参照ください．
+
 %\subsection{Other notable programs in \protect\TL}
 %
 %Here are a few other commonly-used programs included in \TL{}:
