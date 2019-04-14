@@ -216,23 +216,29 @@
 % description-like environment that uses tt instead of bf, and doesn't
 % go to the left margin.  Without the \hfil, get an underfull box.
 % Don't know why \descriptionlabel doesn't.
-\newenvironment{ttdescription}
-  {\begin{list}{label must be supplied}{%
-     \itemsep=0pt  % these lists tend to have short descriptions
-     \parindent=0pt
-     \let\makelabel=\ttdescriptionlabel}}%
-  {\end{list}}
-\newcommand*\ttdescriptionlabel[1]{\hspace\labelsep
-                                   \normalfont\ttfamily #1\hfil}
+\newenvironment{ttdescription}{%
+  \list{label must be supplied}{%
+    \parindent=0pt
+    \itemsep=0pt  % these lists tend to have short descriptions
+    \labelwidth=\leftmargin
+    \labelsep=1zw
+    \advance\labelwidth by -\labelsep
+    \let\makelabel=\ttdescriptionlabel}}{\endlist}
+\newcommand*\ttdescriptionlabel[1]{%
+  \hspace\labelsep
+  \normalfont\ttfamily #1\hfil}
 
 % Likewise, for commands using sans serif.
-\newenvironment{cmddescription}
-  {\begin{list}{label must be supplied}{%
-     \itemsep=0pt
-     \let\makelabel=\cmddescriptionlabel}}%
-  {\end{list}}
-\newcommand*\cmddescriptionlabel[1]{\hspace\labelsep
-                                    \normalfont\sffamily #1\hfil}
+\newenvironment{cmddescription}{%
+  \list{label must be supplied}{%
+    \itemsep=0pt
+    \labelwidth=\leftmargin
+    \labelsep=1zw
+    \advance\labelwidth by -\labelsep
+    \let\makelabel=\cmddescriptionlabel}}{\endlist}
+\newcommand*\cmddescriptionlabel[1]{%
+  \hspace\labelsep
+  \normalfont\sffamily #1\hfil}
 
 % General squeezed itemize/enumerate.
 \newenvironment{itemize*}%
