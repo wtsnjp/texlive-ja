@@ -4,9 +4,6 @@
 % Public domain.
 \documentclass[uplatex,dvipdfmx]{jsarticle}
 
-% temporary hack
-\def\Status{1}
-
 \usepackage{texlive-ja}
 
 \title{{\huge {\TL ガイド 2019}}}
@@ -32,11 +29,11 @@
 
 \subsection{\TL と\TeX コレクション}
 
-このドキュメントは\GNU/Linuxやその他のUNIXシステム，macOS，Windows向けに
+このドキュメントは\GNU/Linuxやその他のUNIXシステム，\macOS，Windows向けに
 \TeX 関連プログラムを集めたディストリビューション\TL の概要について解説する
 ものです．
 
-この文書の読者は既にインターネット，{\TeX} Users Group の配布する\TeX
+この文書の読者は既にインターネット，{\TeX} Users Groupの配布する\TeX
 コレクション\DVD またはその他の方法を利用して\TL を入手していることと思います．
 \ref{sec:tl-coll-dists}節は\TeX コレクション\DVD の収録物について簡単に説明して
 います．\TL と\TeX コレクションは{\TeX} Users Groupの協力によって維持されています．
@@ -53,7 +50,7 @@
 \subsection{サポートOS}
 \label{sec:os-support}
 
-\TL には\GNU/Linux, macOS, Cygwinを含む，多くのUNIXベースプラットフォーム向けの
+\TL には\GNU/Linux, \macOS, Cygwinを含む，多くのUNIXベースプラットフォーム向けの
 バイナリを含んでいます．同梱されているソースを用いれば，デフォルトではサポート
 されていないプラットフォームでコンパイルを行うこともできます．
 
@@ -63,7 +60,7 @@ Windows Vistaでも概ね動作すると思いますが，Windows XPよりも古
 ファイルを用意していませんが，32-bit実行ファイルは問題なく64-bit環境でも
 動作するはずです．
 
-WindowsおよびmacOSに特有のその他の事情については\ref{sec:tl-coll-dists}節を
+Windowsおよび\macOS に特有のその他の事情については\ref{sec:tl-coll-dists}節を
 参照してください．
 
 \subsection{\TL のインストール（基本）}
@@ -75,7 +72,7 @@ WindowsおよびmacOSに特有のその他の事情については\ref{sec:tl-co
 インターネットからダウンロードします．
 
 \DVD インストーラはあなたのローカルディスクに\TL をインストールします．
-\TeX コレクションDVD上にある\TL のデータ（またはその\code{.iso}イメージ）
+\TeX コレクション\DVD 上にある\TL のデータ（またはその\code{.iso}イメージ）
 を直接実行することはできませんが，\USB ディスクなどにポータブルインストールを
 行うことも可能です（\ref{sec:portable-tl}節参照）．インストールについては
 後ほど詳述しますが (\p.\pageref{sec:install})，ここでは「クイックスタート」
@@ -83,7 +80,7 @@ WindowsおよびmacOSに特有のその他の事情については\ref{sec:tl-co
 
 \begin{itemize*}
 \item インストールスクリプトの名称は\filename{install-tl}です．このプログラムに
-\code{-gui}オプションを与えると「GUIモード」（WindowsとmacOSでデフォルト），
+\code{-gui}オプションを与えると「GUIモード」（Windowsと\macOS でデフォルト），
 \code{-no-gui}を与えると「テキストモード」（その他のプラットフォームでデフォルト）
 で実行されます．UNIXプラットフォームでは，Perl/Tkがインストールされていれば旧来の
 Perl/Tkとwizardモードを利用することもできます．Windowsについては\ref{sec:wininst}節も
@@ -227,7 +224,7 @@ http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まず�
 です．ウェブサイト：\url{http://tug.org/texlive/}
 
 \item[Mac\TeX]
-macOS向けの\TeX ディストリビューションで，専用のインストーラといくつかの
+\macOS 向けの\TeX ディストリビューションで，専用のインストーラといくつかの
 Mac用アプリケーションを\TL に追加しています．
 ウェブサイト：\url{http://tug.org/mactex/}
 
@@ -368,7 +365,7 @@ sec:local-personal-macros}) を参照してください．ここで列挙する�
       \begin{ttdescription}
       \item[i386-linux] \GNU/Linux向けバイナリ (32-bit)
       \item[...]
-      \item[x86\_64-darwin] macOS向けバイナリ
+      \item[x86\_64-darwin] \macOS 向けバイナリ
       \item[x86\_64-linux] \GNU/Linux向けバイナリ (64-bit)
       \item[win32] Windows向けバイナリ
       \end{ttdescription}
@@ -405,16 +402,16 @@ Knuthによるオリジナルの\TeX は既に開発が終了しており，ご�
 です．デフォルトモードでは，\eTeX はオリジナルの\TeX と完全な互換性があります．
 詳細については\OnCD{texmf-dist/doc/etex/base/etex_man.pdf}をご参照ください．
 
-\item[pdf\TeX]
-この処理系には，\eTeX の機能に加えて\dvi 同様にPDFを出力する機能と，その他出力とは
+\item[\pdfTeX]
+この処理系には，\eTeX の機能に加えて\DVI 同様にPDFを出力する機能と，その他出力とは
 関係のない多数の追加機能が搭載されています．この処理系は，\prog{etex}, \prog{latex},
 \prog{pdflatex}など多くのフォーマット（コマンド）から呼び出されています．pdf\TeX の
 ウェブサイトは\url{http://www.pdftex.org/}です．\TL にはマニュアル (\OnCD{texmf-dist/%
 doc/pdftex/manual/pdftex-a.pdf}) とpdf\TeX の拡張機能の利用例を示した文書 (\OnCD{%
 texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex}) も収録されています．
 
-\item[Lua\TeX]
-pdf\TeX の後継として開発されているもので，（完全ではありませんが）概ね後方互換性が
+\item[\LuaTeX]
+\pdfTeX の後継として開発されているもので，（完全ではありませんが）概ね後方互換性が
 あります．またAlephの上位互換となることも目標になっていますが，これについても完全な
 互換性があるわけではありません．この\TeX エンジンには軽量スクリプト言語Lua (\url{%
 http://www.lua.org/}) のインタプリタが組み込まれており，\TeX における厄介な問題に
@@ -434,7 +431,7 @@ Unicode（16-bit文字）ベースの処理系で，すなわち世界中のほ�
 Processes' (OTPs) もサポートしており，任意の入力について複雑な組版処理を施すことも
 可能です．
 
-\item[Aleph]
+\item[{\ALEPH} (Aleph)]
 \OMEGA と\eTeX を組み合わせた処理系です．詳細については\OnCD{texmf-dist/doc/aleph/%
 base}をご参照ください．
 \end{description}
