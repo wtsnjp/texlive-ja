@@ -24,6 +24,8 @@ TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/t
 $ llmk texlive-ja.tex
 ```
 
+なお，本リポジトリには画像データなど全言語版に共通の素材は含まれていません．ビルドを通すためには，適宜 [texlive-common](https://www.tug.org/texlive/doc/texlive-common/) をダウンロードして  `texlive-ja.tex` と同じ階層に配置してください．
+
 ## ライセンス
 
 原版に合わせ，本翻訳ドキュメントもパブリック・ドメインとします．
