@@ -465,11 +465,13 @@ base/eptexdoc.pdf}をご覧ください．
 \subsection{\TL に含まれるその他の著名なソフトウェア}
 
 ここに少しですが，\TL に含まれていて，よく利用されるプログラムを列挙しておきます：
-
 %
 \begin{cmddescription}
 \item[bibtex, biber]
 参考文献リストの作成を補助するプログラム．
+
+\item[pbibtex, upbibtex]
+\prog{bibtex}を日本語用に拡張したもの．
 
 \item[makeindex, xindy]
 索引の作成を補助するプログラム．
@@ -502,203 +504,212 @@ PDFユーティリティ．
 \cmdname{tex4ht}は\AllTeX をHTMLやXMLに変換するプログラム．
 \end{cmddescription}
 
-%\section{Installation}
-%\label{sec:install}
+\section{\TL のインスール}
+\label{sec:install}
+
+\subsection{インストーラの入手と起動}
+\label{sec:inst-start}
+
+\TL をインストールするためには，まず\TeX コレクション\DVD を入手するか\TL の
+インターネット・インストーラをダウンロードします．より詳細な情報や\TL を入手
+するその他の方法については\url{http://tug.org/texlive/acquire.html}をご参照
+ください．
 %
-%\subsection{Starting the installer}
-%\label{sec:inst-start}
+\begin{description}
+\item[インターネット・インストーラ（\filename{.zip}または\filename{.tar.gz}）]
+\CTAN の\dirname{systems/texlive/tlnet}配下からダウンロードできます．\url{%
+http://mirror.ctan.org/systems/texlive/tlnet}にアクセスすると，最寄りの最新
+ミラーにリダイレクトされるはずです．\filename{install-tl.zip}（UNIXおよび
+Windows向け），またはそれよりもかなりファイルサイズの小さい\filename{install-%
+unx.tar.gz}（UNIX専用）のお好きな方をダウンロードしてください．ダウンロードした
+アーカイブを展開すると\dirname{install-tl}サブディレクトリ以下に\filename{%
+install-tl}および\filename{install-tl-windows.bat}が見つかるはずです．
+
+\item[インターネット・インストーラ（Windows用\filename{.exe}）]
+上と同様に\CTAN からダウンロードし，ダブルクリックしてください．すると，
+インストーラの最初の画面（図\ref{fig:nsis}）が表示されるはずです．この画面では
+「インストール」または「展開のみ」のいずれかを選ぶことができます．
+
+\item[\TeX コレクション\DVD]
+\DVD 内の\dirname{texlive}サブディレクトリを開いてください．Windowsでは，通常
+\DVD を挿入するとインストーラが自動的に起動するはずです．{\TeX} Users Group
+(TUG) の会員になるか (\url{http://tug.org/usergroups.html})，TUGのオンライン
+ストア (\url{http://tug.org/store}) で個別に購入すると\DVD を手に入れることが
+できます．また，配布されている\ISO イメージからご自身で\DVD に焼くことも可能
+です．\DVD または\ISO から\TL をインストールした後，インターネットを利用して
+継続的にアップデートを行いたい場合は\ref{sec:dvd-install-net-updates}節をご覧
+ください．
+\end{description}
 %
-%To begin, get the \TK{} \DVD{} or download the \TL{} net installer.  See
-%\url{http://tug.org/texlive/acquire.html} for more information and other
-%methods of getting the software.
+\begin{figure}[tb]
+\tlpng{nsis_installer}{.6\linewidth}
+\caption{Windows用インストーラ (\code{.exe}) の初期画面．}
+\label{fig:nsis}
+\end{figure}
+
+いずれの手段でインストーラを入手しても，まったく同じプログラムが起動します．
+入手方法の違いによって生じる差異のうち，ユーザにとって最も重要なことは，
+インターネット・インストーラを利用した場合はすべてのパッケージについて入手可能
+な最新バージョンがインストールされますが，\DVD や\ISO イメージを用いた場合には
+年に1度のパブリックリリース時点での最新版がインストールされるということです．
+
+もしプロキシを利用してダウンロードする必要がある場合は，\filename{~/.wgetrc}%
+ファイルまたは環境変数を利用してWgetに対して適切なプロキシ設定を行うか (\url{%
+http://www.gnu.org/software/wget/manual/html_node/Proxies.html})，もしくは
+お好みで別のダウンロード用ツールをご利用ください．\DVD や\ISO イメージから
+インストールを行う場合は，プロキシ設定について気にする必要はありません．
+
+以降のセクションでは，このインストーラの使い方について詳しくご説明します．
+
+\subsubsection{UNIX}
+
+以降では\code{>}はシェル・プロンプトを表し，ユーザの入力はタイプライタ体で
+\Ucom{command}のように表現することにします．\TL のインストーラ\code{install-%
+tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプトを起動する最も簡単
+な方法は以下を実行することです：
 %
-%\begin{description}
-%\item [Net installer, .zip or .tar.gz:] Download from \CTAN, under
-%\dirname{systems/texlive/tlnet}; the url
-%\url{http://mirror.ctan.org/systems/texlive/tlnet} should redirect to a
-%nearby, up-to-date, mirror.  You can retrieve either
-%\filename{install-tl.zip} which can be used under Unix and Windows, or
-%the considerably smaller \filename{install-unx.tar.gz} for Unix
-%only. After unpacking, \filename{install-tl} and
-%\filename{install-tl-windows.bat} will be in the \dirname{install-tl}
-%subdirectory.
+\begin{alltt}
+> \Ucom{perl /path/to/installer/install-tl}
+\end{alltt}
 %
-%\item[Net installer, Windows .exe:] Download from \CTAN{} as above,
-%and double-click. This starts up a first-stage installer and unpacker;
-%see figure~\ref{fig:nsis}. It gives two choices: ``Install''
-%and``Unpack only''.
+（もちろん，実行権限を与えていれば単に\Ucom{/path/to/installer/install-tl}と
+して起動することもできますし，事前に\code{cd}で\code{install-tl}のある
+ディレクトリに移動しても構いません．以降では，そのようなバリエーションについて
+逐一言及はしません．）
 %
-%\item [\TeX{} Collection \DVD:] go to the \DVD's \dirname{texlive}
-%subdirectory. Under Windows, the installer normally starts automatically
-%when you insert the \DVD.  You can get the \DVD\ by becoming a member of
-%a \TeX\ user group (highly recommended,
-%\url{http://tug.org/usergroups.html}), or purchasing it separately
-%(\url{http://tug.org/store}), or burning your own from the \ISO\ image.
-%You can also mount the \ISO\ directly on most systems.  After installing
-%from \DVD\ or \ISO, if you want to get continuing updates from the
-%Internet, please see \ref{sec:dvd-install-net-updates}.
+ところで，インストーラのメッセージを見やすく表示するためには，ターミナルの
+ウィンドウサイズは十分に大きくしておいてください（図\ref{fig:text-main}）．
+
+インストーラを\GUI モードで起動するためには，予めTcl/Tkをインストールしておく
+必要があります．その上で，次のようにすると\GUI モードで起動できます：
 %
-%\end{description}
+\begin{alltt}
+> \Ucom{perl install-tl -gui}
+\end{alltt}
+
+古い\code{wizard}モードや\code{perltk}/\code{expert}オプションは，現在も使用
+可能です．これらはXFTサポートありでコンパイルされた\code{Perl::Tk}モジュールを
+必要とします．この要件は，基本的には\GNU/Linuxでは問題になりませんが，他の
+プラットフォームでは問題かもしれません．利用可能なすべてのオプションを確認する
+には次を実行してください：
 %
-%\begin{figure}[tb]
-%\tlpng{nsis_installer}{.6\linewidth}
-%\caption{First stage of Windows \code{.exe} installer}\label{fig:nsis}
-%\end{figure}
+\begin{alltt}
+> \Ucom{perl install-tl -help}
+\end{alltt}
+
+\paragraph{UNIXのパーミッションについて}
+\TL インストーラは，実行時の\code{umask}設定を反映します．したがって，もし利用
+中のユーザだけでなく他のユーザも利用可能な形で\TL をインストールしたい場合は，
+\code{umask 002}など適切なパーミッション設定になっているかよくご確認ください．
+\code{umask}コマンドの詳細については，システムのマニュアルをご参照ください．
+
+\paragraph{Cygwinへの注意}
+他のUNIX互換システムと異なり，Cygwinにはデフォルトでは\TL インストーラの実行に
+必要なプログラムの一部が含まれていません．詳細は\ref{sec:cygwin}節を参照して
+ください．
+
+\subsubsection{macOS}
+\label{sec:macos}
+
+\ref{sec:tl-coll-dists}節でも言及したように，macOSにはMac\TeX という専用の
+ディストリビューションがあります (\url{http://tug.org/mactex})．Mac\TeX の
+インストーラはmacOS向けにいくつかの最適化をしている（たとえば，いわゆる
+「{\TeX}Distデータ構造」を利用して複数のmacOS向け\TeX ディストリビューション
+(Mac\TeX, Fink, MacPorts, \ldots) を簡単に切り替える機能があります）ので，\TL
+インストーラを利用するよりも，Mac\TeX を利用したインストールをおすすめします
+（訳注：ただし敢えて\TL インストーラを利用することも可能です）．
+
+Mac\TeX は完全な\TL ベースのディストリビューションで，主要な\TeX ツリーと
+含まれる実行バイナリはまったく同一です．通常の\TL に，macOS専用のドキュメント
+とアプリケーションがいくつか追加されています．
+
+\subsubsection{Windows}\label{sec:wininst}
+
+もしZIPファイルをご自身でダウンロードして展開した場合や\DVD を挿入しても
+自動的にインストーラが起動しなかった場合は，\filename{install-tl-windows.bat}%
+をダブルクリックしてください．
+
+もしくは，コマンドプロンプトを利用してインストーラを起動することも可能です．以下
+では\code{>}はプロンプトを表し，ユーザの入力はタイプライタ体で\Ucom{command}の
+ように表現することにします．もし，既にインストーラのあるディレクトリにいる場合は
+単に
 %
-%The same installer program is run, whatever the source.  The most
-%visible difference between the two is that with the net installer, what
-%you end up with is the packages that are currently available.  This is
-%in contrast to the \DVD\ and \ISO\ images, which are not updated between
-%the major public releases.
+\begin{alltt}
+> \Ucom{install-tl-windows}
+\end{alltt}
 %
-%If you need to download through proxies, use a \filename{~/.wgetrc} file
-%or environment variables with the proxy settings for Wget
-%(\url{http://www.gnu.org/software/wget/manual/html_node/Proxies.html}),
-%or the equivalent for whatever download program you are using. This does
-%not matter if you are installing from the \DVD\ or \ISO\ image.
+を実行してください．もちろん絶対パスを指定して起動することも可能です．例えば，
+\TeX コレクション\DVD を利用していて，その光学ドライブが\dirname{D:}であれば：
 %
-%The following sections explain installer start-up in more detail.
+\begin{alltt}
+> \Ucom{D:\bs{}texlive\bs{}install-tl-windows}
+\end{alltt}
 %
-%\subsubsection{Unix}
+図\ref{fig:basic-w32}は\GUI インストーラ（Windowsではデフォルト）の初期画面を
+示しています．
+
+テキストモードでのインストールを行いたい場合は次のようにしてください：
 %
-%Below, \texttt{>} denotes the shell prompt; user input is
-%\Ucom{\texttt{bold}}.
-%The script \filename{install-tl} is a Perl script.  The simplest way
-%to start it on a Unix-compatible system is as follows:
-%\begin{alltt}
-%> \Ucom{perl /path/to/installer/install-tl}
-%\end{alltt}
-%(Or you can invoke \Ucom{/path/to/installer/install-tl} if it stayed
-%executable, or \texttt{cd} to the directory first, etc.; we won't repeat
-%all the variations.)  You may have to enlarge your terminal window so
-%that it shows the full text installer screen
-%(figure~\ref{fig:text-main}).
+\begin{alltt}
+> \Ucom{install-tl-windows -no-gui}
+\end{alltt}
+
+すべてのオプションを表示するには以下を実行してください：
 %
-%To install in \GUI\ mode (figure~\ref{fig:advanced-lnx}), you'll need to
-%have Tcl/Tk installed.  Given that, you can run:
-%\begin{alltt}
-%> \Ucom{perl install-tl -gui}
-%\end{alltt}
-%
-%The old \code{wizard} and \code{perltk}/\code{expert} options are still
-%available. These require the \dirname{Perl::Tk} module compiled with XFT
-%support, which is generally no problem with \GNU/Linux, but often is
-%with other systems. For a complete listing of the various options:
-%\begin{alltt}
-%> \Ucom{perl install-tl -help}
-%\end{alltt}
-%
-%\textbf{About Unix permissions:} Your \code{umask} at the time
-%of installation will be respected by the \TL{} installer.  Therefore, if
-%you want your installation to be usable by users other than you, make
-%sure your setting is sufficiently permissive, for instance, \code{umask
-%002}.  For more information about \code{umask}, consult your system
-%documentation.
-%
-%\textbf{Special considerations for Cygwin:} Unlike other
-%Unix-compatible systems, Cygwin does not by default include all of the
-%prerequisite programs needed by the \TL{} installer.  See
-%section~\ref{sec:cygwin}.
-%
-%
-%\subsubsection{\MacOSX}
-%\label{sec:macosx}
-%
-%As mentioned in section~\ref{sec:tl-coll-dists}, a separate distribution
-%is prepared for \MacOSX, named Mac\TeX\ (\url{http://tug.org/mactex}).
-%We recommend using the native Mac\TeX\ installer instead of the \TL\
-%installer on \MacOSX, because the native installer makes a few
-%Mac-specific adjustments, in particular to allow easily switching
-%between the various \TeX\ distributions for \MacOSX\ (Mac\TeX, Fink,
-%MacPorts, \ldots) using the so-called \TeX{}Dist data structure.
-%
-%Mac\TeX\ is firmly based on \TL, and the main \TeX\ trees and binaries
-%are precisely the same.  It adds a few extra folders with Mac-specific
-%documentation and applications.
-%
-%
-%\subsubsection{Windows}\label{sec:wininst}
-%
-%If you are using the unpacked downloaded zip file, or the \DVD\
-%installer failed to start automatically, double-click
-%\filename{install-tl-windows.bat}.
-%
-%You can also start the installer from the command-prompt.  Below,
-%\texttt{>} denotes the prompt; user input is \Ucom{\texttt{bold}}.  If
-%you are in the installer directory, run just:
-%\begin{alltt}
-%> \Ucom{install-tl-windows}
-%\end{alltt}
-%
-%Or you can invoke it with an absolute location, such as:
-%\begin{alltt}
-%> \Ucom{D:\bs{}texlive\bs{}install-tl-windows}
-%\end{alltt}
-%for the \TK\ \DVD, supposing that \dirname{D:} is the optical
-%drive. Figure~\ref{fig:basic-w32} displays the initial basic screen
-%of the \GUI\ installer, which is the default for Windows.
-%
-%To install in text mode, use:
-%\begin{alltt}
-%> \Ucom{install-tl-windows -no-gui}
-%\end{alltt}
-%
-%For a complete listing of the various options:
-%\begin{alltt}
-%> \Ucom{install-tl-windows -help}
-%\end{alltt}
-%
-%\begin{figure}[tb]
-%\begin{boxedverbatim}
-%Installing TeX Live 2019 from: ...
-%Platform: x86_64-linux => 'GNU/Linux on x86_64'
-%Distribution: inst (compressed)
-%Directory for temporary files: /tmp
-%...
-% Detected platform: GNU/Linux on Intel x86_64
-% 
-% <B> binary platforms: 1 out of 16
-%
-% <S> set installation scheme: scheme-full
-%
-% <C> customizing installation collections
-%     40 collections out of 41, disk space required: 5829 MB
-%
-% <D> directories:
-%   TEXDIR (the main TeX directory):
-%     /usr/local/texlive/2019
-%   ...
-%
-% <O> options:
-%   [ ] use letter size instead of A4 by default
-%   ...
-% 
-% <V> set up for portable installation
-%
-%Actions:
-% <I> start installation to hard disk
-% <P> save installation profile to 'texlive.profile' and exit
-% <H> help
-% <Q> quit
-%\end{boxedverbatim}
-%\vskip-\baselineskip
-%\caption{Main text installer screen (\GNU/Linux)}\label{fig:text-main}
-%\end{figure}
-%
-%\begin{figure}[tb]
-%\tlpng{basic-w32}{.6\linewidth}
-%\caption{Basic installer screen (Windows); the Advanced button will
-%  result in something like figure~\ref{fig:advanced-lnx}}\label{fig:basic-w32}
-%\end{figure}
-%
-%\begin{figure}[tb]
-%\tlpng{advanced-lnx}{\linewidth}
-%\caption{Advanced \GUI{} installer screen
-%  (\GNU/Linux)}\label{fig:advanced-lnx}
-%\end{figure}
-%
-%
-%\htmlanchor{cygwin}
+\begin{alltt}
+> \Ucom{install-tl-windows -help}
+\end{alltt}
+
+\begin{figure}[tb]
+\begin{boxedverbatim}
+Installing TeX Live 2019 from: ...
+Platform: x86_64-linux => 'GNU/Linux on x86_64'
+Distribution: inst (compressed)
+Directory for temporary files: /tmp
+...
+ Detected platform: GNU/Linux on Intel x86_64
+ 
+ <B> binary platforms: 1 out of 16
+
+ <S> set installation scheme: scheme-full
+
+ <C> customizing installation collections
+     40 collections out of 41, disk space required: 5829 MB
+
+ <D> directories:
+   TEXDIR (the main TeX directory):
+     /usr/local/texlive/2019
+   ...
+
+ <O> options:
+   [ ] use letter size instead of A4 by default
+   ...
+ 
+ <V> set up for portable installation
+
+Actions:
+ <I> start installation to hard disk
+ <P> save installation profile to 'texlive.profile' and exit
+ <H> help
+ <Q> quit
+\end{boxedverbatim}
+\vskip-\baselineskip
+\caption{\TL インストーラのテキストモードでのメイン画面 (\GNU/Linux)}
+\label{fig:text-main}
+\end{figure}
+
+\begin{figure}[tb]
+\tlpng{basic-w32}{.6\linewidth}
+\caption{\TL インストーラの基本画面 (Windows)．「Advanced」ボタンを押すと図\ref{%
+fig:advanced-lnx}のような画面に切り替わります．}\label{fig:basic-w32}
+\end{figure}
+
+\begin{figure}[tb]
+\tlpng{advanced-lnx}{\linewidth}
+\caption{\TL インストーラ\GUI{}モードの「高度な設定」画面 (\GNU/Linux)}
+\label{fig:advanced-lnx}
+\end{figure}
+
 %\subsubsection{Cygwin}
 %\label{sec:cygwin}
 %
@@ -3520,7 +3531,7 @@ PDFユーティリティ．
 %if it turns out to be problematic).  A new script, \code{psjoin}, has
 %been added.
 %
-%The Mac\TeX\ redistribution of \TeX\ Live (section~\ref{sec:macosx}) no
+%The Mac\TeX\ redistribution of \TeX\ Live (section~\ref{sec:macos}) no
 %longer includes the optional Mac-only packages for the Latin Modern and
 %\TeX\ Gyre fonts, since it is easy enough for individual users to make
 %them available to the system.  The \cmdname{convert} program from
