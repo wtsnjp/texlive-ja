@@ -20,10 +20,7 @@
 \maketitle
 \thispagestyle{empty}
 
-\begin{multicols}{1}
 \tableofcontents
-%\listoftables
-\end{multicols}
 
 \section{イントロダクション}\label{sec:intro}
 
@@ -179,10 +176,10 @@ http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まず�
 多くの場合，プログラムを\code{-{}-help}オプション付きで実行するとバグ報告用の
 メールアドレスを確認することができます．
 \end{description}
-
+%
 以上のリストは主に英語での情報提供・コミュニケーションを行う場所ですが，日本語
 でのサポートが必要な場合は，次のようなウェブサイトが利用できます：
-
+%
 \begin{description}
 \item[{\TeX} Wiki]
 \url{https://texwiki.texjp.org/}は日本語で読めるものとしては\TeX 関連情報を集めた
@@ -435,7 +432,7 @@ Processes' (OTPs) もサポートしており，任意の入力について複�
 \OMEGA と\eTeX を組み合わせた処理系です．詳細については\OnCD{texmf-dist/doc/aleph/%
 base}をご参照ください．
 \end{description}
-
+%
 上記の\TeX 処理系は主として欧文組版を行うために開発されたもので，そのままでは日本語
 の組版には適しません．幸い\TL には日本語組版を行うために拡張されたエンジンもいくつか
 収録されています：
@@ -457,7 +454,7 @@ Knuthによるオリジナルの\TeX 処理系を日本語組版用に拡張し�
 最近は\pdfTeX 由来の機能も一部利用できます．詳細は\OnCD{texmf-dist/doc/ptex/ptex-%
 base/eptexdoc.pdf}をご覧ください．
 \end{description}
-
+%
 また\LuaTeX-jaというマクロパッケージを用いると\LuaTeX でも日本語組版を実現できます．
 詳しくはウェブサイト\url{https://ja.osdn.net/projects/luatex-ja/}またはドキュメント
 \OnCD{texmf-dist/doc/luatex/luatexja/luatexja-ja.pdf}をご参照ください．
@@ -706,148 +703,151 @@ fig:advanced-lnx}のような画面に切り替わります．}\label{fig:basic-
 
 \begin{figure}[tb]
 \tlpng{advanced-lnx}{\linewidth}
-\caption{\TL インストーラ\GUI{}モードの「高度な設定」画面 (\GNU/Linux)}
+\caption{\TL インストーラ\GUI モードの「高度な設定」画面 (\GNU/Linux)}
 \label{fig:advanced-lnx}
 \end{figure}
 
-%\subsubsection{Cygwin}
-%\label{sec:cygwin}
+\subsubsection{Cygwin}
+\label{sec:cygwin}
+
+Cygwinでは，\TL のインストールを始める前に\file{setup.exe}プログラムを用いて
+（もし未導入の場合は）\prog{perl}と\prog{wget}をインストールするようにしてくだ
+さい．また以下のパッケージも予めインストールしておくことをおすすめします：
 %
-%Before beginning the installation, use Cygwin's \filename{setup.exe} program to
-%install the \filename{perl} and \filename{wget} packages if you have
-%not already done so.  The following additional packages are
-%recommended:
-%\begin{itemize*}
-%\item \filename{fontconfig} [needed by \XeTeX\ and Lua\TeX]
-%\item \filename{ghostscript} [needed by various utilities]
-%\item \filename{libXaw7} [needed by \code{xdvi}]
-%\item \filename{ncurses} [provides the \code{clear} command used by the installer]
-%\end{itemize*}
+\begin{itemize*}
+\item \prog{fontconfig}（\XeTeX と\LuaTeX のため）
+\item \prog{ghostscript}（多くの\TeX エンジンのため）
+\item \prog{libXaw7}（\prog{xdvi}のため）
+\item \prog{ncurses}（インストーラの\code{clear}コマンドの実行に必要）
+\end{itemize*}
+
+\subsubsection{テキストモード}
+
+図\ref{fig:text-main}はUNIXにおけるテキストモードのメイン画面を示しています．
+テキストモードはUNIXではデフォルトです．
+
+このモードは，完全にコマンドラインで完結するもので，カーソルによる操作のサポートは
+まったくありません．例えば，Tabキーによってチェックボックスや入力フォーム間を移動
+することはできません．インストール操作はすべて，プロンプトに文字をタイプ（大文字と
+小文字は区別されます）してEnterキーを押すことによって行います．ターミナルの画面は，
+入力にしたがって適切に遷移していきます．
+
+テキストモードのインターフェースは，最小限のPerlしかない環境を含めなるべく多く
+のプラットフォームで動作するようとても原始的に作られています（訳注：\GUI モード
+は日本語を含む多言語に対応していますが，テキストモードは英語のみです）．
+
+\subsubsection{\GUI モード}
+\label{sec:graphical-inst}
+
+\GUI モードでは，デフォルトではわずかなオプションのみを提供するシンプルな画面で
+スタートします（図\ref{fig:basic-w32}）．\GUI モードを起動するには
 %
+\begin{alltt}
+> \Ucom{install-tl -gui}
+\end{alltt}
 %
-%\subsubsection{The text installer}
-%
-%Figure~\ref{fig:text-main} displays the main text mode screen under
-%Unix.  The text installer is the default on Unix.
-%
-%This is only a command-line installer; there is no cursor support at
-%all.  For instance, you cannot tab around checkboxes or input fields.
-%You just type something (case-sensitive) at the prompt and press the
-%Enter key, and then the entire terminal screen will be rewritten, with
-%adjusted content.
-%
-%The text installer interface is this primitive in order to make it run
-%on as many platforms as possible, even with a minimal Perl.
-%
-%\subsubsection{The graphical installer}
-%\label{sec:graphical-inst}
-%
-%The default graphical installer starts out simple, with just a
-%few options; see figure~\ref{fig:basic-w32}. It can be started with
-%\begin{alltt}
-%> \Ucom{install-tl -gui}
-%\end{alltt}
-%The Advanced button gives access to most of the options of the text
-%installer; see figure~\ref{fig:advanced-lnx}.
-%
-%\subsubsection{The legacy installers}
-%
-%The \texttt{perltk}/\texttt{expert} and \texttt{wizard} modes are
-%still available for systems with have Perl/Tk installed. These can
-%be specified with \texttt{-gui=perltk} and \texttt{-gui=wizard}
-%arguments respectively.
-%
-%\subsection{Running the installer}
-%\label{sec:runinstall}
-%
-%The installer is intended to be mostly self-explanatory, but following are a
-%few notes about the various options and submenus.
-%
-%\subsubsection{Binary systems menu (Unix only)}
-%\label{sec:binary}
-%
-%\begin{figure}[tb]
-%\begin{boxedverbatim}
-%Available platforms:
-%===============================================================================
-%   a [ ] Cygwin on Intel x86 (i386-cygwin)
-%   b [ ] Cygwin on x86_64 (x86_64-cygwin)
-%   c [ ] MacOSX current (10.12-) on x86_64 (x86_64-darwin)
-%   d [ ] MacOSX legacy (10.6-) on x86_64 (x86_64-darwinlegacy)
-%   e [ ] FreeBSD on x86_64 (amd64-freebsd)
-%   f [ ] FreeBSD on Intel x86 (i386-freebsd)
-%   g [ ] GNU/Linux on ARM64 (aarch64-linux)
-%   h [ ] GNU/Linux on ARMhf (armhf-linux)
-%   i [ ] GNU/Linux on Intel x86 (i386-linux)
-%   j [X] GNU/Linux on x86_64 (x86_64-linux)
-%   k [ ] GNU/Linux on x86_64 with musl (x86_64-linuxmusl)
-%   l [ ] NetBSD on x86_64 (amd64-netbsd)
-%   m [ ] NetBSD on Intel x86 (i386-netbsd)
-%   o [ ] Solaris on Intel x86 (i386-solaris)
-%   p [ ] Solaris on x86_64 (x86_64-solaris)
-%   s [ ] Windows (win32)
-%\end{boxedverbatim}
-%\vskip-\baselineskip
-%\caption{Binaries menu}\label{fig:bin-text}
-%\end{figure}
-%
-%Figure~\ref{fig:bin-text} displays the text mode binaries menu.  By
-%default, only the binaries for your current platform will be installed.
-%From this menu, you can select installation of binaries for other
-%platforms as well.  This can be useful if you are sharing a \TeX\
-%tree across a network of heterogeneous machines, or for a dual-boot
-%system.
-%
-%\subsubsection{Selecting what is to be installed}
-%\label{sec:components}
-%
-%\begin{figure}[tbh]
-%\begin{boxedverbatim}
-%Select scheme:
-%===============================================================================
-% a [X] full scheme (everything)
-% b [ ] medium scheme (small + more packages and languages)
-% c [ ] small scheme (basic + xetex, metapost, a few languages)
-% d [ ] basic scheme (plain and latex)
-% e [ ] minimal scheme (plain only)
-% f [ ] ConTeXt scheme
-% g [ ] GUST TeX Live scheme
-% h [ ] infrastructure-only scheme (no TeX at all)
-% i [ ] teTeX scheme (more than medium, but nowhere near full)
-% j [ ] custom selection of collections
-%\end{boxedverbatim}
-%\vskip-\baselineskip
-%\caption{Scheme menu}\label{fig:scheme-text}
-%\end{figure}
-%
-%Figure~\ref{fig:scheme-text} displays the \TL\ scheme menu; from here,
-%you choose a ``scheme'', which is an overall set of package collections.
-%The default \optname{full} scheme installs everything available. This is
-%recommended, but you can also choose the \optname{basic} scheme for
-%just plain and \LaTeX, \optname{small} for a few more programs
-%(equivalent to the so-called Basic\TeX\ installation of Mac\TeX),
-%\optname{minimal} for testing purposes, and \optname{medium} or
-%\optname{teTeX} to get something in between. There are also various
-%specialized and country-specific schemes.
-%
-%\begin{figure}[tb]
-%\centering \tlpng{stdcoll}{.7\linewidth}
-%\caption{Collections menu}\label{fig:collections-gui}
-%\end{figure}
-%
-%You can refine your scheme selection with the `collections' menu
-%(figure~\ref{fig:collections-gui}, shown in \GUI\ mode for a change).
-%
-%Collections are one level more detailed than schemes\Dash in essence, a
-%scheme consists of several collections, a collection consists of one or
-%more packages, and a package (the lowest level grouping in \TL) contains
-%the actual \TeX\ macro files, font files, and so on.
-%
-%If you want more control than the collection menus provide, you can use
-%the \TeX\ Live Manager (\prog{tlmgr}) program after installation (see
-%section~\ref{sec:tlmgr}); using that, you can control the installation
-%at the package level.
-%
+を実行します．「Advanced」ボタンを押すとテキストモードとほぼ同程度のオプションを
+提供する画面に切り替わります（図\ref{fig:advanced-lnx}）．
+
+\subsubsection{その他のレガシーなモード}
+
+古い\code{perltk}モード，\code{expert}モード，\code{wizard}モードは現在もPerl/Tkが
+インストールされていれば利用可能です．これらはそれぞれインストーラに\code{-gui=%
+perltk}や\code{-gui=wizard}オプションを与えると起動できます．
+
+\subsection{インストーラの操作方法}
+\label{sec:runinstall}
+
+インストーラは直感的に操作できるように設計されていますが，このセクションでは多様な
+オプションやサブメニューについて簡単にご説明します．
+
+\subsubsection{バイナリ選択メニュー（UNIXのみ）}
+\label{sec:binary}
+
+\begin{figure}[tb]
+\begin{boxedverbatim}
+Available platforms:
+===============================================================================
+   a [ ] Cygwin on Intel x86 (i386-cygwin)
+   b [ ] Cygwin on x86_64 (x86_64-cygwin)
+   c [ ] MacOSX current (10.12-) on x86_64 (x86_64-darwin)
+   d [ ] MacOSX legacy (10.6-) on x86_64 (x86_64-darwinlegacy)
+   e [ ] FreeBSD on x86_64 (amd64-freebsd)
+   f [ ] FreeBSD on Intel x86 (i386-freebsd)
+   g [ ] GNU/Linux on ARM64 (aarch64-linux)
+   h [ ] GNU/Linux on ARMhf (armhf-linux)
+   i [ ] GNU/Linux on Intel x86 (i386-linux)
+   j [X] GNU/Linux on x86_64 (x86_64-linux)
+   k [ ] GNU/Linux on x86_64 with musl (x86_64-linuxmusl)
+   l [ ] NetBSD on x86_64 (amd64-netbsd)
+   m [ ] NetBSD on Intel x86 (i386-netbsd)
+   o [ ] Solaris on Intel x86 (i386-solaris)
+   p [ ] Solaris on x86_64 (x86_64-solaris)
+   s [ ] Windows (win32)
+\end{boxedverbatim}
+\vspace{-1zh}
+\caption{バイナリ選択メニュー}\label{fig:bin-text}
+\end{figure}
+
+図\ref{fig:bin-text}はテキストモードのバイナリ選択メニューを示しています．デフォルト
+ではインストーラ実行時にご使用中のプラットフォーム向けのバイナリだけがインストール
+されます．このメニューを利用すると，その他のプラットフォーム向けのバイナリも同様に
+インストールすることを選択することができます．このメニューは\TeX ツリーを様々な環境
+に共通のネットワークで共有する場合やデュアルブートシステムでは有用です．
+
+\subsubsection{スキーム・コレクションの選択}
+\label{sec:components}
+
+\begin{figure}[tbh]
+\begin{boxedverbatim}
+Select scheme:
+===============================================================================
+ a [X] full scheme (everything)
+ b [ ] medium scheme (small + more packages and languages)
+ c [ ] small scheme (basic + xetex, metapost, a few languages)
+ d [ ] basic scheme (plain and latex)
+ e [ ] minimal scheme (plain only)
+ f [ ] ConTeXt scheme
+ g [ ] GUST TeX Live scheme
+ h [ ] infrastructure-only scheme (no TeX at all)
+ i [ ] teTeX scheme (more than medium, but nowhere near full)
+ j [ ] custom selection of collections
+\end{boxedverbatim}
+\vspace{-1zh}
+\caption{スキーム選択メニュー}\label{fig:scheme-text}
+\end{figure}
+
+図\ref{fig:scheme-text}は\TL のスキーム選択メニューです．これによって，お好きな
+スキーム（パッケージコレクションのセット）を選んでインストールを行うことができます．
+デフォルトでは\TL で利用可能なすべてのパッケージを含む\pkgname{full}スキームが
+インストールされます．おすすめはこの\pkgname{full}スキームですが，純粋なplain \TeX
+と\LaTeX だけを使用するなら\pkgname{basic}，それに少しプログラムを追加したものである
+\pkgname{small}（これはMac\TeX におけるBasic\TeX と同等です），単なるテスト目的なら
+\pkgname{minimal}，あるいはそれらの中間にあたるものが欲しければ\pkgname{medium}や
+\pkgname{teTeX}スキームを選択することもできます．その他にも，多数の目的別もしくは
+言語別のスキームが用意されています．
+
+\begin{figure}[tb]
+\centering \tlpng{stdcoll}{.7\linewidth}
+\caption{コレクション選択メニュー}\label{fig:collections-gui}
+\end{figure}
+
+コレクション選択メニュー（図\ref{fig:collections-gui}）を活用すると選択したスキーム
+をさらに利用目的に応じて最適化することができます（訳注：\pkgname{full}スキーム以外
+のスキームには日本語組版に必要な\pTeX 系エンジンや\LuaTeX-jaなどは含まれていません．
+したがって\pkgname{full}スキーム以外のスキームを選択した場合，日本語組版を行うため
+には原則としてJapaneseコレクション (\pkgname{collection-langjapanese}) を追加する
+必要があります）．
+
+コレクションはスキームよりも細かなパッケージのセットです．基本的には，スキームという
+のはいくつかのコレクションを集めたもので，コレクションは1つまたは複数のパッケージを
+まとめたものです．パッケージは\TL におけるプロダクトの最小単位で，具体的には実際の
+\TeX マクロファイルやフォントファイルから成るものです．
+
+もしコレクション選択メニューが提供するよりもさらに細かくインストールするものを制御
+したい場合は，インストール後に\TL マネージャ (\prog{tlmgr}) を使用してください．
+\TL マネージャを利用すればパッケージ単位でインストールを行うことが可能です．
+
 %\subsubsection{Directories}
 %\label{sec:directories}
 %
