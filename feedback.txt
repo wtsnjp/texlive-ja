@@ -9,3 +9,16 @@ Really? Maybe these have been moved to readme-* dirs?
 Sec. 2.4 (p.6)
 texmf-dist/doc/pdftex/manual/samplepdf/samplepdf.tex
 -> texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex
+
+Sec. 3.2.4 (p.12)
+The third item of the detailed option list:
+"create format files" -> "create all format files"
+
+The sixth item of the list:
+"after installation ... CTAN"
+It seems the option name has been changed (between 2018 and 2019) from "after
+installation, get package updates from CTAN" to "after install, set CTAN as
+source for package updates". Thus, the shorthand "after installation ... CTAN"
+is no longer correct. I think it is better to write full text (not a shorthand)
+at the first place.
+

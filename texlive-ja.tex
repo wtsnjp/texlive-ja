@@ -900,97 +900,106 @@ TEXMFHOME}も他のTEXMFツリーと同様にTDSにしたがった構成にな�
 \code{TEXMFVAR}に設定されています．詳細は\ref{sec:context-mkiv}節 (\p.\pageref{%
 sec:context-mkiv}) を参照してください．
 
-%\subsubsection{Options}
-%\label{sec:options}
+\subsubsection{オプション}
+\label{sec:options}
+
+\begin{figure}[tbh]
+\begin{boxedverbatim}
+Options customization:
+===============================================================================
+ <P> use letter size instead of A4 by default: [ ]
+ <E> execution of restricted list of programs: [X]
+ <F> create all format files:                  [X]
+ <D> install font/macro doc tree:              [X]
+ <S> install font/macro source tree:           [X]
+ <L> create symlinks in standard directories:  [ ]
+            binaries to:
+            manpages to:
+                info to:
+ <Y> after install, set CTAN as source for package updates: [X]
+\end{boxedverbatim}
+\vskip-\baselineskip
+\caption{Options menu (Unix)}\label{fig:options-text}
+\end{figure}
+
+図\ref{fig:options-text}はテキストモードにおけるオプションメニューです．以下に
+各オプションの詳細を列挙します：
 %
-%\begin{figure}[tbh]
-%\begin{boxedverbatim}
-%Options customization:
-%===============================================================================
-% <P> use letter size instead of A4 by default: [ ]
-% <E> execution of restricted list of programs: [X]
-% <F> create all format files:                  [X]
-% <D> install font/macro doc tree:              [X]
-% <S> install font/macro source tree:           [X]
-% <L> create symlinks in standard directories:  [ ]
-%            binaries to:
-%            manpages to:
-%                info to:
-% <Y> after install, set CTAN as source for package updates: [X]
-%\end{boxedverbatim}
-%\vskip-\baselineskip
-%\caption{Options menu (Unix)}\label{fig:options-text}
-%\end{figure}
+\begin{description}
+\item[use letter size instead of A4 by default%
+（A4サイズの代わりにレターサイズをデフォルトで使用）]
+デフォルトの用紙サイズを選択します．当然ながら，各ドキュメントのサイズはその都度
+ドキュメントに合わせて指定することもできます．
+
+\item[execution of restricted list of programs%
+（制限リストにあるプログラムの実行を許可）]
+\TL{} 2010以降，いくつかの外部プログラムの実行がデフォルトで許可されるようになり
+ました．実行が許可されている（数少ない）プログラムのリストは\filename{texmf.cnf}%
+に記載されています．詳細については\TL{} 2010のリリースノート（\ref{sec:2010news}%
+節）を参照してください．
+
+\item[create all format files（すべてのフォーマットファイルを作成）]
+必要のないフォーマットの生成（ダンプ）には時間がかかりますし，ディスク容量も使用
+しますが，それでもこのオプションは有効にしておくことを推奨します．このオプションを
+無効にした場合，各ユーザがフォーマットを使用したいときにフォーマットが生成され，
+\code{TEXMFVAR}ツリーに保存されることになります．その場合，生成されたフォーマット
+は，仮にバイナリやハイフンパターンの更新が入ったとしても，自動的にはアップデート
+されないため，いつまでも非互換なフォーマットファイルを使用し続けることになる可能性
+があります．
+
+\item[install font/macro \dots\ tree%
+（フォント・マクロの 〜 ツリーをインストール）]
+多くのパッケージに付属するソースファイルとドキュメントをダウンロード・インストール
+するか否かを選択するオプションです．このオプションを無効化することは非推奨です．
+
+\item[create symlinks in standard directories%
+（標準ディレクトリにシンボリックリンクを作成）]
+このオプションはUNIXのみで利用可能で，環境変数の変更を回避する手段です．この
+オプションを有効にしない場合，\TL のディレクトリは通常手動で\code{PATH}, \code{%
+MANPATH}, \code{INFOPATH}に追加する必要があります．ただし，シンボリックリンクの
+作成先ディレクトリについて書き込み権限が必要です．このオプションは一般的に知られた
+\code{/usr/local/bin}などのディレクトリ（ただし\TeX 関連コマンドがまだインストール
+されていない場所）に\TeX 関連コマンドを配置するためのものです．シンボリックリンクの
+作成先にシステムディレクトリを指定するなどして，元々システムに存在していたファイルを
+上書きしてしまわないようにご注意ください．安全のため，このオプションは有効にしない
+ことをおすすめします．
+
+\item[after install, set \CTAN{} as source for package updates%
+（\CTAN をインストール後のパッケージ更新元に設定）]
+\TL を\DVD からインストールする場合，このオプションはデフォルトで有効です．大抵の
+場合，\TL のユーザは年内に行われるパッケージのアップデートを受け取りたいと考える
+ためです．このオプションを無効化する場合があるとしたら，例えば\DVD からは一部の
+インストールのみを行って，後に（別の方法で）補強したいような場合でしょう．いずれに
+せよ，インストール時およびインストール後に利用するパッケージリポジトリは，必要に
+応じて独立に設定することが可能です．詳細は\ref{sec:location}節と\ref{sec:dvd-install%
+-net-updates}節をご参照ください．
+\end{description}
+
+Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkインターフェースで利用可能
+です：
 %
-%Figure~\ref{fig:options-text} shows the text mode options menu.
-%More info on each:
-%
-%\begin{description}
-%\item[use letter size instead of A4 by default:] The default paper
-%  size selection.  Of course, individual documents can and should
-%  specify a specific paper size, if desired.
-%
-%\item[execution of restricted list of programs:] As of \TL\ 2010,
-%  execution of a few external programs is allowed by default.  The (very
-%  short) list of allowed programs is given in the \filename{texmf.cnf}.
-%  See the 2010 news (section~\ref{sec:2010news}) for more details.
-%
-%\item[create format files:] Although unnecessary format files
-%  take time to generate and disk space to store, it is still recommended
-%  to leave this option checked: if you don't, then format files will be
-%  generated in people's private \dirname{TEXMFVAR} tree as they are
-%  needed.  In that location, they will not be updated automatically if
-%  (say) binaries or hyphenation patterns are updated in the
-%  installation, and thus you could end up with incompatible format files.
-%
-%\item[install font/macro \ldots\ tree:] Download/install the
-%  documentation and source files included in most packages.  Unchecking
-%  is not recommended.
-%
-%\item[create symlinks in standard directories:]
-%  This option (Unix only) bypasses the need to change environment
-%  variables. Without this option, \TL{} directories usually have to be
-%  added to \envname{PATH}, \envname{MANPATH} and \envname{INFOPATH}. You
-%  will need write permissions to the target directories.  This option is
-%  intended for accessing the \TeX\ system through directories that are
-%  already known to users, such as \dirname{/usr/local/bin}, which don't
-%  already contain any \TeX\ files.  Do not overwrite existing files on
-%  your system with this option, e.g., by specifying system directories.
-%  The safest and recommended approach is to leave the option unchecked.
-%
-%\item[after installation \ldots\ \CTAN:] When installing from \DVD, this
-%  option is enabled by default, since usually one wants to take any
-%  subsequent package updates from the \CTAN\ area that is updated
-%  throughout the year.  The only likely reason to disable it is if you
-%  install only a subset from the \DVD\ and plan to augment the
-%  installation later.  In any case, the package repository for the
-%  installer, and for updates after installation, can be set
-%  independently as needed; see section~\ref{sec:location} and
-%  section~\ref{sec:dvd-install-net-updates}.
-%\end{description}
-%Windows-specific options, as displayed in the advanced Perl/Tk
-%interface:
-%\begin{description}
-%\item[adjust PATH setting in registry] This ensures that all
-%  programs will see the \TL{} binary directory on their search path.
-%
-%\item[add menu shortcuts] If set, there will be a \TL{} submenu of
-%  the Start menu. There is a third option `Launcher entry' besides
-%  `TeX Live menu' and `No shortcuts'. This option is described in
-%  section \ref{sec:sharedinstall}.
-%
-%\item[change file associations] The options are `Only new' (create
-%  file associations, but do not overwrite existing ones), `All' and
-%  `None'.
-%
-%\item[install \TeX{}works front end]
-%\end{description}
-%When all the settings are to your liking, you can type `I' in the
-%text interface, or press the `Install TeX Live' button in the
-%Perl/Tk \GUI, to start the installation process. When it is done,
-%skip to section~\ref{sec:postinstall} to read what else needs to be
-%done, if anything.
-%
+\begin{description}
+\item[adjust PATH setting in registry（レジストリのPATH設定を最適化）]
+このオプションによってすべてのプログラムが確実に検索パス中で\TL のバイナリを見つけ
+られるようにします．
+
+\item[add menu shortcuts（メニューにショートカットを追加）]
+このオプションが有効の場合，スタートメニューに\TL サブメニューが追加されます．ここ
+には`TeX Live menu'と`No shortcuts'の他に`Launcher entry'という第三の選択肢も
+あります．このオプションについては\ref{sec:sharedinstall}節で説明します．
+
+\item[change file associations（拡張子の関連付けを変更）]
+このオプションでの選択肢は`Only new'（拡張子の関連付けを行うが，既に存在する関連
+付けの上書きは行わない），`All'，`None'の3つです．
+
+\item[install \TeX works front end（\TeX worksをインストール）]
+\end{description}
+
+すべての設定がお好みのものになったら，テキストモードでは`I'をタイプ，Perl/Tkの\GUI
+モードでは`Install TeX Live'ボタンを押すことによってインストールを実行してください．
+インストールが完了したら（他にすることがなければ）\ref{sec:postinstall}節まで
+スキップしてください．
+
 %\subsection{Command-line install-tl options}
 %\label{sec:cmdline}
 %
