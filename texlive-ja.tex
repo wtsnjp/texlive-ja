@@ -848,63 +848,58 @@ Select scheme:
 したい場合は，インストール後に\TL マネージャ (\prog{tlmgr}) を使用してください．
 \TL マネージャを利用すればパッケージ単位でインストールを行うことが可能です．
 
-%\subsubsection{Directories}
-%\label{sec:directories}
-%
-%The default layout is described in section~\ref{sec:texmftrees},
-%\p.\pageref{sec:texmftrees}.  The default installation directory is
-%\dirname{/usr/local/texlive/2019} on Unix and
-%|%SystemDrive%\texlive\2019| on Windows.  This arrangement enables
-%having many parallel \TL\ installations, such as one for each release
-%(typically by year, as here), and you can switch between them merely by
-%altering your search path.
-%
-%That installation directory can be overridden by setting the so-called
-%\dirname{TEXDIR} in the installer.  The \GUI\ screen for this and other
-%options is shown in figure~\ref{fig:advanced-lnx}.  The most common reasons
-%to change it are either lacking enough disk space in that partition (the
-%full \TL\ needs several gigabytes), or lacking write permission for the
-%default location (you don't have to be root or administrator to install
-%\TL, but you do need write access to the target directory).
-%
-%The installation directories can also be changed by setting a variety of
-%environment variables before running the installer (most likely,
-%\envname{TEXLIVE\_INSTALL\_PREFIX} or
-%\envname{TEXLIVE\_INSTALL\_TEXDIR}); see the documentation from
-%|install-tl --help| (available online at
-%\url{http://tug.org/texlive/doc/install-tl.html}) for the full list and
-%more details.
-%
-%A reasonable alternative destination is a directory under your home,
-%especially if you will be the sole user. Use `|~|' to indicate this, as
-%in `|~/texlive/2019|'.
-%
-%We recommend including the year in the name, to enable keeping different
-%releases of \TL{} side by side.  (You may wish to also maintain a
-%version-independent name, such as \dirname{/usr/local/texlive-cur}, via a
-%symbolic link, which you can then repoint after testing the new release.)
-%
-%Changing \dirname{TEXDIR} in the installer will also change
-%\dirname{TEXMFLOCAL}, \dirname{TEXMFSYSVAR} and
-%\dirname{TEXMFSYSCONFIG}.
-%
-%\dirname{TEXMFHOME} is the recommended location for personal macro files
-%or packages.  The default value is |~/texmf| (|~/Library/texmf| on
-%Macs).  In contrast to \dirname{TEXDIR}, here a |~| is preserved in the
-%newly-written configuration files, since it usefully refers to the home
-%directory of the user running \TeX.  It expands to \dirname{$HOME} on
-%Unix and \verb|%USERPROFILE%| on Windows.  Special redundant note:
-%\envname{TEXMFHOME}, like all trees, must be organized according to the
-%\TDS, or files may not be found.
-%
-%\dirname{TEXMFVAR} is the location for storing most cached runtime data
-%specific to each user.  \dirname{TEXMFCACHE} is the variable name used
-%for that purpose by Lua\LaTeX and \ConTeXt\ MkIV (see
-%section~\ref{sec:context-mkiv}, \p.\pageref{sec:context-mkiv}); its
-%default value is \dirname{TEXMFSYSVAR}, or (if that's not writable),
-%\dirname{TEXMFVAR}.
-%
-%
+\subsubsection{インストール先ディレクトリ}
+\label{sec:directories}
+
+デフォルトの\TL 構成については\ref{sec:texmftrees}節 (\p.\pageref{sec:texmftrees})
+でご説明しました．デフォルトのインストール先はUNIXでは\code{/usr/local/texlive/%
+2019}，Windowsでは\code{\%SystemDrive\%\bs{}texlive\bs{}2019}です．この配置は
+複数の\TL を同時にインストールすることを可能にします．例えば複数のリリース（典型的
+には，年度ごと）の\TL をインストールしておき，単純に検索パスを変更することによって
+どのリリースを使用するか切り替えるようなことができます．
+
+インストール先のディレクトリはインストーラにおける\code{TEXDIR}を設定することに
+よって変更することができます．\GUI モードで\code{TEXDIR}やその他のオプションを設定
+するための画面は図\ref{fig:advanced-lnx}に示されています．インストール先を変更する
+必要があるのは，デフォルトのインストール先にあたるパーティションに十分な空き容量が
+ない場合（\TL をフルインストールするには数GBの容量が必要となります）や書き込み権限
+がない場合です（\TL をインストールするのに管理者 (root) 権限は必要ありませんが，
+インストール先ディレクトリへの書き込み権限は必要です）．
+
+インストール先のディレクトリは，インストーラを実行する前にいくつかの環境変数（よく
+用いられるのは\code{TEXLIVE\ul{}INSTALL\ul{}PREFIX}と\code{TEXLIVE\ul{}INSTALL\ul{}%
+TEXDIR}）を設定することによっても変更できます．詳細については\code{install-tl -{}-%
+help}により表示できるドキュメント (\url{http://tug.org/texlive/doc/install-tl.html})
+を参照してください．
+
+合理的なインストール場所の変更先は（特にあなたが\TL を利用する単独のユーザである
+場合には）ホームディレクトリ以下でしょう．メタキャラクタ\code{\tl}を用いるとこれを
+簡単に指定することができます（例：\code{\tl{}/texlive/2019}）．
+
+複数の\TL リリースを同時にインストールできるようにするためにも，インストール先の
+ディレクトリ名には「年」を含めることをおすすめします（もし\code{/usr/local/%
+texlive-cur}などバージョンに依存しない名前で管理したいとお考えであれば，シンボリック
+リンクを利用して新しいリリースをテストしてからそのリンク先を変更するようにするのも
+良いでしょう）．
+
+インストーラにおける\code{TEXDIR}を変更すると\code{TEXMFLOCAL}, \code{TEXMFSYSVAR},
+\code{TEXMFSYSCONFIG}にあたるディレクトリも合わせて変更されることになります．
+
+\code{TEXMFHOME}はユーザごとのマクロファイルやパッケージを配置するのに適した場所で，
+デフォルトでは\code{\tl{}/texmf}です（macOSでは\code{\tl{}/Library/texmf}）．\code{%
+TEXDIR}の場合とは異なり，\TeX を実行しているユーザのホームディレクトリを簡単に参照
+できるように，このデフォルト値では\code{\tl}が各々のインストールのために生成された
+設定ファイルに書き込まれています．\code{\tl}はUNIXでは\code{\$HOME}に，Windowsでは
+\code{\%USERPROFILE\%}にそれぞれ展開されます．繰り返しの注意になりますが，\code{%
+TEXMFHOME}も他のTEXMFツリーと同様にTDSにしたがった構成になっているべきです（必要の
+ないファイルやディレクトリは配置されていなくも構いません）．
+
+\code{TEXMFVAR}はほとんどの（ユーザごとの）実行時キャッシュが保存される場所です．
+\code{TEXMFCACHE}は\LuaLaTeX と{\ConTeXt} MkIVが使用するための変数で，デフォルト
+では\code{TEXMFSYSVAR}または（もし\code{TEXMFSYSVAR}が書き込み可能でない場合は）
+\code{TEXMFVAR}に設定されています．詳細は\ref{sec:context-mkiv}節 (\p.\pageref{%
+sec:context-mkiv}) を参照してください．
+
 %\subsubsection{Options}
 %\label{sec:options}
 %
