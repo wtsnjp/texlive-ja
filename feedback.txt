@@ -22,3 +22,6 @@ source for package updates". Thus, the shorthand "after installation ... CTAN"
 is no longer correct. I think it is better to write full text (not a shorthand)
 at the first place.
 
+Sec. 3.4.1 (p.14)
+"(or another file sourced by .profile"
+An unclosed parenthesis.

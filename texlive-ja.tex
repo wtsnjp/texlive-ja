@@ -1081,77 +1081,75 @@ systems/texlive/tlnet/}のように指定した場合，実際のホスト名と
 を指していた場合，その下にある\code{archive}サブディレクトリ内の圧縮ファイルが
 （仮に展開済みのものがあったとしても）使用されます．
 
-%\subsection{Post-install actions}
-%\label{sec:postinstall}
+\subsection{インストール後のアクション}
+\label{sec:postinstall}
+
+場合によっては，インストール後に多少の手順を行う必要があるかもしれません．
+
+\subsubsection{UNIXにおける環境変数の設定}
+\label{sec:env}
+
+インストール時に標準ディレクトリにシンボリックリンクを作成している（\ref{sec:%
+options}節を参照）場合は，環境変数を変更する必要はありません．それ以外の場合，
+UNIXシステムではご使用のプラットフォーム向けのバイナリのあるディレクトリを
+検索パスに追加する必要があります（Windowsではインストーラが行うので気にする
+必要はありません）．
+
+\TL にサポートされている各プラットフォームには\code{TEXDIR/bin}以下に専用の
+サブディレクトリがあります．専用サブディレクトリのリストと，それぞれに対応する
+プラットフォームについては図\ref{fig:bin-text}を参照してください．
+
+さらに，必要であればmanページとinfoマニュアルを含むディレクトリを，それぞれの
+検索パスに追加することができます．ただしmanページについては\code{PATH}を設定
+することによって自動的に検索可能になる場合もあります．
+
+例えば，Intel x86アーキテクチャ上の\GNU/Linuxで\prog{bash}などBourneシェルと
+互換性のあるシェルを使用していて，なおかつデフォルトのディレクトリ設定の環境の
+下では\path{$HOME/.profile}（もしくは\path{.profile}から読み込まれている別の
+ファイルでも構いません）に次のような行を追加することで環境変数を設定できます：
 %
-%Some post-installation may be required.
+\begin{sverbatim}
+PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH; export PATH
+MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH; export MANPATH
+INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH; export INFOPATH
+\end{sverbatim}
 %
-%\subsubsection{Environment variables for Unix}
-%\label{sec:env}
+cshやtcshの場合は，編集すべきファイルは典型的には\path{$HOME/.cshrc}で，次の
+ような行を追加します：
 %
-%If you elected to create symlinks in standard directories (described in
-%section~\ref{sec:options}), then there is no need to edit environment
-%variables.  Otherwise, on Unix systems, the directory of the binaries
-%for your platform must be added to the search path.  (On Windows, the
-%installer takes care of this.)
+\begin{sverbatim}
+setenv PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
+setenv MANPATH /usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
+setenv INFOPATH /usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+\end{sverbatim}
 %
-%Each supported platform has its own subdirectory under
-%\dirname{TEXDIR/bin}. See figure~\ref{fig:bin-text} for the list of
-%subdirectories and corresponding platforms.
+もちろん，既にいわゆる「ドットファイル」（各種の設定ファイル）に何かしらの設定
+を記入している場合は，\TL 用のディレクトリは他の設定と競合しないよう適切に
+なされるべきです．
+
+\subsubsection{環境変数をグローバルに設定する}
+\label{sec:envglobal}
+
+もし前節で説明したような環境変数の変更をシステム全体に適用したい場合や，新しい
+ユーザにも適用したい場合は，ご自身の力で設定を行ってください．なぜなら，その
+ようなことを実現する方法は，システムによってあまりに異なるからです．
+
+ここでは2つほど大まかな方針を示しておきます．第一に\path{/etc/manpath.config}%
+というファイルの存在を確かめて，もし存在していたら次のような内容を追記します：
 %
-%Optionally, you can also add the documentation man and Info directories
-%to their respective search paths, if you want the system tools to find
-%them.  The man pages might be found automatically after the addition to
-%\envname{PATH}.
+\begin{sverbatim}
+MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
+            /usr/local/texlive/2019/texmf-dist/doc/man
+\end{sverbatim}
 %
-%For Bourne-compatible shells such as \prog{bash}, and using Intel x86
-%GNU/Linux and a default directory setup as an example, the file to edit
-%might be \filename{$HOME/.profile} (or another file sourced by
-%\filename{.profile}, and the lines to add would look like this:
-%
-%\begin{sverbatim}
-%PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH; export PATH
-%MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH; export MANPATH
-%INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH; export INFOPATH
-%\end{sverbatim}
-%
-%For csh or tcsh, the file to edit is typically \filename{$HOME/.cshrc}, and
-%the lines to add might look like:
-%
-%\begin{sverbatim}
-%setenv PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
-%setenv MANPATH /usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
-%setenv INFOPATH /usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
-%\end{sverbatim}
-%
-%If you already have settings somewhere in your ``dot'' files, naturally
-%the \TL\ directories should be merged in as appropriate.
-%
-%
-%\subsubsection{Environment variables: Global configuration}
-%\label{sec:envglobal}
-%
-%If you want to make these changes globally, or for a user newly added to
-%the system, then you are on your own; there is just too much variation
-%between systems in how and where these things are configured.
-%
-%Our two hints are: 1)~you may want to check for a file
-%\filename{/etc/manpath.config} and, if present, add lines such as
-%
-%\begin{sverbatim}
-%MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
-%            /usr/local/texlive/2019/texmf-dist/doc/man
-%\end{sverbatim}
-%
-%And 2)~check for a file \filename{/etc/environment} which may define the
-%search path and other default environment variables.
-%
-%In each (Unix) binary directory, we also create a symbolic link named
-%\code{man} to the directory \dirname{texmf-dist/doc/man}.  Some \code{man}
-%programs, such as the standard \MacOSX\ \code{man}, will automatically
-%find that, obviating the need for any man page setup.
-%
-%
+第二に各種の検索パスや環境変数のデフォルト値を設定するためのファイル\path{%
+/etc/environment}の内容を確認することです．
+
+各UNIX向けのバイナリディレクトリには，\code{man}という名前の\path{texmf-dist%
+/doc/man}を指すシンボリックリンクが作成されています．一部の\code{man}コマンド
+（例えばmacOSの標準\code{man}コマンド）は，これを利用して自動的にmanページの
+設定を最適化してくれる場合があります．
+
 %\subsubsection{Internet updates after \DVD\ installation}
 %\label{sec:dvd-install-net-updates}
 %
