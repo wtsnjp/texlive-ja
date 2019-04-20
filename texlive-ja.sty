@@ -80,6 +80,7 @@
 \newcommand*{\samp}[1]{`\texttt{#1}'}
 \newcommand*{\var}[1]{{\sl #1}}% not \textsl, for roman not typewriter slanted.
 \newcommand*{\ttvar}[1]{\texttt{\var{#1}}}
+\newcommand*{\meta}[1]{$\langle$\mbox{}{\normalfont #1}\mbox{}$\rangle$}
 
 % bold command input (originally, it was underline?)
 \newcommand*{\Ucom}[1]{{\bfseries\ttfamily #1}}
@@ -230,7 +231,7 @@
     \advance\labelwidth by -\labelsep
     \let\makelabel=\ttdescriptionlabel}}{\endlist}
 \newcommand*\ttdescriptionlabel[1]{%
-  \hspace\labelsep
+  %\hspace\labelsep
   \normalfont\ttfamily #1\hfil}
 
 % Likewise, for commands using sans serif.
@@ -242,7 +243,7 @@
     \advance\labelwidth by -\labelsep
     \let\makelabel=\cmddescriptionlabel}}{\endlist}
 \newcommand*\cmddescriptionlabel[1]{%
-  \hspace\labelsep
+  %\hspace\labelsep
   \normalfont\sffamily #1\hfil}
 
 % General squeezed itemize/enumerate.

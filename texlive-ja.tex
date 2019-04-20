@@ -964,7 +964,7 @@ MANPATH}, \code{INFOPATH}に追加する必要があります．ただし，シ�
 上書きしてしまわないようにご注意ください．安全のため，このオプションは有効にしない
 ことをおすすめします．
 
-\item[after install, set \CTAN{} as source for package updates%
+\item[after install, set {\CTAN} as source for package updates%
 （\CTAN をインストール後のパッケージ更新元に設定）]
 \TL を\DVD からインストールする場合，このオプションはデフォルトで有効です．大抵の
 場合，\TL のユーザは年内に行われるパッケージのアップデートを受け取りたいと考える
@@ -992,7 +992,7 @@ Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkイ
 このオプションでの選択肢は`Only new'（拡張子の関連付けを行うが，既に存在する関連
 付けの上書きは行わない），`All'，`None'の3つです．
 
-\item[install \TeX works front end（\TeX worksをインストール）]
+\item[install \TeX works front end（統合開発環境\TeX worksをインストール）]
 \end{description}
 
 すべての設定がお好みのものになったら，テキストモードでは`I'をタイプ，Perl/Tkの\GUI
@@ -1000,88 +1000,87 @@ Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkイ
 インストールが完了したら（他にすることがなければ）\ref{sec:postinstall}節まで
 スキップしてください．
 
-%\subsection{Command-line install-tl options}
-%\label{sec:cmdline}
+\subsection{\prog{install-tl}のコマンドラインオプション}
+\label{sec:cmdline}
+
+次を実行すると，\prog{install-tl}のコマンドラインオプションの一覧を確認することが
+できます：
 %
-%Type
-%\begin{alltt}
-%> \Ucom{install-tl -help}
-%\end{alltt}
-%for a listing of command-line options.  Either |-| or |--| can be used
-%to introduce option names.  These are the most common ones:
+\begin{alltt}
+> \Ucom{install-tl -help}
+\end{alltt}
 %
-%\begin{ttdescription}
-%\item[-gui] Use the \GUI{} installer if possible. This requires
-%  Tcl/Tk version 8.5 or higher. This is the case on \MacOSX\ and is
-%  distributed with \TL{} on Windows. The legacy options
-%  \texttt{-gui=perltk} and \texttt{-gui=wizard} are still available
-%  and require the Perl/Tk module
-%  (\url{http://tug.org/texlive/distro.html#perltk}) compiled with
-%  XFT support; if Tcl/Tk and Perl/Tk are not available, installation
-%  continues in text mode.
+オプション名を指定するには\code{-}または\code{-{}-}をが利用できます．以下では，
+一般的なオプションについてのみご説明します：
 %
-%\item[-no-gui] Force using the text mode installer.
-%
-%\item[-lang {\sl LL}] Specify the installer interface
-%  language as a standard (usually two-letter) code.  The installer tries
-%  to automatically determine the right language but if it fails, or if
-%  the right language is not available, then it uses English as a
-%  fallback.  Run \verb|install-tl --help| to get the list of available
-%  languages.
-%
-%\item[-portable] Install for portable use on, e.g., a \USB{} stick.
-%  Also selectable from within the text installer with the \code{V}
-%  command, and from the \GUI{} installer.  See
-%  section~\ref{sec:portable-tl}.
-%
-%\item[-profile {\sl file}] Load the installation profile \var{file} and
-%  do the installation with no user interaction.  The installer always
-%  writes a file \filename{texlive.profile} to the \dirname{tlpkg}
-%  subdirectory of your installation.  That file can be given as the
-%  argument to redo the exact same installation on a different system,
-%  for example.  Alternatively, you can use a custom profile, most easily
-%  created by starting from a generated one and changing values, or an
-%  empty file, which will take all the defaults.
-%
-%\item [-repository {\sl url-or-directory}] Specify package
-%  repository from which to install; see following.
-%
-%\htmlanchor{opt-in-place}
-%\item[-in-place] (Documented only for completeness: Do not use this
-%  unless you know what you are doing.) If you already have an rsync, svn,
-%  or other copy of \TL{} (see
-%  \url{http://tug.org/texlive/acquire-mirror.html}) then this option
-%  will use what you've got, as-is, and do only the necessary
-%  post-install.  Be warned that the file \filename{tlpkg/texlive.tlpdb}
-%  may be overwritten; saving it is your responsibility.  Also, package
-%  removal has to be done manually. This option cannot be toggled via the
-%  installer interface.
-%\end{ttdescription}
-%
-%
-%\subsubsection{The \optname{-repository} option}
-%\label{sec:location}
-%
-%The default network package repository is a \CTAN{} mirror chosen
-%automatically via \url{http://mirror.ctan.org}.
-%
-%If you want to override that, the location value can be a url starting
-%with \texttt{ftp:}, \texttt{http:}, or \texttt{file:/}, or a plain
-%directory path.  (When giving an \texttt{http:}\ or \texttt{ftp:}\
-%location, trailing `\texttt{/}' characters and/or a trailing
-%`\texttt{/tlpkg}' component are ignored.)
-%
-%For example, you could choose a particular \CTAN\ mirror with something
-%like: \url{http://ctan.example.org/tex-archive/systems/texlive/tlnet/},
-%substituting a real hostname and its particular top-level \CTAN\ path
-%for |ctan.example.org/tex-archive|.  The list of \CTAN\ mirrors is
-%maintained at \url{http://ctan.org/mirrors}.
-%
-%If the given argument is local (either a path or a \texttt{file:/} url),
-%compressed files in an \dirname{archive} subdirectory of the repository
-%path are used (even if uncompressed files are available as well).
-%
-%
+\begin{ttdescription}
+\item[-gui]
+インストーラを（もし利用可能なら）\GUI モードで起動します．\GUI モードの実行には
+バージョン8.5以上のTcl/Tkが必要です．これはmacOSではご自身でインストールしていただく
+必要がありますが，Windows用の\TL には同梱されているため特に何もする必要はありません．
+古いオプションである\code{-gui=perltk}と\code{-gui=wizard}も現在でも利用可能です．
+これらの実行のためにはXFTサポートが有効なPerl/Tkモジュールが必要です (\url{http://%
+tug.org/texlive/distro.html#perltk})．Tcl/TkとPerl/Tkが利用可能でない場合，この
+オプションが指定された場合でもインストーラはテキストモードで続行されます．
+
+\item[-no-gui]
+インストーラを必ずテキストモードで起動します．
+
+\item[-lang \meta{言語コード}]
+指定した\meta{言語コード}（通常2文字）にあたる言語を使用します（訳注：日本語を使用
+したい場合は\code{-lang ja}とします）．インストーラは自動的に最適な言語で起動します
+が，もし自動判定に失敗した場合や最適な言語が利用不可能な場合は，英語を使用します．
+インストーラで利用可能な言語の一覧は\code{install-tl -help}で確認できます．
+
+\item[-portable]
+\TL を\USB メモリなどにポータブルインストールします．ポータブルインストールは，
+インストーラの起動後にテキストモードの\code{V}コマンドまたは\GUI モードのメニュー
+を利用して選択することもできます．詳細は\ref{sec:portable-tl}節をご参照ください．
+
+\item[-profile \meta{ファイル}]
+インストールプロフィール\meta{ファイル}を読み込み，非対話的にインストールを実行
+します．なおインストーラは常に\code{texlive.profile}を\code{tlpkg}ディレクトリに
+書き込みます．このファイルを利用すると，まったく同じ設定でインストールを（例えば
+別のシステムでも）再実行することが可能です．別の活用方法として，ご自身で用意した
+カスタムプロフィール（生成された\code{texlive.profile}を改変するのが簡単です）を
+使用したり，空のファイルを指定してすべてをデフォルト設定でインストールしたりする
+こともできます．
+
+\item[-repository \meta{リポジトリ}]
+パッケージリポジトリ（ディレクトリまたはURL）を指定します．下の\ref{sec:location}%
+節をご参照ください．
+
+\item[-in-place]
+（警告：このオプションは何をしようとしているのか完全に承知している場合以外は使用
+しないでください．）すでにrsyncやsvnまたはその他の手段で\TL のコピー（その入手元
+については\url{http://tug.org/texlive/acquire-mirror.html}を参照）がお手許にある
+場合，このオプションを利用するとそのコピーをそのまま利用し，追加で必要となるものが
+ものだけをインストールします．なお\code{tlpkg/texlive.tlpdb}は上書きされるので，
+ご自身の責任で保存するようにしてください．また，既にあるパッケージの除去は手動で
+行う必要があります．このオプションは起動後にインストーラのインターフェースで有効に
+することはできません．
+\end{ttdescription}
+
+\subsubsection{\code{-repository}オプション}
+\label{sec:location}
+
+デフォルトのネットワーク上パッケージリポジトリは\url{http://mirror.ctan.org}に
+よって自動的に選択される\CTAN ミラーです．
+
+このデフォルトを上書きしたい場合は，使用したいリポジトリを\code{ftp:}, \code{%
+http:}, \code{file:/}のいずれかからはじまるURL，または通常のディレクトリパスに
+よって指定します（\code{http:}または\code{ftp:}から始まるリポジトリ指定を
+行った場合，末尾の`\code{/}'や`\code{/tlpkg}'は無視されます）．
+
+例えば\CTAN の特定のミラーサーバを\url{http://ctan.example.org/tex-archive/%
+systems/texlive/tlnet/}のように指定した場合，実際のホスト名と，そのホストに
+おける\CTAN のトップレベルパスを\code{ctan.example.org/tex-archive}の代わりに
+使用します．\CTAN ミラーの一覧は\url{http://ctan.org/mirrors}で確認できます．
+
+もし与えられた引数が（パスまたは\code{file:/} URLの形で）ローカルのディレクトリ
+を指していた場合，その下にある\code{archive}サブディレクトリ内の圧縮ファイルが
+（仮に展開済みのものがあったとしても）使用されます．
+
 %\subsection{Post-install actions}
 %\label{sec:postinstall}
 %
