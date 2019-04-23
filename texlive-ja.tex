@@ -1146,154 +1146,132 @@ MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
 （例えば\macOS の標準\cmd{man}コマンド）は，これを利用して自動的にmanページの
 設定を最適化してくれる場合があります．
 
-%\subsubsection{Internet updates after \DVD\ installation}
-%\label{sec:dvd-install-net-updates}
+\subsubsection{\DVD インストール後のインターネットを利用したアップデート}
+\label{sec:dvd-install-net-updates}
+
+\TL を\DVD からインストールした後，インターネットを利用してアップデートを行いたい
+場合は，以下のコマンドを検索パスの設定の\emph{後}に行ってください：
 %
-%If you installed \TL\ from \DVD\ and then wish to get updates from the
-%Internet, you need to run this command---\emph{after} you've updated
-%your search path (as described in the previous section):
+\begin{alltt}
+> \Ucom{tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet}
+\end{alltt}
 %
-%\begin{alltt}
-%> \Ucom{tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet}
-%\end{alltt}
+これによって以降\cmd{tlmgr}は最寄りの\CTAN ミラーを利用してアップデートを行う
+ようになります．\DVD からのインストール時に\ref{sec:options}節で説明したオプション
+を介してこの設定をデフォルトにしておくこともできます．
+
+もしミラーの自動選択では問題がある場合は，\url{http://ctan.org/mirrors}から特定の
+\CTAN ミラーを指定することもできます．その際は\dir{tlnet}サブディレクトリまでの
+パスを正確に指定するようにしてください．
+
+\subsubsection{\XeTeX と\LuaTeX のためのシステム設定}
+\label{sec:font-conf-sys}
+
+\XeTeX と\LuaTeX では，\TeX ツリーに存在するものだけでなく，システムにインストール
+されているあらゆるフォントを利用することができます．これらのエンジンは互いに関連
+する方法でこれを実現していますが，そのしくみはまったく同じではありません．
+
+Windowsでは，\TL に含まれているフォントは自動的にフォント名を指定するだけで\XeTeX
+から利用できるように設定されます．\macOS では，フォント名による検索を有効にする
+ためにはいくつかの手順が必要です（詳細はMac\TeX のウェブサイト\url{http://tug.org/%
+mactex}を参照してください）．他のUNIXシステムでの設定方法は，以下の通りです．
+
+この設定を簡単にするために，\pkg{xetex}パッケージのインストール時（最初の\TL
+インストール時または追加インストール時）に必要な設定が\file{TEXMFSYSVAR/fonts/%
+conf/texlive-fontconfig.conf}に作成されます．\TL フォントをシステム全体で利用できる
+ようにするためには，次の手順を実行します（そのために必要な権限は持っているものと
+します）：
 %
-%This tells \cmd{tlmgr} to use a nearby \CTAN\ mirror for future updates.
-%This is done by default when installing from \DVD, via the option
-%described in section~\ref{sec:options}.
+\begin{enumerate*}
+\item \file{texlive-fontconfig.conf}を\dir{/etc/fonts/conf.d/09-texlive.conf}に
+  コピーする．
+\item \Ucom{fc-cache -fsv}を実行する．
+\end{enumerate*}
+
+\cmd{fc-list}を実行するとシステムにあるフォントの一覧を確認することができます．
+また\code{fc-list : family style file spacing}（打ち間違えにご注意ください）と
+すると，もう少し詳細な情報を表示することができます．
+
+\subsubsection{{\ConTeXt} Mark IV}
+\label{sec:context-mkiv}
+
+「古い」{\ConTeXt} (Mark II)と「新しい」{\ConTeXt} (Mark IV)はいずれも\TL の
+インストール後はそのままで動く状態になっているはずで，\cmd{tlmgr}を使用して
+アップデートを行っている限りは特に特別な設定を行う必要はありません．
+
+しかしながら，{\ConTeXt} MkIVはkpathseaライブラリを使用していないので，\cmd{%
+tlmgr}を使用せず手動で新しいファイルをインストールした場合にはいくつかの設定
+を行う必要があります．そのような手動インストールを行った場合には，MkIVユーザ
+は次を実行して\ConTeXt のディスクキャッシュデータをクリアする必要があります：
 %
-%If there are problems with the automatic mirror selection, you can
-%specify a particular \CTAN\ mirror from the list at
-%\url{http://ctan.org/mirrors}.  Use the exact path to the
-%\dirname{tlnet} subdir on that mirror, as shown above.
+\begin{alltt}
+> \Ucom{context --generate}
+\end{alltt}
 %
+なお，この操作によって生成されるファイルは\code{TEXMFCACHE}（デフォルト値は
+\code{TEXMFSYSVAR;TEXMFVAR}）以下に保存されます．
+
+{\ConTeXt} MkIVは\code{TEXMFCACHE}に列挙されているパスを前から確認し，そして
+書込み可能な最初の場所にキャッシュを作成します．読み込みの際は，複数の
+キャッシュが見つかった場合は（見つかったキャッシュの中で）一番最後のパスに
+あるものが優先されます．
+
+より詳細な情報については\url{http://wiki.contextgarden.net/Running_Mark_IV}を
+参照してください．
+
+\subsubsection{ローカルおよび個人用のマクロを利用する}
+\label{sec:local-personal-macros}
+
+ローカルおよび個人用のマクロの配置方法については\ref{sec:texmftrees}節でも簡単に
+言及しましたが，\code{TEXMFLOCAL}（デフォルトでは\dir{/usr/local/texlive/%
+texmf-local}または\verb|%SystemDrive%\texlive\texmf-local|）はシステム全体に適用
+したいローカルなフォントやマクロを，\code{TEXMFHOME}（デフォルトでは\dir{$HOME/%
+texmf}または\verb|%USERPROFILE%\texmf|）はユーザごとの個人用フォントやマクロを
+配置するためのものです．これらのディレクトリは毎年のリリースとは切り離して管理
+されることが意図されており，そこに含まれているファイルは自動的に各\TL リリース
+から検索できるようになっています．したがって，\code{TEXMFLOCAL}の値をメインの\TL
+ツリーとあまりかけ離れた位置に変更することは避けるべきです．さもないと将来の
+リリースの際に手動で変更を行う必要が発生する可能性があります．
+
+いずれのツリーについても，それぞれのファイルは\TDS に基づいたサブディレクトリに
+配置されているべきです（\url{http://tug.org/tds}や\file{texmf-dist/web2c/texmf.%
+cnf}を参照してください）．例えば\LaTeX のクラスファイルやパッケージは\dir{%
+TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下の階層に配置
+されているべきです．
+
+\dir{TEXMFLOCAL}については最新の状況を反映したファイル名データベースがないと，
+その中にあるファイルが見つけられません．データベースは\cmd{mktexlsr}コマンドを
+実行するか，GUI版\TL マネージャで`Reinit file database'ボタンを押すことによって
+更新することができます．
+
+デフォルトでは，これまで見てきたように各TEXMFツリーを表す変数は1つのディレクトリ
+を指すように定義されています．しかし，これは絶対そうでなければならないわけでは
+ありません．例えば，もし複数のバージョンの大きなパッケージを簡単に切り替える必要
+があるような場合は，複数のツリーを用意した上で\code{TEXMFHOME}をブレースで囲わ
+れたカンマ区切りのディレクトリ名リストに設定するとよいでしょう：
 %
-%\htmlanchor{xetexfontconfig}  % keep historical anchor working
-%\htmlanchor{sysfontconfig}
-%\subsubsection{System font configuration for \protect\XeTeX\protect\ and Lua\protect\TeX}
-%\label{sec:font-conf-sys}
+\begin{verbatim}
+  TEXMFHOME = {/my/dir1,/mydir2,/a/third/dir}
+\end{verbatim}
 %
-%\XeTeX\ and Lua\TeX\ can use any font installed on the system, not just
-%those in the \TeX\ trees.  They do these via related but not identical
-%methods.
-%
-%On Windows, fonts shipped with \TL\ are automatically made available to
-%\XeTeX\ by font name.  On \MacOSX, supporting font name lookups requires
-%additional steps; please see the Mac\TeX\ web pages
-%(\url{http://tug.org/mactex}).  For other Unix systems, the procedure to
-%be able to find the fonts shipped with \TL\ via font name follows.
-%
-%To facilitate this, when the \pkg{xetex} package is installed
-%(either at initial installation or later), the necessary configuration
-%file is created in
-%\filename{TEXMFSYSVAR/fonts/conf/texlive-fontconfig.conf}.
-%
-%To set up the \TL{} fonts for system-wide use (assuming you have
-%suitable privileges), proceed as follows:
-%\begin{enumerate*}
-%\item Copy the \filename{texlive-fontconfig.conf} file to
-%\dirname{/etc/fonts/conf.d/09-texlive.conf}.
-%\item Run \Ucom{fc-cache -fsv}.
-%\end{enumerate*}
-%
-%If you do not have sufficient privileges to carry out the steps above,
-%or if you want to make the \TL{} fonts available to only one user,
-%you can do the following:
-%\begin{enumerate*}
-%\item Copy the \filename{texlive-fontconfig.conf} file to
-%      \filename{~/.fonts.conf}, where \filename{~} is your home directory.
-%\item Run \Ucom{fc-cache -fv}.
-%\end{enumerate*}
-%
-%You can run \code{fc-list} to see the names of the system fonts.  The
-%incantation \code{fc-list : family style file spacing} (all arguments
-%are literal strings) shows some generally interesting information.
-%
-%
-%\subsubsection{\protect\ConTeXt{} Mark IV}
-%\label{sec:context-mkiv}
-%
-%Both the `old' \ConTeXt{} (Mark II) and the `new' \ConTeXt{}
-%(Mark IV) should run out of the box after \TL{} installation,
-%and should need no special attention as long as you stick to
-%using \verb+tlmgr+ for updates.
-%
-%However, because \ConTeXt{} MkIV does not use the kpathsea
-%library, some setup will be required whenever you install new 
-%files manually (without using \verb+tlmgr+). After each such 
-%installation, each MkIV user must run:
-%\begin{sverbatim}
-%context --generate
-%\end{sverbatim}
-%to refresh the \ConTeXt{} disk cache data.
-%The resulting files are stored under \code{TEXMFCACHE},
-%whose default value in \TL\ is \verb+TEXMFSYSVAR;TEXMFVAR+. 
-%
-%\ConTeXt\ MkIV will read from
-%all paths mentioned in \verb+TEXMFCACHE+, and write to the first
-%path that is writable. While reading, the last found match will 
-%take precedence in the case of duplicated cache data.
-%
-%For more information, see
-%\url{http://wiki.contextgarden.net/Running_Mark_IV}.
-%
-%
-%\subsubsection{Integrating local and personal macros}
-%\label{sec:local-personal-macros}
-%
-%This is already mentioned implicitly in section~\ref{sec:texmftrees}:
-%\dirname{TEXMFLOCAL} (by default,
-%\dirname{/usr/local/texlive/texmf-local} or
-%\verb|%SystemDrive%\texlive\texmf-local| on Windows)
-%is intended for system-wide local fonts and macros; and
-%\dirname{TEXMFHOME} (by default, \dirname{$HOME/texmf} or
-%\verb|%USERPROFILE%\texmf|), is for personal fonts and macros.  These
-%directories are intended to stick around from release to release, and
-%have their content seen automatically by a new \TL{} release.
-%Therefore, it is best to refrain from changing the definition of
-%\dirname{TEXMFLOCAL} to be too far away from the main \TL{} directory,
-%or you will need to manually change future releases.
-%
-%For both trees, files should be placed in their proper \TeX\ Directory
-%Structure (\TDS) subdirectories; see \url{http://tug.org/tds} or consult
-%\filename{texmf-dist/web2c/texmf.cnf}. For instance, a \LaTeX{} class file or
-%package should be placed in \dirname{TEXMFLOCAL/tex/latex} or
-%\dirname{TEXMFHOME/tex/latex}, or a subdirectory thereof.
-%
-%\dirname{TEXMFLOCAL} requires an up-to-date filename database, or files
-%will not be found.  You can update it with the command
-%\cmd{mktexlsr} or use the `Reinit file database' button on the
-%configuration tab of the \TeX\ Live Manager \GUI.
-%
-%By default, each of these variables is defined to be a single directory,
-%as shown.  This is not a hard-and-fast requirement.  If you need to
-%easily switch back and forth between different versions of large
-%packages, for example, you can maintain multiple trees for your own
-%purposes.  This is done by setting \dirname{TEXMFHOME} to the
-%list of directories, within braces, separated by commas:
-%
-%\begin{verbatim}
-%  TEXMFHOME = {/my/dir1,/mydir2,/a/third/dir}
-%\end{verbatim}
-%
-%Section~\ref{sec:brace-expansion} describes brace expansion further.
-%
-%
-%\subsubsection{Integrating third-party fonts}
-%
-%This is unfortunately a messy topic.  Forget about it unless you want to
-%delve into many details of the \TeX{} installation.  Many fonts are
-%included in \TL\ already, so take a look if you don't already know 
-%that what you want isn't there.
-%
-%A possible alternative is to use \XeTeX\ or Lua\TeX\ (see
-%section~\ref{sec:tex-extensions}), which let you use operating system
-%fonts without any installation in \TeX.
-%
-%If you do need to do this, see
-%\url{http://tug.org/fonts/fontinstall.html} for our best effort at
-%describing the procedure.
-%
-%
+ブレース展開については\ref{sec:brace-expansion}節により詳しい解説があります．
+
+\subsubsection{サードパーティフォントを利用する}
+
+これは残念ながら泥沼への入り口です．\TeX インストールの深淵に飛び込みたい場合を
+除いては，すべての\TeX 処理系でサードパーティフォントを利用できるようにすること
+は諦めた方が無難です．\TL には数多くのフォントが含まれているので，それらの中に
+適当なものがないか探してみてください（既に適するものがないとわかっている場合は
+仕方ありませんが）．
+
+ただし\XeTeX または\LuaTeX （\ref{sec:tex-extensions}節）であれば\TeX のために
+特別な設定を行わなくてもOSにインストールされたあらゆるフォントを利用することが
+できます．
+
+もしどうしてもサードパーティフォントを一般の\TeX 処理系で利用できるように設定を
+行う必要がある場合は，\url{http://tug.org/fonts/fontinstall.html}にその方法に
+ついて（可能な範囲での）解説がありますので，参考にしてください．
+
 %\subsection{Testing the installation}
 %\label{sec:test-install}
 %
