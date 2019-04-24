@@ -76,10 +76,10 @@
 \newcommand*{\sopt}[1]{\code{\hyph#1}}
 \newcommand*{\lopt}[1]{\code{\hyph\hyph#1}}
 \newcommand*{\meta}[1]{$\langle$\mbox{}{\normalfont #1}\mbox{}$\rangle$}
+\newcommand*{\samp}[1]{`\texttt{#1}'}
 
 % followings are just for reference (from tex-live.sty)
 %\newcommand*{\colname}[1]{\eghostguarded{\emph{#1}}}% collection name
-%\newcommand*{\samp}[1]{`\texttt{#1}'}
 %\newcommand*{\var}[1]{{\sl #1}}% not \textsl, for roman not typewriter slanted.
 %\newcommand*{\ttvar}[1]{\texttt{\var{#1}}}
 
@@ -116,7 +116,7 @@
 \newcommand*{\dpi}{$\,$dpi}
 \newcommand*{\bs}{\char`\\}
 \newcommand*{\ul}{\char`\_}
-\DeclareRobustCommand{\cs}[1]{{\normalfont\ttfamily\char`\\#1}}
+\newcommand*{\cs}[1]{\eghostguarded{\texttt{\bs #1}}}
 \newcommand*{\Q}[1]{\par\vskip6pt\leftline{#1}\par}
 \newcommand*{\hyph}{-}
 

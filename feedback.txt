@@ -25,3 +25,8 @@ at the first place.
 Sec. 3.4.1 (p.14)
 "(or another file sourced by .profile"
 An unclosed parenthesis.
+
+Sec. 3.5 (p.17)
+"(http://pages.uoregon.edu/koch/texshop"
+An unclosed parenthesis.
+

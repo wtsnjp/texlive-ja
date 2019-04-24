@@ -1272,122 +1272,135 @@ TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下�
 行う必要がある場合は，\url{http://tug.org/fonts/fontinstall.html}にその方法に
 ついて（可能な範囲での）解説がありますので，参考にしてください．
 
-%\subsection{Testing the installation}
-%\label{sec:test-install}
+\subsection{インストールした\TL をテストする}
+\label{sec:test-install}
+
+\TL をインストールした後，美しい文書やフォントの作成を始めるために\TL が正常に
+動作するかテストしたいと思うのが普通でしょう．
+
+おそらく，多くの人がまず最初に動作確認したいのはファイル編集を行うフロントエンド
+でしょう．\TL はWidows（のみ）では{\TeX}works (\url{http://tug.org/texworks}) を，
+Mac\TeX は{\TeX}Shop (\url{http://pages.uoregon.edu/koch/texshop}) をインストール
+します．他のUNIXシステムではどのエディタを利用するかはユーザが決めてください．
+エディタの選択肢はとてもたくさんあり，その一部は次のセクションでリストアップされて
+います．また\url{http://tug.org/interest.html#editors}も参考になるかと思います．
+基本的にはどんなテキストエディタでも使用できます．\TeX のための特別な機能は，
+なくてならないものではありません．
+
+残りのセクションでは，新しい\TL が正常に動作するか確認する基本的な手順を解説します．
+なお，ここではUNIXコマンドを使用した方法を紹介します．macOSやWindowsのユーザは，
+GUIを利用してテストをしたいと考えるかもしれませんが，根本的な部分は変わりません．
+
+\begin{enumerate}
+\item まずはじめに，\cmd{tex}プログラムが実行可能であることを確認しましょう：
 %
-%After installing \TL{}, you naturally want to test it out, so you can
-%start creating beautiful documents and\slash or fonts.
+\begin{alltt}
+> \Ucom{tex \lopt{version}}
+TeX 3.14159265 (TeX Live ...)
+Copyright ... D.E. Knuth.
+...
+\end{alltt}
 %
-%One thing you may immediately be looking for is a front-end with which
-%to edit files.  \TL{} installs \TeX{}works
-%(\url{http://tug.org/texworks}) on Windows (only), and Mac\TeX\ installs
-%TeXShop (\url{http://pages.uoregon.edu/koch/texshop}.  On other Unix
-%systems, it's left up to you to choose an editor.  There are many
-%choices available, some of which are listed in the next section; see
-%also \url{http://tug.org/interest.html#editors}.  Any plain text editor
-%will work; something \TeX-specific is not required.
+もしこれを実行したとき，正しいバージョン情報・コピーライト情報の代わりに`command
+not found'エラーが出たり，古いバージョン情報が表示される場合は，正しい\dir{bin}%
+ディレクトリが\code{PATH}に追加されていない可能性が高いです．そのような場合は\p.%
+\pageref{sec:env}にある環境変数設定の情報を確認してください．
+
+\item 基本的な\LaTeX ファイルを処理してみましょう：
 %
-%The rest of this section gives some basic procedures for testing that
-%the new system is functional.  We give Unix commands here; under
-%\MacOSX{} and Windows, you're more likely to run the tests through a
-%graphical interface, but the principles are the same.
+\begin{alltt}
+> \Ucom{latex sample2e.tex}
+This is pdfTeX 3.14...
+...
+Output written on sample2e.dvi (3 pages, 7484 bytes).
+Transcript written on sample2e.log.
+\end{alltt}
 %
-%\begin{enumerate}
+\file{sample2e.tex}やその他のファイルが見つからないというエラーが出る場合は，
+古い環境変数の設定や設定ファイルの影響を受けてしまっている可能性が高いです．
+まずは\TeX 関係の環境変数をすべてクリアすることをおすすめします．（より詳細に
+分析したい場合は，\TeX 自身に何を検索し，何を見つけたのか報告させるのが良い
+でしょう．詳細は\p.\pageref{sec:debugging}の「デバッグアクション」を参照して
+ください．）
+
+\item 次に処理結果をプレビューしてみましょう：
 %
-%\item Make sure that you can run the \cmd{tex} program in the first
-%place:
-%\begin{alltt}
-%> \Ucom{tex -{}-version}
-%TeX 3.14159265 (TeX Live ...)
-%Copyright ... D.E. Knuth.
-%...
-%\end{alltt}
-%If this comes back with `command not found' instead of version and
-%copyright information, or with an older version, most likely you don't
-%have the correct \dirname{bin} subdirectory in your \code{PATH}.  See
-%the environment-setting information on \p.\pageref{sec:env}.
+\begin{alltt}
+> \Ucom{xdvi sample2e.dvi}    # Unix
+> \Ucom{dviout sample2e.dvi}  # Windows
+\end{alltt}
 %
-%\item Process a basic \LaTeX{} file:
-%\begin{alltt}
-%> \Ucom{latex sample2e.tex}
-%This is pdfTeX 3.14...
-%...
-%Output written on sample2e.dvi (3 pages, 7484 bytes).
-%Transcript written on sample2e.log.
-%\end{alltt}
-%If this fails to find \filename{sample2e.tex} or other files, most
-%likely you have interference from old environment variables or
-%configuration files; we recommend unsetting all \TeX-related environment
-%variables for a start.  (For a deep analysis, you can ask \TeX{} to
-%report on exactly what it is searching for, and finding; see ``Debugging
-%actions'' on page~\pageref{sec:debugging}.)
+すると，新しいウィンドウがポップして\LaTeX の基礎について説明した素敵な文書が
+表示されるはずです（ところで，もし\TeX を使うのが初めてでしたら，その内容も
+一読の価値があります）．なお\cmd{xdvi}コマンドを利用するにはXウィンドウシステム
+が正しく動作している必要があります．正常に動作していない場合や，環境変数\code{%
+DISPLAY}の設定がまずい場合は\samp{Can't open display}エラーが発生します．
+
+\item 続いて\PS ファイルを作成してみましょう：
 %
-%\item Preview the result online:
-%\begin{alltt}
-%> \Ucom{xdvi sample2e.dvi}    # Unix
-%> \Ucom{dviout sample2e.dvi}  # Windows
-%\end{alltt}
-%You should see a new window with a nice document explaining some of the
-%basics of \LaTeX{}.  (Well worth reading, by the way, if you're new to
-%\TeX.)  You do have to be running under X for \cmd{xdvi} to work; if
-%you're not, or your \code{DISPLAY} environment variable is set
-%incorrectly, you'll get an error \samp{Can't open display}.
+\begin{alltt}
+> \Ucom{dvips sample2e.dvi -o sample2e.ps}
+\end{alltt}
+
+\item 今度は\DVI ファイルの代わりにPDFファイルを作成します．今回は\code{.tex}%
+ファイルから直接PDFを生成してみます：
 %
-%\item Create a \PS{} file for printing or display:
-%\begin{alltt}
-%> \Ucom{dvips sample2e.dvi -o sample2e.ps}
-%\end{alltt}
+\begin{alltt}
+> \Ucom{pdflatex sample2e.tex}
+\end{alltt}
+
+\item 生成したPDFもプレビューしてみましょう：
 %
-%\item Create a PDF file instead of \dvi{}; this processes the
-%\filename{.tex} file and writes PDF directly:
-%\begin{alltt}
-%> \Ucom{pdflatex sample2e.tex}
-%\end{alltt}
+\begin{alltt}
+> \Ucom{gv sample2e.pdf}
+\textrm{or:}
+> \Ucom{xpdf sample2e.pdf}
+\end{alltt}
 %
-%\item Preview the PDF file:
-%\begin{alltt}
-%> \Ucom{gv sample2e.pdf}
-%\textrm{or:}
-%> \Ucom{xpdf sample2e.pdf}
-%\end{alltt}
-%Neither \cmd{gv} nor \cmd{xpdf} are included in \TL{}, so
-%you must install them separately.  See
-%\url{http://www.gnu.org/software/gv} and
-%\url{http://www.foolabs.com/xpdf}, respectively.  There are plenty
-%of other PDF viewers, too.  For Windows, we recommend trying Sumatra
-%PDF (\url{https://www.sumatrapdfreader.org/free-pdf-reader.html}).
+\cmd{gv}も\cmd{xpdf}も\TL には含まれていないので，ご自身でインストールする必要
+があります．詳細はそれぞれ\url{http://www.gnu.org/software/gv}と\url{http://www.%
+foolabs.com/xpdf}を参照してください．PDFビューアは他にもたくさんあります．例えば
+WindowsではSumatra PDF (\url{https://www.sumatrapdfreader.org/free-pdf-reader.%
+html}) をおすすめします．
+
+\item \file{sample2e.tex}以外でテストのために利用できる標準的なファイルを以下に
+示しておきます：
 %
-%\item Standard test files you may find useful in addition to
-%\filename{sample2e.tex}:
+\begin{description}
+\item [\file{small2e.tex}]
+\file{sample2e.tex}よりもシンプルな文書です．なにか問題が発生したときに，より
+入力サイズの小さいものとして利用できます．
+
+\item [\file{testpage.tex}]
+プリンタにオフセットがあるかどうかを確認するための文書です．
+
+\item [\file{nfssfont.tex}]
+フォントテーブルを出力・テストするためのものです．
+
+\item [\file{testfont.tex}]
+plain \TeX を用いて，同じくフォントテーブルを出力するものです．
+
+\item [\file{story.tex}]
+最も標準的な (plain) \TeX のテスト用ファイルです．\Ucom{tex story.tex}を実行
+後，\code{*}プロンプトに\samp{\cs{bye}}を入力する必要があります．
+\end{description}
+
+\item \pkg{xetex}パッケージをインストールしている場合には，\XeTeX がシステム
+フォントを正常に利用できるかどうかテストすることができます：
 %
-%\begin{ttdescription}
-%\item [small2e.tex] A simpler document than \filename{sample2e}, to
-%reduce the input size if you're having troubles.
-%\item [testpage.tex] Test if your printer introduces any offsets.
-%\item [nfssfont.tex] For printing font tables and tests.
-%\item [testfont.tex] Also for font tables, but using plain \TeX{}.
-%\item [story.tex] The most canonical (plain) \TeX{} test file of all.
-%You must type \samp{\bs bye} to the \code{*} prompt after \samp{tex
-%story.tex}.
-%\end{ttdescription}
+\begin{alltt}
+> \Ucom{xetex opentype-info.tex}
+This is XeTeX, Version 3.14\dots
+...
+Output written on opentype-info.pdf (1 page).
+Transcript written on opentype-info.log.
+\end{alltt}
 %
-%\item If you have installed the \filename{xetex} package, you can test
-%its access to system fonts as follows:
-%\begin{alltt}
-%> \Ucom{xetex opentype-info.tex}
-%This is XeTeX, Version 3.14\dots
-%...
-%Output written on opentype-info.pdf (1 page).
-%Transcript written on opentype-info.log.
-%\end{alltt}
-%
-%If you get an error message saying ``Invalid fontname `Latin Modern
-%Roman/ICU'\dots'', then you need to configure your system so that the
-%fonts shipped with \TL\ can be found.  See
-%section~\ref{sec:font-conf-sys}.
-%
-%\end{enumerate}
-%
+もし``Invalid fontname `Latin Modern Roman/ICU'\dots''というエラーメッセージ
+が表示された場合は，\TL に含まれるフォントを見つけられるように設定を行う必要
+があります．\ref{sec:font-conf-sys}節を参照してください．
+\end{enumerate}
+
 %\subsection{Links for additional downloadable software}
 %
 %If you are new to \TeX{}, or otherwise need help with actually writing
