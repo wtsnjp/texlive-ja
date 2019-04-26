@@ -1438,46 +1438,44 @@ Transcript written on opentype-info.log.
   \end{itemize*}
 \end{description}
 
-%\section{Specialized installations}
+\section{特殊なインストール}
+
+ここまでは基本的なインストール手順について説明してきました．このセクションでは，
+いくつかの特殊なインストールについて解説します．
+
+\subsection{共有インストール}
+
+\TL はネットワーク上の複数のシステムで共有できるように設計されています．標準の
+ディレクトリ構成では，いかなるパスもハードコードされていません．\TL に含まれる
+プログラムは必要なファイルを相対パスによって探索します．このことは，\TL の根幹に
+あたる設定ファイル\file{$TEXMFDIST/web2c/texmf.cnf}を見ればわかります．そこには
 %
-%The previous sections described the basic installation process.  Here we
-%turn to some specialized cases.
+\begin{sverbatim}
+TEXMFROOT = $SELFAUTOPARENT
+...
+TEXMFDIST = $TEXMFROOT/texmf-dist
+...
+TEXMFLOCAL = $SELFAUTOGRANDPARENT/texmf-local
+\end{sverbatim}
 %
-%\htmlanchor{tlsharedinstall}
-%\subsection{Shared-user (or cross-machine) installations}
-%\label{sec:sharedinstall}
-%
-%\TL{} has been designed to be shared between different systems on a
-%network. With a standard directory layout, no hard paths are
-%configured: the locations for files needed by \TL{} programs are
-%found relative to the programs.  You can see this in the principal
-%configuration file
-%\filename{$TEXMFDIST/web2c/texmf.cnf}, which contains lines such as
-%\begin{sverbatim}
-%TEXMFROOT = $SELFAUTOPARENT
-%...
-%TEXMFDIST = $TEXMFROOT/texmf-dist
-%...
-%TEXMFLOCAL = $SELFAUTOGRANDPARENT/texmf-local
-%\end{sverbatim}
-%This means that adding the directory for \TL{} executables for their
-%platform to their search path is sufficient to get a working setup.
-%
-%By the same token, you can also install \TL{} locally and then move
-%the entire hierarchy afterwards to a network location.
-%
-%For Windows, \TL{} includes a launcher \filename{tlaunch}. Its main
-%window contains menu entries and buttons for various \TeX-related
-%programs and documentation, customizable via an \code{ini} file.  On
-%first use, it replicates the usual Windows-specific post-install,
-%\emph{i.e.}, search path modification and file associations, but only
-%for the current user. Therefore, workstations with access to \TL{} on
-%the local network only need a menu shortcut for the launcher.  See the
-%\code{tlaunch} manual (\code{texdoc tlaunch}, or
-%\url{https://ctan.org/pkg/tlaunch}).
-%
-%
-%\htmlanchor{tlportable}
+のような記述が並んでいるはずです．この仕組みのおかげで，各プラットフォーム向け
+の実行ファイルを，それぞれの検索パスに追加するだけで\TL が機能するように設定
+できます．
+
+同様に，一度ローカルに\TL をインストールし，そのすべての階層をネットワーク上の
+場所に移動することも可能です．
+
+Windows向けには，\TL は\cmd{tlaunch}というランチャーを含んでいます．そのメイン
+画面のメニューには種々の\TeX 関連プログラムおよびドキュメントについてアクション
+を起こすためのボタンがあります．この画面は\code{ini}ファイルによってカスタマイズ
+することも可能です．初回起動時には，それらのボタンは通常のWindows向けポスト
+インストールを実行（すなわち検索パスと拡張子の関連付けを更新）しますが，この操作
+は現在ログイン中のユーザにしか適用されません．したがって，ローカルネットワークに
+アクセスできる各システムで\TL を利用できるようにするためには，\cmd{tlaunch}に
+メニューショートカットを追加するだけで事足ります．詳細については\cmd{tlaunch}の
+マニュアルを参照してください（\Ucom{texdoc tlaunch}を実行するか\url{https://%
+ctan.org/pkg/tlaunch}にアクセスすると閲覧できます）．
+
 %\subsection{Portable (\USB{}) installations}
 %\label{sec:portable-tl}
 %
