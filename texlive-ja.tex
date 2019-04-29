@@ -1476,87 +1476,29 @@ Windows向けには，\TL は\cmd{tlaunch}というランチャーを含んで�
 マニュアルを参照してください（\Ucom{texdoc tlaunch}を実行するか\url{https://%
 ctan.org/pkg/tlaunch}にアクセスすると閲覧できます）．
 
-%\subsection{Portable (\USB{}) installations}
-%\label{sec:portable-tl}
+\subsection{ポータブル (\USB) インストール}
+\label{sec:portable-tl}
+
+\TL インストーラに\sopt{portable}オプションを与えると（テキストモードで\code{V}%
+コマンドを実行したり\GUI モードで同等のオプションを利用した場合も同様です）\TL
+は完全に自己完備のインストールを標準的なルート以下に作成します．これはシステムの
+いかなる環境にも依存しません．このような構成の\TL はUSBメモリに直接インストール
+したり，後からUSBにコピーしたりすることができます．
+
+ポータブルインストールされた\TeX を実行するには，通常通り実行ファイルのある適切な
+ディレクトリを（端末セッションの間）検索パスに追加する必要があります．
+
+Windowsでは，ポータブルインストールのルートにある\cmd{tl-tray-menu}をダブルクリック
+することによって一時的な`tray menu'が作成され，これを用いていくつかの一般的なタスク
+を実行することができます：
 %
-%The \code{-portable} installer option (or \code{V} command in the text
-%installer or corresponding \GUI{} option) creates a completely
-%self-contained \TL{} installation under a common root and forgoes system
-%integration. You can create such an installation directly on a \USB{}
-%stick, or copy it to a \USB{} stick afterwards.
+\medskip
+\tlpng{tray-menu}{4cm}
+\smallskip
 %
-%To run \TeX\ using this portable installation, you need to add the
-%appropriate binary directory to the search path during your terminal
-%session, as usual.
-%
-%On Windows, you can double-click \filename{tl-tray-menu} at the root
-%of the installation and create a temporary `tray menu' offering a
-%choice of a few common tasks, as shown in this screenshot:
-%
-%\medskip
-%\tlpng{tray-menu}{4cm}
-%\smallskip
-%
-%\noindent The `More\ldots' entry explains how you can customize this menu.
-%
-%
-%%\htmlanchor{tlisoinstall}
-%%\subsection{\ISO\ (or \DVD) installations}
-%%\label{sec:isoinstall}
-%%
-%%If you don't need to update or otherwise modify your installation often,
-%%and\slash or have several systems on which to use \TL{}, it may be
-%%convenient to create an \ISO\ of your \TL{} installation, because:
-%%
-%%\begin{itemize}
-%%\item Copying an \ISO\ between different computers is much
-%%  faster than copying a normal installation.
-%%\item If you are dual-booting between different operating systems
-%%  and want them to share a \TL{} installation, an \ISO
-%%  installation is not tied to the idiosyncrasies and limitations of
-%%  other mutually supported filesystems (FAT32, NTFS,
-%%  HFS+).
-%%\item Virtual machines can simply mount such an \ISO.
-%%\end{itemize}
-%%
-%%Of course you can also burn an \ISO\ to \DVD, if that is useful for you.
-%%
-%%Desktop \GNU/Linux/Unix systems, including \MacOSX, are able to
-%%mount an \ISO. Windows 8 is the first(!) Windows version which can
-%%do this. Apart from that, nothing changes compared to a normal hard
-%%disk installation, see section \ref{sec:env}.
-%%
-%%When preparing such an \ISO\ installation, it is best to omit the
-%%subdirectory for the release year, and have
-%%\filename{texmf-local} at the same level as the other trees
-%%(\filename{texmf-dist}, \filename{texmf-var}, etc.).  You can do this with
-%%the normal directory options in the installer.
-%%
-%%For a physical (rather than virtual) Windows system, you can burn
-%%the \ISO\ to DVD. However, it may be worth your while to
-%%investigate free \ISO-mounting options such as WinCDEmu at
-%%\url{http://wincdemu.sysprogs.org/}.
-%%
-%%For Windows system integration, you can include the \filename{w32client}
-%%scripts described in section~\ref{sec:sharedinstall} and at
-%%\url{http://tug.org/texlive/w32client.html}, which work just as well for
-%%an \ISO\ as for a network installation.
-%%
-%%On \MacOSX, TeXShop will be able to use the DVD
-%%installation if a symlink \filename{/usr/texbin} points to the
-%%appropriate binary directory, e.g.,
-%%\begin{verbatim}
-%%sudo ln -s /Volumes/MyTeXLive/bin/universal-darwin /usr/texbin
-%%\end{verbatim}
-%%
-%%Historical note: \TL{} 2010 was the first \TL{} edition which was no
-%%longer distributed `live'.  However, it always required some acrobatics
-%%to run from \DVD\ or \ISO; in particular, there was no way around
-%%setting at least one extra environment variable.  If you create your
-%%\ISO\ from an existing installation then there is no need for this.
-%
-%
-%\htmlanchor{tlmgr}
+この画面で`More\ldots'を押すと，このメニューのカスタマイズ方法についての説明が表示
+されます．
+
 %\section{\cmd{tlmgr}: Managing your installation}
 %\label{sec:tlmgr}
 %
