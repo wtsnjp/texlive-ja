@@ -1499,61 +1499,58 @@ Windowsでは，ポータブルインストールのルートにある\cmd{tl-tr
 この画面で`More\ldots'を押すと，このメニューのカスタマイズ方法についての説明が表示
 されます．
 
-%\section{\cmd{tlmgr}: Managing your installation}
-%\label{sec:tlmgr}
+\section{\prog{tlmgr}: \TL マネージャ}
+\label{sec:tlmgr}
+
+\begin{figure}[tb]
+\tlpng{tlshell-macos}{\linewidth}
+\caption{\prog{tlshell} \GUI のアクションメニュー (\macOS)}
+\label{fig:tlshell}
+\end{figure}
+
+\begin{figure}[tb]
+\tlpng{tlcockpit-packages}{.8\linewidth}
+\caption{\prog{tlmgr}の新しい{\GUI} (\prog{tlcockpit})}
+\label{fig:tlcockpit}
+\end{figure}
+
+\begin{figure}[tb]
+\tlpng{tlmgr-gui}{\linewidth}
+\caption{\prog{tlmgr}のレガシー\GUI モード．`Load'後のメインウィンドウ}
+\label{fig:tlmgr-gui}
+\end{figure}
+
+\TL にはインストール後の\TL 管理のために\prog{tlmgr}というプログラムが同梱されて
+います．その主な機能は：
 %
-%\begin{figure}[tb]
-%\tlpng{tlshell-macos}{\linewidth}
-%\caption{\prog{tlshell} \GUI, showing the Actions menu (\MacOSX)}
-%\label{fig:tlshell}
-%\end{figure}
+\begin{itemize*}
+\item 個別パッケージのインストール，アップデート，バックアップ，アンインストール
+  （依存関係管理も可）
+\item パッケージの検索と詳細の表示
+\item プラットフォームの表示，追加，削除
+\item インストールオプションの変更（デフォルトの用紙サイズやソースの場所）
+\end{itemize*}
+
+\prog{texconfig}の機能はすべて\prog{tlmgr}にも備わっています．\TL チームは\prog{%
+texconfig}の操作に慣れている方々のために依然としてその配布およびメンテナンスを継続
+していますが，\prog{tlmgr}を使用することをおすすめします．
+
+\subsection{\prog{tlmgr}の\GUI}
+
+\TL には\prog{tlmgr}の\GUI が複数含まれています．\prog{tlshell}（図\ref{fig:%
+tlshell}）はTcl/Tkを利用した\GUI でWindowsと\macOS で利用可能です．\prog{%
+tlcockpit}はバージョン8以降のJavaとJavaFXで動作する\GUI です．これらはいずれも独立
+したパッケージです．
+
+\prog{tlmgr}それ自体にも\GUI モードが存在します（図\ref{fig:tlmgr-gui}）：
 %
-%\begin{figure}[tb]
-%\tlpng{tlcockpit-packages}{.8\linewidth}
-%\caption{\prog{tlcockpit} \GUI{} for \prog{tlmgr}}
-%\label{fig:tlcockpit}
-%\end{figure}
+\begin{alltt}
+> \Ucom{tlmgr -gui}
+\end{alltt}
 %
-%\begin{figure}[tb]
-%\tlpng{tlmgr-gui}{\linewidth}
-%\caption{Legacy \prog{tlmgr} \GUI\ mode: main window, after `Load'}
-%\label{fig:tlmgr-gui}
-%\end{figure}
-%
-%\TL{} includes a program named \prog{tlmgr} for managing \TL{} after the
-%initial installation.  Its capabilities include:
-%
-%\begin{itemize*}
-%\item installing, updating, backing up, restoring, and uninstalling
-%  individual packages, optionally taking dependencies into account;
-%\item searching for and listing packages and their descriptions;
-%\item listing, adding, and removing platforms;
-%\item changing installation options such as paper size and source
-%  location (see section~\ref{sec:location}).
-%\end{itemize*}
-%
-%\prog{tlmgr}'s functionality completely subsumes the \prog{texconfig}
-%program.  We still distribute and maintain \prog{texconfig} for the sake
-%of anyone used to its interface, but we recommend using \prog{tlmgr}
-%nowadays.
-%
-%\subsection{Current \GUI{} interfaces for \cmd{tlmgr}}
-%
-%\TL{} contains several \GUI s for
-%\prog{tlmgr}. Figure~\ref{fig:tlshell} shows \cmd{tlshell},
-%which is written in Tcl/Tk and works out of the box under Windows
-%and \MacOSX. Figure~\ref{fig:tlcockpit} shows \prog{tlcockpit},
-%which requires Java version~8 or higher and JavaFX. Both are
-%separate packages.
-%
-%\prog{tlmgr} itself can also be run in \GUI{} mode
-%(figure~\ref{fig:tlmgr-gui}) with
-%\begin{alltt}
-%> \Ucom{tlmgr -gui}
-%\end{alltt}
-%This \GUI\ extension requires Perl/Tk, which module is no longer
-%included in \TL's Perl distribution for Windows.
-%
+この\GUI 拡張の実行にはPerl/Tkが必要です．現在はWindows向けの\TL にはPerl/Tk%
+モジュールは同梱されていないので注意してください．
+
 %\subsection{Sample \cmd{tlmgr} command-line invocations}
 %
 %After the initial installation, you can update your system to the latest
