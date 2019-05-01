@@ -1551,75 +1551,83 @@ tlcockpit}はバージョン8以降のJavaとJavaFXで動作する\GUI です．
 この\GUI 拡張の実行にはPerl/Tkが必要です．現在はWindows向けの\TL にはPerl/Tk%
 モジュールは同梱されていないので注意してください．
 
-%\subsection{Sample \cmd{tlmgr} command-line invocations}
+\subsection{コマンド使用例}
+
+最初のインストールののち，\TL を最新の状態にアップデートするには：
 %
-%After the initial installation, you can update your system to the latest
-%versions available with:
-%\begin{alltt}
-%> \Ucom{tlmgr update -all}
-%\end{alltt}
-%If this makes you nervous, first try
-%\begin{alltt}
-%> \Ucom{tlmgr update -all -dry-run}
-%\end{alltt}
-%or (less verbose):
-%\begin{alltt}
-%> \Ucom{tlmgr update -list}
-%\end{alltt}
+\begin{alltt}
+> \Ucom{tlmgr update -all}
+\end{alltt}
 %
-%This more complex example adds a collection, for the engine \XeTeX, from
-%a local directory:
+もし実際のアップデートを実行する前に何が起きるかを確認したい場合は：
 %
-%\begin{alltt}
-%> \Ucom{tlmgr -repository /local/mirror/tlnet install collection-xetex}
-%\end{alltt}
-%It generates the following output (abridged):
-%\begin{fverbatim}
-%install: collection-xetex
-%install: arabxetex
-%...
-%install: xetex
-%install: xetexconfig
-%install: xetex.i386-linux
-%running post install action for xetex
-%install: xetex-def
-%...
-%running mktexlsr
-%mktexlsr: Updating /usr/local/texlive/2019/texmf-dist/ls-R...
-%...
-%running fmtutil-sys --missing
-%...
-%Transcript written on xelatex.log.
-%fmtutil: /usr/local/texlive/2019/texmf-var/web2c/xetex/xelatex.fmt installed.
-%\end{fverbatim}
+\begin{alltt}
+> \Ucom{tlmgr update -all -dry-run}
+\end{alltt}
 %
-%As you can see, \prog{tlmgr} installs dependencies, and takes care of any
-%necessary post-install actions, including updating the filename database
-%and (re)generating formats.  In the above, we generated new formats for
-%\XeTeX.
+または（出力メッセージを減らすなら）
 %
-%To describe a package (or collection or scheme):
-%\begin{alltt}
-%> \Ucom{tlmgr show collection-latexextra}
-%\end{alltt}
-%which produces output like this:
-%\begin{fverbatim}
-%package:    collection-latexextra
-%category:   Collection
-%shortdesc:  LaTeX supplementary packages
-%longdesc:   A very large collection of add-on packages for LaTeX.
-%installed:  Yes
-%revision:   46963
-%sizes:      657941k
-%\end{fverbatim}
+\begin{alltt}
+> \Ucom{tlmgr update -list}
+\end{alltt}
+
+もう少し複雑な例として，\XeTeX 用のコレクションをローカルディレクトリから追加
+する方法を示します：
 %
-%Last and most important, for full documentation see
-%\url{http://tug.org/texlive/tlmgr.html}, or:
-%\begin{alltt}
-%> \Ucom{tlmgr -help}
-%\end{alltt}
+\begin{alltt}
+> \Ucom{tlmgr -repository /local/mirror/tlnet install collection-xetex}
+\end{alltt}
 %
+これを実行すると，次のような出力が表示されます（一部省略しています）：
 %
+\begin{fverbatim}
+install: collection-xetex
+install: arabxetex
+...
+install: xetex
+install: xetexconfig
+install: xetex.i386-linux
+running post install action for xetex
+install: xetex-def
+...
+running mktexlsr
+mktexlsr: Updating /usr/local/texlive/2019/texmf-dist/ls-R...
+...
+running fmtutil-sys --missing
+...
+Transcript written on xelatex.log.
+fmtutil: /usr/local/texlive/2019/texmf-var/web2c/xetex/xelatex.fmt installed.
+\end{fverbatim}
+
+上の出力からわかるように，\prog{tlmgr}は依存パッケージもインストールし，ファイル名
+データベースの更新やフォーマットの（再）生成など必要なインストール後処理も自動的に
+実行しています．ここでは\XeTeX 用の新しいフォーマットが生成されています．
+
+パッケージ（またはコレクション，スキーム）の詳細を確認するには次のようにします：
+%
+\begin{alltt}
+> \Ucom{tlmgr show collection-latexextra}
+\end{alltt}
+%
+これにより以下のような出力が得られるはずです：
+%
+\begin{fverbatim}
+package:    collection-latexextra
+category:   Collection
+shortdesc:  LaTeX supplementary packages
+longdesc:   A very large collection of add-on packages for LaTeX.
+installed:  Yes
+revision:   46963
+sizes:      657941k
+\end{fverbatim}
+%
+最後に，最も大事なことですが，フルドキュメントを確認するには\url{http://tug.org/%
+texlive/tlmgr.html}にアクセスするか，以下を実行してください：
+%
+\begin{alltt}
+> \Ucom{tlmgr -help}
+\end{alltt}
+
 %\section{Notes on Windows}
 %\label{sec:windows}
 %
