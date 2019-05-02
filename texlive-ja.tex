@@ -1444,6 +1444,7 @@ Transcript written on opentype-info.log.
 いくつかの特殊なインストールについて解説します．
 
 \subsection{共有インストール}
+\label{sec:sharedinstall}
 
 \TL はネットワーク上の複数のシステムで共有できるように設計されています．標準の
 ディレクトリ構成では，いかなるパスもハードコードされていません．\TL に含まれる
@@ -1628,89 +1629,91 @@ texlive/tlmgr.html}にアクセスするか，以下を実行してください�
 > \Ucom{tlmgr -help}
 \end{alltt}
 
-%\section{Notes on Windows}
-%\label{sec:windows}
+\section{Windows向けの情報}
+\label{sec:windows}
+
+\subsection{Windows専用の機能}
+\label{sec:winfeatures}
+
+Windowsでは\TL はいくつか追加の処理を行います：
 %
-%\subsection{Windows-specific features}
-%\label{sec:winfeatures}
+\begin{description}
+\item[メニューとショートカット]
+スタートメニューに`\TL'サブメニューを追加します．このサブメニューから\prog{tlmgr},
+\prog{texdoctk}や\PS ビューア (\prog{psv}) などの\GUI プログラムを起動したり，
+いくつかのドキュメントにアクセスしたりすることができます．
+
+\item[拡張子の関連付け]
+設定が有効になっている場合，\prog{\TeX works}, \prog{Dviout}, \prog{PS\_View}などを
+それぞれが扱う拡張子に関連付けます．また関連するファイルを右クリックして「プログラム
+から開く」を選択した場合に\TL のプログラムが候補に上がるようになります．
+
+\item[ビットマップからEPSへの変換]
+各種のビットマップ画像を右クリックして「プログラムから開く」を選択した場合に\prog{%
+bitmap2eps}を選択できるようになります．\prog{bitmap2eps}はシンプルなスクリプトで，
+バックエンドとして\prog{sam2p}や\prog{bmeps}を利用します．
+
+\item[自動パス設定]
+Windowsでは手動でパス設定を行う必要はありません．
+
+\item[アンインストーラ]
+「プログラムの追加と削除」メニューの中に\TL をアンインストールするための項目を追加
+します．これを使用するとGUI版\TL マネージャのアンインストールタブが開きます．単一
+ユーザ向けに\TL をインストールした場合は，スタートメニューにもアンインストール用の
+項目が追加されます．
+
+\item[書き込み禁止]
+管理者として\TL をインストールした場合，\TL のディレクトリは書き込み禁止に設定され
+ます（通常のNTFSフォーマット内蔵ディスクにインストールした場合）．
+\end{description}
+
+また\prog{tlaunch}（\ref{sec:sharedinstall}節）も参照してみてください．
+
+\subsection{Windows向けに追加されているソフトウェア}
+
+\TL を完全にインストールするためには，Windowsマシンには通常存在していないパッケージ
+が必要となります．そのため\TL はWindows向けに一部の依存パッケージを同梱しています．
+以下に列挙するプログラムはWindows版の\TL にのみ含まれています：
 %
-%Under Windows, the installer does some extra things:
-%\begin{description}
-%\item[Menus and shortcuts.] A new `\TL{}' submenu of the
-%  Start menu is installed, which contains entries for some \GUI{}
-%  programs (\prog{tlmgr}, \prog{texdoctk}, the PS\_View (\prog{psv})
-%  PostScript previewer) and some documentation.
-%\item[File associations.] If enabled, \prog{TeXworks}, \prog{Dviout}
-%  and \prog{PS\_view} become either the default program for
-%  their respective filetypes, or get an entry in the `Open with'
-%  right-click menus of those filetypes.
-%\item[Bitmap to eps converter.] Various bitmapped formats get an
-%  entry \cmd{bitmap2eps} in their `Open with' right-click
-%  menu. Bitmap2eps is a simple script which lets \cmd{sam2p} or
-%  \cmd{bmeps} do the real work.
-%\item[Automatic path adjustment.] No manual configuration steps are required.
-%\item[Uninstaller.] The installer creates an entry under `Add/Remove
-%  Programs' for \TL. The uninstall tab of the \TeX\ Live Manager \GUI\
-%  refers to this. For a single-user install, the installer also
-%  creates an uninstall entry under the Start menu.
-%\item[Write-protect.] For an admin install, the \TL\ directories are
-%  write-protected, at least if \TL\ is installed on a normal
-%  NTFS-formatted non-removable disk.
-%\end{description}
+\begin{description}
+\item[PerlとGhostscript]
+PerlとGhostscriptは重要なので，\TL には「隠された」それらのコピーが含まれています．
+これらのプログラムは\TL のプログラムからは利用可能ですが，環境変数やレジストリ設定
+の上では存在していないことになっています．\TL に同梱されているPerlとGhostscriptは
+完全版ではなく，またシステムに別途インストールされたものとは一切干渉しません．
+
+\item[PS\_View]
+\PS /PDFビューア（図\ref{fig:psview}）．
+
+\item[dviout]
+\DVI ビューア．初期状態では，ファイルを\prog{dviout}でプレビューしようとすると，
+フォント生成が行われるはずです．これはスクリーンフォントがインストールされていない
+ためです．しばらく使用していると，頻繁に利用されるフォントの生成が完了するため，
+フォント生成ウィンドウが現れることは稀になります．詳細はオンラインヘルプ（おすすめ）
+を参照してください．
+
+\item[\TeX works]
+PDFビューア機能をもつ\TeX 用の統合開発環境．
+
+\item[各種コマンドラインツール]
+\TL バイナリと同時に，多数のWindows移植版のUNIXコマンドもインストールされます．\cmd{%
+gzip}, \cmd{zip}, \cmd{unzip}や\prog{poppler}関連の\cmd{pdfinfo}, \cmd{pdffonts}など
+です．Windows版\TL にはスタンドアロンなPDFビューアは含まれていません．必要に応じて
+Sumatra PDF viewer (\url{https://sumatrapdfreader.org/}) などをインストールしてくだ
+さい．
+
+\item[fc-list, fc-cache, \ldots]
+これらのフォント管理ライブラリを利用して\XeTeX からWindows上のフォントを利用できます．
+\prog{fc-list}を用いると\XeTeX 拡張の\cs{font}コマンドに与えるべきフォント名を決定
+することができます．必要に応じて\prog{fc-cache}を事前に実行してフォント情報を更新して
+ください．
+\end{description}
 %
-%Also, have a look at \filename{tlaunch}, described in
-%section~\ref{sec:sharedinstall}, for a different approach.
-%
-%\subsection{Additional software included on Windows}
-%
-%To be complete, a \TL{} installation needs support packages that are not
-%commonly found on a Windows machine. \TL{} provides the missing pieces.
-%These programs are all installed as part of \TL{} only on Windows.
-%
-%\begin{description}
-%\item[Perl and Ghostscript.] Because of the importance of Perl and
-%  Ghostscript, \TL{} includes `hidden' copies of these
-%  programs. \TL{} programs that need them know where to find them,
-%  but they don't betray their presence through environment variables
-%  or registry settings. They aren't full-scale installations, and
-%  shouldn't interfere with any system installations of Perl or
-%  Ghostscript.
-%
-%\item[PS\_View.] Also installed is PS\_View, a \PS{} and PDF
-%  viewer; see figure~\ref{fig:psview}.
-%
-%\begin{figure}[tb]
-%\centering \tlpng{psview}{.6\linewidth}
-%\caption{PS\_View: very high magnifications available!}\label{fig:psview}
-%\end{figure}
-%
-%\item[dviout.] Also installed is \prog{dviout}, a DVI viewer.
-%  At first, when you preview files with \cmd{dviout}, it will create
-%  fonts, because screen fonts were not installed. After a while, you
-%  will have created most of the fonts you use, and you will rarely see
-%  the font-creation window.  More information can be found in the
-%  (highly recommended) on-line help.
-%
-%\item[\TeX{}works.]  \TeX{}works is a \TeX-oriented editor with
-%  an integrated PDF viewer.
-%
-%\item[Command-line tools.] A number of Windows ports of common Unix
-%  command-line programs are installed along with the usual \TL{}
-%  binaries. These include \cmd{gzip}, \cmd{zip},
-%  \cmd{unzip}, and the utilities from the \cmd{poppler} suite
-%  (\cmd{pdfinfo}, \cmd{pdffonts}, \ldots); no standalone PDF
-%  viewer for Windows is included.  One option for that is the Sumatra
-%  PDF viewer, available from \url{https://sumatrapdfreader.org/}.
-%
-%\item[fc-list, fc-cache, \ldots] The tools from the fontconfig library allow
-%  \XeTeX{} to handle system fonts on Windows.  You can use
-%  \prog{fc-list} to determine the font names to pass to \XeTeX's
-%  extended \cs{font} command. If necessary, run \prog{fc-cache}
-%  first to update font information.
-%
-%\end{description}
-%
-%
+\begin{figure}[tb]
+\centering \tlpng{psview}{.6\linewidth}
+\caption{PS\_View: かなり高い倍率まで拡大することができます．}\label{fig:psview}
+\end{figure}
+
 %\subsection{User Profile is Home}
 %\label{sec:winhome}
 %
