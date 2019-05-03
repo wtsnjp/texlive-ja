@@ -75,8 +75,13 @@
 \newcommand*{\code}[1]{\eghostguarded{\texttt{#1}}}
 \newcommand*{\sopt}[1]{\code{\hyph#1}}
 \newcommand*{\lopt}[1]{\code{\hyph\hyph#1}}
+\newcommand*{\var}[1]{{\chardef\_=`\_\code{#1}}}
 \newcommand*{\meta}[1]{$\langle$\mbox{}{\normalfont #1}\mbox{}$\rangle$}
 \newcommand*{\samp}[1]{`\texttt{#1}'}
+
+% Windows-specific
+\newcommand*{\winenv}[1]{\code{\%#1\%}}
+\newcommand*{\winpath}[1]{{\def\\{\char`\\}\code{#1}}}
 
 % followings are just for reference (from tex-live.sty)
 %\newcommand*{\colname}[1]{\eghostguarded{\emph{#1}}}% collection name
@@ -115,7 +120,6 @@
 % Special names.
 \newcommand*{\dpi}{$\,$dpi}
 \newcommand*{\bs}{\char`\\}
-\newcommand*{\ul}{\char`\_}
 \newcommand*{\cs}[1]{\eghostguarded{\texttt{\bs #1}}}
 \newcommand*{\Q}[1]{\par\vskip6pt\leftline{#1}\par}
 \newcommand*{\hyph}{-}

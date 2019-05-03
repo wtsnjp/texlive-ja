@@ -850,8 +850,8 @@ Select scheme:
 
 デフォルトの\TL 構成については\ref{sec:texmftrees}節 (\p.\pageref{sec:texmftrees})
 で説明しました．デフォルトのインストール先はUNIXでは\dir{/usr/local/texlive/2019}，
-Windowsでは\code{\%SystemDrive\%{\bs}texlive{\bs}2019}です．この配置は複数の\TL を
-同時にインストールすることを可能にします．例えば複数のリリース（典型的には，年度
+Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2019}です．この配置は複数の\TL
+を同時にインストールすることを可能にします．例えば複数のリリース（典型的には，年度
 ごと）の\TL をインストールしておき，単純に検索パスを変更することによってどの
 リリースを使用するか切り替えるようなことができます．
 
@@ -864,10 +864,10 @@ Windowsでは\code{\%SystemDrive\%{\bs}texlive{\bs}2019}です．この配置は
 インストール先ディレクトリへの書き込み権限は必要です）．
 
 インストール先のディレクトリは，インストーラを実行する前にいくつかの環境変数（よく
-用いられるのは\code{TEXLIVE{\ul}INSTALL{\ul}PREFIX}と\code{TEXLIVE{\ul}INSTALL{\ul}%
-TEXDIR}）を設定することによっても変更できます．詳細については\code{install-tl -{}-%
-help}により表示できるドキュメント (\url{http://tug.org/texlive/doc/install-tl.html})
-を参照してください．
+用いられるのは\var{TEXLIVE\_INSTALL\_PREFIX}と\var{TEXLIVE\_INSTALL\_TEXDIR}）を
+設定することによっても変更できます．詳細については\code{install-tl \lopt{help}}に
+より表示できるドキュメント (\url{http://tug.org/texlive/doc/install-tl.html}) を
+参照してください．
 
 合理的なインストール場所の変更先は（特にあなたが\TL を利用する単独のユーザである
 場合には）ホームディレクトリ以下でしょう．メタキャラクタ\dir{~}を用いるとこれを
@@ -1223,15 +1223,15 @@ tlmgr}を使用せず手動で新しいファイルをインストールした�
 \label{sec:local-personal-macros}
 
 ローカルおよび個人用のマクロの配置方法については\ref{sec:texmftrees}節でも簡単に
-言及しましたが，\code{TEXMFLOCAL}（デフォルトでは\dir{/usr/local/texlive/%
-texmf-local}または\verb|%SystemDrive%\texlive\texmf-local|）はシステム全体に適用
-したいローカルなフォントやマクロを，\code{TEXMFHOME}（デフォルトでは\dir{$HOME/%
-texmf}または\verb|%USERPROFILE%\texmf|）はユーザごとの個人用フォントやマクロを
-配置するためのものです．これらのディレクトリは毎年のリリースとは切り離して管理
-されることが意図されており，そこに含まれているファイルは自動的に各\TL リリース
-から検索できるようになっています．したがって，\code{TEXMFLOCAL}の値をメインの\TL
-ツリーとあまりかけ離れた位置に変更することは避けるべきです．さもないと将来の
-リリースの際に手動で変更を行う必要が発生する可能性があります．
+言及しましたが，\code{TEXMFLOCAL}（デフォルトでは\dir{/usr/local/texlive/texmf-%
+local}または\winpath{\winenv{SystemDrive}\\texlive\\texmf-local}）はシステム全体
+に適用したいローカルなフォントやマクロを，\code{TEXMFHOME}（デフォルトでは\dir{%
+$HOME/texmf}または\winpath{\winenv{USERPROFILE}\\texmf}）はユーザごとの個人用
+フォントやマクロを配置するためのものです．これらのディレクトリは毎年のリリース
+とは切り離して管理されることが意図されており，そこに含まれているファイルは自動的
+に各\TL リリースから検索できるようになっています．したがって，\code{TEXMFLOCAL}%
+の値をメインの\TL ツリーとあまりかけ離れた位置に変更することは避けるべきです．
+さもないと将来のリリースの際に手動で変更を行う必要が発生する可能性があります．
 
 いずれのツリーについても，それぞれのファイルは\TDS に基づいたサブディレクトリに
 配置されているべきです（\url{http://tug.org/tds}や\file{texmf-dist/web2c/texmf.%
@@ -1717,20 +1717,20 @@ Sumatra PDF viewer (\url{https://sumatrapdfreader.org/}) などをインスト�
 \subsection{ユーザプロフィールがホームディレクトリ扱い}
 \label{sec:winhome}
 
-Windowsにおいて，UNIXのホームディレクトリに相当するのは\verb|%USERPROFILE%|ディレクトリ
-です．Windows Vista以降のWindowsでは，そのデフォルト値は\path{C:\Users\<username>}です．
-\file{texmf.cnf}内および\KPS 全般において，\dir{~}はWindowsとUNIXのいずれにおいても
-適切に展開されます．
+Windowsにおいて，UNIXのホームディレクトリに相当するのは\winenv{USERPROFILE}ディレクトリ
+です．Windows Vista以降のWindowsでは，そのデフォルト値は\winpath{C:\\Users\\<username>}%
+です．\file{texmf.cnf}内および\KPS 全般において，\dir{~}はWindowsとUNIXのいずれにおいて
+も適切に展開されます．
 
 \subsection{レジストリ}
 \label{sec:registry}
 
 Windowsではほとんどすべての設定データはレジストリに保存されます．レジストリには数個の
 ルートの下に階層的に構成されたキーが多数含まれています．簡単に言うと，インストール
-プログラムにとって最も重要なものは\code{HKEY{\ul}CURRENT{\ul}USER}, \code{HKEY{\ul}%
-LOCAL{\ul}MACHINE}, \code{HKCU}, \code{HKLM}です．レジストリのキー\code{HKCU}はユーザ
-のホームディレクトリ内を参照します（\ref{sec:winhome}節を参照）．\code{HKLM}は通常
-Windowsディレクトリ内のサブディレクトリです．
+プログラムにとって最も重要なものは\var{HKEY\_CURRENT\_USER}, \var{HKEY\_LOCAL\_MACHINE},
+\var{HKCU}, \var{HKLM}です．レジストリのキー\var{HKCU}はユーザのホームディレクトリ内を
+参照します（\ref{sec:winhome}節を参照）．\var{HKLM}は通常Windowsディレクトリ内のサブ
+ディレクトリです．
 
 一部の項目については環境変数によってシステム情報を引き渡すことができますが，ショート
 カットの位置などはレジストリを変更しないことには設定を反映することができません．また
