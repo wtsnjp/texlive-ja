@@ -1714,33 +1714,28 @@ Sumatra PDF viewer (\url{https://sumatrapdfreader.org/}) などをインスト�
 \caption{PS\_View: かなり高い倍率まで拡大することができます．}\label{fig:psview}
 \end{figure}
 
-%\subsection{User Profile is Home}
-%\label{sec:winhome}
-%
-%The Windows counterpart of a Unix home directory is the
-%\verb|%USERPROFILE%| directory.  Under Windows Vista and later it is
-%\verb|C:\Users\<username>|.  In the
-%\filename{texmf.cnf} file, and \KPS{} in general, \verb|~| will
-%expand appropriately on both Windows and Unix.
-%
-%
-%\subsection{The Windows registry}
-%\label{sec:registry}
-%
-%Windows stores nearly all configuration data in its registry.  The
-%registry contains a set of hierarchically organized keys, with several
-%root keys. The most important ones for installation programs are
-%\path{HKEY_CURRENT_USER} and \path{HKEY_LOCAL_MACHINE}, \path{HKCU} and
-%\path{HKLM} in short. The \path{HKCU} part of the registry is in the
-%user's home directory (see section~\ref{sec:winhome}).  \path{HKLM} is
-%normally in a subdirectory of the Windows directory.
-%
-%In some cases, system information could be obtained from environment
-%variables but for other information, for example the location of
-%shortcuts, it is necessary to consult the registry.  Setting environment
-%variables permanently also requires registry access.
-%
-%
+\subsection{ユーザプロフィールがホームディレクトリ扱い}
+\label{sec:winhome}
+
+Windowsにおいて，UNIXのホームディレクトリに相当するのは\verb|%USERPROFILE%|ディレクトリ
+です．Windows Vista以降のWindowsでは，そのデフォルト値は\path{C:\Users\<username>}です．
+\file{texmf.cnf}内および\KPS 全般において，\dir{~}はWindowsとUNIXのいずれにおいても
+適切に展開されます．
+
+\subsection{レジストリ}
+\label{sec:registry}
+
+Windowsではほとんどすべての設定データはレジストリに保存されます．レジストリには数個の
+ルートの下に階層的に構成されたキーが多数含まれています．簡単に言うと，インストール
+プログラムにとって最も重要なものは\code{HKEY{\ul}CURRENT{\ul}USER}, \code{HKEY{\ul}%
+LOCAL{\ul}MACHINE}, \code{HKCU}, \code{HKLM}です．レジストリのキー\code{HKCU}はユーザ
+のホームディレクトリ内を参照します（\ref{sec:winhome}節を参照）．\code{HKLM}は通常
+Windowsディレクトリ内のサブディレクトリです．
+
+一部の項目については環境変数によってシステム情報を引き渡すことができますが，ショート
+カットの位置などはレジストリを変更しないことには設定を反映することができません．また
+環境変数の値を恒久的に変更するのにもレジストリを編集する必要があります．
+
 %\subsection{Windows permissions}
 %\label{sec:winpermissions}
 %
