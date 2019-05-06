@@ -1736,70 +1736,61 @@ Windowsではほとんどすべての設定データはレジストリに保存�
 カットの位置などはレジストリを変更しないことには設定を反映することができません．また
 環境変数の値を恒久的に変更するのにもレジストリを編集する必要があります．
 
-%\subsection{Windows permissions}
-%\label{sec:winpermissions}
+\subsection{パーミッション}
+\label{sec:winpermissions}
+
+最近のバージョンのWindowsでは，管理者のみにOS全体へのアクセス権があり，一般ユーザには
+ありません．\TL は管理者権限がなくてもインストール可能なように工夫されています．
+
+管理者権限でインストーラが実行されているときは，全ユーザ向けにインストールを行うため
+のオプションが利用可能です．このオプションを選択した場合，全ユーザ向けにショートカット
+が作成され，またシステムの検索パスも変更されます．逆に，このオプションを選択しなかった
+場合はシュートカットとメニュー項目はインストーラを実行したユーザ向けにのみ作成され，
+そのユーザの検索パスだけが更新されます．
+
+管理者として実行するか否かに関わらず，インストーラは常にデフォルトの\TL ルートを
+\winenv{SystemDrive}以下に設定します．インストーラは，必ず設定しようとしているルート
+位置が現在の実行権限で書き込み可能かどうか確認します．
+
+検索パスに\TeX が存在する状態で，一般ユーザとして\TL のインストールを実行しようとする
+と問題が発生します．システムの検索パスはユーザの検索パスよりも優先されるので，この
+状況で\TL をインストールしても優先的に利用されることはありません．安全策として，
+インストーラは新しくインストールされた\TL バイナリのディレクトリがローカル検索パスの
+先頭にくるようコマンドプロンプトにショートカットを作成します．そのため，この安全策が
+有効なコマンドプロンプトからは常に新しい\TL が利用可能です．\TeX worksがインストール
+されている場合，その検索パスについても\TL が先頭にくるよう設定されるため，同様に検索
+パスの問題は回避されるはずです．
+
+Windowsでは管理者アカウントにログインしていても，明示的に管理者権限としての実行を指示
+する必要があることに注意してください．実際のところ，管理者アカウントにログインする
+だけではあまり意味がありません．肝心なのは，プログラムやショートカットを右クリックし
+「管理者として実行」を選択することです．
+
+\subsection{WindowsとCygwinでメモリ上限を増やす方法}
+\label{sec:cygwin-maxmem}
+
+WindowsとCygwin（Cygwinインストールの詳細については\ref{sec:cygwin}節を参照してくだ
+さい）では，\TL に含まれるいくつかのプログラムがメモリを使い果たす場合があります．
+例えば\prog{asy}で25,000,000リールの配列を確保しようとしたり，\LuaTeX で多書体組を
+行おうとしたりするとメモリが不足する可能性があります．
+
+Cygwinではユーザマニュアル (\url{http://www.cygwin.com/cygwin-ug-net/setup-maxmem.%
+html}) の説明に従うことによってメモリ上限を増やすことができます．
+
+Windowsの場合はいくつかの手順を行う必要があります．まず\code{moremem.reg}という
+ファイルに以下の内容を書き込みます：
 %
-%In later versions of Windows, a distinction is made between regular
-%users and administrators, where only the latter have free access to the
-%entire operating system. We have made an effort to make \TL{}
-%installable without administrative privileges.
+\begin{sverbatim}
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\Software\Cygwin]
+"heap_chunk_in_mb"=dword:ffffff00
+\end{sverbatim}
 %
-%If the installer is started with administrative permissions, there is an
-%option to install for all users.  If this option is chosen, shortcuts
-%are created for all users, and the system search path is
-%modified. Otherwise, shortcuts and menu entries are created for the
-%current user, and the user search path is modified.
-%
-%Regardless of administrator status, the default root of \TL{} proposed
-%by the installer is always under \verb|%SystemDrive%|. The installer
-%always tests whether the root is writable for the current user.
-%
-%A problem may arise if the user is not an administrator and \TeX{}
-%already exists in the search path.  Since the effective search path
-%consists of the system search path followed by the user search path, the
-%new \TL{} would never get precedence.  As a safeguard, the installer
-%creates a shortcut to the command-prompt in which the new \TL{} binary
-%directory is prepended to the local search path.  The new \TL{} will be
-%always usable from within such a command-prompt. The shortcut for
-%\TeX{}works, if installed, also prepends \TL{} to the search path, so it
-%should also be immune to this path problem.
-%
-%You should be aware that even if you are logged in as administrator, you
-%need to explicitly ask for administrator privileges. In fact, there is
-%not much point in logging in as administrator. Instead, right-clicking
-%on the program or shortcut that you want to run usually gives you a
-%choice `Run as administrator'.
-%
-%
-%\subsection{Increasing maximum memory on Windows and Cygwin}
-%\label{sec:cygwin-maxmem}
-%
-%Windows and Cygwin (see section~\ref{sec:cygwin} for Cygwin installation
-%specifics) users may find that they run out of memory when running some
-%of the programs shipped with \TL.  For example, \prog{asy} might run out
-%of memory if you try to allocate an array of 25,000,000 reals, and
-%Lua\TeX\ might run out of memory if you try to process a document with a
-%lot of big fonts.
-%
-%For Cygwin, you can increase the amount of available memory by following
-%the instructions in the Cygwin User's Guide
-%(\url{http://www.cygwin.com/cygwin-ug-net/setup-maxmem.html}).
-%
-%For Windows, you have to create a file, say \code{moremem.reg}, with
-%these four lines:
-%
-%\begin{sverbatim}
-%Windows Registry Editor Version 5.00
-%
-%[HKEY_LOCAL_MACHINE\Software\Cygwin]
-%"heap_chunk_in_mb"=dword:ffffff00
-%\end{sverbatim}
-%
-%\noindent and then execute the command \code{regedit /s moremem.reg} as
-%administrator.  (If you want to change memory only for the current user
-%instead of system-wide, use \code{HKEY\_CURRENT\_USER}.)
-%
-%
+その上で，管理者権限で\code{regedit /s moremem.reg}を実行してください．（もし
+システム全体ではなく，現在利用中のユーザのみについてメモリ上限を変更したい場合は
+\var{HKEY\_CURRENT\_USER}を使用してください．）
+
 %\section{A user's guide to Web2C}
 %
 %\Webc{} is an integrated collection of \TeX-related programs: \TeX{}
