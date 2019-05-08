@@ -1791,75 +1791,68 @@ Windows Registry Editor Version 5.00
 システム全体ではなく，現在利用中のユーザのみについてメモリ上限を変更したい場合は
 \var{HKEY\_CURRENT\_USER}を使用してください．）
 
-%\section{A user's guide to Web2C}
+\section{Web2Cユーザガイド}
+
+\Webc は\TeX 関連プログラムのコレクションです．これには\TeX そのものに加えて\MF,
+\MP, \BibTeX などが含まれており，\TL の心臓部と言えます．最新版のマニュアルやその他
+の情報はウェブサイト (\url{http://tug.org/web2c}) に掲載されています．
+
+少し\Webc の歴史的経緯について触れておきます．\Webc のオリジナル作者はTomas Rokickiで
+1987年に最初の\TeX -to-Cシステムを開発しました．このシステムはHoward TrickeyとPavel
+CurtisによるUNIX下のchangefileをベースにしていました．その後Tim Morganがこのシステムの
+メンテナとなり，その期間システムはWeb-to-Cと呼ばれていました．1990年にKarl Berryが多く
+の協力者の助けを得ながらメンテナンスを引き継ぎました．1997年にOlaf Weberがメンテナに
+なりましたが，2006年には再びKarl氏の管理下に戻りました．
+
+\Webc システムはUNIX, 32-bit Windows, \macOS などのOSで動作します．このシステムでは
+Knuthによる\TeX のオリジナルソースと，文芸的プログラミングシステム\WEB で書かれた
+いくつかの基本的なプログラムを使用し，それらをC言語ソースコードに変換します．このような
+方法で管理されている\TeX 関連のプログラムは以下の通りです：
 %
-%\Webc{} is an integrated collection of \TeX-related programs: \TeX{}
-%itself, \MF{}, \MP, \BibTeX{}, etc.  It is the heart of \TL{}.  The home
-%page for \Webc{}, with the current manual and more, is
-%\url{http://tug.org/web2c}.
+\begin{cmddescription}
+\item[bibtex] 参考文献の管理
+\item[dvicopy] \DVI ファイルで参照されている仮想フォントの展開
+\item[dvitomp] \DVI をMPX（\MP 画像）に変換
+\item[dvitype] \DVI を可読テキストに変換
+\item[gftodvi] Generic fonts (GF) の見本 (\DVI) 作成
+\item[gftopk] GFをpacked fonts (PK) に変換
+\item[gftype] GFを可読テキストに変換
+\item[mf] フォントファミリの作成
+\item[mft] \MF ソースを\TeX ファイルに変換
+\item[mpost] 図形描画
+\item[patgen] ハイフンパターンを作成
+\item[pktogf] PKをGFに変換
+\item[pktype] PKを可読テキストに変換
+\item[pltotf] プレーンテキストのプロパティリストをTFMに変換
+\item[pooltype] \WEB プールファイルを表示
+\item[tangle] \WEB をPascalに変換
+\item[tex] 組版システム
+\item[tftopl] TFMをプレーンテキストのプロパティリストに変換
+\item[vftovp] 仮想フォントを仮想プロパティリストに変換
+\item[vptovf] 仮想プロパティリストを仮想フォントに変換
+\item[weave] \WEB を\TeX ファイルに変換
+\end{cmddescription}
 %
-%A bit of history: The original implementation was by Tomas Rokicki who,
-%in 1987, developed a first \TeX{}-to-C system based on change files
-%under Unix, which were primarily the original work of Howard Trickey and
-%Pavel Curtis.  Tim Morgan became the maintainer of the system, and
-%during this period the name changed to Web-to-C\@.  In 1990, Karl Berry
-%took over the work, assisted by dozens of additional contributors, and
-%in 1997 he handed the baton to Olaf Weber, who returned it to Karl in
-%2006.
+各プログラムの正確な機能やシンタックスについては，それぞれのマニュアルや\Webc 自体の
+ドキュメントに記載されています．しかしながら，すべてのプログラムに共通するいくつかの
+基本事項を押さえておくと\Webc をインストールする際に役立ちます．
+
+\Webc に含まれるすべてのプログラムは，以下の標準的な\GNU オプションをサポートして
+います：
 %
-%The \Webc{} system runs on Unix, 32-bit Windows systems, \MacOSX{}, and
-%other operating systems. It uses Knuth's original sources for \TeX{} and
-%other basic programs written in the \web{} literate programming system
-%and translates them into C source code.  The core \TeX{} programs
-%handled in this way are:
-%
-%\begin{cmddescription}
-%\item[bibtex]    Maintaining bibliographies.
-%\item[dvicopy]   Expands virtual font references in \dvi{} files.
-%\item[dvitomp]   \dvi{} to MPX (MetaPost pictures).
-%\item[dvitype]   \dvi{} to human-readable text.
-%\item[gftodvi]   Generic font proofsheets.
-%\item[gftopk]    Generic to packed fonts.
-%\item[gftype]    GF to human-readable text.
-%\item[mf]        Creating typeface families.
-%\item[mft]       Prettyprinting \MF{} source.
-%\item[mpost]     Creating technical diagrams.
-%\item[patgen]    Creating hyphenation patterns.
-%\item[pktogf]    Packed to generic fonts.
-%\item[pktype]    PK to human-readable text.
-%\item[pltotf]    Plain text property list to TFM.
-%\item[pooltype]  Display \web{} pool files.
-%\item[tangle]    \web{} to Pascal.
-%\item[tex]       Typesetting.
-%\item[tftopl]    TFM to plain text property list.
-%\item[vftovp]    Virtual font to virtual property list.
-%\item[vptovf]    Virtual property list to virtual font.
-%\item[weave]     \web{} to \TeX.
-%\end{cmddescription}
-%
-%\noindent The precise functions and syntax of these programs are
-%described in the documentation of the individual packages and of \Webc{}
-%itself.  However, knowing a few principles governing the whole family of
-%programs will help you take advantage of your \Webc{} installation.
-%
-%All programs honor these standard \GNU options:
-%\begin{ttdescription}
-%\item[\sopt{{}-help] print basic usage summary.
-%\item[\sopt{{}-verbose] print detailed progress report.
-%\item[\sopt{{}-version] print version information, then exit.
-%\end{ttdescription}
-%
-%For locating files the \Webc{} programs use the path searching library
-%\KPS{} (\url{http://tug.org/kpathsea}).  This library uses a combination
-%of environment variables and configuration files to optimize searching
-%the (huge) collection of \TeX{} files.  \Webc{} can look at many
-%directory trees simultaneously, which is useful in maintaining \TeX's
-%standard distribution and local and personal extensions in distinct
-%trees.  To speed up file searches, the root of each tree has a file
-%\file{ls-R}, containing an entry showing the name and relative pathname
-%for all files under that root.
-%
-%
+\begin{description}
+\item[\lopt{help}] 基本的な使用法を表示
+\item[\lopt{verbose}] より詳細な実行メッセージを表示
+\item[\lopt{version}] バージョン情報を表示して終了
+\end{description}
+
+\Webc プログラムはファイル探索に\KPS ライブラリ (\url{http://tug.org/kpathsea}) を
+使用します．このライブラリは環境変数と設定ファイルの両方を参照して膨大な量の\TeX
+関連ファイルの検索を最適化します．\Webc は多くのTEXMFツリーを同時に参照でき，この
+ことがTDSを維持したままローカルまたはユーザごとの拡張を異なるツリーに分離するのに
+役立ちます．ファイル検索を高速化するため，各ツリーのルートには配下にあるすべての
+ファイルの名前と相対位置を列挙した\file{ls-R}ファイルが置かれています．
+
 %\subsection{Kpathsea path searching}
 %\label{sec:kpathsea}
 %
@@ -3047,7 +3040,7 @@ Windows Registry Editor Version 5.00
 %      See section~\ref{sec:texmftrees}, \p.\pageref{sec:texmftrees}.
 %
 %\item Last year, we kept \verb|\pdfoutput| and other primitives undefined
-%      for \dvi\ output, even though the \cmd{pdfetex} program was
+%      for \DVI\ output, even though the \cmd{pdfetex} program was
 %      being used.  This year, as promised, we undid that compatibility
 %      measure.  So if your document uses \verb|\ifx\pdfoutput\undefined|
 %      to test if PDF is being output, it will need to be changed.  You
@@ -3170,7 +3163,7 @@ Windows Registry Editor Version 5.00
 %with a completely different Japanese \pkg{platex}; the
 %\pkg{polski} package is now the main Polish support.
 %
-%Internally, the \web\ string pool files are now compiled into the
+%Internally, the \WEB\ string pool files are now compiled into the
 %binaries, to ease upgrades.
 %
 %Finally, the changes made by Donald Knuth in his `\TeX\ tuneup of 2008'
@@ -3748,7 +3741,7 @@ Windows Registry Editor Version 5.00
 %implementation in \TeX\ Live, with support for more language dialects,
 %and including the \code{ctwill} program to make mini-indexes.
 %
-%\item \code{chkdvifont}: report font information from \dvi{} files, also
+%\item \code{chkdvifont}: report font information from \DVI{} files, also
 %from tfm/ofm, vf, gf, pk.
 %
 %\item \code{dvispc}: make a DVI file page-independent with respect to specials.
