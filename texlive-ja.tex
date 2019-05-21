@@ -1853,76 +1853,56 @@ Knuthによる\TeX のオリジナルソースと，文芸的プログラミン�
 役立ちます．ファイル検索を高速化するため，各ツリーのルートには配下にあるすべての
 ファイルの名前と相対位置を列挙した\file{ls-R}ファイルが置かれています．
 
-%\subsection{Kpathsea path searching}
-%\label{sec:kpathsea}
+\subsection{Kpathseaパス検索}
+\label{sec:kpathsea}
+
+まずはじめに，\KPS ライブラリによるパス検索の一般的なメカニズムを紹介します．
+
+\emph{パス要素}（基本的にはディレクトリ名）をコロンまたはセミコロン区切りで並べた
+リストを\emph{検索パス}と呼びます．検索パスはさまざまな場所で設定可能です．例えば，
+\samp{my-file}を検索パス\samp{.:/dir}から見つける場合，\KPS は各パス要素を順番に
+確認します．この場合，まず\file{./my-file}を確認し，次に\file{/dir/my-file}を確認
+して最初にみつけたもの（状況によっては，見つけたものすべて）を返します．
+
+あらゆるOSに適切に対応するため，非UNIXシステムにおいては\KPS はコロン (\samp{:}) と
+スラッシュ (\samp{/}) 以外の記号をファイル名の区切り文字として扱うことができます．
+
+特定のパス要素$p$を確認する際，\KPS はまず利用可能なファイル名データベース（\ref{%
+sec:filename-database}節を参照してください）が$p$について用意されているかを調べます．
+すなわち，$p$のプレフィックスにあたるディレクトリにデータベースがあるかを調べ，もし
+存在していた場合はその内容に基づいて検索マッチングを行います．
+
+最もシンプルでよくあるパス要素はディレクトリ名ですが，\KPS はそれ以外の機能として
+階層的なビルトイン値，環境変数名，設定ファイルの値，ユーザのホームディレクトリ，
+そしてサブディレクトリの再帰的な検索などをサポートしています．すなわち，\KPS はパス
+要素を様々な指定に従って通常のディレクトリ名に\emph{展開}します．これ以降，この
+展開について実際に処理が行われる順番で説明していきます．
+
+ところで，ファイル名が絶対パスもしくは明示的な相対パス（すなわち\samp{/}，\samp{%
+./}，\samp{../}のいずれかから始まるもの）で検索された場合は\KPS は，単純にそのパス
+位置にファイルがあるか否かを確認します．
+
+\subsubsection{パスの設定元}
+\label{sec:path-sources}
+
+検索パスは設定ファイルや環境変数など，さまざまな場所で設定することができます．ここに
+すべての設定元を\KPS が使用する順番に列挙しておきます：
 %
-%Let us first describe the generic path searching mechanism of the \KPS{}
-%library.
+\begin{enumerate}
+\item ユーザが設定している\code{TEXINPUTS}などの環境変数．なお\samp{\meta{変数名}.%
+  \meta{プログラム名}}という形の環境変数は，環境変数\samp{\meta{変数名}}を上書き
+  します．例えば\samp{latex}が実行中のプログラム名である場合，\code{TEXINPUTS.latex}%
+  は\code{TEXINPUTS}を上書きします．
+\item プログラムごとの設定ファイル．例えば\prog{dvips}の設定ファイル\file{config.ps}%
+  内にある\samp{S /a:/b}のような記述が反映されます．
+\item \KPS の設定ファイル\file{texmf.cnf}．\samp{TEXINPUTS=/c:/d}のような設定が並んで
+  います．
+\item コンパイル時のデフォルト設定．
+\end{enumerate}
 %
-%We call a \emph{search path} a colon- or semicolon\hyph sepa\-rated list
-%of \emph{path elements}, which are basically directory names.  A
-%search path can come from (a combination of) many sources.  To look up
-%a file \samp{my-file} along a path \samp{.:/dir}, \KPS{} checks each
-%element of the path in turn: first \file{./my-file}, then
-%\file{/dir/my-file}, returning the first match (or possibly all
-%matches).
-%
-%In order to adapt optimally to all operating systems' conventions, on
-%non-Unix systems \KPS{} can use filename separators different from
-%colon (\samp{:}) and slash (\samp{/}).
-%
-%To check a particular path element \var{p}, \KPS{} first checks if a
-%prebuilt database (see ``Filename data\-base'' on
-%page~\pageref{sec:filename-database}) applies to \var{p}, i.e., if the
-%database is in a directory that is a prefix of \var{p}.  If so, the path
-%specification is matched against the contents of the database.
-%
-%Although the simplest and most common path element is a directory
-%name, \KPS{} supports additional features in search paths: layered
-%default values, environment variable names, config file values, users'
-%home directories, and recursive subdirectory searching.  Thus, we say
-%that \KPS{} \emph{expands} a path element, meaning it transforms all
-%the specifications into basic directory name or names.  This is
-%described in the following sections in the same order as it takes
-%place.
-%
-%Note that if the filename being searched for is absolute or explicitly
-%relative, i.e., starts with \samp{/} or \samp{./} or \samp{../},
-%\KPS{} simply checks if that file exists.
-%
-%\ifSingleColumn
-%\else
-%\begin{figure*}
-%\verbatiminput{examples/ex5.tex}
-%\setlength{\abovecaptionskip}{0pt}
-%  \caption{An illustrative configuration file sample}
-%  \label{fig:config-sample}
-%\end{figure*}
-%\fi
-%
-%\subsubsection{Path sources}
-%\label{sec:path-sources}
-%
-%A search path can come from many sources.  In the order in which
-%\KPS{} uses them:
-%
-%\begin{enumerate}
-%\item
-%  A user-set environment variable, for instance, \code{TEXINPUTS}\@.
-%  Environment variables with a period and a program name appended
-%  override; e.g., if \samp{latex} is the name of the program being run,
-%  then \code{TEXINPUTS.latex} will override \code{TEXINPUTS}.
-%\item
-%  A program-specific configuration file, for exam\-ple, a line
-%  \samp{S /a:/b} in \cmd{dvips}'s \file{config.ps}.
-%\item   A \KPS{} configuration file \file{texmf.cnf}, containing a line like
-%  \samp{TEXINPUTS=/c:/d} (see below).
-%\item The compile-time default.
-%\end{enumerate}
-%\noindent You can see each of these values for a given search path by
-%using the debugging options (see ``Debugging actions'' on
-%page~\pageref{sec:debugging}).
-%
+それぞれの変数の値が何に設定されているかは，デバッグオプションを使用すると確認する
+ことができます（p.\,\pageref{sec:debugging}の「デバッグアクション」項を参照）．
+
 %\subsubsection{Config files}
 %
 %\KPS{} reads \emph{runtime configuration files} named \file{texmf.cnf}
