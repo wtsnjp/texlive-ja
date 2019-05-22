@@ -30,3 +30,6 @@ Sec. 3.5 (p.17)
 "(http://pages.uoregon.edu/koch/texshop"
 An unclosed parenthesis.
 
+Sec. 7.1.2 (p.26)
+> % and `@'
+"% and @" or "`%' and `@'" might be better.

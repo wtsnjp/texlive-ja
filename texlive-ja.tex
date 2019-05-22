@@ -1903,73 +1903,56 @@ sec:filename-database}節を参照してください）が$p$について用意�
 それぞれの変数の値が何に設定されているかは，デバッグオプションを使用すると確認する
 ことができます（p.\,\pageref{sec:debugging}の「デバッグアクション」項を参照）．
 
-%\subsubsection{Config files}
+\subsubsection{設定ファイル}
+
+\KPS は\file{texmf.cnf}という名前の実行時設定ファイルを読み込み，検索パスやその他の
+設定を行います．この設定ファイルの検索には検索パス\code{TEXMFCNF}が使用されますが，
+この変数の内容を（環境変数を設定することも含め）変更することは推奨されません．
+
+代わりに，通常のインストールを行うと\file{.../2019/texmf.cnf}が生成されます．
+どうしてもデフォルト設定を変更する必要が生じた場合は（通常は必要ありません），この
+ファイルに変更を加えてください．メインの設定ファイルは\file{.../2019/texmf-dist/%
+web2c/texmf.cnf}です．このファイルを変更してもディストリビューション側でアップデート
+があると変更内容が失われてしまうため，ユーザはこのファイルを編集すべきではありません．
+
+\KPS 検索パスに含まれる\emph{すべて}の\file{texmf.cnf}を読み込み，その内容を反映
+します．この際，検索パスのより前方にあるものの設定はより後方にあるものよりも優先
+されます．例えば，検索パス\code{.:\$TEXMF}の下で，\file{./texmf.cnf}は\file{$TEXMF/%
+texmf.cnf}の内容を上書きします．
+
+\begin{itemize*}
+\item \code{\%}はコメント開始文字で，行末までコメントとして扱われます．
+\item 空行は無視されます．
+\item 行末の\code{\bs}は行継続文字としてはたらきます．すなわち，次の行の内容も同じ行
+  として扱われます．行頭の連続する空白文字は無視されます．
+\item ほかの行は次の形式で記述されます：
 %
-%\KPS{} reads \emph{runtime configuration files} named \file{texmf.cnf}
-%for search path and other definitions.  The search path used to look
-%for these files is named \code{TEXMFCNF}, but we do not recommend
-%setting this (or any) environment variable.
+\begin{alltt}
+  \meta{変数名}[.\meta{プログラム名}] [=] \meta{値}
+\end{alltt}
 %
-%Instead, normal installation results in a file
-%\file{.../2019/texmf.cnf}.  If you must make changes to the defaults
-%(not normally necessary), this is the place to put them.  The main
-%configuration file is in \file{.../2019/texmf-dist/web2c/texmf.cnf}.
-%You should not edit this latter file, as your changes will be lost when
-%the distributed version is updated.
+  なお\samp{=}とその前後の空白は省略可能です．
+\item \meta{変数名}には空白文字，\samp{=}，\samp{.}以外の任意の文字を含めることが
+  できますが\samp{A-Za-z\var{\_}}の範囲に留めておくのが無難です．
+\item もし変数名に\samp{.\meta{プログラム名}}が付いている場合は，その変数定義は\meta{%
+  プログラム名}または\code{\meta{プログラム名}.exe}という名前のプログラムの実行中のみで
+  適用されます．この機能を用いると，例えば\TeX 処理系の種類ごとに異なる検索パスを適用
+  することができます．
+\item \meta{値}には\samp{\%}と\samp{@}を除く任意の文字を含めることができます．\code{%
+  \$\meta{変数}.\meta{プログラム名}}という形の変数は，右辺では使うことができません．
+  そのような場合は，必ず別の変数を追加して使用してください．\meta{値}内の\samp{;}は
+  UNIX環境下では\samp{:}に置換されます．この機能は1つの\file{texmf.cnf}をUNIX, MS-DOS,
+  Windowsで共有するのに便利です．
+\item すべての定義は展開される前に読み込まれるので，定義前の変数も右辺に含めることが
+  可能です．
+\end{itemize*}
 %
-%\emph{All} \file{texmf.cnf} files in the search path will be read and
-%definitions in earlier files override those in later files.  For
-%example, with a search path of \verb|.:$TEXMF|, values from
-%\file{./texmf.cnf} override those from \verb|$TEXMF/texmf.cnf|.
+上記の仕様のほとんどを活用した設定ファイルの例を示しておきます：
 %
-%\begin{itemize*}
-%\item
-%  Comments start with \code{\%} and continue to the end of the line.
-%\item
-%  Blank lines are ignored.
-%\item
-%  A \bs{} at the end of a line acts as a continuation character,
-%  i.e., the next line is appended.  Whitespace at the beginning of
-%  continuation lines is not ignored.
-%\item
-%  Each remaining line has the form:
-%\begin{alltt}
-%  \var{variable}[.\var{progname}] [=] \var{value}
-%\end{alltt}%
-%  where the \samp{=} and surrounding whitespace are optional.
-%\item
-%  The \ttvar{variable} name may contain any character other
-%  than whitespace, \samp{=}, or \samp{.}, but sticking to
-%  \samp{A-Za-z\_} is safest.
-%\item
-%  If \samp{.\var{progname}} is present, the definition only
-%  applies if the program that is running is named
-%  \texttt{\var{progname}} or \texttt{\var{progname}.exe}.  This allows
-%  different flavors of \TeX{} to have different search paths, for
-%  example.
-%\item \var{value} may contain any characters except
-%  \code{\%} and \samp{@}.  The
-%  \code{\$\var{var}.\var{prog}} feature is not available on the
-%  right-hand side; instead, you must use an additional variable.  A
-%  \samp{;}\ in \var{value} is translated to \samp{:}\ if
-%  running under Unix; this is useful to be able to have a single
-%  \file{texmf.cnf} for Unix, MS-DOS and Windows systems.
-%\item
-%  All definitions are read before anything is expanded, so
-%  variables can be referenced before they are defined.
-%\end{itemize*}
-%A configuration file fragment illustrating most of these points is
-%\ifSingleColumn
-%shown below:
-%
-%\verbatiminput{examples/ex5.tex}
-%\else
-%shown in figure~\ref{fig:config-sample}.
-%\fi
-%
+\verbatiminput{texlive-common/examples/ex5.tex}
+
 %\subsubsection{Path expansion}
 %\label{sec:path-expansion}
-%
 %
 %\KPS{} recognizes certain special characters and constructions in
 %search paths, similar to those available in Unix shells.  As a
