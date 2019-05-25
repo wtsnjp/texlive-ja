@@ -1951,17 +1951,15 @@ texmf.cnf}の内容を上書きします．
 %
 \verbatiminput{texlive-common/examples/ex5.tex}
 
-%\subsubsection{Path expansion}
-%\label{sec:path-expansion}
-%
-%\KPS{} recognizes certain special characters and constructions in
-%search paths, similar to those available in Unix shells.  As a
-%general example, the  complex path,
-%\verb+~$USER/{foo,bar}//baz+, expands to all subdirectories under
-%directories \file{foo} and \file{bar} in \texttt{\$USER}'s home
-%directory that contain a directory or file \file{baz}.  These
-%expansions are explained in the sections below.
-%%$
+\subsubsection{パス展開}
+\label{sec:path-expansion}
+
+\KPS はUNIXシェルと同様にいくつかの特殊文字や検索パスの構造を認識します．一般の
+例として，複雑なパス\dir{$USER/{foo,bar}//baz}は\var{\$USER}のホームディレクトリ
+直下のディレクトリ\dir{foo}と\dir{bar}以下にある，\file{baz}という名前のファイル
+またはディレクトリを含むすべてのサブディレクトリに展開されます．これらのパス展開の
+詳細については以下のセクションを参照してください．
+
 %\subsubsection{Default expansion}
 %\label{sec:default-expansion}
 %
