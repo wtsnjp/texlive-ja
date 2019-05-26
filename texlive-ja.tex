@@ -1960,35 +1960,34 @@ texmf.cnf}の内容を上書きします．
 またはディレクトリを含むすべてのサブディレクトリに展開されます．これらのパス展開の
 詳細については以下のセクションを参照してください．
 
-%\subsubsection{Default expansion}
-%\label{sec:default-expansion}
+\subsubsection{デフォルト展開}
+\label{sec:default-expansion}
+
+最も優先度の高い検索パス（\ref{sec:path-sources}節を参照）が先頭，末尾または途中
+2連続する形で\emph{追加コロン}を含んでいる場合，\KPS はその位置に（もし定義されて
+いれば）次に優先度の高いパスを挿入します．もし挿入される次点の検索パスにも追加
+コロンが含まれている場合，さらに次に優先度の高いパスが挿入されていきます．例えば
 %
-%If the highest-priority search path (see ``Path sources'' on
-%page~\pageref{sec:path-sources}) contains an \emph{extra colon} (i.e.,
-%leading, trailing, or doubled), \KPS{} inserts at that point the
-%next-highest-prio\-rity search path that is defined.  If that inserted
-%path has an extra colon, the same happens with the next highest.  For
-%example, given an environment variable setting
+\begin{alltt}
+> \Ucom{setenv TEXINPUTS /home/karl:}
+\end{alltt}
 %
-%\begin{alltt}
-%> \Ucom{setenv TEXINPUTS /home/karl:}
-%\end{alltt}
-%and a \code{TEXINPUTS} value from \file{texmf.cnf} of
+のように環境変数が設定されていたとして，\file{texmf.cnf}で設定されている\var{%
+TEXINPUTS}の値が
 %
-%\begin{alltt}
-%  .:\$TEXMF//tex
-%\end{alltt}
-%then the final value used for searching will be:
+\begin{alltt}
+  .:\$TEXMF//tex
+\end{alltt}
 %
-%\begin{alltt}
-%  /home/karl:.:\$TEXMF//tex
-%\end{alltt}
+のとき，最終的に検索されるパスは次のようになります：
 %
-%Since it would be useless to insert the default value in more than one
-%place, \KPS{} changes only one extra \samp{:}\ and leaves any others in
-%place.  It checks first for a leading \samp{:}, then a trailing
-%\samp{:}, then a doubled \samp{:}.
-%
+\begin{alltt}
+  /home/karl:.:\$TEXMF//tex
+\end{alltt}
+デフォルト値を複数箇所に挿入しても意味がないので，\KPS は追加コロンを1つだけ
+デフォルト値に置換し，それ以外はそのままにします．まず先頭にコロンがないか
+確認され，続いて末尾コロン，2連続のコロンが順にチェックされます．
+
 %\subsubsection{Brace expansion}
 %\label{sec:brace-expansion}
 %
