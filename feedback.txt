@@ -33,3 +33,7 @@ An unclosed parenthesis.
 Sec. 7.1.2 (p.26)
 > % and `@'
 "% and @" or "`%' and `@'" might be better.
+
+Sec. 7.1.5 (p.27)
+"$TEXMFDIST/tex trees only)"
+An unopened parenthesis.

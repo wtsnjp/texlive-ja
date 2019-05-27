@@ -1988,33 +1988,31 @@ TEXINPUTS}の値が
 デフォルト値に置換し，それ以外はそのままにします．まず先頭にコロンがないか
 確認され，続いて末尾コロン，2連続のコロンが順にチェックされます．
 
-%\subsubsection{Brace expansion}
-%\label{sec:brace-expansion}
+\subsubsection{ブレース展開}
+\label{sec:brace-expansion}
+
+ブレース展開は便利な機能で，例えば\dir{v{a,b}w}は\code{vaw:vbw}に展開されます．
+ネストすることも可能です．この機能は\var{\$TEXMF}にブレースリストを与えることに
+より複数の\TeX ヒエラルキーを共存させるのにも利用されています．具体的には\file{%
+texmf.cnf}では次のような設定が行われています（この例のために単純化しています）：
 %
-%A useful feature is brace expansion, which means that, for instance,
-%\verb+v{a,b}w+ expands to \verb+vaw:vbw+. Nesting is allowed.
-%This is used to implement multiple \TeX{} hierarchies, by
-%assigning a brace list to \code{\$TEXMF}.
-%For example, in \file{texmf.cnf}, a definition like this
-%(simplified for this example) is made:
-%\begin{verbatim}
-%  TEXMF = {$TEXMFVAR,$TEXMFHOME,!!$TEXMFLOCAL,!!$TEXMFDIST}
-%\end{verbatim}
-%We can then use this to define, for example, the \TeX\ input path:
-%\begin{verbatim}
-%  TEXINPUTS = .;$TEXMF/tex//
-%\end{verbatim}
-%%$
-%which means that, after looking in the current directory, the
-%\code{\$TEXMFVAR/tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}
-%and \code{\$TEXMFDIST/tex} trees \emph{only}) will be searched (the
-%last two using \file{ls-R} data base files). It is a convenient
-%way for running two parallel \TeX{} structures, one ``frozen'' (on a
-%\CD, for instance) and the other being continuously updated with new
-%versions as they become available.  By using the \code{\$TEXMF}
-%variable in all definitions, one is sure to always search the
-%up-to-date tree first.
+\begin{verbatim}
+  TEXMF = {$TEXMFVAR,$TEXMFHOME,!!$TEXMFLOCAL,!!$TEXMFDIST}
+\end{verbatim}
 %
+この値は，例えば\TeX の入力パスを定義するのに活用できるでしょう：
+%
+\begin{verbatim}
+  TEXINPUTS = .;$TEXMF/tex//
+\end{verbatim}
+%
+この設定の下では，まずカレントディレクトリがチェックされ，続いて\code{\$TEXMFVAR/%
+tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツリー
+が（最後2つについては\file{ls-R}データベースを利用しつつ）検索されることになります．
+これにより``frozen''なTEXMFツリー（例えばCDに入れてあるもの）と常に最新版にアップ
+デートしているTEXMFツリーを並行的に運用しているとして，\var{\$TEXMF}変数をすべての
+定義に使用しておけば，常に最新のTEXMFツリーを先に検索するようにすることができます．
+
 %\subsubsection{Subdirectory expansion}
 %\label{sec:subdirectory-expansion}
 %
