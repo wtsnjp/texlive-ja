@@ -2013,23 +2013,23 @@ tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツ
 デートしているTEXMFツリーを並行的に運用しているとして，\var{\$TEXMF}変数をすべての
 定義に使用しておけば，常に最新のTEXMFツリーを先に検索するようにすることができます．
 
-%\subsubsection{Subdirectory expansion}
-%\label{sec:subdirectory-expansion}
-%
-%Two or more consecutive slashes in a path element following a directory
-%\var{d} is replaced by all subdirectories of \var{d}: first those
-%subdirectories directly under \var{d}, then the subsubdirectories under
-%those, and so on.  At each level, the order in which the directories are
-%searched is \emph{unspecified}.
-%
-%If you specify any filename components after the \samp{//}, only
-%subdirectories with matching components are included.  For example,
-%\samp{/a//b} expands into directories \file{/a/1/b}, \file{/a/2/b},
-%\file{/a/1/1/b}, and so on, but not \file{/a/b/c} or \file{/a/1}.
-%
-%Multiple \samp{//} constructs in a path are possible, but
-%\samp{//} at the beginning of a path is ignored.
-%
+\subsubsection{サブディレクトリ展開}
+\label{sec:subdirectory-expansion}
+
+パス要素内で，2つ以上の連続するスラッシュがディレクトリ名$d$の後ろに置かれている
+場合，$d$以下のすべてのサブディレクトリに展開されます．つまり，まず$d$直下のサブ
+ディレクトリが並び，続いてさらにそれらのサブディレクトリのサブディレクトリが並び，
+以降も再帰的に続きます．各階層でサブディレクトリがどういう順番で検索されるかは
+\emph{決まっていません}．
+
+\samp{//}に続いてファイル名の一部を置いた場合，それとマッチするファイルを含む
+サブディレクトリのみが展開結果に含められます．例えば\samp{/a//b}は\file{/a/1/b},
+\file{/a/2/b}, \file{/a/1/1/b}などに展開されますが，\file{/a/b/c}や\file{/a/1}には
+展開されません．
+
+\samp{//}を1つのパスに複数含めることは可能ですが，パスの先頭に置かれた\samp{//}は
+無視されます．
+
 %\subsubsection{List of special characters and their meaning: a summary}
 %
 %The following list summarizes the special characters in \KPS{}
