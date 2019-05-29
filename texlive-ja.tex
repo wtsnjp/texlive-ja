@@ -2030,29 +2030,25 @@ tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツ
 \samp{//}を1つのパスに複数含めることは可能ですが，パスの先頭に置かれた\samp{//}は
 無視されます．
 
-%\subsubsection{List of special characters and their meaning: a summary}
+\subsubsection{特殊文字の一覧（要約）}
+
+以下のリストに\KPS 設定ファイルで利用できる特殊文字について要約しておきます：
 %
-%The following list summarizes the special characters in \KPS{}
-%configuration files.
-%
-%% need a wider space for the item labels here.
-%\newcommand{\CODE}[1]{\makebox[3em][l]{\code{#1}}}
-%\begin{ttdescription}
-%\item[\CODE{:}] Separator in path specification; at the beginning or
-%  the end of a path it substitutes the default path expansion.\par
-%\item[\CODE{;}] Separator on non-Unix systems (acts like \code{:}).
-%\item[\CODE{\$}] Variable expansion.
-%\item[\CODE{\string~}] Represents the user's home directory.
-%\item[\CODE{\char`\{...\char`\}}] Brace expansion.
-%\item[\CODE{//}] Subdirectory expansion (can occur anywhere in
-%    a path, except at its beginning).
-%\item[\CODE{\%}] Start of comment.
-%\item[\CODE{\bs}] Continuation character (allows multi-line entries).
-%\item[\CODE{!!}] Search \emph{only} database to locate file, \emph{do
-%    not} search the disk.
-%\end{ttdescription}
-%
-%
+\begin{description}
+\newcommand{\CODE}[1]{\makebox[3em][l]{\code{#1}}}
+\item[\CODE{:}] パス設定の区切り文字．先頭や末尾に置かれた場合はデフォルトパス展開
+  されます．
+\item[\CODE{;}] 非UNIXシステムでの区切り文字（挙動は\code{:}と同様）
+\item[\CODE{\$}] 変数展開
+\item[\CODE{\string~}] ユーザのホームディレクトリを表す
+\item[\CODE{\char`\{...\char`\}}] ブレース展開
+\item[\CODE{//}] サブディレクトリ展開．先頭を除き，パス中どこでも利用可能
+\item[\CODE{\%}] コメントの開始
+\item[\CODE{\bs}] 行継続（複数行エントリの記述に使用）
+\item[\CODE{!!}] ファイル名データベースの使用を\emph{強制}
+  （ディスク検索を\emph{禁止}）
+\end{description}
+
 %\subsection{Filename databases}
 %\label{sec:filename-database}
 %
