@@ -2049,21 +2049,21 @@ tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツ
   （ディスク検索を\emph{禁止}）
 \end{description}
 
-%\subsection{Filename databases}
-%\label{sec:filename-database}
-%
-%\KPS{} goes to some lengths to minimize disk accesses for searches.
-%Nevertheless, at installations with enough directories, searching each
-%possible directory for a given file can take an excessively long time
-%(this is especially true if many hundreds of font directories have to
-%be traversed.)  Therefore, \KPS{} can use an externally-built plain text
-%``database'' file named \file{ls-R} that maps files to directories,
-%thus avoiding the need to exhaustively search the disk.
-%
-%A second database file \file{aliases} allows you to give additional
-%names to the files listed in \file{ls-R}.  This can be helpful to
-%confirm to DOS 8.3 filename conventions in source files.
-%
+\subsection{ファイル名データベース}
+\label{sec:filename-database}
+
+\KPS は検索のためのディスクアクセスをある程度軽減する仕組みを持っています．
+それでも，十分な大きさの\TeX インストール構成で指定されたファイルについて，
+それが存在する可能性のあるすべてのディレクトリを検索するとかなり長い時間が
+かかってしまいます（特に何百ものフォントディレクトリを探索する場合には顕著
+です）．そのため\KPS は\file{ls-R}という名前のプレインテキスト「データベース」
+にファイルとディレクトリの情報を予め書き込んでおき，過剰なディスクアクセス
+を回避しています．
+
+また\file{aliases}というもう1つのデータベースファイルを利用すると，\file{%
+ls-R}に含まれているファイル名に別名を付けることができます．この機能は，
+ソースファイルに含まれているDOS 8.3形式のファイル名を確認する際に便利です．
+
 %\subsubsection{The filename database}
 %\label{sec:ls-R}
 %
@@ -2090,7 +2090,6 @@ tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツ
 %and searches the disk. If a particular path element begins with
 %\samp{!!}, however, \emph{only} the database will be searched for that
 %element, never the disk.
-%
 %
 %\subsubsection{kpsewhich: Standalone path searching}
 %\label{sec:invoking-kpsewhich}
