@@ -2064,33 +2064,33 @@ tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツ
 ls-R}に含まれているファイル名に別名を付けることができます．この機能は，
 ソースファイルに含まれているDOS 8.3形式のファイル名を確認する際に便利です．
 
-%\subsubsection{The filename database}
-%\label{sec:ls-R}
+\subsubsection{ファイル名データベース}
+\label{sec:ls-R}
+
+上で説明したように，メインのファイル名データベースの名前は\file{ls-R}です．
+ファイル名データベースは，検索対象としたい各\TeX ヒエラルキーの最上位階層に
+配置することができます（デフォルトでは\code{\$TEXMF}）．\KPS は\code{TEXMF%
+DBS}パスに含まれている\file{ls-R}を読み込みます．
+
+\file{ls-R}の生成・更新には，ディストリビューションに含まれる\cmd{mktexlsr}%
+コマンドの利用をおすすめします．このコマンドは種々の\cmd{mktex}\dots
+スクリプトから呼び出されます．本質的には，このスクリプトは単に
 %
-%As explained above, the name of the main filename database must be
-%\file{ls-R}.  You can put one at the root of each \TeX{} hierarchy in
-%your installation that you wish to be searched (\code{\$TEXMF} by
-%default).  \KPS{} looks for
-%\file{ls-R} files along the \code{TEXMFDBS} path.
+\begin{alltt}
+cd \var{/your/texmf/root} && \path|\|ls -1LAR ./ >ls-R
+\end{alltt}
 %
-%The recommended way to create and maintain \samp{ls-R} is to run the
-%\code{mktexlsr} script included with the distribution. It is invoked
-%by the various \samp{mktex}\dots\ scripts.  In principle, this script
-%just runs the command
-%\begin{alltt}
-%cd \var{/your/texmf/root} && \path|\|ls -1LAR ./ >ls-R
-%\end{alltt}
-%presuming your system's \code{ls} produces the right output format
-%(\GNU \code{ls} is all right).  To ensure that the database is
-%always up-to-date, it is easiest to rebuild it regularly via
-%\code{cron}, so that it is automatically updated when the installed
-%files change, such as after installing or updating a \LaTeX{} package.
-%
-%If a file is not found in the database, by default \KPS{} goes ahead
-%and searches the disk. If a particular path element begins with
-%\samp{!!}, however, \emph{only} the database will be searched for that
-%element, never the disk.
-%
+を実行するだけです．なお，このスクリプトはシステムの\cmd{ls}コマンドが正しい
+形式で出力を行うことを前提にしています（{\GNU} \cmd{ls}なら問題ありません）．
+データベースが常に最新の状態であることを保証するには，\cmd{cron}を利用して
+定期的にデータベースを更新するのが簡単でしょう．そうすることによって，例えば
+\LaTeX パッケージをインストールしたりアップデートしたりして，新しいファイルが
+配置されたとしても自動的にデータベースが更新されることになります．
+
+データベースにファイルが見つからない場合，デフォルトでは\KPS は処理を続行して
+ディスク検索を行います．ただし\samp{!!}から開始するパス要素については，データ
+ベース\emph{のみ}が検索され，ディスクが検索されることはありません．
+
 %\subsubsection{kpsewhich: Standalone path searching}
 %\label{sec:invoking-kpsewhich}
 %
