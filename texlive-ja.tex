@@ -2091,67 +2091,68 @@ cd \var{/your/texmf/root} && \path|\|ls -1LAR ./ >ls-R
 ディスク検索を行います．ただし\samp{!!}から開始するパス要素については，データ
 ベース\emph{のみ}が検索され，ディスクが検索されることはありません．
 
-%\subsubsection{kpsewhich: Standalone path searching}
-%\label{sec:invoking-kpsewhich}
+\subsubsection{\cmd{kpsewhich}: パス検索用コマンドラインツール}
+\label{sec:invoking-kpsewhich}
+
+\cmd{kpsewhich}コマンドはパス検索を行うための独立したツールです．このコマンド
+は\cmd{find}コマンドのように利用して\TeX ヒエラルキーの中にあるファイルを探索
+するのに便利です（このプログラムはディストリビューションに含まれる\cmd{mktex}%
+\dots スクリプトでも多用されています）．
 %
-%The \texttt{kpsewhich} program exercises path searching independent of any
-%particular application.  This can be useful as a sort of \code{find}
-%program to locate files in \TeX{} hierarchies (this is used heavily in
-%the distributed \samp{mktex}\dots\ scripts).
+\begin{alltt}
+> \Ucom{kpsewhich \meta{オプション}\dots{} \meta{ファイル名}\dots{}}
+\end{alltt}
+
+上記の\meta{オプション}は\samp{\sopt{}}または\samp{\lopt{}}で開始して，曖昧で
+ない限りどのような省略の仕方をしても指定可能です．
+
+\KPS はオプションでないすべての引数をファイル名として受け取って，それぞれに
+ついて見つかった最初のファイルを返します．特定の名前のファイルをすべて列挙する
+オプションはありません（そのような場合はUNIXの\cmd{find}コマンドを使用して
+ください）．
+
+よく使われるオプションを一覧にしておきます：
 %
-%\begin{alltt}
-%> \Ucom{kpsewhich \var{option}\dots{} \var{filename}\dots{}}
-%\end{alltt}
-%The options specified in \ttvar{option} start with either \samp{-}
-%or \samp{-{}-}, and any unambiguous abbreviation is accepted.
-%
-%\KPS{} looks up each non-option argument on the command line as a
-%filename, and returns the first file found. There is no option to
-%return all the files with a particular name (you can run the Unix
-%\samp{find} utility for that).
-%
-%The most common options are described next.
-%
-%\begin{ttdescription}
-%\item[\texttt{-{}-dpi=\var{num}}]\mbox{}
-%  Set the resolution to \ttvar{num}; this only affects \samp{gf}
-%  and \samp{pk} lookups.  \samp{-D} is a synonym, for compatibility
-%  with \cmd{dvips}.  Default is 600.
-%
-%\item[\texttt{-{}-format=\var{name}}]\mbox{}\\
-%  Set the format for lookup to \ttvar{name}.  By default, the
-%  format is guessed from the filename. For formats which do not have
-%  an associated unambiguous suffix, such as \MP{} support files and
-%  \cmd{dvips} configuration files, you have to specify the name as
-%  known to \KPS{}, such as \texttt{tex} or \texttt{enc files}.  Run
-%  \texttt{kpsewhich -{}-help} for a list.
-%
-%\item[\texttt{-{}-mode=\var{string}}]\mbox{}\\
-%  Set the mode name to \ttvar{string}; this only affects \samp{gf}
-%  and \samp{pk} lookups.  No default: any mode will be found.
-%\item[\texttt{-{}-must-exist}]\mbox{}\\
-%  Do everything possible to find the files, notably including
-%  searching the disk.  By default, only the \file{ls-R} database is
-%  checked, in the interest of efficiency.
-%\item[\texttt{-{}-path=\var{string}}]\mbox{}\\
-%  Search along the path \ttvar{string} (colon-separated as usual),
-%  instead of guessing the search path from the filename.  \samp{//} and
-%  all the usual expansions are supported.  The options \samp{-{}-path}
-%  and \samp{-{}-format} are mutually exclusive.
-%\item[\texttt{-{}-progname=\var{name}}]\mbox{}\\
-%  Set the program name to \texttt{\var{name}}.
-%  This can affect the search paths via the \texttt{.\var{progname}}
-%  feature.
-%  The default is \cmd{kpsewhich}.
-%\item[\texttt{-{}-show-path=\var{name}}]\mbox{}\\
-%  shows the path used for file lookups of file type \texttt{\var{name}}.
-%  Either a filename extension (\code{.pk}, \code{.vf}, etc.) or a
-%  name can be used, just as with \samp{-{}-format} option.
-%\item[\texttt{-{}-debug=\var{num}}]\mbox{}\\
-%  sets the debugging options to \texttt{\var{num}}.
-%\end{ttdescription}
-%
-%
+\begin{description}
+\item[\code{\lopt{dpi}=\meta{数値}}]
+解像度を\meta{数値}に設定します．このオプションはgeneric fonts (GF) とpacked
+fonts (PK) を検索するときにのみ効果を発揮します．\cmd{dvips}に合わせて\sopt{D}%
+という省略形も使用できます．デフォルト値は600です．
+
+\item[\code{\lopt{format}=\meta{フォーマット名}}]
+検索対象のフォーマットを指定します．デフォルトではフォーマットはファイル名から
+推測されます．\MP のサポートファイルや\cmd{dvips}の設定ファイルなど，対応する
+（曖昧でない）拡張子がないフォーマットについては，このオプションを用いて明示的
+に指定する必要があります．その際\meta{フォーマット名}には\code{tex}や\code{enc
+files}などを指定します．具体的なフォーマット名のリストについては\code{kpsewhich
+\lopt{help}}を参照してください．
+
+\item[\code{\lopt{mode}=\meta{モード名}}]
+モード名を設定します．このオプションもGFおよびPKの検索用です．デフォルト値は
+なく，指定しない限りすべてのモードが検索対象になります．
+
+\item[\code{\lopt{must-exist}}]
+ディスク検索を含むあらゆる手段を使用して，可能な限りファイル検索を行います．
+デフォルトでは，効率重視のため\file{ls-R}データベースのみが検索されます．
+
+\item[\code{\lopt{path}=\meta{パス}}]
+ファイル名からパスを推測する代わりに，指定された\meta{パス}（通常通りコロン
+区切り）を利用して検索を行います．\samp{//}を含むすべての特殊文字とその展開が
+サポートされています．\lopt{path}と\lopt{format}は相容れません．
+
+\item[\code{\lopt{progname}=\meta{プログラム名}}]
+プログラム名を設定します．これは\code{.\meta{プログラム名}}接尾辞付きの変数を
+介して検索パスに影響を与えます．デフォルトでは\cmd{kpsewhich}です．
+
+\item[\code{\lopt{show-path}=\meta{名前}}]
+指定した\meta{名前}と紐づくファイルタイプの検索に用いられるパスを表示します．
+\meta{名前}には拡張子 (\code{.pk}, \code{.vf}, etc.) またはファイル名を指定する
+ことができ，\lopt{format}オプションも併用できます．
+
+\item[\code{\lopt{debug}=\meta{数値}}]
+デバッグレベルを\meta{数値}に設定します．
+\end{description}
+
 %\subsubsection{Examples of use}
 %\label{sec:examples-of-use}
 %
