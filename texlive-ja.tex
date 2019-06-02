@@ -2153,125 +2153,131 @@ files}などを指定します．具体的なフォーマット名のリスト�
 デバッグレベルを\meta{数値}に設定します．
 \end{description}
 
-%\subsubsection{Examples of use}
-%\label{sec:examples-of-use}
+\subsubsection{使用例}
+\label{sec:examples-of-use}
+
+このセクションでは\KPS の実行例をいくつか紹介していきます．まずは単純な検索です：
 %
-%Let us now have a look at \KPS{} in action.  Here's a straightforward search:
+\begin{alltt}
+> \Ucom{kpsewhich article.cls}
+   /usr/local/texmf-dist/tex/latex/base/article.cls
+\end{alltt}
 %
-%\begin{alltt}
-%> \Ucom{kpsewhich article.cls}
-%   /usr/local/texmf-dist/tex/latex/base/article.cls
-%\end{alltt}
-%We are looking for the file \file{article.cls}. Since the \samp{.cls}
-%suffix is unambiguous we do not need to specify that we want to look for a
-%file of type \optname{tex} (\TeX{} source file directories). We find it in
-%the subdirectory \file{tex/latex/base} below the \samp{texmf-dist} \TL\
-%directory.  Similarly, all of the following are found without problems
-%thanks to their unambiguous suffix.
-%\begin{alltt}
-%> \Ucom{kpsewhich array.sty}
-%   /usr/local/texmf-dist/tex/latex/tools/array.sty
-%> \Ucom{kpsewhich latin1.def}
-%   /usr/local/texmf-dist/tex/latex/base/latin1.def
-%> \Ucom{kpsewhich size10.clo}
-%   /usr/local/texmf-dist/tex/latex/base/size10.clo
-%> \Ucom{kpsewhich small2e.tex}
-%   /usr/local/texmf-dist/tex/latex/base/small2e.tex
-%> \Ucom{kpsewhich tugboat.bib}
-%   /usr/local/texmf-dist/bibtex/bib/beebe/tugboat.bib
-%\end{alltt}
+この例では\file{article.cls}を検索しています．拡張子\samp{.cls}には曖昧性がない
+ので，わざわざファイルタイプ\code{tex}（\TeX のソースファイル）を指定する必要は
+ありません．上の例では，目的のファイルは\dir{texmf-dist} \TL ディレクトリ内の
+\dir{tex/latex/base}サブディレクトリの中に見つかりました．同様にして，以下に列挙
+する例はいずれも曖昧性のない拡張子のおかげで特に問題なくファイルを見つけることが
+できます：
 %
-%By the way, that last is a \BibTeX{} bibliography database for
-%\textsl{TUGboat} articles.
+\begin{alltt}
+> \Ucom{kpsewhich array.sty}
+   /usr/local/texmf-dist/tex/latex/tools/array.sty
+> \Ucom{kpsewhich latin1.def}
+   /usr/local/texmf-dist/tex/latex/base/latin1.def
+> \Ucom{kpsewhich size10.clo}
+   /usr/local/texmf-dist/tex/latex/base/size10.clo
+> \Ucom{kpsewhich small2e.tex}
+   /usr/local/texmf-dist/tex/latex/base/small2e.tex
+> \Ucom{kpsewhich tugboat.bib}
+   /usr/local/texmf-dist/bibtex/bib/beebe/tugboat.bib
+\end{alltt}
 %
-%\begin{alltt}
-%> \Ucom{kpsewhich cmr10.pk}
-%\end{alltt}
-%Font bitmap glyph files of type \file{.pk} are used by display
-%programs like \cmd{dvips} and \cmd{xdvi}.  Nothing is returned in
-%this case since there are no pre-generated Computer Modern \samp{.pk}
-%files in \TL{}\Dash the Type~1 variants are used by default.
-%\begin{alltt}
-%> \Ucom{kpsewhich wsuipa10.pk}
-%\ifSingleColumn   /usr/local/texmf-var/fonts/pk/ljfour/public/wsuipa/wsuipa10.600pk
-%\else /usr/local/texmf-var/fonts/pk/ljfour/public/
-%...                         wsuipa/wsuipa10.600pk
-%\fi\end{alltt}
-%For these fonts (a phonetic alphabet from the University of Washington)
-%we had to generate \samp{.pk} files, and since the default \MF{} mode on
-%our installation is \texttt{ljfour} with a base resolution of 600\dpi{}
-%(dots per inch), this instantiation is returned.
-%\begin{alltt}
-%> \Ucom{kpsewhich -dpi=300 wsuipa10.pk}
-%\end{alltt}
-%In this case, when specifying that we are interested in a resolution
-%of 300\dpi{} (\texttt{-dpi=300}) we see that no such font is available on
-%the system. A program like \cmd{dvips} or \cmd{xdvi} would
-%go off and actually build the required \texttt{.pk} files
-%using the script \cmd{mktexpk}.
+ところで，最後の例として挙がっているのは\textsl{TUGboat}の記事用の\BibTeX 文献
+データベースです．
+
+\begin{alltt}
+> \Ucom{kpsewhich cmr10.pk}
+\end{alltt}
 %
-%Next we turn our attention to \cmd{dvips}'s header and configuration
-%files.  We first look at one of the commonly used files, the general
-%prologue \file{tex.pro} for \TeX{} support, before turning our attention
-%to the generic configuration file (\file{config.ps}) and the \PS{} font
-%map \file{psfonts.map}\Dash as of 2004, map and encoding files have
-%their own search paths and new location in \dirname{texmf} trees.  As
-%the \samp{.ps} suffix is ambiguous we have to specify explicitly which
-%type we are considering (\optname{dvips config}) for the file
-%\texttt{config.ps}.
-%\begin{alltt}
-%> \Ucom{kpsewhich tex.pro}
-%   /usr/local/texmf/dvips/base/tex.pro
-%> \Ucom{kpsewhich --format="dvips config" config.ps}
-%   /usr/local/texmf/dvips/config/config.ps
-%> \Ucom{kpsewhich psfonts.map}
-%   /usr/local/texmf/fonts/map/dvips/updmap/psfonts.map
-%\end{alltt}
+拡張子\samp{.pk}をもつ，フォントのビットマップグリフファイルは\prog{dvips}や
+\prog{xdvi}などのディスプレイプログラムによって使用されます．Computer Modernの
+\samp{.pk}ファイルは通常\TL に含まれていないので（デフォルトではType~1変種が
+使用されるため），上の例では何も出力されません．
+
+\begin{alltt}
+> \Ucom{kpsewhich wsuipa10.pk}
+   /usr/local/texmf-var/fonts/pk/ljfour/public/wsuipa/wsuipa10.600pk
+\end{alltt}
 %
-%We now take a closer look at the URW Times \PS{} support
-%files.  The prefix for these in the standard font naming scheme is
-%\samp{utm}.  The first file we look at is the configuration file,
-%which contains the name of the map file:
-%\begin{alltt}
-%> \Ucom{kpsewhich --format="dvips config" config.utm}
-%   /usr/local/texmf-dist/dvips/psnfss/config.utm
-%\end{alltt}
-%The contents of that file is
-%\begin{alltt}
-%  p +utm.map
-%\end{alltt}
-%which points to the file \file{utm.map}, which we want to
-%locate next.
-%\begin{alltt}
-%> \Ucom{kpsewhich utm.map}
-%   /usr/local/texmf-dist/fonts/map/dvips/times/utm.map
-%\end{alltt}
-%This map file defines the file names of the Type~1 \PS{} fonts in
-%the URW collection.  Its contents look like (we only show part of the
-%lines):
-%\begin{alltt}
-%utmb8r  NimbusRomNo9L-Medi    ... <utmb8a.pfb
-%utmbi8r NimbusRomNo9L-MediItal... <utmbi8a.pfb
-%utmr8r  NimbusRomNo9L-Regu    ... <utmr8a.pfb
-%utmri8r NimbusRomNo9L-ReguItal... <utmri8a.pfb
-%utmbo8r NimbusRomNo9L-Medi    ... <utmb8a.pfb
-%utmro8r NimbusRomNo9L-Regu    ... <utmr8a.pfb
-%\end{alltt}
-%Let us, for instance, take the Times Roman instance
-%\file{utmr8a.pfb} and find its position in the \file{texmf} directory
-%tree with a search for Type~1 font files:
-%\begin{alltt}
-%> \Ucom{kpsewhich utmr8a.pfb}
-%\ifSingleColumn   /usr/local/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
-%\else   /usr/local/texmf-dist/fonts/type1/
-%... urw/utm/utmr8a.pfb
-%\fi\end{alltt}
+これらのフォント（ワシントン大学で開発された音声記号）については，まず\samp{%
+.pk}ファイルを生成する必要があり，\TL における\MF モードはデフォルトでは解像度
+600{\dpi} (dots per inch) 設定の\code{ljfour}なので，上のような結果になります．
 %
-%It should be evident from these examples how you can easily locate the
-%whereabouts of a given file. This is especially important if you suspect
-%that the wrong version of a file is picked up somehow, since
-%\cmd{kpsewhich} will show you the first file encountered.
+\begin{alltt}
+> \Ucom{kpsewhich -dpi=300 wsuipa10.pk}
+\end{alltt}
 %
+続いてのケースでは解像度300\dpi を指定 (\code{\sopt{-dpi}=300}) していますが，
+そのようなフォントファイルは存在しないという結果が得られました．\cmd{dvips}や
+\cmd{xdvi}などのプログラムは実行を中断し，\cmd{mktexpk}スクリプトを用いて必要な
+\samp{.pk}ファイルを生成することになるでしょう．
+
+次に\cmd{dvips}のヘッダおよび設定ファイルについて考えましょう．2004年以来，汎用
+の設定ファイル\file{config.ps}と\PS フォントのマップファイル\file{psfonts.map}%
+は独自の検索パスと\dir{texmf}ツリー内での配置場所を持っているので，それらを取り
+扱う前に\TeX サポートのための汎用プロローグ\file{tex.pro}の例を示しました．
+拡張子\samp{.ps}には曖昧性があるので，\file{config.ps}については該当するファイル
+タイプ (\code{dvips config}) を明示的に指定する必要があります．
+%
+\begin{alltt}
+> \Ucom{kpsewhich tex.pro}
+   /usr/local/texmf/dvips/base/tex.pro
+> \Ucom{kpsewhich --format="dvips config" config.ps}
+   /usr/local/texmf/dvips/config/config.ps
+> \Ucom{kpsewhich psfonts.map}
+   /usr/local/texmf/fonts/map/dvips/updmap/psfonts.map
+\end{alltt}
+
+今度はURW Timesの\PS サポートファイルについて考えます．標準的なフォント命名規則
+に基づけば，これらのプレフィックスは\samp{utm}です．最初に検索するのはマップ
+ファイルの名前を格納している設定ファイルです：
+%
+\begin{alltt}
+> \Ucom{kpsewhich --format="dvips config" config.utm}
+   /usr/local/texmf-dist/dvips/psnfss/config.utm
+\end{alltt}
+%
+このファイルには
+%
+\begin{alltt}
+  p +utm.map
+\end{alltt}
+%
+という記述があり，\file{utm.map}を参照しているので，続いてこのファイルの位置を
+確認してみましょう：
+%
+\begin{alltt}
+> \Ucom{kpsewhich utm.map}
+   /usr/local/texmf-dist/fonts/map/dvips/times/utm.map
+\end{alltt}
+%
+このマップファイルはURWコレクションに含まれるType~1 \PS フォントのファイル名を
+定義しています．ファイルには下記のような記述が並んでいます（以下は抜粋です）：
+%
+\begin{alltt}
+utmb8r  NimbusRomNo9L-Medi    ... <utmb8a.pfb
+utmbi8r NimbusRomNo9L-MediItal... <utmbi8a.pfb
+utmr8r  NimbusRomNo9L-Regu    ... <utmr8a.pfb
+utmri8r NimbusRomNo9L-ReguItal... <utmri8a.pfb
+utmbo8r NimbusRomNo9L-Medi    ... <utmb8a.pfb
+utmro8r NimbusRomNo9L-Regu    ... <utmr8a.pfb
+\end{alltt}
+%
+例えば，Times Romanを例にとって，\file{texmf}ディレクトリ内における\file{%
+utmr8a.pfb}ファイルの位置を検索してみます：
+%
+\begin{alltt}
+> \Ucom{kpsewhich utmr8a.pfb}
+   /usr/local/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+\end{alltt}
+
+ここまでの例が，いかに簡単に指定したファイルを見つけることができるかを示して
+いるはずです．ここで示したテクニックは，何らかの理由で間違ったバージョンの
+ファイルが使用されてしまっていると疑われるときに特に役立ちます．\cmd{kpsewhich}%
+コマンドを用いれば，どのファイルが一番最初に見つかっているのかを確認することが
+できます．
+
 %\subsubsection{Debugging actions}
 %\label{sec:debugging}
 %
