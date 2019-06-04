@@ -2061,8 +2061,9 @@ tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツ
 を回避しています．
 
 また\file{aliases}というもう1つのデータベースファイルを利用すると，\file{%
-ls-R}に含まれているファイル名に別名を付けることができます．この機能は，
-ソースファイルに含まれているDOS 8.3形式のファイル名を確認する際に便利です．
+ls-R}に含まれているファイル名に別名（エイリアス）を付けることができます．この
+機能は，ソースファイルに含まれているDOS 8.3形式のファイル名を確認する際に便利
+です．
 
 \subsubsection{ファイル名データベース}
 \label{sec:ls-R}
@@ -2278,144 +2279,157 @@ utmr8a.pfb}ファイルの位置を検索してみます：
 コマンドを用いれば，どのファイルが一番最初に見つかっているのかを確認することが
 できます．
 
-%\subsubsection{Debugging actions}
-%\label{sec:debugging}
+\subsubsection{デバッグアクション}
+\label{sec:debugging}
+
+ときとして，あるプログラムがファイル参照をどのように解決しているかについて調査
+する必要が生じる場合があります．そのような場合のために，\KPS はさまざまなレベル
+のデバッグオプションを提供しています：
 %
-%Sometimes it is necessary to investigate how a program resolves file
-%references. To make this practical, \KPS{} offers various levels of
-%debugging output:
+\begin{description}
+\makeatletter
+\setbox\z@=\hbox{\code{00}}
+\newcommand{\dbgitem}[1]{\item[\code{\hbox to\wd\z@{\hfill #1}}]}
+\makeatother
+
+\dbgitem{1}
+\code{stat}コマンドによるディスク検索の状況．きちんと更新された\file{ls-R}データ
+ベースを使用して検索が行われている場合，このデバッグオプションはほとんど何も出力
+しないはずです．
+
+\dbgitem{2}
+ハッシュテーブルの参照（\file{ls-R}，マップファイル，設定ファイルなど）．
+
+\dbgitem{4}
+ファイルI/O操作．
+
+\dbgitem{8}
+各ファイルタイプに適用されるパスの情報．これは特定のファイルに対する検索パスが
+どこで定義されているのかを調べるのに役立ちます．
+
+\dbgitem{16}
+各パス要素に属するディレクトリの一覧（ディスク検索にのみ関係）．
+
+\dbgitem{32}
+ファイル検索．
+
+\dbgitem{64}
+変数の値．
+\end{description}
 %
-%\begin{ttdescription}
-%\item[\texttt{\ 1}] \texttt{stat} calls (disk lookups). When running
-%  with an up-to-date \file{ls-R} database this should almost give no
-%  output.
-%\item[\texttt{\ 2}] References to hash tables (such as \file{ls-R}
-%  databases, map files, configuration files).
-%\item[\texttt{\ 4}] File open and close operations.
-%\item[\texttt{\ 8}] General path information for file types
-%  searched by \KPS. This is useful to find out where a particular
-%  path for the file was defined.
-%\item[\texttt{16}] Directory list for each path element (only relevant
-%  for searches on disk).
-%\item[\texttt{32}] File searches.
-%\item[\texttt{64}] Variable values.
-%\end{ttdescription}
-%A value of \texttt{-1} will set all the above options; in practice,
-%this is usually the most convenient.
+デバッグレベルを\code{-1}に設定すると上のすべてが有効になります．多くの場合，
+実用上はこれが一番便利でしょう．
+
+同様に\cmd{dvips}プログラムでも，デバッグオプションをいくつか組み合わせることで
+どこのファイルが読み込まれているか詳細を確認することができます．またファイルが
+見つからない場合に，デバッグ出力はプログラムがどこに対してファイル検索を行った
+かを示してくれるので，どこに問題があるのかを把握することができます．
+
+一般的に言って，\KPS ライブラリは多くのプログラムから内部的に呼び出されるもの
+なので，デバッグオプションは環境変数\var{KPATHSEA\_DEBUG}を上記リストの値
+（もしくはそれらの組み合わせ）に設定することによって指定するのがよいでしょう．
+\footnote{Windowsユーザ向けの情報：Windowsではすべてのデバッグメッセージを1つの
+ファイルにリダイレクトするのは困難です．デバッグの際は，一時的に\code{SET
+\var{KPATHSEA\_DEBUG\_OUTPUT}=err.log}などと設定するのがよいでしょう}
+
+例として，以下のような内容の小さな\LaTeX ソースファイル\file{hello-world.tex}を
+考えてみます．
 %
-%Similarly, with the \cmd{dvips} program, by setting a combination of
-%debug switches, one can follow in detail where files are being picked up
-%from.  Alternatively, when a file is not found, the debug trace shows in
-%which directories the program looks for the given file, so that one can
-%get an indication what the problem~is.
+\begin{verbatim}
+  \documentclass{article}
+  \begin{document}
+  Hello World!
+  \end{document}
+\end{verbatim}
 %
-%Generally speaking, as most programs call the \KPS{} library
-%internally, one can select a debug option by using the
-%\code{KPATHSEA\_DEBUG} environment variable, and setting it to (a
-%combination of) values as described in the above list.
+この小さなファイルは\file{cmr10}フォントのみを使用するのですが，\cmd{dvips}が
+どのように\PS ファイルを用意するのか確認してみましょう（ここではComputer Modern%
+のType~1バージョンを使用したいので\sopt{Pcms}を指定します）．
 %
-%(Note for Windows users: it is not easy to redirect
-%all messages to a file in this system. For diagnostic purposes
-%you can temporarily \texttt{SET KPATHSEA\_DEBUG\_OUTPUT=err.log}).
+\begin{alltt}
+> \Ucom{dvips -d4100 hello-world -Pcms -o}
+\end{alltt}
 %
-%Let us consider, as an example, a small \LaTeX{} source file,
-%\file{hello-world.tex}, which contains the following input.
-%\begin{verbatim}
-%  \documentclass{article}
-%  \begin{document}
-%  Hello World!
-%  \end{document}
-%\end{verbatim}
-%This little file only uses the font \file{cmr10}, so let us look at
-%how \cmd{dvips} prepares the \PS{} file (we want to use the Type~1
-%version of the Computer Modern fonts, hence the option \texttt{-Pcms}).
-%\begin{alltt}
-%> \Ucom{dvips -d4100 hello-world -Pcms -o}
-%\end{alltt}
-%In this case we have combined \cmd{dvips}'s debug class 4 (font
-%paths) with \KPS's path element expansion (see the \cmd{dvips}
-%reference manual).
-%The output (slightly rearranged) appears in
-%Figure~\ref{fig:dvipsdbga}.
-%\begin{figure*}[tp]
-%\centering
-%\input{examples/ex6a.tex}
-%\caption{Finding configuration files}\label{fig:dvipsdbga}
-%\end{figure*}
+上記の例では\cmd{dvips}のデバッグクラス4（フォントパス）と\KPS のパス要素展開を
+組み合わせました（\cmd{dvips}のリファレンスマニュアルを参照）．この出力（かなり
+いじっていますが）を図\ref{fig:dvipsdbga}に示します．
 %
-%\cmd{dvips} starts by locating its working files. First,
-%\file{texmf.cnf} is found, which gives the definitions of the search
-%paths for the other files, then the file database \file{ls-R} (to
-%optimize file searching) and the file \file{aliases}, which makes it
-%possible to declare several names (e.g., a short DOS-like 8.3 and
-%a more natural longer version) for the same file.  Then \cmd{dvips}
-%goes on to find the generic configuration file \file{config.ps}
-%before looking for the customization file \file{.dvipsrc} (which, in
-%this case is \emph{not found}).  Finally, \cmd{dvips} locates the
-%config file for the Computer Modern \PS{} fonts \file{config.cms}
-%(this was initiated with the \texttt{-Pcms} option on the \cmd{dvips}
-%command).  This file contains the list of the map files which
-%define the relation between the \TeX{}, \PS{} and file system
-%names of the fonts.
-%\begin{alltt}
-%> \Ucom{more /usr/local/texmf/dvips/cms/config.cms}
-%   p +ams.map
-%   p +cms.map
-%   p +cmbkm.map
-%   p +amsbkm.map
-%\end{alltt}
-%\cmd{dvips} thus goes on to find all these files, plus the generic
-%map file \file{psfonts.map}, which is always loaded (it contains
-%declarations for commonly used \PS{} fonts; see the last part of
-%section~\ref{sec:examples-of-use} for more details about \PS{} map
-%file handling).
+\begin{figure*}[tp]
+\centering
+\input{texlive-common/examples/ex6a.tex}
+\caption{設定ファイルを見つける}
+\label{fig:dvipsdbga}
+\end{figure*}
 %
-%At this point \cmd{dvips} identifies itself to the user:
-%\begin{alltt}
-%This is dvips(k) 5.92b Copyright 2002 Radical Eye Software (www.radicaleye.com)
-%\end{alltt}
-%\ifSingleColumn
-%Then it goes on to look for the prolog file \file{texc.pro}:
-%\begin{alltt}\small
-%kdebug:start search(file=texc.pro, must\_exist=0, find\_all=0,
-%  path=.:~/tex/dvips//:!!/usr/local/texmf/dvips//:
-%       ~/tex/fonts/type1//:!!/usr/local/texmf/fonts/type1//).
-%kdebug:search(texc.pro) => /usr/local/texmf/dvips/base/texc.pro
-%\end{alltt}
-%\else
-%Then it goes on to look for the prolog file \file{texc.pro} (see
-%Figure~\ref{fig:dvipsdbgb}).
-%\fi
+\cmd{dvips}は起動後，まず作業ファイルを探します．はじめに他のファイルの検索に
+用いられる検索パスを定義する\file{texmf.cnf}が見つかり，続いてファイル検索を
+最適化するファイル名データベース\file{ls-R}とエイリアスを定義している\file{%
+aliases}が見つかります．\cmd{dvips}はさらに汎用の設定ファイル\file{config.ps}%
+やカスタマイズ設定を記述する\file{.dvipsrc}を探し出します（上の例では，後者は
+``not found''という結果になっています）．最後に\cmd{dvips}はComputer Modernの
+\PS フォント用の設定ファイル\file{config.cms}を探します（これは\sopt{Pcms}の
+効果です）．このファイルには\TeX 間の関係を定義するマップファイルのリストが
+記述されています．
 %
-%After having found the file in question, \cmd{dvips} outputs
-%the date and time, and informs us that it will generate the
-%file \file{hello-world.ps}, then that it needs the font file
-%\file{cmr10}, and that the latter is declared as ``resident'' (no
-%bitmaps needed):
-%\begin{alltt}\small
-%TeX output 1998.02.26:1204' -> hello-world.ps
-%Defining font () cmr10 at 10.0pt
-%Font cmr10 <CMR10> is resident.
-%\end{alltt}
-%Now the search is on for the file \file{cmr10.tfm}, which is found,
-%then a few more prolog files (not shown) are referenced, and finally
-%the Type~1 instance \file{cmr10.pfb} of the font is located and
-%included in the output file (see last line).
-%\begin{alltt}\small
-%kdebug:start search(file=cmr10.tfm, must\_exist=1, find\_all=0,
-%  path=.:~/tex/fonts/tfm//:!!/usr/local/texmf/fonts/tfm//:
-%       /var/tex/fonts/tfm//).
-%kdebug:search(cmr10.tfm) => /usr/local/texmf/fonts/tfm/public/cm/cmr10.tfm
-%kdebug:start search(file=texps.pro, must\_exist=0, find\_all=0,
-%   ...
-%<texps.pro>
-%kdebug:start search(file=cmr10.pfb, must\_exist=0, find\_all=0,
-%  path=.:~/tex/dvips//:!!/usr/local/texmf/dvips//:
-%       ~/tex/fonts/type1//:!!/usr/local/texmf/fonts/type1//).
-%kdebug:search(cmr10.pfb) => /usr/local/texmf/fonts/type1/public/cm/cmr10.pfb
-%<cmr10.pfb>[1]
-%\end{alltt}
+\begin{alltt}
+> \Ucom{more /usr/local/texmf/dvips/cms/config.cms}
+   p +ams.map
+   p +cms.map
+   p +cmbkm.map
+   p +amsbkm.map
+\end{alltt}
 %
+\cmd{dvips}はこのようにしてすべてのファイルを見つけ，さらに常に使用されること
+になっている汎用マップファイル\file{psfonts.map}も読み込みます（このファイル
+ではすべての\PS フォントに共通する定義が行われています．\PS マップファイルの
+取り扱いの詳細については\ref{sec:examples-of-use}節の最後の部分を参照して
+ください）．
+
+ここにきて，\cmd{dvips}はやっとプログラム自身の情報をユーザに提示します：
+%
+\begin{alltt}
+This is dvips(k) 5.92b Copyright 2002 Radical Eye Software (www.radicaleye.com)
+\end{alltt}
+%
+その後プロローグファイルが検索されます：
+%
+\begin{alltt}\small
+kdebug:start search(file=texc.pro, must_exist=0, find_all=0,
+  path=.:~/tex/dvips//:!!/usr/local/texmf/dvips//:
+       ~/tex/fonts/type1//:!!/usr/local/texmf/fonts/type1//).
+kdebug:search(texc.pro) => /usr/local/texmf/dvips/base/texc.pro
+\end{alltt}
+
+以上で必要なファイルが揃ったので，\cmd{dvips}は日付と時刻を出力し，そして
+\file{hello-world.ps}というファイルが生成されることを予告します．合わせて，
+そのファイル生成の際にはフォントファイル\file{cmr10}が必要であることと，その
+フォントが``resident''（ビットマップ不要）として扱われる旨が表示されます．
+%
+\begin{alltt}\small
+TeX output 1998.02.26:1204' -> hello-world.ps
+Defining font () cmr10 at 10.0pt
+Font cmr10 <CMR10> is resident.
+\end{alltt}
+
+これでやっと\file{cmr10.tfm}の検索が行われ，それが見つかれば，もういくつかの
+プロローグファイルが参照され（出力には出ていません），最終的にType~1のフォント
+実体\file{cmr10.pfb}が出力ファイルに含まれることになります（最終行）．
+%
+\begin{alltt}\small
+kdebug:start search(file=cmr10.tfm, must\_exist=1, find\_all=0,
+  path=.:~/tex/fonts/tfm//:!!/usr/local/texmf/fonts/tfm//:
+       /var/tex/fonts/tfm//).
+kdebug:search(cmr10.tfm) => /usr/local/texmf/fonts/tfm/public/cm/cmr10.tfm
+kdebug:start search(file=texps.pro, must\_exist=0, find\_all=0,
+   ...
+<texps.pro>
+kdebug:start search(file=cmr10.pfb, must\_exist=0, find\_all=0,
+  path=.:~/tex/dvips//:!!/usr/local/texmf/dvips//:
+       ~/tex/fonts/type1//:!!/usr/local/texmf/fonts/type1//).
+kdebug:search(cmr10.pfb) => /usr/local/texmf/fonts/type1/public/cm/cmr10.pfb
+<cmr10.pfb>[1]
+\end{alltt}
+
 %\subsection{Runtime options}
 %
 %Another useful feature of \Webc{} is its possibility to control a number
