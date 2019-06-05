@@ -2430,148 +2430,41 @@ kdebug:search(cmr10.pfb) => /usr/local/texmf/fonts/type1/public/cm/cmr10.pfb
 <cmr10.pfb>[1]
 \end{alltt}
 
-%\subsection{Runtime options}
+\subsection{ランタイムオプション}
+
+その他の\Webc の便利な機能として，数々のメモリパラメータ（例えば配列サイズ）
+を\KPS が読み込む設定ファイル\file{texmf.cnf}でコントロールできることが挙げられ
+ます．メモリ設定は\TL ディストリビューションに含まれる\file{texmf.cnf}のPart 3%
+に記述されています．より重要なことは：
 %
-%Another useful feature of \Webc{} is its possibility to control a number
-%of memory parameters (in particular, array sizes) via the runtime file
-%\file{texmf.cnf} read by \KPS{}.  The memory settings can be found in
-%Part~3 of that file in the \TL{} distribution. The more important
-%are:
+\begin{description}
+\item[\var{main\_memory}]
+\TeX, \MF, \MP に使用を許可する合計のメモリ量（ワード数）．これらの設定を反映する
+には，値を適用した上でそれぞれのフォーマットを生成する必要があります．例えば，
+もし「巨大な」バージョンの\TeX を生成したとして，それを利用するにはフォーマット
+ファイル\file{hugetex.fmt}を呼び出す必要があります．
+%\KPS が使用するプログラム名を指定する通常の方法を利用して，\var{main\_memory}の
+%値は\file{texmf.cnf}から読み出されます．［意味不明．要検証］
+
+\item[\var{extra\_mem\_bot}]
+「大きな」\TeX のデータ構造（ボックス，グルー，ブレイクポイントなど）を配置する
+ための追加領域．特に\PiCTeX を使用する際に便利です．
+
+\item[\var{font\_mem\_size}]
+フォント情報を格納するために使用するメモリ量（ワード数）．これは読み込まれるTFM%
+ファイルの合計サイズと概ね一致します．
+
+\item[\var{hash\_extra}]
+制御綴を格納するハッシュテーブルのための追加領域．デフォルトでは，わずか10,000個
+程度の制御綴しかメインのハッシュテーブルに格納することができません．これでは多く
+の相互参照を含む大きな本の組版には不十分でしょう．\var{hash\_extra}のデフォルト値
+は\code{50000}です．
+\end{description}
 %
-%\begin{ttdescription}
-%\item[\texttt{main\_memory}]
-%  Total words of memory available, for
-%  \TeX{}, \MF{} and \MP.  You must make a new format file for each
-%  different setting. For instance, you could generate a ``huge''
-%  version of \TeX{}, and call the format file \texttt{hugetex.fmt}.
-%  Using the standard way of specifying the program name used by \KPS{},
-%  the particular value of the \texttt{main\_memory} variable will then
-%  be read from \file{texmf.cnf}.
-%\item[\texttt{extra\_mem\_bot}]
-%  Extra space for ``large'' \TeX{} data structures:
-%  boxes, glue, breakpoints, etc.  Especially useful if you use
-%  \PiCTeX{}.
-%\item[\texttt{font\_mem\_size}]
-%  Number of words for font information available for \TeX. This
-%  is more or less the total size of all TFM files read.
-%\item[\texttt{hash\_extra}]
-%  Additional space for the hash table of control sequence names.
-%  Only $\approx$10,000 control sequences can be stored in the main
-%  hash table; if you have a large book with numerous cross-references,
-%  this might not be enough.  The default value of
-%  \texttt{hash\_extra} is \texttt{50000}.
-%\end{ttdescription}
-%
-%\noindent Of course, this facility is no substitute for truly dynamic
-%arrays and memory allocation, but since these are extremely difficult to
-%implement in the present \TeX{} source, these runtime parameters provide
-%a practical compromise allowing some flexibility.
-%
-%
-%\begin{comment}
-%\section{Building on a new Unix platform}
-%
-%If you have a platform for which executables are not included, you will
-%need to compile \TeX{} and friends. This is not as hard as it
-%sounds. What you need is all in the directory \texttt{source} in the
-%distribution.
-%
-%\subsection{Prerequisites}
-%
-%You will need at least 100 megabytes of disk space to compile all of
-%\TeX{} and its support programs. You'll also need an ANSI C
-%compiler, a \cmd{make} utility, a lexical scanner, and a parser
-%generator. We recommend the \GNU version of these programs
-%(\cmd{gcc}, \GNU \cmd{make}, \cmd{m4}, \cmd{flex},
-%\cmd{bison}).  You may be able to work with other C compilers and
-%\cmd{make} programs, but you will need a good understanding of
-%building Unix programs to sort out problems.
-%
-%Also, the command \texttt{uname} must return a sensible value.
-%
-%
-%\subsection{Configuration}
-%
-%To begin, perform a normal installation of \TL{} to your disk (see
-%section~\ref{sec:install-disk} on
-%\p.\pageref{sec:install-disk}).  You may wish to skip installing
-%all of the prebuilt binaries.
-%
-%Then, unpack the source from the compressed \texttt{tar} file in the
-%directory \dirname{source} to your disk and change directory to where
-%you placed it.
-%
-%Next, run \cmd{configure} with a command line like this:
-%\begin{alltt}
-%> \Ucom{sh configure -prefix=/usr/local/TeX}
-%\end{alltt}
-%
-%The \optname{-prefix} directory is the one where you installed the
-%support tree; the directory layout will be as follows (where \$TEXDIR
-%stands for the directory you chose):
-%
-%\noindent
-%\begin{tabular}{>{\ttfamily}ll@{}}
-%  \dirname{$TEXDIR/share/texmf}          & main tree with fonts,\\
-%                                         & \qquad macros, etc\\
-%  \dirname{$TEXDIR/man}                  & Unix manual pages\\
-%  \dirname{$TEXDIR/info}                 & \GNU style Info manuals\\
-%  \dirname{$TEXDIR/bin/$PLATFORM}        & binaries\\
-%\end{tabular}
-%%$
-%
-%If you want to leave out the \dirname{$PLATFORM} directory level,
-%i.e., put the binaries directly into \dirname{$TEXDIR/bin}, specify
-%the \verb|--disable-multiplatform| option to \cmd{configure}.
-%
-%Have a look at the output of \verb|./configure --help| for more
-%options you can use.  For example, you can skip building of \OMEGA{} and
-%\eTeX{}.
-%
-%
-%\subsection{Running \cmd{make}}
-%
-%Make sure the shell variable or option \texttt{noclobber} is not set.
-%Then, run the main \cmd{make} like this:
-%\begin{alltt}
-%> \Ucom{make world}
-%\end{alltt}
-%and relax\ldots
-%
-%Alternatively, you want to log all the output, as in:
-%\begin{alltt}
-%> \Ucom{sh -c "make world >world.log 2>\&1" \&}
-%\end{alltt}
-%
-%Before you believe that everything went ok, please check the log file
-%for errors: \GNU \cmd{make} always uses the string \samp{***}
-%whenever a command fails.  Also, check if all the programs were built:
-%
-%\begin{alltt}
-%> \Ucom{cd \var{TEXDIR}/bin/\var{archname}}
-%> \Ucom{ls | wc}
-%\end{alltt}
-%The result should be over 200 (you can check the exact number with the
-%\dirname{bin} directory contents in the distribution).
-%
-%If you need special privileges for \texttt{make install}, you can
-%separate the \samp{make world} into two different runs, like this:
-%\begin{alltt}
-%> \Ucom{make all}
-%> \Ucom{su}
-%> \Ucom{make install strip}
-%\end{alltt}
-%
-%After you've installed your new binaries, you should follow the normal
-%post-installation procedures, given in section~\ref{sec:postinstall}
-%(\p.\pageref{sec:postinstall}).
-%
-%Also, if you'd like to make your binaries available to others, please
-%contact us.  We'll be happy to put them on the \TL\ web pages.
-%\end{comment}
-%
-%
-%\htmlanchor{ack}
+もちろん，こうしたパラメタの存在は動的な配列・メモリ確保の完全な代替となるものでは
+ありません．しかし，そうした変更を現在の\TeX ソースに対して適用するのは容易でない
+ので，これらの実行時パラメタの存在はある程度の柔軟性をもたせる実用上の妥協策です．
+
 %\section{Acknowledgements}
 %
 %\TL{} is a joint effort by virtually all of the \TeX{} user groups.
