@@ -2465,175 +2465,125 @@ kdebug:search(cmr10.pfb) => /usr/local/texmf/fonts/type1/public/cm/cmr10.pfb
 ありません．しかし，そうした変更を現在の\TeX ソースに対して適用するのは容易でない
 ので，これらの実行時パラメタの存在はある程度の柔軟性をもたせる実用上の妥協策です．
 
-%\section{Acknowledgements}
+\section{謝辞}
+
+\TL は事実上すべての\TeX ユーザ会の貢献に支えられています．現在の\TL 監修者はKarl
+Berryです．過去から現在に至るまでの，その他の主要な貢献者は以下の通りです
+（敬称略）：
 %
-%\TL{} is a joint effort by virtually all of the \TeX{} user groups.
-%This edition of \TL{} was overseen by Karl Berry.  The other principal
-%contributors, past and present, are listed below.
+\begin{itemize*}
+\item 英語圏，ドイツ，オランダ，ポーランドの\TeX ユーザ会（それぞれTUG, DANTE e.V.,
+  NTG, GUST）．技術的・経営的なインフラの提供してくれました．ぜひお近くの\TeX ユーザ
+  会に加入してください！（\url{http://tug.org/usergroups.html}を参照）
+\item CTANチーム (\url{http://ctan.org})．\TL イメージを配布し，\TL が依存する各種の
+  パッケージアップデートを行うための共通基盤の提供してくれています．
+\item Nelson Beebe．\TL 開発陣に数々のプラットフォームを提供し，彼自身も多くの包括的
+  なテストを行ってくれました．また彼の比類なき書誌学的な貢献にも敬意を表します．
+\item John Bowman．彼の高度なグラフィックツールAsymptoteを\TL に対応させるため数多く
+  の変更を加えてくれました．
+\item Peter Breitenlohnerと\eTeX チーム．将来の\TeX のために安定した基盤を構築して
+  くれました．特にPeter氏は，長年に渡って{\GNU} autotools関連のヘルパーとして活躍し，
+  ソースコードを最新の状態に保ってくれました．Peter．2015年10月に亡くなりましたが，
+  私たちは彼のことを忘れません．
+\item Jin-Hwan ChoとすべてのDVIPDFM$x$チームメンバー．素晴らしいドライバを開発し，
+  設定周りの諸問題に対する責任ある対応をしてくれました．
+\item Thomas Esser．彼の素晴らしい\teTeX パッケージなしには\TL は存在し得ません
+  でした．
+\item Michel Goossens．この文書のオリジナル版の共著者です．
+\item Eitan Gurari．彼の\TeX4htは\TL 公式ドキュメントの\HTML 版生成に利用されています．
+  彼は急な依頼をしても，毎年快く\TeX4htの改善に取り組んでくれました．Eitanは2009年
+  6月に若くして亡くなりましたが，私たちは彼のことを忘れません．
+\item Hans Hagen．多くのテストを引き受け，また彼の\ConTeXt パッケージ (\url{http://%
+  pragma-ade.com}) を\TL フレームワークに対応させてくれました．
+\item \Thanh, Martin Schr\"oderと\pdfTeX チーム (\url{http://pdftex.org})．彼らは
+  \TeX を継続的に拡張してくれています．
+\item Hartmut Henkel．\pdfTeX, \LuaTeX をはじめ多くのプロジェクトに顕著な貢献を
+  してくれました．
+\item Taco Hoekwater．\MP と (Lua)\TeX (\url{http://luatex.org}) 自体に対して大きな
+  変更を施したほか，\ConTeXt の\TL 対応や\KPS のマルチスレッド機能，その他数々の貢献
+  をしてくれました．
+\item Khaled Hosny．\XeTeX, DVIPDFM$x$に加え，アラビア語用のものを含め多くのフォント
+  に対して多くの貢献をしてくれました．
+\item Pawe{\l} Jackowski．Windows用インストーラ\cmd{tlpm}，Tomasz {\L}uczak氏は\cmd
+  {tlpmgui}を開発してくれました．これらのプログラムは過去の\TL で使用されていました．
+\item 角藤亮．日本語\TeX 用のW32\TeX ディストリビューション (\url{http://w32tex.org})
+  のためにWindowsバイナリを提供し，さらに開発に関わる数々の貢献をしてくれました．
+\item Jonathan Kew．優れた\TeX エンジンである\XeTeX を開発し，時間と労力を割いてその
+  処理系を\TL に導入してくれました．彼はさらに初期バージョンのMac\TeX を開発し，我々の
+  おすすめするフロントエンドである\TeX worksも開発しました．
+\item Dick Koch．\TL チームと友好的かつ緊密に連携しながらMac{\TeX} (\url{http://tug.%
+  org/mactex}) のメンテナンスを行ってくれています．
+\item Reinhard Kotucha．\TL 2008のインフラとインストーラに対する主要な貢献者で，
+  さらにWindows研究や\cmd{getnonfreefonts}スクリプトの開発などに多大な努力をして
+  くれています．
+\item Siep Kroonenberg．彼も\TL 2008のインフラとインストーラの（特にWindowsについて）
+  主要貢献者で，その新機能について解説するためマニュアルを大幅に改定してくれました．
+\item Mojca Miklavec．\ConTeXt 開発の重要な協力者で，多くのバイナリビルドを行い，
+  その他にも多くの仕事を行ってくれています．
+\item Heiko Oberdiek．\pkg{epstopdf}をはじめ数々のパッケージを開発し，巨大だった
+  \pkg{pst-geo}データファイルを圧縮して\TL に含められるようにしてくれました．そして
+  何より，彼の\pkg{hyperref}パッケージについての偉業に敬意を表します．
+\item Petr Ol\v{s}ak．チェコ・スロバキア関連のプロダクトを統括し，注意深くチェック
+  してくれました．
+\item 大島利雄．Windows向け\DVI ビューア\cmd{dviout}を開発してくれました．
+\item Manuel P\'egouri\'e-Gonnard．パッケージアップデートとドキュメントの改善に協力
+  してくれたほか，\cmd{texdoc}コマンドを開発しました．
+\item Fabrice Popineau．はじめて\TL のWindowsサポートを行い，またフランス語
+  ドキュメントに貢献してくれました．
+\item Norbert Preining．現在の\TL インフラとインストーラの主要開発者で，Frank
+  K\"usterと共に\TL のDebianパッケージを用意してくれています．彼は現在も広範に\TL
+  に関わる様々な仕事を引き受けてくれています．
+\item Sebastian Rahtz．\TL の創始者で，長年そのメンテナンスを行っていました．
+  彼は2016年3月に亡くなりましたが，私たちは彼のことを忘れません．
+\item Luigi Scarso．\MP, \LuaTeX その他のプログラムを継続的に開発してくれています．
+\item Tomasz Trzeciak．Windowsについて広範な協力をしてくれました．
+\item Vladimir Volovich．さまざまなプログラムの\TL への組み込みとメンテナンスの
+  ために多くの手伝いをしてくれました．特に\cmd{xindy}の組み込みが実現したのは彼の
+  おかげです．
+\item Staszek Wawrykiewicz．\TL 全体についての主要なテスターで，ポーランド語に
+  関わる多くの貢献（フォントやWindowsインストールなど）をしてくれました．Staszek氏
+  は2018年2月に亡くなりましたが，私たちは彼のことを忘れません．
+\item Olaf Weber．過去何年にも渡って辛抱強く\Webc のメンテナンスを行ってくれました．
+\item Gerben Wierda．初期のmacOSサポートの開発とメンテナンスを行ってくれました．
+\item Graham Williams．\TeX カタログの創始者です．
+\end{itemize*}
+
+バイナリのビルド者：
 %
-%\begin{itemize*}
+Marc Baudoin (\pkg{amd64-netbsd}, \pkg{i386-netbsd}),
+Ken Brown (\pkg{i386-cygwin}, \pkg{x86\_64-cygwin}),
+Simon Dales (\pkg{armhf-linux}),
+Johannes Hielscher (\pkg{aarch64-linux}),
+角藤亮 (\pkg{win32}),
+Dick Koch (\pkg{x86\_64-darwin}),
+Nikola Le\v{c}i\'c (\pkg{amd64-freebsd}, \pkg{i386-freebsd}),
+Henri Menke (\pkg{x86\_64-linuxmusl}),
+Mojca Miklavec (\pkg{i386-linux},
+                \pkg{x86\_64-darwinlegacy},
+                \pkg{i386-solaris}, \pkg{x86\_64-solaris},
+                \pkg{sparc-solaris}),
+Norbert Preining (\pkg{x86\_64-linux})．
 %
-%\item The English, German, Dutch, and Polish \TeX{} user groups
-%(TUG, DANTE e.V., NTG, and GUST,
-%respectively), which provide the necessary technical and administrative
-%infrastructure.  Please join the \TeX\ user group near you!  (See
-%\url{http://tug.org/usergroups.html}.)
+\TL のビルドプロセスについては\url{http://tug.org/texlive/build.html}を参照して
+ください．
+
+このマニュアルの翻訳者：
 %
-%\item The CTAN team (\url{http://ctan.org}), which distributes
-%the \TL{} images and provides the common infrastructure for package
-%updates, upon which \TL{} depends.
+Denis Bitouz\'e，Patrick Bideault（フランス語），
+Carlos Enriquez Figueras（スペイン語），
+Jjgod Jiang，Jinsong Zhao，Yue Wang，Helin Gai（中国語），
+Nikola Le\v{c}i\'c（セルビア語），
+Marco Pallante，Carla Maggi（イタリア語），
+Petr Sojka，Jan Busa（チェコ・スロバキア語），
+Boris Veytsman（ロシア語），
+Zofia Walczak（ポーランド語），
+Uwe Ziegenhagen（ドイツ語）．
 %
-%\item Nelson Beebe, for making many platforms available to \TL\
-%developers, and his own comprehensive testing and unparalleled
-%bibliographic efforts.
-%
-%\item John Bowman, for making many changes to his advanced graphics
-%program Asymptote to make it work in \TL.
-%
-%\item Peter Breitenlohner and the \eTeX\ team for the stable foundation
-%of future \TeX's, and Peter specifically for years of stellar help with
-%\GNU\ autotools and keeping sources up to date.  Peter passed away in
-%October 2015, and we dedicate the continuing work to his memory.
-%
-%\item Jin-Hwan Cho and all of the DVIPDFM$x$ team, for their
-%excellent driver and responsiveness to configuration issues.
-%
-%\item Thomas Esser, without whose marvelous \teTeX{} package \TL{}
-%would have never existed.
-%
-%\item Michel Goossens, who co-authored the original documentation.
-%
-%\item Eitan Gurari, whose \TeX4ht is used to create the \HTML{}
-%version of this documentation, and who worked tirelessly to improve it
-%at short notice, every year.  Eitan prematurely passed away in June
-%2009, and we dedicate this documentation to his memory.
-%
-%\item Hans Hagen, for much testing and making his \ConTeXt\ package
-%(\url{http://pragma-ade.com}) work within \TL's framework.
-%
-%\item \Thanh, Martin Schr\"oder, and the pdf\TeX\ team
-%(\url{http://pdftex.org}), for continuing enhancements of \TeX's
-%abilities.
-%
-%\item Hartmut Henkel, for significant development contributions to
-%pdf\TeX\, Lua\TeX, and more.
-%
-%\item Taco Hoekwater, for major renewed development efforts on MetaPost and
-%(Lua)\TeX\ (\url{http://luatex.org}) itself, incorporating
-%\ConTeXt\ into \TL, giving Kpathsea multi-threaded functionality, and
-%much more.
-%
-%\item Khaled Hosny, for substantial work on \XeTeX, DVIPDFM$x$, and
-%efforts with Arabic and other fonts.
-%
-%\item Pawe{\l} Jackowski, for the Windows installer \cmd{tlpm},
-%and Tomasz {\L}uczak, for \cmd{tlpmgui}, used in past releases.
-%
-%\item Akira Kakuto, for providing the Windows
-%binaries from his W32TEX distribution for Japanese \TeX\
-%(\url{http://w32tex.org}), and many other development contributions.
-%
-%\item Jonathan Kew, for developing the remarkable \XeTeX{} engine and
-%taking the time and trouble to integrate it in \TL{}, as well as the
-%initial version of the Mac\TeX\ installer, and also for our recommended
-%front-end \TeX{}works.
-%
-%\item Dick Koch, for maintaining Mac\TeX\ (\url{http://tug.org/mactex})
-%in very close tandem with \TL{}, and for his great good cheer in doing
-%so.
-%
-%\item Reinhard Kotucha, for major contributions to the \TL{} 2008
-%infrastructure and installer, as well as Windows research efforts, the
-%\texttt{getnonfreefonts} script, and more.
-%
-%\item Siep Kroonenberg, also for major contributions to the \TL{} 2008
-%infrastructure and installer, especially on Windows, and for the bulk of
-%work updating this manual describing those features.
-%
-%\item Mojca Miklavec, for much help with \ConTeXt, building many binary
-%sets, and plenty more.
-%
-%\item Heiko Oberdiek, for the \pkg{epstopdf} package and many
-%others, compressing the huge \pkg{pst-geo} data files so we could
-%include them, and most of all, for his remarkable work on
-%\pkg{hyperref}.
-%
-%\item Petr Ol\v{s}ak, who coordinated and checked all the Czech and Slovak
-%material very carefully.
-%
-%\item Toshio Oshima, for his \cmd{dviout} previewer for Windows.
-%
-%\item Manuel P\'egouri\'e-Gonnard, for helping with package updates,
-%documentation improvements, and \cmd{texdoc} development.
-%
-%\item Fabrice Popineau, for the original Windows support in \TL{} and
-%work on the French documentation.
-%
-%\item Norbert Preining, the principal architect of the current \TL{}
-%infrastructure and installer, and also for coordinating the Debian
-%version of \TL{} (together with Frank K\"uster), and doing so much work
-%along the way.
-%
-%\item Sebastian Rahtz, for originally creating \TL{} and maintaining it
-%for many years.  Sebastian passed away in March 2016, and we dedicate
-%the continuing work to his memory.
-%
-%\item Luigi Scarso, for continuing development of MetaPost, Lua\TeX, and
-%much more.
-%
-%\item Tomasz Trzeciak, for wide-ranging help with Windows.
-%
-%\item Vladimir Volovich, for substantial help with porting and other
-%maintenance issues, and especially for making it feasible to include
-%\cmd{xindy}.
-%
-%\item Staszek Wawrykiewicz, a principal tester for all of \TL{},
-%and coordinator of the many major Polish contributions: fonts, Windows
-%installation, and more.  Staszek passed away in February 2018, and we
-%dedicate the continuing work to his memory.
-%
-%\item Olaf Weber, for his patient maintenance of \Webc\ in past years.
-%
-%\item Gerben Wierda, for creating and maintaining the original \MacOSX\
-%support.
-%
-%\item Graham Williams, the originator of the \TeX\ Catalogue.
-%
-%\end{itemize*}
-%
-%Builders of the binaries:
-%Marc Baudoin (\pkg{amd64-netbsd}, \pkg{i386-netbsd}),
-%Ken Brown (\pkg{i386-cygwin}, \pkg{x86\_64-cygwin}),
-%Simon Dales (\pkg{armhf-linux}),
-%Johannes Hielscher (\pkg{aarch64-linux}),
-%Akira Kakuto (\pkg{win32}),
-%Dick Koch (\pkg{x86\_64-darwin}),
-%Nikola Le\v{c}i\'c (\pkg{amd64-freebsd}, \pkg{i386-freebsd}),
-%Henri Menke (\pkg{x86\_64-linuxmusl}),
-%Mojca Miklavec (\pkg{i386-linux},
-%                \pkg{x86\_64-darwinlegacy},
-%                \pkg{i386-solaris}, \pkg{x86\_64-solaris},
-%                \pkg{sparc-solaris}),
-%Norbert Preining (\pkg{x86\_64-linux}).
-%For information on the \TL{} build process, see
-%\url{http://tug.org/texlive/build.html}.
-%
-%Translators of this manual:
-%Denis Bitouz\'e \& Patrick Bideault (French),
-%Carlos Enriquez Figueras (Spanish),
-%Jjgod Jiang, Jinsong Zhao, Yue Wang, \& Helin Gai (Chinese),
-%Nikola Le\v{c}i\'c (Serbian),
-%Marco Pallante \& Carla Maggi (Italian),
-%Petr Sojka \& Jan Busa (Czech\slash Slovak),
-%Boris Veytsman (Russian),
-%Zofia Walczak (Polish),
-%Uwe Ziegenhagen (German).  The \TL{} documentation web page
-%is \url{http://tug.org/texlive/doc.html}.
-%
-%Of course the most important acknowledgement must go to Donald Knuth,
-%first for inventing \TeX, and then for giving it to the world.
-%
-%
+\TL のドキュメントウェブページは\url{http://tug.org/texlive/doc.html}です．
+
+もちろん，最も重要な謝辞はDonald Knuthに対して贈られるべきです．まず\TeX を発明
+してくれたこと，そしてそれを世界に広めてくれたことについて，深く感謝します．
+
 %\section{Release history}
 %\label{sec:history}
 %
