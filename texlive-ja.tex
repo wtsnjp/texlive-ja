@@ -2548,7 +2548,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Graham Williams．\TeX カタログの創始者です．
 \end{itemize*}
 
-バイナリのビルド者：
+バイナリのビルド担当者：
 %
 Marc Baudoin (\pkg{amd64-netbsd}, \pkg{i386-netbsd}),
 Ken Brown (\pkg{i386-cygwin}, \pkg{x86\_64-cygwin}),
@@ -2584,63 +2584,60 @@ Uwe Ziegenhagen（ドイツ語）．
 もちろん，最も重要な謝辞はDonald Knuthに対して贈られるべきです．まず\TeX を発明
 してくれたこと，そしてそれを世界に広めてくれたことについて，深く感謝します．
 
-%\section{Release history}
-%\label{sec:history}
-%
-%\subsection{Past}
-%
-%Discussion began in late 1993 when the Dutch \TeX{} Users Group was
-%starting work on its 4All\TeX{} \CD{} for MS-DOS users, and it
-%was hoped at that time to issue a single, rational, \CD{} for all
-%systems. This was too ambitious a target for the time, but it did spawn
-%not only the very successful 4All\TeX{} \CD{}, but also the TUG
-%Technical Council working group on a \emph{\TeX{} Directory Structure}
-%(\url{http://tug.org/tds}), which specified how to create consistent and
-%manageable collections of \TeX{} support files. A complete draft of the
-%\TDS{} was published in the December 1995 issue of \textsl{TUGboat}, and
-%it was clear from an early stage that one desirable product would be a
-%model structure on \CD{}. The distribution you now have is a very direct
-%result of the working group's deliberations. It was also clear that the
-%success of the 4All\TeX{} \CD{} showed that Unix users would benefit
-%from a similarly easy system, and this is the other main strand of
-%\TL.
-%
-%We first undertook to make a new Unix-based \TDS{} \CD{} in the autumn
-%of 1995, and quickly identified Thomas Esser's \teTeX{} as the ideal
-%setup, as it already had multi-platform support and was built with
-%portability across file systems in mind. Thomas agreed to help, and work
-%began seriously at the start of 1996. The first edition was released in
-%May 1996. At the start of 1997, Karl Berry completed a major new release
-%of Web2c, which included nearly all the features which Thomas Esser had
-%added in \teTeX, and we decided to base the 2nd edition of the \CD{} on
-%the standard \Webc, with the addition of \teTeX's \texttt{texconfig}
-%script. The 3rd edition of the \CD{} was based on a major revision of
-%\Webc, 7.2, by Olaf Weber; at the same time, a new revision of \teTeX
-%was being made, and \TL{} included almost all of its features. The
-%4th edition followed the same pattern, using a new version of \teTeX,
-%and a new release of \Webc{} (7.3).  The system now included a complete
-%Windows setup, thanks to Fabrice Popineau.
-%
-%For the 5th edition (March 2000) many parts of the \CD{} were revised
-%and checked, updating hundreds of packages. Package details were stored
-%in XML files. But the major change for \TeX\ Live 5 was that all
-%non-free software was removed. Everything in \TL{} is now intended
-%to be compatible with the Debian Free Software Guidelines
-%(\url{http://www.debian.org/intro/free}); we have done our best to check
-%the license conditions of all packages, but we would very much
-%appreciate hearing of any mistakes.
-%
-%The 6th edition (July 2001) had much more material updated. The major
-%change was a new install concept: the user could select a more exact set
-%of needed collections. Language-related collections were completely
-%reorganized, so selecting any of them installs not only macros, fonts,
-%etc., but also prepares an appropriate \texttt{language.dat}.
-%
-%The 7th edition of 2002 had the notable addition of \MacOSX{} support,
-%and the usual myriad of updates to all sorts of packages and
-%programs. An important goal was integration of the source back with
-%\teTeX, to correct the drift apart in versions~5 and~6.
-%
+\section{更新履歴}
+\label{sec:history}
+
+\subsection{過去}
+
+最初に議論が始まったのはオランダ\TeX ユーザ会が4All{\TeX} \CD をMS-DOSユーザの
+ために用意し始めたときのことでした．そのときは，すべてのシステムに向けて1つの
+合理的な\CD を作成することが望ましいとされました．これは，当時にとってあまりに
+漠然とした目標でしたが，結果的には4All{\TeX} \CD を完成させたのみならず\TeX
+ディレクトリ構造 (TDS, \url{http://tug.org/tds}) についての作業チームをTUGに
+発足させることにつながりました．作業チームはどのようにすれば一貫性があり，管理
+の容易な\TeX サポートファイルのコレクションを作成できるか議論を重ねました．
+TDSについての完全な原稿は1995年12月発行の\textsl{TUGboat}に掲載されましたが，
+かなり早い段階から望ましい成果物は\CD 上のモデル構造であることは明らかでした．
+いま皆さんにとってお馴染みのディストリビューションは，この作業チームの議論の
+かなり直接的な成果と言えます．また4All{\TeX} \CD の成功から，同様の簡単な
+システムを作ればUNIXユーザも恩恵に与ることができることも明らかで，この事実も
+\TL にもう1つの大きな流れを作りました．
+
+私たちは，1995年の秋にまずUNIXベースの{\TDS} \CD の開発に取り掛かり，すぐに
+Thomas Esserの\teTeX が理想的なディストリビューションであることがわかりました．
+\teTeX はすでに複数のプラットフォームをサポートしており，さまざまなファイル
+システムに対応するように設計されていました．Thomas氏の協力を得て活動は1996年の
+はじめに本格化し，最初のバージョンが1996年の5月にリリースされました．1997年の
+頭にKarl Berryが大規模な修正を加えた新しいバージョンの\Webc をリリースし，
+Thomas氏が\teTeX に加えていたほとんどすべての機能が利用可能になりました．この
+\Webc に\teTeX の\cmd{texconfig}スクリプトを加えたものはバージョン2のベースに
+採用されることが決まりました．バージョン3はOlaf Weberによってさらに大きく修正
+された{\Webc} 7.2をベースにしました．同時に，新しいバージョンの\teTeX も開発
+され，\TL もすぐにそのほとんどの新機能を取り込みました．バージョン4も同じ
+パターンでのリリースとなり，新しい\teTeX と新しい{\Webc} (7.3) を利用して作成
+されました．Fabrice Popineauの貢献もあり，この時点までに\TL は完全なWindows%
+サポートを完成させていました．
+
+バージョン5（2000年3月）では多くの部分が改修・チェックされ，何百ものパッケージ
+がアップデートされました．パッケージの詳細はXMLファイルに保存されるようになり
+ました．一方で{\TL} 5における大きな変更として，すべての有償ソフトウェアは取り
+除かれました．このときから\TL に含まれるすべてのものはDebianフリーソフトウェア
+ガイドライン (\url{http://www.debian.org/intro/free}) 互換であることが求め
+られるようになりました．私たちはすべてのパッケージのライセンスを確認するよう
+最善を尽くしましたが，もし何か間違いがあればご連絡ください．
+
+バージョン6（2001年7月）にはさらに多くのパッケージアップデートが取り込まれ
+ました．このバージョンで最大の更新点はインストールについての新しい選択肢です．
+ユーザはより詳細に必要とするコレクションを選択できるようになりました．特定の
+言語と関連するコレクションが大きく見直され，そうしたコレクションを選択すれば
+対応するマクロやフォントがインストールされるだけでなく，適切な\file{language.%
+dat}も用意されるようになりました．
+
+2002年のバージョン7での大きな変更としてはMac OS Xサポートの追加と，例年通り
+無数のパッケージやプログラムのアップデートが挙げられます．このときの大きな
+目標はソースコードを\teTeX のそれと統合し，バージョン5, 6間の不整合を修正する
+ことでした．
+
 %\subsubsection{2003}
 %
 %In 2003, with the continuing flood of updates and additions, we found
