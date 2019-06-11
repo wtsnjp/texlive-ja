@@ -2646,7 +2646,6 @@ dat}も用意されるようになりました．
 \pageref{sec:tl-coll-dists}) を参照）．その他の変更点：
 %
 \begin{itemize*}
-\def\egg{\eghostguarded{}}
 \item \LaTeX チームからのリクエストを受けて，標準設定における\cmd{latex},
   \cmd{pdflatex}コマンドが\eTeX エンジンを使用するように変更
   （\p.\pageref{text:etex}参照）
@@ -2679,8 +2678,6 @@ dat}も用意されるようになりました．
 2004年には数多くの更新がありました：
 %
 \begin{itemize}
-\def\egg{\eghostguarded{}}
-
 \item ローカルにインストールしたフォントで，独自の\file{.map}や（あまりない
 と思いますが）\file{.enc}を利用するものがある場合，それらのサポートファイル
 を移動する必要があります．
@@ -2805,67 +2802,58 @@ label=aleph}にいくらかの情報があります．\ALEPH における\LaTeX 
 7.4ランタイムが必要です．
 \end{itemize}
 
-%\subsubsection{2005}
+\subsubsection{2005}
+
+2005年も例年通り膨大なパッケージとプログラムのアップデートがありました．前年と
+比べるとインフラは安定していますが，必然的にいくつかの変更はありました：
 %
-%2005 saw the usual huge number of updates to packages and programs.
-%The infrastructure stayed relatively stable from 2004, but inevitably
-%there were some changes there as well:
+\begin{itemize}
+\item システムツリーの設定を変更する新しいスクリプト\cmd{texconfig-sys}, \cmd{%
+updmap-sys}, \cmd{fmtutil-sys}が導入されました．\cmd{texconfig}, \cmd{updmap},
+\cmd{fmtutil}スクリプトは\dir{$HOME/.texlive2005}以下のユーザ設定を変更するよう
+になりました．
+
+\item 上の変更に対応して，設定ファイルを探すべきTEXMFツリーを指定する新しい環境
+変数\var{TEXMFCONFIG}と\var{TEXMFSYSCONFIG}（それぞれユーザ用とシステム用）が
+追加されました．したがって個人用の\file{fmtutil.cnf}や\file{updmap.cfg}がある
+場合は，これらのパス内に移動する必要があります．もしくは\file{texmf.cnf}を用いて
+\var{TEXMFCONFIG}, \var{TEXMFSYSCONFIG}の値を再定義する手もあります．いずれに
+しても，実際の設定ファイル位置と\var{TEXMFCONFIG}, \var{TEXMFSYSCONFIG}の指す
+位置は必ず一致していなければなりません．詳細は\ref{sec:texmftrees}節 (\p.%
+\pageref{sec:texmftrees}) を参照してください．
+
+\item 昨年は\pdfTeX が使用されていたとしても，\DVI 出力を行う場合には\cs{%
+pdfoutput}等のプリミティブが未定義になるよう後方互換性を維持していました．
+今年は，予告していたとおり，この後方互換性に対するケアは終了します．そのため
+もし\egg\verb|\ifx\pdfoutput\undefined|\egg のようなコードを利用してPDF出力
+か否かを判定している場合，修正が必要になります．この場合\pkg{ifpdf}パッケージ
+（plain \TeX でも\LaTeX でも使用可能です）を使用するか，そのしくみを真似する
+のがいいでしょう．
+
+\item 昨年，ほとんどのフォーマットで出力文字 (8-bit) がそのまま維持されるよう
+になりました（前のセクションを参照してください）．新しいTCXファイル\file{%
+empty.tcx}を用いてより簡単に\egg\verb|^^|\egg 表現を利用するかつての挙動に
+戻せるようになりました：
 %
-%\begin{itemize}
-%
-%\item New scripts \cmd{texconfig-sys}, \cmd{updmap-sys}, and
-%      \cmd{fmtutil-sys} were introduced, which modify the
-%      configuration in the system trees.  The \cmd{texconfig},
-%      \cmd{updmap}, and \cmd{fmtutil} scripts now modify
-%      user-specific files, under \dirname{$HOME/.texlive2005}.
-%
-%\item Corresponding new variables \code{TEXMFCONFIG} and
-%      \code{TEXMFSYSCONFIG} to specify the trees where configuration
-%      files (user or system, respectively) are found.  Thus, you may
-%      need to move personal versions of \filename{fmtutil.cnf} and
-%      \filename{updmap.cfg} to these places; another option is to
-%      redefine \code{TEXMFCONFIG} or \code{TEXMFSYSCONFIG} in
-%      \filename{texmf.cnf}. In any case the real location of these files
-%      and the values of \code{TEXMFCONFIG} and \code{TEXMFSYSCONFIG}
-%      must agree.
-%      See section~\ref{sec:texmftrees}, \p.\pageref{sec:texmftrees}.
-%
-%\item Last year, we kept \verb|\pdfoutput| and other primitives undefined
-%      for \DVI\ output, even though the \cmd{pdfetex} program was
-%      being used.  This year, as promised, we undid that compatibility
-%      measure.  So if your document uses \verb|\ifx\pdfoutput\undefined|
-%      to test if PDF is being output, it will need to be changed.  You
-%      can use the package \pkg{ifpdf.sty} (which works under both
-%      plain \TeX\ and \LaTeX) to do this, or steal its logic.
-%
-%\item Last year, we changed most formats to output (8-bit) characters as
-%      themselves (see previous section).  The new TCX file
-%      \filename{empty.tcx} now provides an easier way to get the
-%      original \verb|^^| notation if you so desire, as in:
-%\begin{verbatim}
-%latex --translate-file=empty.tcx yourfile.tex
-%\end{verbatim}
-%
-%\item The new program \cmd{dvipdfmx} is included for translation of
-%      DVI to PDF; this is an actively maintained update of
-%      \cmd{dvipdfm} (which is also still available for now, though
-%      no longer recommended).
-%
-%\item The new programs \cmd{pdfopen} and \cmd{pdfclose} are included
-%      to allow reloading of PDF files in the Adobe Acrobat Reader without
-%      restarting the program.  (Other PDF readers, notably \cmd{xpdf},
-%      \cmd{gv}, and \cmd{gsview}, have never suffered from this
-%      problem.)
-%
-%\item For consistency, the variables \code{HOMETEXMF} and
-%      \code{VARTEXMF} have been renamed to \code{TEXMFHOME} and
-%      \code{TEXMFSYSVAR}, respectively.  There is also
-%      \code{TEXMFVAR}, which is by default user-specific.  See the
-%      first point above.
-%
-%\end{itemize}
-%
-%
+\begin{verbatim}
+latex --translate-file=empty.tcx yourfile.tex
+\end{verbatim}
+
+\item \DVI をPDFに変換するため，新しく\prog{dvipdfmx}プログラムが追加され
+ました．これは活発にメンテナンスされている\prog{dvipdfm}の後継です
+（\prog{dvipdfm}は今でも利用可能ですが，推奨はされません）．
+
+\item Adobe Acrobat Readerを再起動することなくPDFのリロードを可能にする
+\prog{pdfopen}と\prog{pdfclose}が追加されました（\prog{xpdf}, \prog{gv},
+\prog{gsview}などAcrobat以外のPDFリーダにはそもそもこのような問題はあり
+ませんでした）．
+
+\item 一貫性のため\var{HOMETEXMF}と\var{VARTEXMF}はそれぞれ\var{TEXMFHOME}%
+と\var{TEXMFSYSVAR}に変更されました．ユーザごとのツリーを示す\var{TEXMFVAR}%
+もデフォルトで存在していることに注意してください．このリストの最初の項目も
+再度確認してください．
+\end{itemize}
+
 %\subsubsection{2006--2007}
 %
 %In 2006--2007, the major new addition to \TL{} was the \XeTeX{} program,
