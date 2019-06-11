@@ -2661,170 +2661,150 @@ dat}も用意されるようになりました．
 \item \cmd{dvips}, \cmd{dvipdfm}, \cmd{pdftex}などによって使用されるフォント
   マップファイルが新しい\cmd{updmap}によって生成され，\dir{texmf/fonts/map}%
   に配置されるようになりました．
-\item \TeX, \MF, \MP がデフォルトでほとんどの入力文字（32以上）をそのまま
-  ファイル（例えば\cs{write}の出力先），ログファイル，ターミナルに出力する
-  ようになりました．すなわち\eghostguarded{}\verb|^^|\eghostguarded{}表現への
-  変換が\emph{行われないように}なりました．\TL~7では，この変換はシステムの
-  ロケール設定に依存していました．今後はロケール設定は\TeX のコアプログラム
-  の挙動に影響を与えなくなります．もし何らかの理由により\eghostguarded{}%
-  \verb|^^|\eghostguarded{}表現による出力が必要な場合は\file{texmf/web2c/%
-  cp8bit.tcx}のファイル名を変更してください（将来的にはもう少し簡単な方法を
-  用意する予定です）．
+\item \TeX, \MF, \MP がデフォルトでほとんどの入力文字（文字コード32以上）
+  をそのままファイル（例えば\cs{write}の出力先），ログファイル，ターミナルに
+  出力するようになりました．すなわち\egg\verb|^^|\egg 表現への変換が\emph{%
+  行われないように}なりました．\TL~7では，この変換はシステムのロケール設定に
+  依存していました．今後はロケール設定は\TeX のコアプログラムの挙動に影響を
+  与えなくなります．もし何らかの理由により\egg\verb|^^|\egg 表現による出力が
+  必要な場合は\file{texmf/web2c/cp8bit.tcx}のファイル名を変更してください．
+  （将来的にはもう少し簡単な方法を用意する予定です．）
 \item このドキュメントを全面的に改訂しました．
 \item 最後に，バージョン番号が大きくなってきたので，今後は単にリリース年で
-  表すことにしました．すなわち今回のバージョンは{\TL} 2003となります．
+  表すことにしました．すなわち今回のバージョンは\TL\,2003となります．
 \end{itemize*}
 
-%\subsubsection{2004}
+\subsubsection{2004}
+
+2004年には数多くの更新がありました：
 %
-%2004 saw many changes:
+\begin{itemize}
+\def\egg{\eghostguarded{}}
+
+\item ローカルにインストールしたフォントで，独自の\file{.map}や（あまりない
+と思いますが）\file{.enc}を利用するものがある場合，それらのサポートファイル
+を移動する必要があります．
+
+\file{.map}ファイルについては\var{TEXFONTMAPS}パスに含まれる（各TEXMFツリー
+の）\dir{fonts/map}以下のサブディレクトリのみが検索されるようになりました．
+同様に\file{.enc}ファイルについても\var{ENCFONTS}パスに含まれる\dir{fonts/%
+enc}以下のサブディレクトリのみが検索対象になりました．しばらくの間は\cmd{%
+updmap}コマンドが将来的に問題となり得るファイルについて警告を出します．
+
+より詳細な対策その他の情報については\url{http://tug.org/texlive/mapenc.html}%
+を参照してください．
+
+\item \TeX コレクションに\MIKTEX ベースのインストール\CD が追加されました．
+\MIKTEX 実装の\Webc がお好みの場合はそちらをお使いください．詳細は\ref{sec:%
+overview-tl}節 (\p.\pageref{sec:overview-tl}) を参照．
+
+\item 従前のリリースにおいて，\TL における唯一の巨大なTEXMFツリーであった\dir
+{texmf}を\dir{texmf}, \dir{texmf-dist}, \dir{texmf-doc}の3つに分割しました．
+詳細は\ref{sec:tld}節 (\p.\pageref{sec:tld}) と各ツリーの\file{README}を参照
+してください．
+
+\item すべての\TeX 関連の入力ファイルを各\dir{texmf*}ツリーの\dir{tex}サブ
+ディレクトリに集約しました（これまでは\dir{tex}, \dir{etex}, \dir{pdftex},
+\dir{pdfetex}等々に分けられていました）．詳細は\file{texmf-dist/doc/generic/%
+tds/tds.html#Extensions}を参照してください．
+
+\item （ユーザによって直接実行するためのものではない）補助スクリプトを各\dir
+{texmf*}ツリーの\dir{scripts}サブディレクトリに移動し，\code{kpsewhich\space
+\lopt{format=texmfscripts}}で探せるようにしました．こうした補助スクリプトを
+呼び出すプログラムについては改修の必要があります．詳細は\file{texmf-dist/doc/%
+generic/tds/tds.html#Scripts}を参照してください．
+
+\item \file{cp227.tcx}の設定により，ほとんどすべてのフォーマットで大半の文字を
+\egg\verb|^^|\egg 表現へ変換することなくそのまま出力するようになりました．
+特に文字コード32--256の文字とタブ，垂直タブ，改ページは印字可能文字として扱い
+変換されません．例外はplain \TeX （32--126のみ印字可能），\ConTeXt （0--256を
+印字可能）と\OMEGA 関連フォーマットです．デフォルトの挙動は\TL\,2003とほとんど
+変わりませんが，実装が整理されカスタマイズも容易になりました．詳細は\file{%
+texmf-dist/doc/web2c/web2c.html#TCX-files}を確認してください．
+（ところでUnicode入力については\TeX はエラーを表示して部分的な文字シークエンス
+を出力する可能性があります．これは\TeX がバイト指向であるためです．）
+
+\item \prog{pdfetex}が (plain) \prog{tex} を除くすべてのフォーマットのデフォルト
+エンジンになりました（もちろん，\prog{latex}等で実行された場合は\DVI を出力します
+）．つまり，\eTeX 拡張 (\dir{texmf-dist/doc/etex/base/}) に加えて\pdfTeX  の
+microtypography機能も\LaTeX や\ConTeXt で利用可能になります．
+
+\item この変更は\pkg{ifpdf}（plain \TeX でも\LaTeX でも使用可）または同等のコード
+の利用が\emph{これまで以上に重要となった}ということを意味します．なぜなら単純に
+\cs{pdfoutput}（または他のプリミティブ）が定義されているかどうかを調べるだけでは
+PDF出力が行われているかどうかを判定できなくなったからです．この後方互換性について
+今年のリリースでは可能な限り対処しましたが，来年以降は\DVI 出力を行っているときで
+あっても\cs{pdfoutput}が定義されている可能性があります．
+
+\item {\pdfTeX} (\url{http://pdftex.org}) には多くの新機能が追加されました：
+\begin{itemize*}
+\item \cs{pdfmapfile}と\cs{pdfmapline}がドキュメント内からのフォントマップ
+アクセスをサポートします．
+\item Microtypographicフォント展開がより簡単に利用できるようになりました．\\
+\url{http://www.ntg.nl/pipermail/ntg-pdftex/2004-May/000504.html}
+\item 従来は専用の設定ファイル\file{pdftex.cfg}で設定していたパラメータは，今後
+プリミティブを用いて設定されなければなりません．具体的には\file{pdftexconfig.%
+tex}で設定されています．\file{pdftex.cfg}はもはやサポートされません．\file{%
+pdftexconfig.tex}が変更された場合，すべての\file{.fmt}ファイルを再生成する必要
+があります．
+\item その他の更新点については\pdfTeX のマニュアルを参照してください：
+\file{texmf-dist/doc/pdftex/manual/pdftex-a.pdf}
+\end{itemize*}
+
+\item \prog{tex}（および\prog{mf}と\prog{mpost}）の\cs{input}プリミティブが
+ダブルクオートで囲うことによって空白やその他の特殊文字を含む入力を受け付ける
+ようになりました．典型的な使用例：
 %
-%\begin{itemize}
+\begin{verbatim}
+\input "filename with spaces"   % plain
+\input{"filename with spaces"}  % latex
+\end{verbatim}
 %
-%\item If you have locally-installed fonts which use their own
-%\filename{.map} or (much less likely) \filename{.enc} support files, you
-%may need to move those support files.
-%
-%\filename{.map} files are now searched for in subdirectories of
-%\dirname{fonts/map} only (in each \filename{texmf} tree), along the
-%\code{TEXFONTMAPS} path.  Similarly, \filename{.enc} files are now
-%searched for in subdirectories of \dirname{fonts/enc} only, along the
-%\code{ENCFONTS} path.  \cmd{updmap} will attempt to warn about
-%problematic files.
-%
-%For methods of handling this and other information, please see
-%\url{http://tug.org/texlive/mapenc.html}.
-%
-%\item The \TK\ has been expanded with the addition of a \MIKTEX-based
-%installable \CD, for those who prefer that implementation to Web2C.
-%See section~\ref{sec:overview-tl} (\p.\pageref{sec:overview-tl}).
-%
-%\item Within \TL, the single large \dirname{texmf} tree of previous
-%releases has been replaced by three: \dirname{texmf},
-%\dirname{texmf-dist}, and \dirname{texmf-doc}.  See
-%section~\ref{sec:tld} (\p.\pageref{sec:tld}), and the \filename{README}
-%files for each.
-%
-%\item All \TeX-related input files are now collected in
-%the \dirname{tex} subdirectory of \dirname{texmf*} trees, rather than
-%having separate sibling directories \dirname{tex}, \dirname{etex},
-%\dirname{pdftex}, \dirname{pdfetex}, etc.  See
-%\CDref{texmf-dist/doc/generic/tds/tds.html\#Extensions}
-%{\texttt{texmf-dist/doc/generic/tds/tds.html\#Extensions}}.
-%
-%\item Helper scripts (not meant to be invoked by users) are now located
-%in a new \dirname{scripts} subdirectory of \dirname{texmf*} trees, and
-%can be searched for via \verb|kpsewhich -format=texmfscripts|.  So if you have
-%programs which call such scripts, they'll need to be adjusted.  See
-%\CDref{texmf-dist/doc/generic/tds/tds.html\#Scripts}
-%{\texttt{texmf-dist/doc/generic/tds/tds.html\#Scripts}}.
-%
-%\item Almost all formats leave most characters printable as
-%themselves via the ``translation file'' \filename{cp227.tcx}, instead of
-%translating them with the \verb|^^| notation.  Specifically, characters
-%at positions 32--256, plus tab, vertical tab, and form feed are
-%considered printable and not translated.  The exceptions are plain \TeX\
-%(only 32--126 printable), \ConTeXt\ (0--255 printable), and the
-%\OMEGA-related formats.  This default behavior is almost the same as in
-%\TL\,2003, but it's implemented more cleanly, with more possibilities
-%for customization.  See \CDref{texmf-dist/doc/web2c/web2c.html\#TCX-files}
-%{\texttt{texmf-dist/doc/web2c/web2c.html\#TCX-files}}.
-%(By the way, with Unicode input, \TeX\ may output partial character
-%sequences when showing error contexts, since it is byte-oriented.)
-%
-%\item \textsf{pdfetex} is now the default engine for all formats
-%except (plain) \textsf{tex} itself.  (Of course it generates DVI
-%when run as \textsf{latex}, etc.)  This means, among other things, that
-%the microtypographic features of \textsf{pdftex} are available in
-%\LaTeX, \ConTeXt, etc., as well as the \eTeX\ features
-%(\OnCD{texmf-dist/doc/etex/base/}).
-%
-%It also means it's \emph{more important than ever} to use the
-%\pkg{ifpdf} package (works with both plain and \LaTeX) or equivalent
-%code, because simply testing whether \cs{pdfoutput} or some other
-%primitive is defined is not a reliable way to determine if PDF
-%output is being generated.  We made this backward compatible as best we
-%could this year, but next year, \cs{pdfoutput} may be defined even when
-%DVI is being written.
-%
-%\item pdf\TeX\ (\url{http://pdftex.org}) has many new features:
-%
-%  \begin{itemize*}
-%
-%  \item \cs{pdfmapfile} and \cs{pdfmapline} provide font map support
-%  from within a document.
-%
-%  \item Microtypographic font expansion can be used more easily.\\
-%  \url{http://www.ntg.nl/pipermail/ntg-pdftex/2004-May/000504.html}
-%
-%  \item All parameters previously set through the special configuration
-%  file \filename{pdftex.cfg} must now be set through primitives,
-%  typically in \filename{pdftexconfig.tex}; \filename{pdftex.cfg} is no
-%  longer supported.  Any extant \filename{.fmt} files must be redumped
-%  when \filename{pdftexconfig.tex} is changed.
-%
-%  \item See the pdf\TeX\ manual for more: \OnCD{texmf-dist/doc/pdftex/manual/pdftex-a.pdf}.
-%
-%  \end{itemize*}
-%
-%\item The \cs{input} primitive in \cmd{tex} (and \cmd{mf} and
-%\cmd{mpost}) now accepts double quotes containing spaces and other
-%special characters.  Typical examples:
-%\begin{verbatim}
-%\input "filename with spaces"   % plain
-%\input{"filename with spaces"}  % latex
-%\end{verbatim}
-%See the Web2C manual for more: \OnCD{texmf-dist/doc/web2c}.
-%
-%\item enc\TeX\ support is now included within Web2C and consequently all
-%\TeX\ programs, via the \optname{-enc} option\Dash \emph{only when
-%formats are built}.  enc\TeX\ supports general re-encoding of input and
-%output, enabling full support of Unicode (in UTF-8).  See
-%\OnCD{texmf-dist/doc/generic/enctex/} and
-%\url{http://www.olsak.net/enctex.html}.
-%
-%\item Aleph, a new engine combining \eTeX\ and \OMEGA, is available.
-%A little information is available in \OnCD{texmf-dist/doc/aleph/base}
-%and \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=aleph}.  The
-%\LaTeX-based format for Aleph is named \textsf{lamed}.
-%
-%\item The latest \LaTeX\ release has a new version of the
-%LPPL\Dash now officially a Debian-approved license.  Assorted
-%other updates, see the \filename{ltnews} files in
-%\OnCD{texmf-dist/doc/latex/base}.
-%
-%\item \cmd{dvipng}, a new program for converting DVI to
-%PNG image files, is included.  See
-%\url{http://www.ctan.org/pkg/dvipng}.
-%
-%\item We reduced the \pkg{cbgreek} package to a ``medium'' sized set
-%of fonts, with the assent and advice of the author (Claudio Beccari).
-%The excised fonts are the invisible, outline, and transparency ones,
-%which are relatively rarely used, and we needed the space.  The full set
-%is of course available from CTAN
-%(\url{http://mirror.ctan.org/tex-archive/fonts/greek/cbfonts}).
-%
-%\item \cmd{oxdvi} has been removed; just use \cmd{xdvi}.
-%
-%\item The \cmd{ini} and \cmd{vir} commands (links) for
-%\cmd{tex}, \cmd{mf}, and \cmd{mpost} are no longer created,
-%such as \cmd{initex}.  The \cmd{ini} functionality has been
-%available through the command-line option \optname{-ini} for years now.
-%
-%\item \textsf{i386-openbsd} platform support was removed.  Since the
-%\pkg{tetex} package in the BSD Ports system is available, and
-%GNU/Linux and FreeBSD binaries were available, it seemed
-%volunteer time could be better spent elsewhere.
-%
-%\item On \textsf{sparc-solaris} (at least), you may have to set the
-%\code{LD\_LIBRARY\_PATH} environment variable to run the
-%\pkg{t1utils} programs.  This is because they are compiled with C++,
-%and there is no standard location for the runtime libraries.  (This is
-%not new in 2004, but wasn't previously documented.)  Similarly, on
-%\textsf{mips-irix}, the MIPSpro 7.4 runtimes are required.
-%
-%\end{itemize}
-%
+詳細については\Webc のマニュアルを参照してください\dir{texmf-dist/doc/web2c}．
+
+\item \Webc にenc\TeX サポートが追加され，この機能は結果的にすべての\TeX
+プログラムで\sopt{enc}オプションを通して利用可能になりました（\emph{ただし
+フォーマットが生成されている場合に限る}）．enc\TeX は入出力の再エンコーディング
+について汎用的なサポートを提供するもので，Unicode（UTF-8形式による）のフル
+サポートを可能としています．詳細については\dir{texmf-dist/doc/generic/enctex/}%
+と\url{http://www.olsak.net/enctex.html}を参照してください．
+
+\item \eTeX と\OMEGA を組み合わせた新エンジン\ALEPH が利用可能になりました．
+\dir{texmf-dist/doc/aleph/base}と\url{http://www.tex.ac.uk/cgi-bin/texfaq2html?%
+label=aleph}にいくらかの情報があります．\ALEPH における\LaTeX ベースのフォーマット
+は\prog{lamed}といいます．
+
+\item 最新の\LaTeX は新しいバージョンのLPPLの下でインストールされました．これで
+公式にDebian公認のライセンスになりました．他のアップデートについての情報と合わせて
+\dir{texmf-dist/doc/latex/base}の\file{ltnews}ファイルに詳細が記載されています．
+
+\item \DVI をPNG画像ファイルに変換する新しいプログラム\prog{dvipng}が追加され
+ました．\url{http://www.ctan.org/pkg/dvipng}を参照．
+
+\item mediumサイズのフォント向けに\pkg{cbgreek}パッケージを導入しました．これは
+フォント作者 (Claudio Beccari) の同意と助言に基づくものです．除外されているフォント
+は不可視・アウトライン・透過文字です．これらは比較的使用頻度の低いもので，私たち
+は容量を気にする必要がありました．フルセットのフォントはもちろん\CTAN から入手
+できます (\url{http://mirror.ctan.org/tex-archive/fonts/greek/cbfonts})．
+
+\item \prog{oxdvi}は廃止されました．\prog{xdvi}を使用してください．
+
+\item \cmd{initex}など\cmd{tex}, \cmd{mf}, \cmd{mpost}の\cmd{ini}, \cmd{vir}版
+コマンド（リンク）は作成されなくなりました．\cmd{ini}の機能は何年も前からコマンド
+ラインオプション\sopt{ini}を通して利用可能です．
+
+\item \pkg{i386-openbsd}プラットフォームのサポートは廃止されました．BSDポート
+システム向けの\pkg{tetex}パッケージとGNU/LinuxおよびFreeBSDバイナリが利用可能
+なので，ビルド担当のボランティアは他のことに時間と労力を割いた方が良いようです．
+
+\item （少なくとも）\pkg{sparc-solaris}においては\prog{t1utils}を実行する際には
+環境変数\var{LD\_LIBRARY\_PATH}を設定する必要があります．なぜなら，このプログラム
+はC++によってコンパイルされていますが，それらについて実行時ライブラリの標準的な
+配置位置が存在しないためです（これは今に始まったことではありませんが，これまで
+ドキュメント化されていませんでした）．同様に\pkg{mips-irix}においても，MIPSpro
+7.4ランタイムが必要です．
+\end{itemize}
+
 %\subsubsection{2005}
 %
 %2005 saw the usual huge number of updates to packages and programs.
