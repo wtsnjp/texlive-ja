@@ -2887,66 +2887,61 @@ texmf/web2c}直下から同サブディレクトリに移されました（一�
 最後に，2006年5月にThomas Esserが\teTeX の更新を終了することを発表しました
 (\url{http://tug.org/tetex})．結果として，特に\GNU/Linuxのディストリビュータ
 から，にわかに\TL が注目されることになりました．\TL には新しく\pkg{tetex}%
-スキームが追加され，これを用いると旧来の\teTeX と概ね概ね同等のものを
-インストールすることができます．私たちは，早晩この変化が全世界の人々の\TeX
-環境の改善につながることを願っています．
+スキームが追加され，これを用いると旧来の\teTeX と概ね同等のものをインストール
+することができます．私たちは，早晩この変化が全世界の人々の\TeX 環境の改善に
+つながることを願っています．
 
-%\subsubsection{2008}
-%
-%In 2008, the entire \TL{} infrastructure was redesigned and
-%reimplemented.  Complete information about an installation is now stored
-%in a plain text file \filename{tlpkg/texlive.tlpdb}.
-%
-%Among other things, this finally makes possible upgrading a \TL{}
-%installation over the Internet after the initial installation, a feature
-%MiK\TeX\ has provided for many years.  We expect to regularly update new
-%packages as they are released to \CTAN.
-%
-%The major new engine Lua\TeX\ (\url{http://luatex.org}) is included;
-%besides a new level of flexibility in typesetting, this provides an
-%excellent scripting language for use both inside and outside of \TeX\
-%documents.
-%
-%Support among Windows and the Unix-based platforms is now much more
-%uniform.  In particular, most Perl and Lua scripts are now available on
-%Windows, using the Perl internally distributed with \TL.
-%
-%The new \cmd{tlmgr} script (section~\ref{sec:tlmgr}) is the
-%general interface for managing \TL{} after the initial installation.
-%It handles package updates and consequent regeneration of formats, map
-%files, and language files, optionally including local additions.
-%
-%With the advent of \cmd{tlmgr}, the \cmd{texconfig} actions to
-%edit the format and hyphenation configuration files are now disabled.
-%
-%The \cmd{xindy} indexing program
-%(\url{http://xindy.sourceforge.net/}) is now included on most platforms.
-%
-%The \cmd{kpsewhich} tool can now report all matches for a given file
-%(option \optname{--all}) and limit matches to a given subdirectory
-%(option \optname{--subdir}).
-%
-%The \cmd{dvipdfmx} program now includes functionality to extract
-%bounding box information, via the command name \cmd{extractbb}; this
-%was one of the last features provided by \cmd{dvipdfm} not in
-%\cmd{dvipdfmx}.
-%
-%The font aliases \filename{Times-Roman}, \filename{Helvetica}, and so on
-%have been removed.  Different packages expected them to behave
-%differently (in particular, to have different encodings), and there was
-%no good way to resolve this.
-%
-%The \pkg{platex} format has been removed, to resolve a name conflict
-%with a completely different Japanese \pkg{platex}; the
-%\pkg{polski} package is now the main Polish support.
-%
-%Internally, the \WEB\ string pool files are now compiled into the
-%binaries, to ease upgrades.
-%
-%Finally, the changes made by Donald Knuth in his `\TeX\ tuneup of 2008'
-%are included in this release.  See
-%\url{http://tug.org/TUGboat/Articles/tb29-2/tb92knut.pdf}.
-%
+\subsubsection{2008}
+
+今年は\TL のインフラが全面的に再設計・再実装されました．インストールについて
+の完全な情報は\file{tlpkg/texlive.tlpdb}というテキストファイルに保存される
+ようになりました．インフラ刷新による変化は色々ありますが，これによって一度
+インストールした\TL をインターネットを利用してアップグレードできるようになり
+ました．この機能は\MIKTEX には何年も前からあったものです．今後は\CTAN で新しい
+パッケージがリリースされる度にアップデートを行うことができるはずです．
+
+大きな出来事として，新しいエンジン{\LuaTeX} (\url{http://luatex.org}) が追加
+されました．このエンジンは組版にさらなる柔軟性を与えるだけでなく，\TeX 文書の
+内外で利用できる素晴らしいスクリプト言語の処理系を提供してくれます．
+
+WindowsとUNIXベースプラットフォームのサポートがより統一的になりました．具体的
+には，\TL に同梱されるようになった処理系によってWindowsでもPerlスクリプトと
+Luaスクリプトが利用可能になりました．
+
+新しい\prog{tlmgr}スクリプトは（セクション\ref{sec:tlmgr}）は\TL の初期
+インストール後の管理を行う汎用インターフェースです．このコマンドはパッケージ
+アップデートと継続的なフォーマット・マップファイル・言語ファイル等の再生成を
+行います（オプションで，ローカルに追加されたものについても行います）．\prog{%
+tlmgr}が開発されたので，これまでフォーマットやハイフネーション設定ファイルを
+管理していた\prog{texconfig}は廃止されました．
+
+また新しい索引作成支援プログラム\prog{xindy} (\url{http://xindy.sourceforge.%
+net/}) がほとんどのプラットフォーム向けに提供されるようになりました．
+
+\cmd{kpsewhich}コマンドは与えられたファイルについて，すべてのマッチを返す
+ことができるようになりました（オプション\lopt{all}）．特定のサブディレクトリ
+内のマッチだけを返すことも可能です（オプション\lopt{subdir}）．
+
+\cmd{extractbb}コマンドという形で，\prog{dvipdfmx}プログラムにバウンディング
+ボックス情報を抽出する機能が追加されました．これにより\prog{dvipdfm}が持って
+いたほとんどの機能が\prog{dvipdfmx}にも実装されたことになります．
+
+\file{Times-Roman}や\file{Helvetica}のようなフォントエイリアスは削除されま
+した．パッケージごとにそうしたエイリアスに求める挙動が異なり（例えば，期待
+されるエンコーディングが異なるなど），またそれに対する良い解決策も存在しない
+ためです．
+
+ポーランド語向けの\pkg{platex}フォーマットは，まったく別の日本語用プログラム
+\prog{platex}と名前が衝突しているため削除されました．代わりに，今後は\pkg{%
+polski}パッケージが主としてポーランド語サポートを提供します．
+
+内部的には，アップデートの簡便性のため，\WEB の文字列プールファイルをバイナリ
+にコンパイルするようになりました．
+
+最後に，`\TeX\ tuneup of 2008'に述べられているDonald Knuthによる変更が今回の
+リリースに反映されました．詳細は\url{http://tug.org/TUGboat/Articles/tb29-2/%
+tb92knut.pdf}を参照してください．
+
 %\subsubsection{2009}
 %
 %In 2009, the default output format for Lua\AllTeX\ is now PDF, to take
