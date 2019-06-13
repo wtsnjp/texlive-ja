@@ -2854,45 +2854,43 @@ latex --translate-file=empty.tcx yourfile.tex
 再度確認してください．
 \end{itemize}
 
-%\subsubsection{2006--2007}
-%
-%In 2006--2007, the major new addition to \TL{} was the \XeTeX{} program,
-%available as the \texttt{xetex} and \texttt{xelatex} programs; see
-%\url{http://scripts.sil.org/xetex}.
-%
-%MetaPost also received a notable update, with more planned for the
-%future (\url{http://tug.org/metapost/articles}), likewise pdf\TeX{}
-%(\url{http://tug.org/applications/pdftex}).
-%
-%The \TeX\ \filename{.fmt} (high-speed format) and the similar files for
-%MetaPost and \MF\ are now stored in subdirectories of \dirname{texmf/web2c},
-%instead of in the directory itself (although the directory is still
-%searched, for the sake of existing \filename{.fmt}'s).  The
-%subdirectories are named for the `engine' in use, such as \filename{tex}
-%or \filename{pdftex} or \filename{xetex}.  This change should be
-%invisible in normal use.
-%
-%The (plain) \texttt{tex} program no longer reads \texttt{\%\&} first
-%lines to determine what format to run; it is the pure Knuthian \TeX.
-%(\LaTeX\ and everything else do still read \texttt{\%\&} lines).
-%
-%Of course the year also saw (the usual) hundreds of other updates to
-%packages and programs.  As usual, please check CTAN
-%(\url{http://mirror.ctan.org}) for updates.
-%
-%Internally, the source tree is now stored in Subversion, with a standard
-%web interface for viewing the tree, as linked from our home page.
-%Although not visible in the final distribution, we expect this will
-%provide a stable development foundation for future years.
-%
-%Finally, in May 2006 Thomas Esser announced that he would no longer be
-%updating te\TeX{} (\url{http://tug.org/tetex}).  As a result, there was
-%a surge of interest in \TL{}, especially among \GNU/Linux
-%distributors.  (There is a new \texttt{tetex} installation scheme in
-%\TL{}, which provides an approximate equivalent.)  We hope this will
-%eventually translate to improvements in the \TeX\ environment for
-%everyone.
-%
+\subsubsection{2006--2007}
+
+2006--2007年における\TL への大きな出来事は\XeTeX の追加でした．このプログラム
+は\cmd{xetex}と\cmd{xelatex}として利用可能です（\url{http://scripts.sil.org/%
+xetex}参照）．
+
+{\pdfTeX} (\url{http://tug.org/applications/pdftex}) と同様に，\MP にも将来的
+な拡張の計画も含めて特筆すべきアップデートがありました \url{http://tug.org/%
+metapost/articles}．
+
+\TeX の\file{.fmt}（高速フォーマット）と\MP, \MF 用の同等ファイルは\dir{%
+texmf/web2c}直下から同サブディレクトリに移されました（一方で\dir{texmf/web2c}%
+直下も既存の\file{.fmt}ファイルのために検索対象に残っています）．それらのサブ
+ディレクトリにはそれぞれのエンジン名（\dir{tex}, \dir{pdftex}, \dir{xetex}等）
+が付けられています．通常の使い方をしている限り，この変更による影響はないはず
+です．
+
+(plain) \cmd{tex}コマンドは先頭行の\code{\%\&}（使用フォーマットの指定に使用
+する）を解釈しなくなりました．\cmd{tex}コマンドは純粋なKnuthian \TeX です．
+（\LaTeX など他のコマンドは今後も\code{\%\&}を解釈します．）
+
+当然のことながら，この期間にも（いつも通り）上記以外に何百ものパッケージや
+プログラムのアップデートがありました．平常通り，それらについては{\CTAN}
+(\url{http://mirror.ctan.org}) を確認してください．
+
+内部的には，ソースツリーをSubversionで管理するようになり，その標準Webインター
+フェースでソースツリーを閲覧できるようになりました（\TL のウェブサイトから
+リンクされています）．この変更は最終的な配布版には関係ありませんが，この変更
+によって今後の開発基盤が安定すると期待しています．
+
+最後に，2006年5月にThomas Esserが\teTeX の更新を終了することを発表しました
+(\url{http://tug.org/tetex})．結果として，特に\GNU/Linuxのディストリビュータ
+から，にわかに\TL が注目されることになりました．\TL には新しく\pkg{tetex}%
+スキームが追加され，これを用いると旧来の\teTeX と概ね概ね同等のものを
+インストールすることができます．私たちは，早晩この変化が全世界の人々の\TeX
+環境の改善につながることを願っています．
+
 %\subsubsection{2008}
 %
 %In 2008, the entire \TL{} infrastructure was redesigned and
