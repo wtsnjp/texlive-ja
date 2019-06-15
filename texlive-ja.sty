@@ -163,7 +163,8 @@
 % ------------------------------------------------------------- TeX logos
 
 \RequirePackage{bxtexlogo}% use instead of texnames
-\bxtexlogoimport{*,HanTheThanh,PiCTeX,logoOmega,logoAleph,LaTeXTeX}
+\bxtexlogoimport{*,HanTheThanh,PiCTeX,LaTeXTeX,%
+  logoOmega,logoLambda,logoLamed,logoAleph}
 
 % aliases
 \let\MF\METAFONT
@@ -171,6 +172,8 @@
 \let\AllTeX\LaTeXTeX
 \let\Thanh\HanTheThanh
 \newcommand{\OMEGA}{\eghostguarded{\logoOmega}}
+\newcommand{\LAMBDA}{\eghostguarded{\logoLambda}}
+\newcommand{\LAMED}{\eghostguarded{\logoLamed}}
 \newcommand{\ALEPH}{\eghostguarded{\logoAleph}}
 
 % logos not in bxtexlogo

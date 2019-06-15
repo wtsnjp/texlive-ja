@@ -2614,7 +2614,7 @@ Thomas氏が\teTeX に加えていたほとんどすべての機能が利用可�
 採用されることが決まりました．バージョン3はOlaf Weberによってさらに大きく修正
 された{\Webc} 7.2をベースにしました．同時に，新しいバージョンの\teTeX も開発
 され，\TL もすぐにそのほとんどの新機能を取り込みました．バージョン4も同じ
-パターンでのリリースとなり，新しい\teTeX と新しい{\Webc} (7.3) を利用して作成
+パターンでのリリースとなり，新しい\teTeX と新しい{\Webc} 7.3 を利用して作成
 されました．Fabrice Popineauの貢献もあり，この時点までに\TL は完全なWindows%
 サポートを完成させていました．
 
@@ -2942,58 +2942,60 @@ polski}パッケージが主としてポーランド語サポートを提供し�
 リリースに反映されました．詳細は\url{http://tug.org/TUGboat/Articles/tb29-2/%
 tb92knut.pdf}を参照してください．
 
-%\subsubsection{2009}
+\subsubsection{2009}
+
+2009年，\LuaTeX のOpenTypeサポート等を活用するためLua\LaTeXTeX のデフォルト
+の出力フォーマットがPDFに変更されました．新しいコマンド名\cmd{dviluatex}と
+\cmd{dvilualatex}を使用すると\DVI 出力の\LuaTeX を実行できます．\LuaTeX の
+ウェブサイトは\url{http://luatex.org}です．
+
+{\OMEGA} (Omega) 開発者らとの協議の後，オリジナルの\OMEGA エンジンと{\LAMBDA}
+(Lambda) フォーマットは削除されることになりました．後継である{\ALEPH} (Aleph)
+と{\LAMED} (Lamed) は\OMEGA の機能を担うため今後も\TL に残ります．
+
+Computer Modernを含め，新しいバージョンのAMS \TypeI フォントが追加されました．
+何年も前にKnuthが\MF のソース修正を行って変更されたいくつかのシェイプがついに
+反映され，またヒンティングも更新されました．EulerフォントもHermann Zapfによって
+大幅に再デザインされました（\url{http://tug.org/TUGboat/Articles/tb29-2/tb92%
+hagen-euler.pdf}参照）．いずれについてもメトリクスは変更されていません．AMS%
+フォントのウェブサイトは\url{http://www.ams.org/tex/amsfonts.html}です．
+
+新しい\GUI フロントエンド{\TeX}worksがWindowsとMac\TeX 向けに追加されました．
+他のプラットフォーム向けのものや詳細情報については{\TeX}worksのウェブサイト
+(\url{http://tug.org/texworks}) を参照してください．{\TeX}worksはmacOS向けの
+統合開発環境{\TeX}Shopにインスパイアされたクロスプラットフォームなフロント
+エンドで，使い勝手の良さに重きを置いています．
+
+製図用ツールAsymptoteが多くのプラットフォーム向けに追加されました．これは
+テキストベースのグラフィクス記述言語で，大雑把には\MP と似たものですが，
+高度な3Dサポートその他の機能が利用可能です．ウェブサイトは\url{http://%
+asymptote.sourceforge.net}です．
+
+独立した\cmd{dvipdfm}コマンドは\prog{dvipdfmx}に置き換えられました（ただし
+特別な互換モードで実行されます）．\cmd{dvipdfmx}はCJKサポートと，\cmd{%
+dvipdfm}の最後のリリースから何年にも渡って蓄積された数多くの修正が含まれて
+います．
+
+新しいプラットフォーム (\pkg{cygwin}, \pkg{i386-netbsd}) 向けのバイナリが
+追加されました．ただしOpenBSDユーザは標準的なパッケージシステムを用いて\TeX
+をインストールすることが推奨されます．複数のバージョンのOpenBSDで動作する
+バイナリを作成するのは困難でした．
+
+その他の雑多な変更：
 %
-%In 2009, the default output format for Lua\AllTeX\ is now PDF, to take
-%advantage of Lua\TeX's OpenType support, et al.  New executables named
-%\code{dviluatex} and \code{dvilualatex} run Lua\TeX\ with DVI output.
-%The Lua\TeX\ home page is \url{http://luatex.org}.
-%
-%The original Omega engine and Lambda format have been excised, after
-%discussions with the Omega authors.  The updated Aleph and Lamed remain,
-%as do the Omega utilities.
-%
-%A new release of the AMS \TypeI\ fonts is included, including Computer
-%Modern: a few shape changes made over the years by Knuth in the Metafont
-%sources have been integrated, and the hinting has been updated.  The
-%Euler fonts have been thoroughly reshaped by Hermann Zapf (see
-%\url{http://tug.org/TUGboat/Articles/tb29-2/tb92hagen-euler.pdf}).  In
-%all cases, the metrics remain unchanged.  The AMS fonts home page is
-%\url{http://www.ams.org/tex/amsfonts.html}.
-%
-%The new \GUI{} front end \TeX{}works is included for Windows, and also in
-%Mac\TeX.  For other platforms, and more information, see the \TeX{}works
-%home page, \url{http://tug.org/texworks}.  It is a cross-platform front
-%end inspired by the \MacOSX\ TeXShop editor, aiming at ease-of-use.
-%
-%The graphics program Asymptote is included for several platforms.  This
-%implements a text-based graphics description language vaguely akin to
-%MetaPost, but with advanced 3D support and other features.  Its home
-%page is \url{http://asymptote.sourceforge.net}.
-%
-%The separate \code{dvipdfm} program has been replaced by
-%\code{dvipdfmx}, which operates in a special compatibility mode under
-%that name.  \code{dvipdfmx} includes CJK support and has
-%accumulated many other fixes over the years since the last
-%\code{dvipdfm} release.
-%
-%Executables for the \pkg{cygwin} and \pkg{i386-netbsd} platforms
-%are now included, while we were advised that OpenBSD users get
-%\TeX\ through their package systems, plus there were difficulties in
-%making binaries that have a chance of working on more than one version.
-%
-%A miscellany of smaller changes: we now use \pkg{xz} compression,
-%the stable replacement for \pkg{lzma}
-%(\url{http://tukaani.org/xz/}); a literal |$| is allowed in filenames
-%when it does not introduce a known variable name; the Kpathsea library
-%is now multi-threaded (made use of in MetaPost); the entire \TL{} build
-%is now based on Automake.
-%
-%Final note on the past: all releases of \TL{}, along with ancillary
-%material such as \CD\ labels, are available at
-%\url{ftp://tug.org/historic/systems/texlive}.
-%
-%
+\begin{itemize*}
+\item \pkg{lzma}の安定した代替として\pkg{xz}圧縮 (\url{http://tukaani.org/%
+  xz/})を採用しました．
+\item 後続の文字列が定義済みの変数と一致しない限り文字\code{\$}をファイル名
+  に使用できるようになりました．
+\item \KPS ライブラリがマルチスレッド化されました（\MP で使用されています）．
+\item \TL 全体のビルドがAutomakeベースになりました．
+\end{itemize*}
+
+最後に過去のバージョンに関することについて告知します．\TL のすべてのリリース
+は\url{ftp://tug.org/historic/systems/texlive}から入手できます（\CD ラベル等
+のおまけもあります）．
+
 %\subsubsection{2010}
 %\label{sec:2010news} % keep with 2010
 %
