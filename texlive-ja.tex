@@ -2908,12 +2908,12 @@ WindowsとUNIXベースプラットフォームのサポートがより統一的
 には，\TL に同梱されるようになった処理系によってWindowsでもPerlスクリプトと
 Luaスクリプトが利用可能になりました．
 
-新しい\prog{tlmgr}スクリプトは（セクション\ref{sec:tlmgr}）は\TL の初期
-インストール後の管理を行う汎用インターフェースです．このコマンドはパッケージ
-アップデートと継続的なフォーマット・マップファイル・言語ファイル等の再生成を
-行います（オプションで，ローカルに追加されたものについても行います）．\prog{%
-tlmgr}が開発されたので，これまでフォーマットやハイフネーション設定ファイルを
-管理していた\prog{texconfig}は廃止されました．
+新しい\prog{tlmgr}スクリプトは（\ref{sec:tlmgr}節）は\TL の初期インストール
+後の管理を行う汎用インターフェースです．このコマンドはパッケージアップデート
+と継続的なフォーマット・マップファイル・言語ファイル等の再生成を行います
+（オプションで，ローカルに追加されたものについても行います）．\prog{tlmgr}が
+開発されたので，これまでフォーマットやハイフネーション設定ファイルを管理して
+いた\prog{texconfig}は廃止されました．
 
 また新しい索引作成支援プログラム\prog{xindy} (\url{http://xindy.sourceforge.%
 net/}) がほとんどのプラットフォーム向けに提供されるようになりました．
@@ -2986,8 +2986,8 @@ dvipdfm}の最後のリリースから何年にも渡って蓄積された数多
 \begin{itemize*}
 \item \pkg{lzma}の安定した代替として\pkg{xz}圧縮 (\url{http://tukaani.org/%
   xz/})を採用しました．
-\item 後続の文字列が定義済みの変数と一致しない限り文字\code{\$}をファイル名
-  に使用できるようになりました．
+\item 後続の文字列が定義済みの変数と一致しない限り\samp{\$}をファイル名に使用
+  できるようになりました．
 \item \KPS ライブラリがマルチスレッド化されました（\MP で使用されています）．
 \item \TL 全体のビルドがAutomakeベースになりました．
 \end{itemize*}
@@ -2996,71 +2996,71 @@ dvipdfm}の最後のリリースから何年にも渡って蓄積された数多
 は\url{ftp://tug.org/historic/systems/texlive}から入手できます（\CD ラベル等
 のおまけもあります）．
 
-%\subsubsection{2010}
-%\label{sec:2010news} % keep with 2010
+\subsubsection{2010}
+\label{sec:2010news} % keep with 2010
+
+2010年，出力PDFのデフォルトバージョンが1.5になり，これまで以上の圧縮が可能に
+なりました．この変更はPDFを出力するすべての\TeX エンジンと\cmd{dvipdfmx}に
+ついて適用されました．\LaTeX パッケージ\pkg{pdf14}を使用するか\code{\cs{%
+pdfminorversion}=4}を設定するとPDF~1.4出力に戻すことができます．
+
+pdf\LaTeXTeX は\LaTeX の\file{graphics.cfg}が読み込まれていて，PDF出力を
+行っている場合，\pkg{epstopdf}を用いて\emph{自動的に}インクルードされた
+Encapsulated {\PS} (EPS) ファイルをPDFに変換するようになりました．デフォルト
+のオプションは既存のPDFファイルが上書きによって失われてしまうことのないよう
+に設定されていますが，\cs{documentclass}よりも前に
+\verb|\newcommand{\DoNotLoadEpstopdf}{}|（\cs{def}を用いてもよい）を記述して
+読み込み済みのように見せかけることで\pkg{epstopdf}使用を回避できます．また
+\pkg{pst-pdf}パッケージを使用した場合も読み込みは行われません．詳細については
+\pkg{epstopdf}パッケージのドキュメントを参照してください (\url{http://ctan.%
+org/pkg/epstopdf-pkg})．
+
+関連する変更として，今年からいくつかの定められた外部コマンドが\TeX から（\cs{%
+write18}機能を介して）デフォルトで実行できるようになりました．デフォルトで実行
+が許可されているコマンドは\cmd{repstopdf}, \cmd{makeindex}, \cmd{kpsewhich},
+\cmd{bibtex}, \cmd{bibtex8}です．このリストは\file{texmf.cnf}に定義されています．
+こうした外部コマンドをすべて禁止する必要のある環境では，インストーラにオプション
+を指定するか（\ref{sec:options}節を参照），\code{tlmgr conf texmf \var{shell\_%
+escape} 0}を実行して設定を上書きしてください．
+
+上とは別の関連する変更は\BibTeX とMakeindexが任意ディレクトリのファイル出力を
+（\TeX 本体と同様）デフォルトでは行わなくなったことです．これは，これらのプロ
+グラムを制限付き\cs{write18}で実行できるようにするための措置です．この挙動を
+変更するためには環境変数\var{TEXMFOUTPUT}を設定するか\var{openout\_any}設定を
+変更してください．
+
+\XeTeX が\pdfTeX と同様に同じ行内でのマージンカーニングをサポートするように
+なりました（フォント展開は今のところサポートされていません）．
+
+\prog{tlmgr}がデフォルトで各パッケージのバックアップを取るようになったので
+(\code{tlmgr option autobackup 1})，パッケージアップデート時に不具合が発生
+しても\code{tlmgr restore}により簡単に復元できるようになりました．もし
+インストール後のアップデートを行いたいもののバックアップ用のディスク容量が
+ないという場合は\code{tlmgr option autobackup 0}を実行してください．
+
+新規に追加されたプログラム：
 %
-%In 2010, the default version for PDF output is now 1.5, enabling more
-%compression.  This applies to all the \TeX\ engines when used to produce
-%PDF and to \code{dvipdfmx}.  Loading the \pkg{pdf14} \LaTeX\ package
-%changes back to PDF~1.4, or set |\pdfminorversion=4|.
-%
-%pdf\AllTeX\ now \emph{automatically} converts a requested Encapsulated
-%PostScript (EPS) file to PDF, via the \pkg{epstopdf} package, when
-%and if the \LaTeX\ \code{graphics.cfg} configuration file is loaded, and
-%PDF is being output.  The default options are intended to eliminate any
-%chance of hand-created PDF files being overwritten, but you can also
-%prevent \code{epstopdf} from being loaded at all by putting
-%|\newcommand{\DoNotLoadEpstopdf}{}| (or |\def...|) before the
-%\cs{documentclass} declaration.  It is also not loaded if the
-%\pkg{pst-pdf} package is used.  For more details, see the
-%\pkg{epstopdf} package documentation
-%(\url{http://ctan.org/pkg/epstopdf-pkg}).
-%
-%A related change is that execution of a very few external commands from
-%\TeX, via the \cs{write18} feature, is now enabled by default.  These
-%commands are \code{repstopdf}, \code{makeindex}, \code{kpsewhich},
-%\code{bibtex}, and \code{bibtex8}; the list is defined in
-%\code{texmf.cnf}.  Environments which must disallow all such external
-%commands can deselect this option in the installer (see
-%section~\ref{sec:options}), or override the value after installation by
-%running |tlmgr conf texmf shell_escape 0|.
-%
-%Yet another related change is that \BibTeX\ and Makeindex now refuse to
-%write their output files to an arbitrary directory (like \TeX\ itself),
-%by default.  This is so they can now be enabled for use by the
-%restricted \cs{write18}.  To change this, the \code{TEXMFOUTPUT}
-%environment variable can be set, or the |openout_any| setting changed.
-%
-%\XeTeX\ now supports margin kerning along the same lines as pdf\TeX.
-%(Font expansion is not presently supported.)
-%
-%By default, \prog{tlmgr} now saves one backup of each package updated
-%(\code{tlmgr option autobackup 1}), so broken package updates can be
-%easily reverted with \code{tlmgr restore}.  If you do post-install
-%updates, and don't have the disk space for the backups, run \code{tlmgr
-%option autobackup 0}.
-%
-%New programs included: the p\TeX\ engine and related utilities for
-%typesetting Japanese; the \BibTeX{}U program for Unicode-enabled
-%\BibTeX; the \prog{chktex} utility
-%(\url{http://baruch.ev-en.org/proj/chktex}) for checking \AllTeX\
-%documents; the \prog{dvisvgm} (\url{http://dvisvgm.sourceforge.net})
-%DVI-to-SVG translator.
-%
-%Executables for these new platforms are now included: \code{amd64-freebsd},
-%\code{amd64-kfreebsd}, \code{i386-freebsd}, \code{i386-kfreebsd},
-%\code{x86\_64-darwin}, \code{x86\_64-solaris}.
-%
-%A change in \TL{} 2009 that we failed to note: numerous \TeX4ht-related
-%executables (\url{http://tug.org/tex4ht}) were removed from the binary
-%directories.  The generic \code{mk4ht} program can be used to run any of
-%the various \code{tex4ht} combinations.
-%
-%Finally, the \TL{} release on the \TK\ \DVD\ can no longer be run live
-%(oddly enough).  A single \DVD\ no longer has enough room.  One
-%beneficial side effect is that installation from the physical \DVD\ is
-%much faster.
-%
+\begin{itemize*}
+\item \pTeX エンジンと関連する日本語組版のためのユーティリティ
+\item {\BibTeX}U: Unicodeサポートが有効な\BibTeX
+\item \prog{chktex}: \LaTeXTeX 文書をチェックするツール
+\item \prog{dvisvgm}: DVIをSVGに変換するツール
+  (\url{http://dvisvgm.sourceforge.net})
+\end{itemize*}
+
+新しいプラットフォーム向けの実行バイナリも追加されました：
+\pkg{amd64-freebsd}, \pkg{amd64-kfreebsd}, \pkg{i386-freebsd},
+\pkg{i386-kfreebsd}, \pkg{x86\_64-darwin}, \pkg{x86\_64-solaris}.
+
+{\TL} 2009の変更ですが，昨年リリースノートに書き忘れたものがありました．
+\TeX4ht関連の多くの実行バイナリ (\url{http://tug.org/tex4ht}) がバイナリ用
+ディレクトリから削除されました．汎用の\cmd{mk4ht}コマンドを用いてすべての
+\prog{tex4ht}コンビネーションを実行することができます．
+
+最後に，\TeX コレクション\DVD 上の\TL はライブ実行できなくなりました．
+1枚の\DVD だけではもはや十分なスペースが確保できないためです．有用な副作用
+として，物理\DVD からのインストールがこれまでよりかなり高速になりました．
+
 %\subsubsection{2011}
 %
 %The \MacOSX\ binaries (\code{universal-darwin} and
