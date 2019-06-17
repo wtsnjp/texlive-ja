@@ -3061,30 +3061,29 @@ escape} 0}を実行して設定を上書きしてください．
 1枚の\DVD だけではもはや十分なスペースが確保できないためです．有用な副作用
 として，物理\DVD からのインストールがこれまでよりかなり高速になりました．
 
-%\subsubsection{2011}
-%
-%The \MacOSX\ binaries (\code{universal-darwin} and
-%\code{x86\_64-darwin}) now work only on Leopard or later; Panther and
-%Tiger are no longer supported.
-%
-%The \code{biber} program for bibliography processing is included on
-%common platforms.  Its development is closely coupled with the
-%\code{biblatex} package, which completely reimplements the
-%bibliographical facilities provided by LaTeX.
-%
-%The MetaPost (\code{mpost}) program no longer creates or uses
-%\code{.mem} files.  The needed files, such as \code{plain.mp}, are
-%simply read on every run.  This is related to supporting MetaPost as a
-%library, which is another significant though not user-visible change.
-%
-%The \code{updmap} implementation in Perl, previously used only on
-%Windows, has been revamped and is now used on all platforms.  There
-%shouldn't be any user-visible changes as a result, except that it runs
-%much faster.
-%
-%The \cmd{initex} and \cmd{inimf} programs were restored (but no
-%other \cmd{ini*} variants).
-%
+\subsubsection{2011}
+
+macOSバイナリ (\pkg{universal-darwin}, \pkg{x86\_64-darwin}) の動作要件が
+Leopard以降になりました．今後PantherとTigerはサポート対象外となります．
+
+一般的なプラットフォーム向けに文献処理ツール\prog{biber}が追加されました．
+このプログラムの開発は\LaTeX の参考文献関連機能の完全な再実装である\pkg{%
+biblatex}パッケージの開発と緊密に連携しています．
+
+
+{\MP} (\cmd{mpost}) は\file{.mem}ファイルを作成したり利用したりしなくなり
+ました．\file{plain.mp}のような必要ファイルは実行の度に読み込まれなければ
+なりません．これは\MP をライブラリとして利用できるようにしたことに関連する
+変更です（ライブラリ利用可能になったこともまた顕著な変更ですが，一般の
+ユーザにはあまり関係がありません）．
+
+\cmd{updmap}のPerl実装はこれまでWindows専用でしたが，刷新されてすべての
+プラットフォームで利用されるようになりました．これもユーザに影響のある
+ような変更ではないはずですが，実行速度はかなり向上しました．
+
+\cmd{initex}, \cmd{inimf}コマンドが復活しました（ただし，その他の\cmd{%
+ini*}コマンドは復活していません）．
+
 %\subsubsection{2012}
 %
 %\code{tlmgr} supports updates from multiple network repositories.  The
