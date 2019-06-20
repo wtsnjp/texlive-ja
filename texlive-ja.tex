@@ -3118,51 +3118,51 @@ texlive/texmf-local/web2c/texmf.cnf}）でも（存在すれば）みつけら�
 sparc-linux}と\pkg{i386-netbsd}はもはやメインディストリビューションには
 含まないことになりました．
 
-%\subsubsection{2013}
+\subsubsection{2013}
+
+ディストリビューション構造：トップレベルの\dir{texmf}ディレクトリは，簡潔の
+ため\dir{texmf-dist}と統合されました．\KPS 変数\var{TEXMFMAIN}と\var{TEXMF%
+DIST}は今後ともに\dir{texmf-dist}を参照することになります．
+
+多くの小さな言語サポートコレクションは，インストールをシンプルにするため，
+統合されました．
+
+\MP: PNG出力のネイティブサポートと浮動小数点数 (IEEE double) が追加されました．
+
+\LuaTeX: 内蔵Lua処理系のバージョンが5.2に上がりました．また，外部PDFのページ
+コンテンツを処理など多くの機能をもつ\pkg{pdfscanner}ライブラリが新たに追加
+されました（詳細は\pkg{pdfscanner}のウェブサイトを参照してください）．
+
+\XeTeX （ウェブサイトにさらに多くの情報があります）：
 %
-%Distribution layout: the top-level \code{texmf/} directory has been
-%merged into \code{texmf-dist/}, for simplicity.  Both the
-%\code{TEXMFMAIN} and \code{TEXMFDIST} Kpathsea variables now point to
-%\code{texmf-dist}.
-%
-%Many small language collections have been merged together, to simplify
-%installation.
-%
-%\MP: native support for PNG output and floating-point (IEEE double) has
-%been added.
-%
-%Lua\TeX: updated to Lua 5.2, and includes a new library
-%(\code{pdfscanner}) to process external PDF page content, among much
-%else (see its web pages).
-%
-%\XeTeX\ (also see its web pages for more):
-%\begin{itemize*}
-%\item The HarfBuzz library is now used for font layout instead of
-%ICU.  (ICU is still used to support input encodings, bidirectionality,
-%and the optional Unicode line breaking.)
-%\item Graphite2 and HarfBuzz are used instead of SilGraphite for Graphite
-%layout.
-%\item On Macs, Core Text is used instead of the (deprecated) ATSUI.
-%\item Prefer TrueType/OpenType fonts to Type1 when the names are the same.
-%\item Fix occasional mismatch in font finding between \XeTeX\ and
-%\code{xdvipdfmx}.
-%\item Support OpenType math cut-ins.
-%\end{itemize*}
-%
-%\cmd{xdvi}: now uses FreeType instead of \code{t1lib} for rendering.
-%
-%\pkg{microtype.sty}: some support for \XeTeX\ (protrusion) and
-%Lua\TeX\ (protrusion, font expansion, tracking), among other
-%enhancements.
-%
-%\cmd{tlmgr}: new \code{pinning} action to ease configuring multiple
-%repositories; that section in \verb|tlmgr --help| has more, online at
-%\url{http://tug.org/texlive/doc/tlmgr.html#MULTIPLE-REPOSITORIES}.
-%
-%Platforms: \pkg{armhf-linux}, \pkg{mips-irix},
-%\pkg{i386-netbsd}, and \pkg{amd64-netbsd} added or revived;
-%\pkg{powerpc-aix} removed.
-%
+\begin{itemize*}
+\item フォントレイアウトにICUに代わってHarfBuzzライブラリを使用するようになり
+  ました（ICUも入力エンコーディング，双方向組版，オプショナルなUnicode改行を
+  サポートするために依然として利用されてはいます）．
+\item グラファイトレイアウトにはSilGraphiteに代わってGraphite2とHarfBuzzが
+  利用されるようになりました．
+\item MacではATSUI（廃止予定）に代わってCore Textを使用するようになりました．
+\item 同名のものがある場合，Type1フォントよりTrueType/OpenTypeフォントが優先
+  されるようになりました．
+\item 稀に\XeTeX と\prog{xdvipdfmx}でフォント検索の挙動に違いが生じる問題を
+  修正しました．
+\item OpenTypeのmath cut-insをサポートしました．
+\end{itemize*}
+
+\prog{xdvi}: レンダリングに\prog{t1lib}に代わってFreeTypeを使用するように
+なりました．
+
+\pkg{microtype}: \XeTeX のprotrusion機能と\LuaTeX のprotrusion，フォント
+展開，トラッキング機能をサポートしたほか，数々の拡張が行われました．
+
+\prog{tlmgr}: 新しく\code{pinning}アクションが追加され，複数のレポジトリの
+管理が簡単になりました．\code{tlmgr \lopt{help}}出力の該当セクションまたは
+オンライン\url{http://tug.org/texlive/doc/tlmgr.html#MULTIPLE-REPOSITORIES}%
+に詳細が記述されています．
+
+プラットフォーム：\pkg{armhf-linux}, \pkg{mips-irix}, \pkg{i386-netbsd},
+\pkg{amd64-netbsd}が追加（復活）しました．\pkg{powerpc-aix}は廃止されました．
+
 %\subsubsection{2014}
 %
 %2014 saw another \TeX\ tune-up from Knuth; this affected all engines,
