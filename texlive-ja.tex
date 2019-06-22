@@ -3161,70 +3161,69 @@ DIST}は今後ともに\dir{texmf-dist}を参照することになります．
 に詳細が記述されています．
 
 プラットフォーム：\pkg{armhf-linux}, \pkg{mips-irix}, \pkg{i386-netbsd},
-\pkg{amd64-netbsd}が追加（復活）しました．\pkg{powerpc-aix}は廃止されました．
+\pkg{amd64-netbsd}が追加（または復活）されました．一方\pkg{powerpc-aix}は
+廃止されました．
 
-%\subsubsection{2014}
-%
-%2014 saw another \TeX\ tune-up from Knuth; this affected all engines,
-%but the only visible change likely is the restoration of the
-%\code{preloaded format} string on the banner line.  Per Knuth, this now
-%reflects the format that \emph{would} be loaded by default, rather than
-%an undumped format that is actually preloaded in the binary; it may be
-%overridden in various ways.
-%
-%pdf\TeX: new warning-suppression parameter
-%\cs{pdfsuppresswarningpagegroup}; new primitives for fake interword
-%spaces to help with PDF text reflowing: \cs{pdfinterwordspaceon},
-%\cs{pdfinterwordspaceoff}, \cs{pdffakespace}.
-%
-%Lua\TeX: Notable changes and fixes were made to font loading and
-%hyphenation.  The biggest addition is a new engine variant,
-%\code{luajittex} (\url{http://foundry.supelec.fr/projects/luajittex})
-%and its siblings \code{texluajit} and \code{texluajitc}.  This uses a
-%just-in-time Lua compiler (detailed \textsl{TUGboat} article at
-%\url{http://tug.org/TUGboat/tb34-1/tb106scarso.pdf}).  \code{luajittex}
-%is still in development, is not available on all platforms, and is
-%considerably less stable than \code{luatex}.  Neither we nor its
-%developers recommend using it except for the specific purpose of
-%experimenting with jit on Lua code.
-%
-%\XeTeX: The same image formats are now supported on all platforms
-%(including Mac); avoid Unicode compatibility decomposition fallback (but
-%not other variants); prefer OpenType to Graphite fonts, for
-%compatibility with previous \XeTeX\ versions.
-%
-%\MP: A new numbersystem \code{decimal} is supported, along with a
-%companion internal \code{numberprecision}; a new definition of
-%\code{drawdot} in \filename{plain.mp}, per Knuth; bug fixes in
-%SVG and PNG output, among others.
-%
-%The \cmd{pstopdf} Con\TeX{}t utility will be removed as a standalone
-%command at some point after the release, due to conflicts with OS
-%utilities of the same name.  It can still (and now) be invoked as
-%\code{mtxrun --script pstopdf}.
-%
-%\cmd{psutils} has been substantially revised by a new maintainer.
-%As a result, several seldom-used utilities (\code{fix*}, \code{getafm},
-%\code{psmerge}, \code{showchar}) are now only in the \dirname{scripts/}
-%directory rather than being user-level executables (this can be reversed
-%if it turns out to be problematic).  A new script, \code{psjoin}, has
-%been added.
-%
-%The Mac\TeX\ redistribution of \TeX\ Live (section~\ref{sec:macos}) no
-%longer includes the optional Mac-only packages for the Latin Modern and
-%\TeX\ Gyre fonts, since it is easy enough for individual users to make
-%them available to the system.  The \cmd{convert} program from
-%ImageMagick has also been excised, since \TeX4ht (specifically
-%\code{tex4ht.env}) now uses Ghostscript directly.
-%
-%The \pkg{langcjk} collection for Chinese, Japanese, and Korean
-%support has been split into individual language collections for the sake
-%of more moderate sizes.
-%
-%Platforms: \pkg{x86\_64-cygwin} added, \pkg{mips-irix} removed;
-%Microsoft no longer supports Windows XP, so our programs may
-%start failing there at any time.
-%
+\subsubsection{2014}
+
+% Note: 第2文の訳が正しいか自信なし
+2014年もKnuthによる\TeX のアップデートがありました．この変更はすべての
+エンジンに影響しますが，ユーザから見える変化は起動時バナーの\code{preloaded
+format}の文字列ぐらいでしょう．Knuthによれば，今回の変更により起動時バナーは
+バイナリに実際にアンダンプされて読み込まれたフォーマットよりも，読み込まれて
+いることが\emph{期待される}フォーマットを反映するようになりました．バナーの
+内容はさまざまな方法で上書きされ得ます．
+
+\pdfTeX: 警告を抑制する新しいパラメタ\cs{pdfsuppresswarningpagegroup}と，PDF%
+テキストリフローを補助するために単語内スペースを制御する新しいプリミティブ
+\cs{pdfinterwordspaceon}, \cs{pdfinterwordspaceoff}, \cs{pdffakespace}が追加
+されました．
+
+\LuaTeX: フォント読み込みとハイフネーションについて，大きな変更と修正が
+ありました．また\cmd{luajittex} (\url{http://foundry.supelec.fr/projects/%
+luajittex}) という新しい変種エンジンが追加されました（さらに，このエンジンの
+仲間として\code{texluajit}, \code{texluajitc}も追加されています）．この処理系
+はLuaのJITコンパイラを利用しています（詳細は\textsl{TUGboat}の記事\url{http:%
+//tug.org/TUGboat/tb34-1/tb106scarso.pdf}にあります）．\cmd{luajittex}は現在
+開発途上にあり，すべてのプラットフォームで利用可能なわけではなく，また\cmd{%
+luatex}ほど安定していない可能性があります．\TL チームも\cmd{luajittex}開発陣
+も，このエンジンはLuaコードのJITコンパイルについて実験を行う場合を除いては，
+使用を推奨していません．
+
+\XeTeX: Macを含むすべてのプラットフォームで同じ画像フォーマットをサポートする
+ようになりました．Unicodeの互換性分解フォールバックは回避されるようになりました
+（ただしそれ以外については未対応）．\XeTeX の以前のバージョンとの互換性のため，
+グラファイトフォントについてはOpenTypeを優先します．
+
+\MP: \code{numberprecision}に加えて，新しい数値体系\code{decimal}のサポート
+されるようになりました．Knuthにより\file{plain.mp}の\code{drawdot}の定義が更新
+されました．SVGおよびPNG出力についてのバグが修正されました．
+
+\TL\,2014リリース後どこかのタイミングで\ConTeXt のユーティリティ\cmd{pstopdf}%
+は独立のコマンドとしては廃止される予定です．これは同名のOSユーティリティとの
+衝突があるためです．同ユーティリティは\code{mtxrun \lopt{script} pstopdf}に
+よりこれからも呼び出すことができます．
+
+\cmd{psutils}は新しいメンテナにより大きく修正されました．結果として，いくつかの
+あまり使われていないユーティリティ (\cmd{fix*}, \cmd{getafm}, \cmd{psmerge},
+\cmd{showchar}) はユーザレベルバイナリとして提供するのではなく\dir{scripts}%
+ディレクトリ以下に移動されることになりました（もしこの変更で問題が発生した場合
+は戻されるかもしれません）．一方で新しいスクリプト\cmd{psjoin}が追加されました．
+
+\TL ベースのディストリビューション{Mac\TeX}（\ref{sec:macos}節）は，今後Latin
+Modernと{\TeX} GyreフォントについてのMac専用パッケージを同梱しないことになり
+ました．これはユーザが各自でそれらのフォントをシステムで利用できるように設定
+するのはそれほど難しくないためです．また\TeX4ht（とりわけ\file{tex4ht.env}）
+がGhostscriptを直接利用するようになったのでImageMagickの\cmd{convert}コマンド
+も削除されました．
+
+中国語，日本語，韓国語をサポートする\pkg{langcjk}コレクションは大きすぎたので
+言語ごとに独立のパッケージに分割されました．
+
+プラットフォーム：\pkg{x86\_64-cygwin}が追加された一方，\pkg{mips-irix}は削除
+されました．MicrosoftがWindows XPのサポートを終了したので，\TL もXPではそのうち
+動作しなくなるでしょう．
+
 %\subsubsection{2015}
 %
 %\LaTeXe\ now incorporates, by default, changes previously included only
