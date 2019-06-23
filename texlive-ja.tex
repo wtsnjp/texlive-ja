@@ -3224,57 +3224,57 @@ Modernと{\TeX} GyreフォントについてのMac専用パッケージを同梱
 されました．MicrosoftがWindows XPのサポートを終了したので，\TL もXPではそのうち
 動作しなくなるでしょう．
 
-%\subsubsection{2015}
-%
-%\LaTeXe\ now incorporates, by default, changes previously included only
-%by explicitly loading the \pkg{fixltx2e} package, which is now a
-%no-op.  A new \pkg{latexrelease} package and other mechanisms allow
-%for controlling what is done.  The included \LaTeX\ News \#22 and
-%``\LaTeX\ changes'' documents have details.  Incidentally, the
-%\pkg{babel} and \pkg{psnfss} packages, while core parts of
-%\LaTeX, are maintained separately and are not affected by these changes
-%(and should still work).
-%
-%Internally, \LaTeXe\ now includes Unicode-related engine configuration
-%(what characters are letters, naming of primitives, etc.) which was
-%previously part of \TeX\ Live.  This change is intended to be invisible
-%to users; a few low-level internal control sequences have been renamed
-%or removed, but the behavior should be just the same.
-%
-%pdf\TeX: Support JPEG Exif as well as JFIF; do not
-%emit a warning if \cs{pdfinclusionerrorlevel} is negative; sync
-%with \prog{xpdf}~3.04.
-%
-%Lua\TeX: New library \pkg{newtokenlib} for scanning tokens; bug
-%fixes in the \code{normal} random number generator and other places.
-%
-%\XeTeX: Image handling fixes; \prog{xdvipdfmx} binary looked for first
-%as a sibling to \prog{xetex}; internal \code{XDV} opcodes changed.
-%
-%MetaPost: New numbersystem \code{binary}; new Japanese-enabled
-%\prog{upmpost} and \prog{updvitomp} programs, analogous to
-%\prog{up*tex}.
-%
-%Mac\TeX: Updates to the included Ghostscript package for CJK
-%support.  The \TeX\ Distribution Preference Pane now works in Yosemite
-%(\MacOSX~10.10).  Resource-fork font suitcases (generally without an
-%extension) are no longer supported by \XeTeX; data-fork suitcases
-%(\code{.dfont}) remain supported.
-%
-%Infrastructure: The \prog{fmtutil} script has been reimplemented to read
-%\filename{fmtutil.cnf} on a per-tree basis, analogous to \prog{updmap}.
-%Web2C \prog{mktex*} scripts (including \prog{mktexlsr}, \prog{mktextfm},
-%\prog{mktexpk}) now prefer programs in their own directory, instead of
-%always using the existing \code{PATH}.
-%
-%Platforms: \pkg{*-kfreebsd} removed, since \TeX\ Live is now easily
-%available through the system platform mechanisms.
-%Support for some additional platforms is available as custom binaries
-%(\url{http://tug.org/texlive/custom-bin.html}).  In addition, some
-%platforms are now omitted from the \DVD\ (simply to save space), but can
-%be installed normally over the net.
-%
-%% 
+\subsubsection{2015}
+
+\LaTeXe に元々は\pkg{fixltx2e}パッケージを読み込まない限りは適用されなかった
+変更がデフォルトで組み込まれるようになりました（逆に，今後は\pkg{fixltx2e}を
+読み込んでも何も起こりません）．新たに追加された\pkg{latexrelease}パッケージ
+その他の新機構を用いて「どこまでの変更を反映するか」をコントロールすることが
+できます．詳細は付属ドキュメントの``{\LaTeX} News \#22''や``{\LaTeX} changes''
+に綴られています．ちなみに\pkg{babel}と\pkg{psnfss}は\LaTeX の中核を成す
+パッケージながら開発・保守は独立に行われており，今回の変更とは関係がありません
+（これまで通り動作するはずです）．
+
+内部的には\LaTeXe 自身がUnicode関連のエンジン設定（カテゴリーコードの初期値
+など）を同梱するようになりました．こうした設定は以前は\TL が提供していました．
+この変更はユーザには無関係のはずです．低レベルの内部コントロールシークエンス
+はリネームされたり削除されたりしていますが，全体としての挙動はこれまでと完全に
+一致しているはずです．
+
+\pdfTeX: JFIFと同様JPEGのExif情報もサポートするようになりました．\cs{%
+pdfinclusionerrorlevel}の値が負のときは警告を一切発しません．また\prog{xpdf}~%
+3.04に対応しました．
+
+\LuaTeX: トークン読み取りのための\pkg{newtokenlib}ライブラリが追加されました．
+\code{normal}な乱数生成やその他の部分に関わるバグ修正も含まれています．
+
+\XeTeX: 画像の取り扱いに関する修正がありました．\prog{xdvipdfmx}バイナリは
+最初に\prog{xetex}の仲間を検索するようになりました．\code{XDV}の内部オペコード
+が変更されました．
+
+\MP: 新しい数値体系\code{binary}が追加されました．\prog{up*tex}に対応する
+日本語用の\prog{upmpost}, \prog{updvitomp}プログラムが追加されました．
+
+Mac\TeX: CJKサポートGhostscriptパッケージの更新が反映されました．システム環境
+設定の``{\TeX} Distribution''ペインがOS X 10.10 Yosemiteでも利用可能になり
+ました．リソースフォークフォント（通常拡張子なし）はもはや\XeTeX ではサポート
+されなくなりました．一方データフォークフォント (\file{.dfont}) は今後も
+サポートされます．
+
+インフラ：\cmd{fmtutil}スクリプトが\cmd{updmap}と同様，ツリー毎に\file{%
+fmtutil.cnf}を読み込むように再実装されました．\Webc の\cmd{mktex*}スクリプト
+（\prog{mktexlsr}, \prog{mktextfm}, \prog{mktexpk}など）は毎回\code{PATH}%
+にあるプログラムよりも，それぞれと同じディレクトリにあるプログラムを優先する
+ようになりました．
+
+プラットフォーム：\pkg{kfreebsd}系のプラットフォームサポートは終了しました．
+これらのプラットフォームでは，それぞれシステムネイティブな機能を利用して簡単に
+\TL を導入できるようになったためです．いくつかの追加プラットフォームがカスタム
+バイナリの形でサポートされるようになりました (\url{http://tug.org/texlive/%
+custom-bin.html})．加えていくつかのプラットフォームサポートが\DVD では省略
+されるようになりましたが（単純に容量不足のためです），インターネット経由でこれ
+まで通りインストールすることができます．
+
 %\subsubsection{2016}
 %
 %Lua\TeX: Sweeping changes to primitives, both renames and removals,
