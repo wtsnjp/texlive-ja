@@ -3275,69 +3275,61 @@ custom-bin.html})．加えていくつかのプラットフォームサポート
 されるようになりましたが（単純に容量不足のためです），インターネット経由でこれ
 まで通りインストールすることができます．
 
-%\subsubsection{2016}
+\subsubsection{2016}
+
+\LuaTeX: プリミティブについての大きな変更（リネームと削除）とノード構造の
+部分的な再設計がありました．この変更はHans Hagen氏による記事``{\LuaTeX} 0.90
+backend changes for PDF and more'' (\url{http://tug.org/TUGboat/tb37-1/%
+tb115hagen-pdf.pdf}) に要約されています．すべての詳細については\LuaTeX の
+マニュアル\OnCD{texmf-dist/doc/luatex/base/luatex.pdf}を参照してください．
+
+\MF: \MF にLua処理系を組み込んだ実験的なプログラムMFluaとMFluajitが追加され
+ました．現状これらは試用と実験のためのものです．
+
+\MP: バグ修正と{\MP} 2.0に向けた内部的準備が行われました．
+
+\LuaTeX とオリジナルの\TeX を除くすべての処理系が\var{SOURCE\_DATE\_EPOCH}に
+対応しました（\LuaTeX も次のリリース時に対応する予定です）．環境変数\var{%
+SOURCE\_DATE\_EPOCH}が設定されている場合，その値がPDF出力のタイムスタンプと
+して利用されます．\var{SOURCE\_DATE\_EPOCH\_TEX\_PRIMITIVES}も設定されている
+場合，\var{SOURCE\_DATE\_EPOCH}の値が\TeX のプリミティブ\cs{year}, \cs{month},
+\cs{day}, \cs{time}の初期化にも利用されます．\pdfTeX のマニュアルに詳細と
+使用例が記載されています．
+
+\pdfTeX: 通常実行の毎に異なる値の出力をコントロールするためのプリミティブ\cs{%
+pdfinfoomitdate}, \cs{pdftrailerid}, \cs{pdfsuppressptexinfo}が追加されました．
+これらの機能はPDF出力のためのもので，DVIのものではありません．
+
+\XeTeX: プリミティブ\cs{XeTeXhyphenatablelength}, \cs{XeTeXgenerateactualtext},
+\cs{XeTeXinterword\-spaceshaping}, \cs{mdfivesum}が追加されました．文字クラスの
+上限が4096に制限されました．DVIのidバイトが更新されました．
+
+その他のユーティリティ：
 %
-%Lua\TeX: Sweeping changes to primitives, both renames and removals,
-%along with some node structure rearrangements.  The changes are
-%summarized in an article by Hans Hagen, ``Lua\TeX\ 0.90 backend changes
-%for PDF and more''
-%(\url{http://tug.org/TUGboat/tb37-1/tb115hagen-pdf.pdf}); for all the
-%details, see the Lua\TeX\ manual,
-%\OnCD{texmf-dist/doc/luatex/base/luatex.pdf}.
-%
-%Metafont: New highly experimental sibling programs MFlua and MFluajit,
-%integrating Lua with \MF, for trial testing purposes.
-%
-%MetaPost: Bug fixes and internal preparations for MetaPost 2.0.
-%
-%\code{SOURCE\_DATE\_EPOCH} support in all engines except Lua\TeX\ (which
-%will come in the next release) and original \code{tex} (intentionally
-%omitted): if the environment variable \code{SOURCE\_DATE\_EPOCH} is set,
-%its value is used for timestamps in the PDF output.  If
-%\code{SOURCE\_DATE\_EPOCH\_TEX\_PRIMITIVES} is also set, the
-%\code{SOURCE\_DATE\_EPOCH} value is used to initialize the \TeX\
-%primitives \cs{year}, \cs{month}, \cs{day}, \cs{time}.  The pdf\TeX\
-%manual has examples and details.
-%
-%pdf\TeX: new primitives \cs{pdfinfoomitdate}, \cs{pdftrailerid},
-%\cs{pdfsuppressptexinfo}, to control values appearing in the output
-%which normally change with each run.  These features are for PDF output
-%only, not DVI.
-%
-%Xe\TeX: New primitives \cs{XeTeXhyphenatablelength},
-%\cs{XeTeXgenerateactualtext},\\ \cs{XeTeXinterwordspaceshaping},
-%\cs{mdfivesum}; character class limit increased to 4096; DVI id byte
-%incremented.
-%
-%Other utilities:
-%\begin{itemize*}
-%\item \code{gregorio} is a new program, part of the \code{gregoriotex}
-%package for typesetting Gregorian chant scores; it is included in
-%\code{shell\_escape\_commands} by default.
-%
-%\item \code{upmendex} is an index creation program, mostly compatible
-%with \code{makeindex}, with support for Unicode sorting, among other
-%changes.
-%
-%\item \code{afm2tfm} now makes only accent-based height adjustments
-%upward; a new option \code{-a} omits all adjustments.
-%
-%\item \code{ps2pk} can handle extended PK/GF fonts.
-%\end{itemize*}
-%
-%Mac\TeX: The \TeX\ Distribution Preference Pane is gone; its
-%functionality is now in TeX Live Utility; bundled GUI applications
-%upgraded; new script \code{cjk-gs-integrate} to be run by users who wish
-%to incorporate various CJK fonts into Ghostscript.
-%
-%Infrastructure: System-level \code{tlmgr} configuration file supported;
-%verify package checksums; if GPG is available, verify signature of
-%network updates.  These checks happen with both the installer and
-%\code{tlmgr}.  (If GPG is not available, updates proceed as usual.)
-%
-%Platforms: \code{alpha-linux} and \code{mipsel-linux} removed.
-%
-%% 
+\begin{itemize*}
+\item \cmd{gregorio}はグレゴリオ聖歌楽譜を組版するためのパッケージ\pkg{%
+  gregoriotex}に含まれる新しいプログラムです．このツールは\var{shell\_escape%
+  \_commands}にデフォルトで含まれています．
+\item \cmd{upmendex}は索引作成プログラムで，概ね\cmd{makeindex}と互換なもの
+  ですが，Unicodeソートをサポートする他，いくつかの変更が加えられています．
+\item \cmd{afm2tfm}はアクセントベースの高さ調整を上向きのみに行うようになり
+  ました．\sopt{a}を使用するとすべての調整を省略します．
+\item \cmd{ps2pk}が拡張PK/GFフォントを扱えるようになりました．
+\end{itemize*}
+
+Mac\TeX: システム環境設定の``\TeX\ Distribution''ペインが廃止され，そこで
+取り扱われていた機能は\TL ユーティリティに移されました．同梱のGUIアプリケー
+ションはアップデートされました．さまざまなCJKフォントをGhostscriptで扱いたい
+ユーザのために新しく\cmd{cjk-gs-integrate}スクリプトが追加されました．
+
+インフラ：システムレベルの\cmd{tlmgr}設定ファイルがサポートされました．また
+パッケージのチェックサムを認証する機能が追加されました．GPGが利用可能な場合は
+ネットワークアップデート時に署名も認証されるようになります．これらの認証は
+インストーラと\cmd{tlmgr}の両方で行われます（GPGが利用できない場合，アップ
+デートはこれまで通り処理されます）．
+
+プラットフォーム：\pkg{alpha-linux}と\pkg{mipsel-linux}は削除されました．
+
 %\subsubsection{2017}
 %
 %Lua\TeX: More callbacks, more typesetting control, more access to
