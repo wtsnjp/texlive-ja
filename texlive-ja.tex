@@ -209,7 +209,7 @@ http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まず�
 
 このセクションでは\TL と\TeX コレクションの収録物について紹介します．
 
-\subsection{\TeX コレクション: \TL, pro\TeX{}t, Mac\TeX}
+\subsection{\TeX コレクション: \TL, pro\TeX{}t, \MacTeX}
 \label{sec:tl-coll-dists}
 
 \TeX コレクション\DVD には以下のものが含まれています：
@@ -219,7 +219,7 @@ http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まず�
 ディスクにインストールするための完全な\TeX システム（ディストリビューション）
 です．ウェブサイト：\url{http://tug.org/texlive/}
 
-\item[Mac\TeX]
+\item[\MacTeX]
 \macOS 向けの\TeX ディストリビューションで，専用のインストーラといくつかの
 Mac用アプリケーションを\TL に追加しています．
 ウェブサイト：\url{http://tug.org/mactex/}
@@ -605,15 +605,15 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 \subsubsection{\macOS}
 \label{sec:macos}
 
-\ref{sec:tl-coll-dists}節でも言及したように，\macOS にはMac\TeX という専用の
-ディストリビューションがあります (\url{http://tug.org/mactex})．Mac\TeX の
+\ref{sec:tl-coll-dists}節でも言及したように，\macOS には\MacTeX という専用の
+ディストリビューションがあります (\url{http://tug.org/mactex})．\MacTeX の
 インストーラは\macOS 向けにいくつかの最適化をしている（たとえば，いわゆる
 「{\TeX}Distデータ構造」を利用して複数の\macOS 向け\TeX ディストリビューション
-(Mac\TeX, Fink, MacPorts, \ldots) を簡単に切り替える機能があります）ので，\TL
-インストーラを利用するよりも，Mac\TeX を利用したインストールをおすすめします
+(\MacTeX, Fink, MacPorts, \ldots) を簡単に切り替える機能があります）ので，\TL
+インストーラを利用するよりも，\MacTeX を利用したインストールをおすすめします
 （訳注：ただし敢えて\TL インストーラを利用することも可能です）．
 
-Mac\TeX は完全な\TL ベースのディストリビューションで，主要な\TeX ツリーと
+\MacTeX は完全な\TL ベースのディストリビューションで，主要な\TeX ツリーと
 含まれる実行バイナリはまったく同一です．通常の\TL に，\macOS 専用のドキュメント
 とアプリケーションがいくつか追加されています．
 
@@ -819,7 +819,7 @@ Select scheme:
 デフォルトでは\TL で利用可能なすべてのパッケージを含む\pkg{full}スキームが
 インストールされます．おすすめはこの\pkg{full}スキームですが，純粋なplain \TeX
 と\LaTeX だけを使用するなら\pkg{basic}，それに少しプログラムを追加したものである
-\pkg{small}（これはMac\TeX におけるBasic\TeX と同等です），単なるテスト目的なら
+\pkg{small}（これは\MacTeX におけるBasic\TeX と同等です），単なるテスト目的なら
 \pkg{minimal}，あるいはそれらの中間にあたるものが欲しければ\pkg{medium}や
 \pkg{teTeX}スキームを選択することもできます．その他にも，多数の目的別もしくは
 言語別のスキームが用意されています．
@@ -1173,7 +1173,7 @@ MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
 
 Windowsでは，\TL に含まれているフォントは自動的にフォント名を指定するだけで\XeTeX
 から利用できるように設定されます．\macOS では，フォント名による検索を有効にする
-ためにはいくつかの手順が必要です（詳細はMac\TeX のウェブサイト\url{http://tug.org/%
+ためにはいくつかの手順が必要です（詳細は\MacTeX のウェブサイト\url{http://tug.org/%
 mactex}を参照してください）．他のUNIXシステムでの設定方法は，以下の通りです．
 
 この設定を簡単にするために，\pkg{xetex}パッケージのインストール時（最初の\TL
@@ -1280,7 +1280,7 @@ TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下�
 
 おそらく，多くの人がまず最初に動作確認したいのはファイル編集を行うフロントエンド
 でしょう．\TL はWidows（のみ）では{\TeX}works (\url{http://tug.org/texworks}) を，
-Mac\TeX は{\TeX}Shop (\url{http://pages.uoregon.edu/koch/texshop}) をインストール
+\MacTeX は{\TeX}Shop (\url{http://pages.uoregon.edu/koch/texshop}) をインストール
 します．他のUNIXシステムではどのエディタを利用するかはユーザが決めてください．
 エディタの選択肢はとてもたくさんあり，その一部は次のセクションでリストアップされて
 います．また\url{http://tug.org/interest.html#editors}も参考になるかと思います．
@@ -2509,7 +2509,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item 角藤亮．日本語\TeX 用のW32\TeX ディストリビューション (\url{http://w32tex.org})
   のためにWindowsバイナリを提供し，さらに開発に関わる数々の貢献をしてくれました．
 \item Jonathan Kew．優れた\TeX エンジンである\XeTeX を開発し，時間と労力を割いてその
-  処理系を\TL に導入してくれました．彼はさらに初期バージョンのMac\TeX を開発し，我々の
+  処理系を\TL に導入してくれました．彼はさらに初期バージョンの\MacTeX を開発し，我々の
   おすすめするフロントエンドである\TeX worksも開発しました．
 \item Dick Koch．\TL チームと友好的かつ緊密に連携しながらMac{\TeX} (\url{http://tug.%
   org/mactex}) のメンテナンスを行ってくれています．
@@ -2960,7 +2960,7 @@ Computer Modernを含め，新しいバージョンのAMS \TypeI フォントが
 hagen-euler.pdf}参照）．いずれについてもメトリクスは変更されていません．AMS%
 フォントのウェブサイトは\url{http://www.ams.org/tex/amsfonts.html}です．
 
-新しい\GUI フロントエンド{\TeX}worksがWindowsとMac\TeX 向けに追加されました．
+新しい\GUI フロントエンド{\TeX}worksがWindowsと\MacTeX 向けに追加されました．
 他のプラットフォーム向けのものや詳細情報については{\TeX}worksのウェブサイト
 (\url{http://tug.org/texworks}) を参照してください．{\TeX}worksはmacOS向けの
 統合開発環境{\TeX}Shopにインスパイアされたクロスプラットフォームなフロント
@@ -3210,7 +3210,7 @@ luatex}ほど安定していない可能性があります．\TL チームも\cm
 ディレクトリ以下に移動されることになりました（もしこの変更で問題が発生した場合
 は戻されるかもしれません）．一方で新しいスクリプト\cmd{psjoin}が追加されました．
 
-\TL ベースのディストリビューション{Mac\TeX}（\ref{sec:macos}節）は，今後Latin
+\TL ベースのディストリビューション{\MacTeX}（\ref{sec:macos}節）は，今後Latin
 Modernと{\TeX} GyreフォントについてのMac専用パッケージを同梱しないことになり
 ました．これはユーザが各自でそれらのフォントをシステムで利用できるように設定
 するのはそれほど難しくないためです．また\TeX4ht（とりわけ\file{tex4ht.env}）
@@ -3255,7 +3255,7 @@ pdfinclusionerrorlevel}の値が負のときは警告を一切発しません．
 \MP: 新しい数値体系\code{binary}が追加されました．\prog{up*tex}に対応する
 日本語用の\prog{upmpost}, \prog{updvitomp}プログラムが追加されました．
 
-Mac\TeX: CJKサポートGhostscriptパッケージの更新が反映されました．システム環境
+\MacTeX: CJKサポートGhostscriptパッケージの更新が反映されました．システム環境
 設定の``{\TeX} Distribution''ペインがOS X 10.10 Yosemiteでも利用可能になり
 ました．リソースフォークフォント（通常拡張子なし）はもはや\XeTeX ではサポート
 されなくなりました．一方データフォークフォント (\file{.dfont}) は今後も
@@ -3317,7 +3317,7 @@ pdfinfoomitdate}, \cs{pdftrailerid}, \cs{pdfsuppressptexinfo}が追加されま�
 \item \cmd{ps2pk}が拡張PK/GFフォントを扱えるようになりました．
 \end{itemize*}
 
-Mac\TeX: システム環境設定の``\TeX\ Distribution''ペインが廃止され，そこで
+\MacTeX: システム環境設定の``\TeX\ Distribution''ペインが廃止され，そこで
 取り扱われていた機能は\TL ユーティリティに移されました．同梱のGUIアプリケー
 ションはアップデートされました．さまざまなCJKフォントをGhostscriptで扱いたい
 ユーザのために新しく\cmd{cjk-gs-integrate}スクリプトが追加されました．
@@ -3330,73 +3330,74 @@ Mac\TeX: システム環境設定の``\TeX\ Distribution''ペインが廃止さ�
 
 プラットフォーム：\pkg{alpha-linux}と\pkg{mipsel-linux}は削除されました．
 
-%\subsubsection{2017}
-%
-%Lua\TeX: More callbacks, more typesetting control, more access to
-%internals; \code{ffi} library for dynamic code loading added on some
-%platforms.
-%
-%pdf\TeX: Environment variable |SOURCE_DATE_EPOCH_TEX_PRIMITIVES| from
-%last year renamed to |FORCE_SOURCE_DATE|, with no changes in
-%functionality; if the \cs{pdfpageattr} token list contains the string
-%\code{/MediaBox}, omit output of the default \code{/MediaBox}.
-%
-%Xe\TeX: Unicode/OpenType math now based on HarfBuzz's MATH table support;
-%some bug fixes.
-%
-%Dvips: Make the last papersize special win, for consistency with
-%\code{dvipdfmx} and package expectations; the \code{-L0} option (\code{L0}
-%config setting) restores the previous behavior of the first special
-%winning.
-%
-%ep\TeX, eup\TeX: New primitives \cs{pdfuniformdeviate},
-%\cs{pdfnormaldeviate}, \cs{pdfrandomseed}, \cs{pdfsetrandomseed},
-%\cs{pdfelapsedtime}, \cs{pdfresettimer}, from pdf\TeX.
-%
-%Mac\TeX: As of this year, only \MacOSX\ releases for which Apple still
-%releases security patches will be supported in Mac\TeX, under the
-%platform name |x86_64-darwin|; currently this means Yosemite,
-%El~Capitan, and Sierra (10.10 and newer). Binaries for older \MacOSX\
-%versions are not included in Mac\TeX, but are still available in \TeX\
-%Live (|x86_64-darwinlegacy|, \code{i386-darwin}, \code{powerpc-darwin}).
-%
-%Infrastructure: The \code{TEXMFLOCAL} tree is now searched before
-%\code{TEXMFSYSCONFIG} and \code{TEXMFSYSVAR} (by default); the
-%hope is that this will better match expectations of local files
-%overriding system files.  Also, \code{tlmgr} has a new mode \code{shell}
-%for interactive and scripted use, and a new action \code{conf auxtrees}
-%to easily add and remove extra trees.
-%
-%\code{updmap} and \code{fmtutil}: These scripts now give a warning when
-%invoked without explicitly specifying either so-called system mode
-%(\code{updmap-sys}, \code{fmtutil-sys}, or option \code{-sys}), or user
-%mode (\code{updmap-user}, \code{fmtutil-user}, or option \code{-user}).
-%The hope is that this will reduce the perennial problem of invoking user
-%mode by accident and thus losing future system updates.  See
-%\url{http://tug.org/texlive/scripts-sys-user.html} for details.
-%
-%\code{install-tl}: Personal paths such as \code{TEXMFHOME} are now
-%set to Mac\TeX\ values (|~/Library/...|)\ by default on Macs.  New
-%option \code{-init-from-profile} to start an installation with the
-%values from a given profile; new command \code{P} to explicitly save a
-%profile; new profile variable names (but previous ones are still
-%accepted).
-%
-%Sync\TeX: the name of the temporary file now looks like
-%\code{foo.synctex(busy)}, instead of \code{foo.synctex.gz(busy)}
-%(no~\code{.gz}). Front ends and build systems that want to remove temp
-%files may need adjusting.
-%
-%Other utilities: \code{texosquery-jre8} is a new cross-platform program
-%for retrieving locale and other OS information from a \TeX\ document; it
-%is included in |shell_escape_commands| by default for restricted
-%shell execution. (Older JRE versions are supported by texosquery, but
-%cannot be enabled in restricted mode, as they are no longer supported by
-%Oracle, even for security issues.)
-%
-%Platforms: See Mac\TeX\ entry above; no other changes.
-%
-%% 
+\subsubsection{2017}
+
+\LuaTeX: コールバックや組版制御の機能が追加され，これまで以上に内部処理に
+アクセスできるようになりました．動的なコード読み込みを行うための\code{ffi}%
+ライブラリがいくつかのプラットフォーム向けに追加されました．
+
+\pdfTeX: 昨年導入された環境変数\var{SOURCE\_DATE\_EPOCH\_TEX\_PRIMITIVES}%
+は\var{FORCE\_SOURCE\_DATE}にリネームされました（機能はまったく同一です）．
+トークンリスト\cs{pdfpageattr}が文字列\code{/MediaBox}を含んでいる場合，
+デフォルト\code{/MediaBox}の出力が省略されるようになりました．
+
+\XeTeX: Unicode/OpenTypeのmath機能はHarfBuzzのMATHテーブルサポートに基づく
+ようになりました．またいくつかのバグが修正されました．
+
+\prog{dvips}: \cmd{dvipdfmx}との一貫性と他のパッケージから期待される挙動に
+合わせるため，最後の用紙サイズspecialが適用されるようになりました．\sopt{%
+L0}オプションを使用（または設定ファイルで\code{L0}指定）した場合，最初の
+specialが優先される従来の挙動に戻ります．
+
+\epTeX, \eupTeX: \pdfTeX 由来のプリミティブ\cs{pdfuniformdeviate},
+\cs{pdfnormaldeviate}, \cs{pdf\-randomseed}, \cs{pdfsetrandomseed},
+\cs{pdfelapsedtime}, \cs{pdfresettimer}が追加されました．
+
+\MacTeX: 今年から，\MacTeX としてはAppleがセキュリティパッチを提供している
+macOSのバージョンのみをプラットフォーム\pkg{x86\_64-darwin}としてサポート
+することになりました．これにより，現在サポート対象となるのはYosemite, El~%
+Capitan, Sierra（つまりmacOS 10.10以上）です．それよりも古いバージョンの
+macOS向けのバイナリは\MacTeX には同梱されていませんが，\TL には含まれて
+います (\pkg{x86\_64-darwinlegacy}, \pkg{i386-darwin}, \pkg{powerpc-darwin})．
+
+インフラ：\var{TEXMFLOCAL}がデフォルトで\var{TEXMFSYSCONFIG}および\var{%
+TEXMFSYSVAR}に先んじて検索されるようになりました．これはローカルなファイル
+がシステムのそれを上書きするのがより期待される挙動であろうとの判断からです．
+また\cmd{tlmgr}に新しく\code{shell}モード（対話的実行もしくはスクリプトから
+使用されることを意図するものです）と\code{conf auxtrees}アクション（独自
+ツリーの追加と削除が容易にできます）が追加されました．
+
+\cmd{updmap}と\cmd{fmtutil}: これらのスクリプトは明示的にいわゆるシステム
+モード（\code{updmap-sys}, \code{fmtutil-sys}コマンドの実行または\sopt{sys}%
+オプションの利用）またはユーザモード（\code{updmap-user}, \code{fmtutil-user}%
+コマンドの実行または\sopt{user}オプションの利用）を指定せずに実行された場合，
+警告を表示するようになりました．これは長年に渡って意図せずユーザモードで
+スクリプトが実行され，その後システム側のアップデートが反映されない問題へ
+対処するための措置です．詳細は\url{http://tug.org/texlive/scripts-sys-user.%
+html}を参照してください．
+
+\cmd{install-tl}: macOSにおける\var{TEXMFHOME}等の個人用パスのデフォルト値が
+\MacTeX のデフォルト値\dir{~/Library/...}に合わせられました．新しく\sopt{%
+init-from-profile}オプションが追加され，指定したプロフィールの値に基づいて
+インストールを開始できるようになったほか，明示的にプロフィールを保存する
+\code{P}コマンドが追加されました．またプロフィールで指定する変数の名前が
+更新されました（古い変数名も引き続き使用可能です）．
+
+Sync\TeX: 一時ファイルの名前が\file{foo.synctex.gz(busy)}のような形から\file{%
+foo.synctex(busy)}に変更されました（\file{.gz}の部分が省略されます）．一時
+ファイルを削除するフロントエンドやビルドシステムは対応が必要かもしれません．
+
+その他のユーティリティ：\cmd{texosquery-jre8}は新しいクロスプラットフォームな
+プログラムで，\TeX 文書の中からロケールその他のOS情報を収集するためのものです．
+このツールは制限付きシェル実行時でも起動できるよう，デフォルトで\var{shell\_%
+escape\_commands}に追加されています（\prog{texosquery}はJREの古いバージョンも
+サポートしていますが，古いJREで実行する場合には制限モードでは実行できません．
+古いJREは既にOracleによってサポートされておらず，セキュリティ上の懸念がある
+ためです）．
+
+プラットフォーム：上の\MacTeX の項目を確認してください．それ以外の変更は
+ありません．
+
 %\subsubsection{2018}
 %
 %Kpathsea: Case-insensitive filename matching now done by default in
@@ -3420,8 +3421,8 @@ Mac\TeX: システム環境設定の``\TeX\ Distribution''ペインが廃止さ�
 %the output driver fails; various obscure UTF-8 and other primitive
 %fixes.
 %
-%Mac\TeX: See version support changes below. In addition, the files
-%installed in \code{/Applications/TeX/} by Mac\TeX\ have been reorganized for
+%\MacTeX: See version support changes below. In addition, the files
+%installed in \code{/Applications/TeX/} by \MacTeX\ have been reorganized for
 %greater clarity; now this location contains four GUI programs (BibDesk,
 %LaTeXiT, TeX Live Utility, and TeXShop) at the top level and folders
 %with additional utilities and documentation.
@@ -3510,7 +3511,7 @@ Mac\TeX: システム環境設定の``\TeX\ Distribution''ペインが廃止さ�
 %\item \code{dvispc}: make a DVI file page-independent with respect to specials.
 %\end{itemize*}
 %
-%Mac\TeX: \code{x86\_64-darwin} now supports 10.12 and higher (Sierra,
+%\MacTeX: \code{x86\_64-darwin} now supports 10.12 and higher (Sierra,
 %High Sierra, Mojave); \code{x86\_64-darwinlegacy} still supports 10.6
 %and newer. The spell checker Excalibur is no longer included, since it
 %requires 32-bit support.
