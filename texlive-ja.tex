@@ -3398,57 +3398,56 @@ escape\_commands}に追加されています（\prog{texosquery}はJREの古い�
 プラットフォーム：上の\MacTeX の項目を確認してください．それ以外の変更は
 ありません．
 
-%\subsubsection{2018}
+\subsubsection{2018}
+
+\KPS: システムディレクトリ以外に対してはデフォルトで大文字・小文字を区別せず
+ファイル検索を行うようになりました．これまで通り大文字・小文字を区別したい
+場合は\file{texmf.cnf}または環境変数で\var{texmf\_casefold\_search}を\code{0}%
+に設定してください．詳細は\KPS のマニュアル (\url{http://tug.org/kpathsea})
+を参照してください．
+
+\epTeX, \eupTeX: 新プリミティブ\cs{epTeXversion}が追加されました．
+
+\LuaTeX: \TL\,2019でLua 5.3に移行するための準備として，ほとんどのプラット
+フォーム向けにバイナリ\cmd{luatex53}が追加されました．有効化するためには
+\code{luatex}にリネームしてください．もしくは{\ConTeXt} Garden (\url{http:%
+//wiki.contextgarden.net}) のファイルを使用してください（詳細はサイトを
+参照してください）．
+
+\MP: 間違ったパス方向とTFM, PNG出力に関する問題が修正されました．
+
+\pdfTeX: ビットマップフォントについてエンコーディングベクタが許容されるよう
+になり，カレントディレクトリがPDF ID中にハッシュされなくなりました．\cs{%
+pdfprimitive}とそれに関連するバグ修正が行われました．
+
+\XeTeX: PDF画像挿入時に\code{/Rotate}がサポートされるようになりました．
+出力ドライバが正常終了しなかった際の終了ステータスが非ゼロ値になりました．
+UTF-8やプリミティブ周りのさまざまな不具合が修正されました．
+
+\MacTeX: 下記のサポートmacOSバージョン変更を確認してください．加えて，
+\MacTeX によって\dir{/Applications/TeX/}以下にインストールされていたファイル
+が整理されました．今後このディレクトリ直下にはGUIプログラム (BibDesk, LaTeXiT,
+{\TL} Utility, {\TeX}Shop) が置かれ，サブディレクトリに追加のユーティリティや
+ドキュメントが配置されます．
+
+\cmd{tlmgr}: 新しいフロントエンド\cmd{tlshell} (Tcl/Tk) と\cmd{tlcockpit}
+(Java) が追加されました．それに伴い，\cmd{tlmgr}がJSON出力に対応しました．
+\code{uninstall}コマンドは\code{remove}の別名になりました．新しいアクション
+および同名オプションとして\code{print-platform-info}が追加されました．
+
+プラットフォーム：
 %
-%Kpathsea: Case-insensitive filename matching now done by default in
-%non-system directories; set \code{texmf.cnf} or environment variable
-%\code{texmf\_casefold\_search} to~\code{0} to disable.
-%Full details in the Kpathsea manual (\url{http://tug.org/kpathsea}).
-%
-%ep\TeX, eup\TeX: New primitive \cs{epTeXversion}.
-%
-%Lua\TeX: Preparation for moving to Lua 5.3 in 2019: a binary
-%\code{luatex53} is available on most platforms, but must be renamed to
-%\code{luatex} to be effective. Or use the \ConTeXt\ Garden
-%(\url{http://wiki.contextgarden.net}) files; more information there.
-%
-%MetaPost: Fixes for wrong path directions, TFM and PNG output.
-%
-%pdf\TeX: Allow encoding vectors for bitmap fonts; current directory not
-%hashed into PDF ID; bug fixes for \cs{pdfprimitive} and related.
-%
-%Xe\TeX: Support \code{/Rotate} in PDF image inclusion; exit nonzero if
-%the output driver fails; various obscure UTF-8 and other primitive
-%fixes.
-%
-%\MacTeX: See version support changes below. In addition, the files
-%installed in \code{/Applications/TeX/} by \MacTeX\ have been reorganized for
-%greater clarity; now this location contains four GUI programs (BibDesk,
-%LaTeXiT, TeX Live Utility, and TeXShop) at the top level and folders
-%with additional utilities and documentation.
-%
-%\code{tlmgr}: new front-ends \code{tlshell} (Tcl/Tk) and
-%\code{tlcockpit} (Java); JSON output; \code{uninstall} now a synonym
-%for \code{remove}; new action/option \code{print-platform-info}.
-%
-%Platforms:
-%\begin{itemize*}
-%\item 
-%Removed: \code{armel-linux}, \code{powerpc-linux}.
-%
-%\item \code{x86\_64-darwin} supports 10.10--10.13
-%(Yosemite, El~Capitan, Sierra, and High~Sierra).
-%
-%\item \code{x86\_64-darwinlegacy} supports 10.6--10.10 (though
-%\code{x86\_64-darwin} is preferred for 10.10).  All support for 10.5
-%(Leopard) is gone, that is, both the \code{powerpc-darwin} and
-%\code{i386-darwin platforms} have been removed.
-%
-%\item Windows: XP is no longer supported.
-%\end{itemize*}
-%
-%
-%\htmlanchor{news}
+\begin{itemize*}
+\item \pkg{armel-linux}と\pkg{powerpc-linux}は削除されました．
+\item \pkg{x86\_64-darwin}のサポート対象はmacOS 10.10--10.13 (Yosemite, El~%
+  Capitan, Sierra, High~Sierra) になりました．
+\item \pkg{x86\_64-darwinlegacy}のサポート対象は10.6--10.10です（10.10について
+  は\pkg{x86\_64-darwin}の利用をおすすめします）．\pkg{powerpc-darwin}と\pkg{%
+  i386-darwin}が削除されたことによって，10.5 (Leopard) のサポートは完全的に
+  終了しました．
+\item Windows XPはもはやサポートされません．
+\end{itemize*}
+
 %\subsection{Present: 2019}
 %\label{sec:tlcurrent}
 %
