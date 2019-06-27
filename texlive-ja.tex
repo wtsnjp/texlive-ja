@@ -3448,76 +3448,66 @@ UTF-8やプリミティブ周りのさまざまな不具合が修正されまし
 \item Windows XPはもはやサポートされません．
 \end{itemize*}
 
-%\subsection{Present: 2019}
-%\label{sec:tlcurrent}
+\subsection{現在：2019}
+\label{sec:tlcurrent}
+
+\KPS: ブレース展開とパス分割の一貫性が高まりました．\code{.}をハードコードする
+代わりに新しい変数\var{TEXMFDOTDIR}を使用することになりました．これは，追加の
+ディレクトリやサブディレクトリの検索を容易にするためです（詳細は\file{texmf.%
+cnf}内のコメントを参照してください）．
+
+\epTeX, \eupTeX: 新プリミティブ\cs{readpapersizespecial}と\cs{expanded}が追加
+されました．
+
+\LuaTeX: Luaのバージョンが新しい算術演算とインターフェースの変更を含む5.3に
+上がりました．PDF読み込みに独自ライブラリpplibが用いられるようになったので，
+popplerへの依存がなくなりました（同時にC++にも依存しなくなりました）．これに
+伴いLuaインターフェースも変更になっています．
+
+\MP: 常に\lopt{restricted}が有効となる\cmd{r-mpost}コマンドが導入され，
+同コマンドはデフォルトで制限リストに追加されるようになりました．デシマル・
+バイナリモードにおける最小精度は2になりました．バイナリモードはMPlibでは
+サポートされなくなりましたが，スタンドアロンな\MP では今でも利用可能です．
+
+\pdfTeX: 新プリミティブ\cs{expanded}が追加されました．新しいパラメタ\cs{pdf%
+omitcharset}が\code{1}に設定されている場合，\code{/CharSet}はPDF出力で省略
+されるようになりました．これはその値がPDF/A-2およびPDF/A-3の仕様を満たすこと
+を保証できないためです．
+
+\XeTeX: 新プリミティブ\cs{expanded}, \cs{creationdate}, \cs{elapsedtime},
+\cs{filedump}, \cs{filemoddate}, \cs{filesize}, \cs{resettimer},
+\cs{normaldeviate}, \cs{uniformdeviate}, \cs{randomseed}が追加されました．
+また\cs{Ucharcat}はアクティブ文字を生成できるように拡張されました．
+
+\cmd{tlmgr}: ダウンロード用ツール\cmd{curl}をサポートしました．ローカル
+バックアップの際に（利用可能であれば）\cmd{lz4}と\cmd{gzip}を\cmd{xz}を適用
+する前に使用するようになりました．環境変数\var{TEXLIVE\_PREFER\_OWN}が設定
+されていない限り，圧縮およびダウンロード用に用いるプログラムについては\TL
+が同梱するものよりもシステムに用意されているものを優先して使用するように
+なりました．
+
+\cmd{install-tl}: macOSおよびWindowsでは新オプション\sopt{gui}（引数なし）
+がデフォルトになりました．この状態では新しいTcl/TK GUIが起動されます（詳細
+は\ref{sec:basic}節，\ref{sec:graphical-inst}節を参照してください）．
+
+ユーティリティ：
 %
-%Kpathsea: More consistent brace expansion and path splitting; new
-%variable \code{TEXMFDOTDIR} instead of hard-coded \code{.}\ in paths
-%allows for easily searching additional or sub-directories (see comments
-%in \code{texmf.cnf}).
-%
-%ep\TeX, eup\TeX: New primitives \cs{readpapersizespecial} and
-%\cs{expanded}.
-%
-%Lua\TeX: Lua 5.3 now used, with concomitant arithmetic and interface changes.
-%The homegrown library pplib is used to read pdf files, thus
-%eliminating the dependency on poppler (and the need for C++);
-%Lua interface changed accordingly.
-%
-%MetaPost: \code{r-mpost} command name recognized as an
-%alias for invocation with the \code{--restricted} option, and added to
-%the list of restricted commands available by default.
-%Minimum precision now 2 for decimal and binary mode.
-%Binary mode no longer available in MPlib but still available in
-%standalone MetaPost.
-%
-%pdf\TeX: New primitive \cs{expanded}; if new primitive parameter
-%\cs{pdfomitcharset} is set to 1, the \code{/CharSet} string
-%omitted from the PDF output, since it cannot feasibly be guaranteed
-%correct, as required by PDF/A-2 and PDF/A-3.
-%
-%Xe\TeX: New primitives \cs{expanded},
-%\cs{creationdate},
-%\cs{elapsedtime},
-%\cs{filedump}, 
-%\cs{filemoddate}, 
-%\cs{filesize}, 
-%\cs{resettimer}, 
-%\cs{normaldeviate}, 
-%\cs{uniformdeviate}, 
-%\cs{randomseed}; extend \cs{Ucharcat} to produce active
-%characters.
-%
-%\code{tlmgr}: Support \code{curl} as a download program;
-%   use \code{lz4} and gzip before \code{xz} for local backups, if available;
-%   prefer system-provided binaries over binaries provided with \TL\ for
-%   compressor and download programs, unless the environment variable
-%   \code{TEXLIVE\_PREFER\_OWN} is set.
-%
-%\code{install-tl}: New option \code{-gui} (with no argument) is the
-%default on Windows and Macs, and invokes a new Tcl/TK GUI (see
-%sections~\ref{sec:basic} and~\ref{sec:graphical-inst}).
-%
-%Utilities:
-%\begin{itemize*}
-%\item \code{cwebbin} (\url{https://ctan.org/pkg/cwebbin}) is now the CWEB
-%implementation in \TeX\ Live, with support for more language dialects,
-%and including the \code{ctwill} program to make mini-indexes.
-%
-%\item \code{chkdvifont}: report font information from \DVI{} files, also
-%from tfm/ofm, vf, gf, pk.
-%
-%\item \code{dvispc}: make a DVI file page-independent with respect to specials.
-%\end{itemize*}
-%
-%\MacTeX: \code{x86\_64-darwin} now supports 10.12 and higher (Sierra,
-%High Sierra, Mojave); \code{x86\_64-darwinlegacy} still supports 10.6
-%and newer. The spell checker Excalibur is no longer included, since it
-%requires 32-bit support.
-%
-%Platforms: removed \code{sparc-solaris}.
-%
-%
+\begin{itemize*}
+\item \cmd{cwebbin} (\url{https://ctan.org/pkg/cwebbin}) が\TL における
+  CWEB実装となりました．この実装ではより多くの言語がサポートされ，簡易な
+  索引を作成する\cmd{ctwill}プログラムが追加されています．
+\item \cmd{chkdvifont}: \DVI ファイルやtfm/ofm, vf, gf, pkからフォント情報
+  を抽出して報告します．
+\item \cmd{dvispc}: スペシャルを考慮して，\DVI をページ独立にします．
+\end{itemize*}
+
+\MacTeX: \pkg{x86\_64-darwin}のサポート対象は10.12以上 (Sierra, High~Sierra,
+Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降をサポート
+します．スペルチェッカExcaliburはもはや同梱されません（32-bitサポートが必要
+なためです）．
+
+プラットフォーム：\pkg{sparc-solaris}は削除されました．
+
 %\subsection{Future}
 %
 %\TL{} is not perfect, and never will be.  We intend to continue to
