@@ -7,6 +7,10 @@ Sec. 2.2 (p.5)
 Really? Maybe these have been moved to readme-* dirs?
 
 Sec. 2.4 (p.6)
+> Its web site is http://www.pdftex.org/
+It seems the website is gone. The URL redirects to
+https://tug.org/applications/pdftex/.
+
 texmf-dist/doc/pdftex/manual/samplepdf/samplepdf.tex
 -> texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex
 
@@ -26,9 +30,18 @@ Sec. 3.4.1 (p.14)
 "(or another file sourced by .profile"
 An unclosed parenthesis.
 
-Sec. 3.5 (p.17)
+Sec. 3.5 (p.16)
 "(http://pages.uoregon.edu/koch/texshop"
 An unclosed parenthesis.
+
+Sec. 3.5 (p.17)
+> http://www.foolabs.com/xpdf
+Not found. It seems current official website is
+https://www.xpdfreader.com
+
+Sec. 3.6 (p.18)
+> http://www.imagemagick.com/
+Not found. It seems current official website is https://imagemagick.org
 
 Sec. 7.1.2 (p.26)
 > % and `@'

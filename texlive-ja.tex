@@ -38,7 +38,7 @@
 
 \TL には\TeX, \LaTeXe, \ConTeXt, \MF, \MP, \BibTeX 実行プログラムはもちろん，
 \TeX を拡張する多数のマクロパッケージやフォント，そしてそれらの付属ドキュメントが
-含まれています．また，世界中で利用される様々な言語を対象とする組版もサポート
+含まれています．また，世界中で利用される多様な言語を対象とする組版もサポート
 されています．
 
 \TL のバージョンごとの主な変更点については，このドキュメントの末尾にある
@@ -63,22 +63,22 @@ Windowsおよび\macOS に特有のその他の事情については\ref{sec:tl-
 \subsection{\TL のインストール（基本）}
 \label{sec:basic}
 
-\TL は\DVD またはインターネットを利用してインストールすることができます．
-(\url{http://tug.org/texlive/acquire.html})．ネットインストーラ自体はとても
-小さなプログラムで，これを実行すると必要とされるすべてのファイルを
-インターネットからダウンロードします．
+\TL は\DVD またはインターネットを利用してインストールすることができます (\url{%
+https://tug.org/texlive/acquire.html})．ネットインストーラ自体はとても小さな
+プログラムで，これを実行すると必要とされるすべてのファイルをインターネットから
+ダウンロードします．
 
 \DVD インストーラはあなたのローカルディスクに\TL をインストールします．
 \TeX コレクション\DVD 上にある\TL のデータ（またはその\code{.iso}イメージ）
 を直接実行することはできませんが，\USB ディスクなどにポータブルインストールを
-行うことも可能です（\ref{sec:portable-tl}節参照）．インストールについては
+行うことも可能です（\ref{sec:portable-tl}節を参照）．インストールについては
 後ほど詳述しますが (\p.\pageref{sec:install})，ここでは「クイックスタート」
 として簡単に説明します：
 
 \begin{itemize*}
 \item インストールスクリプトの名称は\cmd{install-tl}です．このプログラムに\sopt{%
 gui}オプションを与えると「GUIモード」（Windowsと\macOS でデフォルト），\sopt{no-%
-gui}を与えると「テキストモード」（その他のプラットフォームでデフォルト）で実行され
+gui}を与えると「テキストモード」（その他のプラットフォームでデフォルト）が実行され
 ます．UNIXプラットフォームでは，Perl/Tkがインストールされていれば旧来のPerl/Tkと
 wizardモードを利用することもできます．Windowsについては\ref{sec:wininst}節も参照
 してください．
@@ -94,14 +94,14 @@ wizardモードを利用することもできます．Windowsについては\ref
 
 私たちの知る限り，\TeX の主要なプログラムそれ自体はとても堅牢です（今までもずっと
 そうでした）．しかしながら，\TL に含まれる多数のサードパーティ製プログラムは，多く
-の人の尽力があるとはいえ，それでも同じレベルに達していないかもしれません．一般論
-ですが，信頼できない入力についてプログラムを実行する際は十分にお気をつけください．
+の人の尽力があるとはいえ，それでも同じレベルには達していないかもしれません．一般論
+ですが，信頼できない入力についてプログラムを実行する際は十分にお気を付けください．
 なるべく安全に実行するためには，新しいサブディレクトリを作って実行したり，\cmd{%
 chroot}を利用したりしてください．
 
 この注意はWindowsについては特に重要です．なぜならWindowsは，検索パスの設定に
 関わらず，常にカレントディレクトリにあるプログラムを他の何よりも優先して
-実行するからです．この挙動は様々な攻撃に悪用される恐れがあります．我々は多くの
+実行するからです．この挙動はさまざまな攻撃に悪用される恐れがあります．我々は多くの
 セキュリティホールを塞いできましたが，特にサードパーティ製プログラムについては，
 間違いなくまだ残っているものが数多くあるでしょう．したがって，カレントディレクトリ
 にある疑わしいファイル（特にバイナリとスクリプトファイル）は事前にチェックして
@@ -109,59 +109,57 @@ chroot}を利用したりしてください．
 単にドキュメントを処理するだけで生成されることなどあってはなりません．
 
 最後に，\TeX （およびその周辺ツール）はドキュメントの処理中にファイル書き込みを
-行うことができますが，その機能もまた様々な方法で利用され得ます．再度の注意に
+行うことができますが，その機能もまたさまざまな方法で利用され得ます．再度の注意に
 なりますが，ご自身で作成されたわけではないドキュメントは，必ず新しい
 サブディレクトリで実行するのが無難です．
 
 \subsection{サポート情報}
 \label{sec:help}
 
-\TeX コミュニティはアクティブかつ親和的で，ほとんどの真剣な質問には回答を
+\TeX コミュニティはアクティブかつ友好的で，ほとんどの真剣な質問には回答を
 得ることができます．しかしながら，こうしたサポートは非公式で，ボランティアや
 一般の\TeX ユーザ有志によって行われているものですから，質問をする前にドキュメント
 や過去のQ\&Aをよく読んで，まずはご自分で解決できるよう最善を尽くしましょう（もし
-保証付きの有償サポートをご希望の場合は，\TL の利用は諦めて商用のシステムを
-ご利用ください．\url{http://tug.org/interest.html#vendors}には\TeX に関連する
+保証付きの有償サポートをご希望の場合は，\TL の採用は諦めて商用のシステムを
+ご利用ください．\url{https://tug.org/interest.html#vendors}には\TeX に関連する
 商用サービスを提供する団体の一覧があります）．
 
 以下に\TeX 関連の情報源をリストアップにしておきます．順番は概ねおすすめ順です：
 %
 \begin{description}
 \item[はじめての方へ]
-これからはじめて\TeX をお使いになる場合は\url{http://tug.org/begin.html}に
+これからはじめて\TeX をお使いになる場合は\url{https://tug.org/begin.html}に
 アクセスするとよいでしょう．\TeX システムについて簡潔なイントロダクションを
 読むことができます．
 
 \item[{\TeX} FAQ]
 \TeX に関するよくあるFAQを集めた巨大なデータベースです．最も基礎的な質問から
 とても難解な質問まで含まれています．\TL では\OnCD{texmf-dist/doc/generic/FAQ-en/}
-に含まれているほか，インターネット経由でも読むことができます (\url{%
-http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まずここをチェック
-してください．
+に含まれているほか，インターネット経由でも読むことができます (\url{https://texfaq.%
+org/})．\TeX について質問がある場合は，まずここをチェックしてください．
 
 \item[\TeX カタログ]
 特定の\TeX パッケージやフォント，プログラム等を見つけたい場合は\TeX カタログを
 探すとよいでしょう．これは\TeX 関連の成果物を集めた巨大なコレクションです．
-\url{http://ctan.org/pkg/catalogue/}にアクセスしてみてください．
+\url{https://ctan.org/pkg/catalogue/}にアクセスしてみてください．
 
 \item[ウェブ上の情報源]
-ウェブサイト\url{http://tug.org/interest.html}には多数の\TeX 関連リンクが
+ウェブサイト\url{https://tug.org/interest.html}には多数の\TeX 関連リンクが
 集められています．特に\TeX システムに関わるさまざまな話題についての多くの書籍，
 マニュアル，投稿記事を多数紹介しています．
 
 \item[サポート・アーカイブ]
-\LaTeX コミュニティ\url{http://latex-community.org/}やQ\&Aサイト
-\url{http://tex.stackexchange.com}，Usenetニュースグループ
-\url{news:comp.text.tex}，メーリングリスト\email{texhax@tug.org}などは
-\TeX コミュニティの擁する主なサポートフォーラムです．これらのアーカイブには
-過去数十年分の質問と回答が蓄積されています．特に後者2つのアーカイブは
-\url{http://groups.google.com/group/comp.text.tex/topics}と
-\url{http://tug.org/mail-archives/texhax}にて閲覧できます．また，より一般の
-検索エンジン（\url{http://google.com}など）ももちろん有用です．
+\LaTeX コミュニティ\url{https://latex.org/forum/}やQ\&Aサイト\url{https://tex.%
+stackexchange.com}，Usenetニュースグループ\url{news:comp.text.tex}，メーリング
+リスト\email{texhax@tug.org}などは\TeX コミュニティの擁する主なサポートフォーラム
+です．これらのアーカイブには過去数十年分の質問と回答が蓄積されています．特に後者
+2つのアーカイブは\url{https://groups.google.com/group/comp.text.tex/topics}と
+\url{https://tug.org/mail-archives/texhax}にて閲覧できます．また，より一般の
+検索エンジン（\url{https://google.com}など）ももちろん有用です．
 
 \item[質問する]
-もし答えの見つからない質問にぶつかったときは，\url{http://latex-community.org/}%
-や\url{http://tex.stackexchange.com/}，Googleグループ\dir{comp.text.tex}あるいは
+もし答えの見つからない質問にぶつかったときは，\url{https://latex.org/forum/}や
+\url{https://tex.stackexchange.com/}，Googleグループ\dir{comp.text.tex}あるいは
 メーリングリスト\email{texhax@tug.org}に質問を投稿することもできます．ただし，
 どこで質問を投稿するにしても，必ず事前に「質問のしかた」(\url{https://texfaq.org%
 /FAQ-askquestion}) を読むようにしましょう．このインストラクションに従うことで，
@@ -189,9 +187,9 @@ http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まず�
 \item[{\TeX} Forum]
 \url{https://oku.edu.mie-u.ac.jp/tex/}は歴史の長いQ\&Aサイトで，現在も日本語で\TeX
 に関連する質問ができる場所としては最もアクティブユーザが多く，熟練の\TeX ユーザが
-多数参加しています．上記{\TeX} Wikiに日本語版の「質問のしかた」
-(\url{https://texwiki.texjp.org/?質問のしかた}) ページがありますので，初めて質問を
-投稿する場合は，必ず目を通すようにしましょう．
+多数参加しています．上記{\TeX} Wikiに日本語版の「質問のしかた」(\url{https://%
+texwiki.texjp.org/?質問のしかた}) ページがありますので，初めて質問を投稿する際は
+必ず目を通すようにしましょう．
 
 \item[スタック・オーバーフロー]
 \url{https://ja.stackoverflow.com/}は\TeX に限らずあらゆる技術・プログラミング
@@ -217,21 +215,21 @@ http://www.tex.ac.uk/faq})．\TeX について質問がある場合は，まず�
 \begin{description}
 \item[\TL]
 ディスクにインストールするための完全な\TeX システム（ディストリビューション）
-です．ウェブサイト：\url{http://tug.org/texlive/}
+です．ウェブサイト：\url{https://tug.org/texlive/}
 
 \item[\MacTeX]
 \macOS 向けの\TeX ディストリビューションで，専用のインストーラといくつかの
 Mac用アプリケーションを\TL に追加しています．
-ウェブサイト：\url{http://tug.org/mactex/}
+ウェブサイト：\url{https://tug.org/mactex/}
 
 \item[\ProTeXt]
 \MIKTEX ディストリビューションのWindows向け拡張です．\ProTeXt は\MIKTEX に
 いくつかのツールを追加しているほかインストール手順を簡略化しています．
 これは完全に\TL とは独立で，独自の導入ガイドがあります．
-ウェブサイト：\url{http://tug.org/protext/}
+ウェブサイト：\url{https://tug.org/protext/}
 
 \item[\CTAN]
-\CTAN リポジトリ (\url{http://www.ctan.org/}) のスナップショットです．
+\CTAN リポジトリ (\url{https://ctan.org/}) のスナップショットです．
 \end{description}
 
 \CTAN および\pkg{protext}は\TL と同じライセンスで配布されているわけでは
@@ -299,7 +297,7 @@ conf}を実行するとこれらの変数の値が表示されるので，各TEX
 ます．
 
 すべてのTEXMFツリーは，例え個人的なものであっても，標準的な\TeX の
-ディレクトリ構成 (\TDS, \url{http://tug.org/tds}) にしたがうべきです．
+ディレクトリ構成 (\TDS, \url{https://tug.org/tds}) にしたがうべきです．
 ただし必要のないサブディレクトリやファイルは存在していなくても構いません．
 詳細については\ref{sec:local-personal-macros}節 (\p.\pageref{%
 sec:local-personal-macros}) を参照してください．ここで列挙するのはツリー
@@ -401,24 +399,25 @@ Knuthによるオリジナルの\TeX は既に開発が終了しており，ご�
 この処理系には，\eTeX の機能に加えて\DVI 同様にPDFを出力する機能と，その他出力とは
 関係のない多数の追加機能が搭載されています．この処理系は，\cmd{etex}, \cmd{latex},
 \cmd{pdflatex}など多くのフォーマット（コマンド）から呼び出されています．pdf\TeX の
-ウェブサイトは\url{http://www.pdftex.org/}です．\TL にはマニュアル (\OnCD{texmf-%
-dist/doc/pdftex/manual/pdftex-a.pdf}) とpdf\TeX の拡張機能の利用例を示した文書 (%
-\OnCD{texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex}) も収録されています．
+ウェブサイトは\url{https://tug.org/applications/pdftex/}です．\TL にはマニュアル
+(\OnCD{texmf-dist/doc/pdftex/manual/pdftex-a.pdf}) とpdf\TeX の拡張機能の利用例を
+示した文書 (\OnCD{texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex}) も収録されて
+います．
 
 \item[\LuaTeX]
 \pdfTeX の後継として開発されているもので，（完全ではありませんが）概ね後方互換性が
 あります．またAlephの上位互換となることも目標になっていますが，これについても完全な
 互換性があるわけではありません．この\TeX エンジンには軽量スクリプト言語Lua (\url{%
-http://www.lua.org/}) のインタプリタが組み込まれており，\TeX における厄介な問題に
+https://www.lua.org/}) のインタプリタが組み込まれており，\TeX における厄介な問題に
 対処するのにとても役立ちます．\cmd{texlua}として呼び出した場合は独立のLua処理系の
 ように振る舞います．そのため\TL に含まれる一部のプログラムもこのLua処理系によって
-実行されています．ウェブサイト：\url{http://www.luatex.org/}，マニュアル：\OnCD{%
+実行されています．ウェブサイト：\url{https://luatex.org/}，マニュアル：\OnCD{%
 texmf-dist/doc/luatex/base/luatex.pdf}．
 
 \item[\XeTeX]
 Unicodeによる入力とOpenTypeフォントおよびシステムフォントの利用を，サードパーティ
 製のライブラリを利用してサポートする\TeX 処理系です．
-ウェブサイト：\url{http://tug.org/xetex}．
+ウェブサイト：\url{https://tug.org/xetex}．
 
 \item[{\OMEGA} (Omega)]
 Unicode（16-bit文字）ベースの処理系で，すなわち世界中のほとんどあらゆる言語で
@@ -507,7 +506,7 @@ PDFユーティリティ．
 
 \TL をインストールするためには，まず\TeX コレクション\DVD を入手するか\TL の
 インターネット・インストーラをダウンロードします．より詳細な情報や\TL を入手
-するその他の方法については\url{http://tug.org/texlive/acquire.html}を参照して
+するその他の方法については\url{https://tug.org/texlive/acquire.html}を参照して
 ください．
 %
 \begin{description}
@@ -528,8 +527,8 @@ install-tl-windows.bat}が見つかるはずです．
 \item[\TeX コレクション\DVD]
 \DVD 内の\dir{texlive}サブディレクトリを開いてください．Windowsでは，通常\DVD
 を挿入するとインストーラが自動的に起動するはずです．{\TeX} Users Group (TUG) の
-会員になるか (\url{http://tug.org/usergroups.html})，TUGのオンラインストア
-(\url{http://tug.org/store}) で個別に購入すると\DVD を手に入れることができます．
+会員になるか (\url{https://tug.org/usergroups.html})，TUGのオンラインストア
+(\url{https://tug.org/store}) で個別に購入すると\DVD を手に入れることができます．
 また，配布されている\ISO イメージからご自身で\DVD に焼くことも可能です．\DVD
 または\ISO から\TL をインストールした後，インターネットを利用して継続的にアップ
 デートを行いたい場合は\ref{sec:dvd-install-net-updates}節をご覧ください．
@@ -548,8 +547,8 @@ install-tl-windows.bat}が見つかるはずです．
 年に1度のパブリックリリース時点での最新版がインストールされるということです．
 
 もしプロキシを利用してダウンロードする必要がある場合は，\file{~/.wgetrc}ファイル
-または環境変数を利用してWgetに対して適切なプロキシ設定を行うか (\url{http://www%
-.gnu.org/software/wget/manual/html_node/Proxies.html})，もしくはお好みで別の
+または環境変数を利用してWgetに対して適切なプロキシ設定を行うか (\url{https://%
+www.gnu.org/software/wget/manual/html_node/Proxies.html})，もしくはお好みで別の
 ダウンロード用ツールをご利用ください．\DVD や\ISO イメージからインストールを行う
 場合は，プロキシ設定について気にする必要はありません．
 
@@ -606,7 +605,7 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 \label{sec:macos}
 
 \ref{sec:tl-coll-dists}節でも言及したように，\macOS には\MacTeX という専用の
-ディストリビューションがあります (\url{http://tug.org/mactex})．\MacTeX の
+ディストリビューションがあります (\url{https://tug.org/mactex})．\MacTeX の
 インストーラは\macOS 向けにいくつかの最適化をしている（たとえば，いわゆる
 「{\TeX}Distデータ構造」を利用して複数の\macOS 向け\TeX ディストリビューション
 (\MacTeX, Fink, MacPorts, \ldots) を簡単に切り替える機能があります）ので，\TL
@@ -789,8 +788,8 @@ Available platforms:
 図\ref{fig:bin-text}はテキストモードのバイナリ選択メニューを示しています．デフォルト
 ではインストーラ実行時にご使用中のプラットフォーム向けのバイナリだけがインストール
 されます．このメニューを利用すると，その他のプラットフォーム向けのバイナリも同様に
-インストールすることを選択することができます．このメニューは\TeX ツリーを様々な環境
-に共通のネットワークで共有する場合やデュアルブートシステムでは有用です．
+インストールすることを選択することができます．このメニューは\TeX ツリーをさまざまな
+環境に共通のネットワークで共有する場合やデュアルブートシステムでは有用です．
 
 \subsubsection{スキーム・コレクションの選択}
 \label{sec:components}
@@ -866,7 +865,7 @@ Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2019}です．この配置�
 インストール先のディレクトリは，インストーラを実行する前にいくつかの環境変数（よく
 用いられるのは\var{TEXLIVE\_INSTALL\_PREFIX}と\var{TEXLIVE\_INSTALL\_TEXDIR}）を
 設定することによっても変更できます．詳細については\code{install-tl \lopt{help}}に
-より表示できるドキュメント (\url{http://tug.org/texlive/doc/install-tl.html}) を
+より表示できるドキュメント (\url{https://tug.org/texlive/doc/install-tl.html}) を
 参照してください．
 
 合理的なインストール場所の変更先は（特にあなたが\TL を利用する単独のユーザである
@@ -1015,7 +1014,7 @@ Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkイ
 バージョン8.5以上のTcl/Tkが必要です．これは\macOS ではご自身でインストールしていただく
 必要がありますが，Windows用の\TL には同梱されているため特に何もする必要はありません．
 古いオプションである\sopt{gui=perltk}と\sopt{gui=wizard}も現在でも利用可能です．
-これらの実行のためにはXFTサポートが有効なPerl/Tkモジュールが必要です (\url{http://%
+これらの実行のためにはXFTサポートが有効なPerl/Tkモジュールが必要です (\url{https://%
 tug.org/texlive/distro.html#perltk})．Tcl/TkとPerl/Tkが利用可能でない場合，この
 オプションが指定された場合でもインストーラはテキストモードで続行されます．
 
@@ -1049,7 +1048,7 @@ tug.org/texlive/distro.html#perltk})．Tcl/TkとPerl/Tkが利用可能でない�
 \item[\sopt{in-place}]
 （警告：このオプションは何をしようとしているのか完全に承知している場合以外は使用
 しないでください．）すでにrsyncやsvnまたはその他の手段で\TL のコピー（その入手元
-については\url{http://tug.org/texlive/acquire-mirror.html}を参照）がお手許にある
+については\url{https://tug.org/texlive/acquire-mirror.html}を参照）がお手許にある
 場合，このオプションを利用するとそのコピーをそのまま利用し，追加で必要となるものが
 ものだけをインストールします．なお\file{tlpkg/texlive.tlpdb}は上書きされるので，
 ご自身の責任で保存するようにしてください．また，既にあるパッケージの除去は手動で
@@ -1071,7 +1070,7 @@ http:}, \code{file:/}のいずれかからはじまるURL，または通常の�
 例えば\CTAN の特定のミラーサーバを\url{http://ctan.example.org/tex-archive/%
 systems/texlive/tlnet/}のように指定した場合，実際のホスト名と，そのホストに
 おける\CTAN のトップレベルパスを\code{ctan.example.org/tex-archive}の代わりに
-使用します．\CTAN ミラーの一覧は\url{http://ctan.org/mirrors}で確認できます．
+使用します．\CTAN ミラーの一覧は\url{https://ctan.org/mirrors}で確認できます．
 
 もし与えられた引数が（パスまたは\code{file:/} URLの形で）ローカルのディレクトリ
 を指していた場合，その下にある\dir{archive}サブディレクトリ内の圧縮ファイルが
@@ -1160,7 +1159,7 @@ MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
 ようになります．\DVD からのインストール時に\ref{sec:options}節で説明したオプション
 を介してこの設定をデフォルトにしておくこともできます．
 
-もしミラーの自動選択では問題がある場合は，\url{http://ctan.org/mirrors}から特定の
+もしミラーの自動選択では問題がある場合は，\url{https://ctan.org/mirrors}から特定の
 \CTAN ミラーを指定することもできます．その際は\dir{tlnet}サブディレクトリまでの
 パスを正確に指定するようにしてください．
 
@@ -1173,7 +1172,7 @@ MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
 
 Windowsでは，\TL に含まれているフォントは自動的にフォント名を指定するだけで\XeTeX
 から利用できるように設定されます．\macOS では，フォント名による検索を有効にする
-ためにはいくつかの手順が必要です（詳細は\MacTeX のウェブサイト\url{http://tug.org/%
+ためにはいくつかの手順が必要です（詳細は\MacTeX のウェブサイト\url{https://tug.org/%
 mactex}を参照してください）．他のUNIXシステムでの設定方法は，以下の通りです．
 
 この設定を簡単にするために，\pkg{xetex}パッケージのインストール時（最初の\TL
@@ -1216,8 +1215,8 @@ tlmgr}を使用せず手動で新しいファイルをインストールした�
 キャッシュが見つかった場合は（見つかったキャッシュの中で）一番最後のパスに
 あるものが優先されます．
 
-より詳細な情報については\url{http://wiki.contextgarden.net/Running_Mark_IV}を
-参照してください．
+より詳細な情報については\url{https://wiki.contextgarden.net/Running_Mark_IV}%
+を参照してください．
 
 \subsubsection{ローカルおよび個人用のマクロを利用する}
 \label{sec:local-personal-macros}
@@ -1234,7 +1233,7 @@ $HOME/texmf}または\winpath{\winenv{USERPROFILE}\\texmf}）はユーザごと�
 さもないと将来のリリースの際に手動で変更を行う必要が発生する可能性があります．
 
 いずれのツリーについても，それぞれのファイルは\TDS に基づいたサブディレクトリに
-配置されているべきです（\url{http://tug.org/tds}や\file{texmf-dist/web2c/texmf.%
+配置されているべきです（\url{https://tug.org/tds}や\file{texmf-dist/web2c/texmf.%
 cnf}を参照してください）．例えば\LaTeX のクラスファイルやパッケージは\dir{%
 TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下の階層に配置
 されているべきです．
@@ -1269,7 +1268,7 @@ TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下�
 できます．
 
 もしどうしてもサードパーティフォントを一般の\TeX 処理系で利用できるように設定を
-行う必要がある場合は，\url{http://tug.org/fonts/fontinstall.html}にその方法に
+行う必要がある場合は，\url{https://tug.org/fonts/fontinstall.html}にその方法に
 ついて（可能な範囲での）解説がありますので，参考にしてください．
 
 \subsection{インストールした\TL をテストする}
@@ -1279,11 +1278,11 @@ TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下�
 動作するかテストしたいと思うのが普通でしょう．
 
 おそらく，多くの人がまず最初に動作確認したいのはファイル編集を行うフロントエンド
-でしょう．\TL はWidows（のみ）では{\TeX}works (\url{http://tug.org/texworks}) を，
-\MacTeX は{\TeX}Shop (\url{http://pages.uoregon.edu/koch/texshop}) をインストール
+でしょう．\TL はWidows（のみ）では{\TeX}works (\url{https://tug.org/texworks}) を，
+\MacTeX は{\TeX}Shop (\url{https://pages.uoregon.edu/koch/texshop}) をインストール
 します．他のUNIXシステムではどのエディタを利用するかはユーザが決めてください．
 エディタの選択肢はとてもたくさんあり，その一部は次のセクションでリストアップされて
-います．また\url{http://tug.org/interest.html#editors}も参考になるかと思います．
+います．また\url{https://tug.org/interest.html#editors}も参考になるかと思います．
 基本的にはどんなテキストエディタでも使用できます．\TeX のための特別な機能は，
 なくてならないものではありません．
 
@@ -1358,10 +1357,10 @@ DISPLAY}の設定がまずい場合は\samp{Can't open display}エラーが発�
 \end{alltt}
 %
 \cmd{gv}も\cmd{xpdf}も\TL には含まれていないので，ご自身でインストールする必要
-があります．詳細はそれぞれ\url{http://www.gnu.org/software/gv}と\url{http://www.%
-foolabs.com/xpdf}を参照してください．PDFビューアは他にもたくさんあります．例えば
-WindowsではSumatra PDF (\url{https://www.sumatrapdfreader.org/free-pdf-reader.%
-html}) をおすすめします．
+があります．詳細はそれぞれ\url{https://www.gnu.org/software/gv}と\url{https://%
+www.xpdfreader.com/}を参照してください．PDFビューアは他にもたくさんあります．
+例えばWindowsではSumatra PDF (\url{https://www.sumatrapdfreader.org/free-pdf-%
+reader.html}) をおすすめします．
 
 \item \file{sample2e.tex}以外でテストのために利用できる標準的なファイルを以下に
 示しておきます：
@@ -1404,37 +1403,37 @@ Transcript written on opentype-info.log.
 \subsection{その他のダウンロード可能なソフトウェア}
 
 \TeX 初心者や\LaTeX 文書を実際に作成するにあたってヘルプが必要な方は，ぜひ
-\url{http://tug.org/begin.html}にアクセスしてみてください．いくつかの初心者
+\url{https://tug.org/begin.html}にアクセスしてみてください．いくつかの初心者
 向けの情報を掲載しています．
 
 ここではインストールの検討に値する各種ツールへのリンクを列挙しておきます：
 %
 \begin{description}
 \item[Ghostscript] \url{https://ghostscript.com/}
-\item[Perl] \url{http://www.perl.org/}%
-  （追加パッケージはCPAN (\url{http://www.cpan.org/}) から入手可）
-\item[ImageMagick] \url{http://www.imagemagick.com}（画像の加工や変換）
+\item[Perl] \url{https://www.perl.org/}%
+  （追加パッケージはCPAN (\url{https://www.cpan.org/}) から入手可）
+\item[ImageMagick] \url{https://imagemagick.org/}（画像の加工や変換）
 \item[NetPBM] \url{http://netpbm.sourceforge.net/}（こちらも画像用ツール）
 \item[\TeX 向きのエディタ] テキストエディタの選択肢はかなり多岐にわたり，その
   選択は完全に各自の好みによります．ここでは主なものをアルファベット順に紹介
   しておきます（一部はWindows専用です）．
   \begin{itemize*}
-  \item \prog{GNU Emacs}: \url{http://www.gnu.org/software/emacs/emacs.html}%
+  \item \prog{GNU Emacs}: \url{https://www.gnu.org/software/emacs/emacs.html}%
     （Windowsでも利用可）
-  \item \prog{Emacs Auc\TeX}: \url{http://www.gnu.org/software/auctex}%
+  \item \prog{Emacs Auc\TeX}: \url{https://www.gnu.org/software/auctex}%
     （Windows版は\CTAN から入手可）
-  \item \prog{SciTE}: \url{http://www.scintilla.org/SciTE.html}
-  \item \prog{Texmaker}: \url{http://www.xm1math.net/texmaker}
-  \item \prog{\TeX studio}: \url{http://texstudio.org/}%
+  \item \prog{SciTE}: \url{https://www.scintilla.org/SciTE.html}
+  \item \prog{Texmaker}: \url{https://www.xm1math.net/texmaker}
+  \item \prog{\TeX studio}: \url{https://texstudio.org/}%
     （\prog{Texmaker}のフォークプロジェクト）
   \item \prog{\TeX nicCenter}: \url{http://www.texniccenter.org}%
     （pro\TeX{}tでは標準添付）
-  \item \prog{\TeX works}: \url{http://tug.org/texworks}%
+  \item \prog{\TeX works}: \url{https://tug.org/texworks}%
     （Windows版\TL では標準添付）
-  \item \prog{Vim}: \url{http://www.vim.org}
-  \item \prog{WinEdt}: \url{http://tug.org/winedt}, \url{http://www.winedt.com}%
+  \item \prog{Vim}: \url{https://www.vim.org}
+  \item \prog{WinEdt}: \url{https://tug.org/winedt}, \url{http://www.winedt.com}%
     （シェアウェア）
-  \item \prog{WinShell}: \url{http://www.winshell.de}
+  \item \prog{WinShell}: \url{https://www.winshell.de}
   \end{itemize*}
 \end{description}
 
@@ -1622,7 +1621,7 @@ revision:   46963
 sizes:      657941k
 \end{fverbatim}
 %
-最後に，最も大事なことですが，フルドキュメントを確認するには\url{http://tug.org/%
+最後に，最も大事なことですが，フルドキュメントを確認するには\url{https://tug.org/%
 texlive/tlmgr.html}にアクセスするか，以下を実行してください：
 %
 \begin{alltt}
@@ -1774,7 +1773,7 @@ WindowsとCygwin（Cygwinインストールの詳細については\ref{sec:cygw
 例えば\prog{asy}で25,000,000リールの配列を確保しようとしたり，\LuaTeX で多書体組を
 行おうとしたりするとメモリが不足する可能性があります．
 
-Cygwinではユーザマニュアル (\url{http://www.cygwin.com/cygwin-ug-net/setup-maxmem.%
+Cygwinではユーザマニュアル (\url{https://www.cygwin.com/cygwin-ug-net/setup-maxmem.%
 html}) の説明に従うことによってメモリ上限を増やすことができます．
 
 Windowsの場合はいくつかの手順を行う必要があります．まず\code{moremem.reg}という
@@ -1795,7 +1794,7 @@ Windows Registry Editor Version 5.00
 
 \Webc は\TeX 関連プログラムのコレクションです．これには\TeX そのものに加えて\MF,
 \MP, \BibTeX などが含まれており，\TL の心臓部と言えます．最新版のマニュアルやその他
-の情報はウェブサイト (\url{http://tug.org/web2c}) に掲載されています．
+の情報はウェブサイト (\url{https://tug.org/web2c}) に掲載されています．
 
 少し\Webc の歴史的経緯について触れておきます．\Webc のオリジナル作者はTomas Rokickiで
 1987年に最初の\TeX -to-Cシステムを開発しました．このシステムはHoward TrickeyとPavel
@@ -1846,7 +1845,7 @@ Knuthによる\TeX のオリジナルソースと，文芸的プログラミン�
 \item[\lopt{version}] バージョン情報を表示して終了
 \end{description}
 
-\Webc プログラムはファイル探索に\KPS ライブラリ (\url{http://tug.org/kpathsea}) を
+\Webc プログラムはファイル探索に\KPS ライブラリ (\url{https://tug.org/kpathsea}) を
 使用します．このライブラリは環境変数と設定ファイルの両方を参照して膨大な量の\TeX
 関連ファイルの検索を最適化します．\Webc は多くのTEXMFツリーを同時に参照でき，この
 ことがTDSを維持したままローカルまたはユーザごとの拡張を異なるツリーに分離するのに
@@ -1875,7 +1874,7 @@ sec:filename-database}節を参照してください）が$p$について用意�
 最もシンプルでよくあるパス要素はディレクトリ名ですが，\KPS はそれ以外の機能として
 階層的なビルトイン値，環境変数名，設定ファイルの値，ユーザのホームディレクトリ，
 そしてサブディレクトリの再帰的な検索などをサポートしています．すなわち，\KPS はパス
-要素を様々な指定に従って通常のディレクトリ名に\emph{展開}します．これ以降，この
+要素を種々の指定に従って通常のディレクトリ名に\emph{展開}します．これ以降，この
 展開について実際に処理が行われる順番で説明していきます．
 
 ところで，ファイル名が絶対パスもしくは明示的な相対パス（すなわち\samp{/}，\samp{%
@@ -2474,8 +2473,8 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \begin{itemize*}
 \item 英語圏，ドイツ，オランダ，ポーランドの\TeX ユーザ会（それぞれTUG, DANTE e.V.,
   NTG, GUST）．技術的・経営的なインフラの提供してくれました．ぜひお近くの\TeX ユーザ
-  会に加入してください！（\url{http://tug.org/usergroups.html}を参照）
-\item CTANチーム (\url{http://ctan.org})．\TL イメージを配布し，\TL が依存する各種の
+  会に加入してください！（\url{https://tug.org/usergroups.html}を参照）
+\item CTANチーム (\url{https://ctan.org})．\TL イメージを配布し，\TL が依存する各種の
   パッケージアップデートを行うための共通基盤の提供してくれています．
 \item Nelson Beebe．\TL 開発陣に数々のプラットフォームを提供し，彼自身も多くの包括的
   なテストを行ってくれました．また彼の比類なき書誌学的な貢献にも敬意を表します．
@@ -2495,11 +2494,11 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
   6月に若くして亡くなりましたが，私たちは彼のことを忘れません．
 \item Hans Hagen．多くのテストを引き受け，また彼の\ConTeXt パッケージ (\url{http://%
   pragma-ade.com}) を\TL フレームワークに対応させてくれました．
-\item \Thanh, Martin Schr\"oderと\pdfTeX チーム (\url{http://pdftex.org})．彼らは
-  \TeX を継続的に拡張してくれています．
+\item \Thanh, Martin Schr\"oderと\pdfTeX チーム (\url{https://tug.org/applications/%
+  pdftex/})．彼らは\TeX を継続的に拡張してくれています．
 \item Hartmut Henkel．\pdfTeX, \LuaTeX をはじめ多くのプロジェクトに顕著な貢献を
   してくれました．
-\item Taco Hoekwater．\MP と (Lua)\TeX (\url{http://luatex.org}) 自体に対して大きな
+\item Taco Hoekwater．\MP と (Lua)\TeX (\url{https://luatex.org}) 自体に対して大きな
   変更を施したほか，\ConTeXt の\TL 対応や\KPS のマルチスレッド機能，その他数々の貢献
   をしてくれました．
 \item Khaled Hosny．\XeTeX, DVIPDFM$x$に加え，アラビア語用のものを含め多くのフォント
@@ -2511,7 +2510,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Jonathan Kew．優れた\TeX エンジンである\XeTeX を開発し，時間と労力を割いてその
   処理系を\TL に導入してくれました．彼はさらに初期バージョンの\MacTeX を開発し，我々の
   おすすめするフロントエンドである\TeX worksも開発しました．
-\item Dick Koch．\TL チームと友好的かつ緊密に連携しながらMac{\TeX} (\url{http://tug.%
+\item Dick Koch．\TL チームと友好的かつ緊密に連携しながらMac{\TeX} (\url{https://tug.%
   org/mactex}) のメンテナンスを行ってくれています．
 \item Reinhard Kotucha．\TL 2008のインフラとインストーラに対する主要な貢献者で，
   さらにWindows研究や\cmd{getnonfreefonts}スクリプトの開発などに多大な努力をして
@@ -2532,7 +2531,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
   ドキュメントに貢献してくれました．
 \item Norbert Preining．現在の\TL インフラとインストーラの主要開発者で，Frank
   K\"usterと共に\TL のDebianパッケージを用意してくれています．彼は現在も広範に\TL
-  に関わる様々な仕事を引き受けてくれています．
+  に関わるさまざまな仕事を引き受けてくれています．
 \item Sebastian Rahtz．\TL の創始者で，長年そのメンテナンスを行っていました．
   彼は2016年3月に亡くなりましたが，私たちは彼のことを忘れません．
 \item Luigi Scarso．\MP, \LuaTeX その他のプログラムを継続的に開発してくれています．
@@ -2564,7 +2563,7 @@ Mojca Miklavec (\pkg{i386-linux},
                 \pkg{sparc-solaris}),
 Norbert Preining (\pkg{x86\_64-linux})．
 %
-\TL のビルドプロセスについては\url{http://tug.org/texlive/build.html}を参照して
+\TL のビルドプロセスについては\url{https://tug.org/texlive/build.html}を参照して
 ください．
 
 このマニュアルの翻訳者：
@@ -2579,7 +2578,7 @@ Boris Veytsman（ロシア語），
 Zofia Walczak（ポーランド語），
 Uwe Ziegenhagen（ドイツ語）．
 %
-\TL のドキュメントウェブページは\url{http://tug.org/texlive/doc.html}です．
+\TL のドキュメントウェブページは\url{https://tug.org/texlive/doc.html}です．
 
 もちろん，最も重要な謝辞はDonald Knuthに対して贈られるべきです．まず\TeX を発明
 してくれたこと，そしてそれを世界に広めてくれたことについて，深く感謝します．
@@ -2593,7 +2592,7 @@ Uwe Ziegenhagen（ドイツ語）．
 ために用意し始めたときのことでした．そのときは，すべてのシステムに向けて1つの
 合理的な\CD を作成することが望ましいとされました．これは，当時にとってあまりに
 漠然とした目標でしたが，結果的には4All{\TeX} \CD を完成させたのみならず\TeX
-ディレクトリ構造 (TDS, \url{http://tug.org/tds}) についての作業チームをTUGに
+ディレクトリ構造 (TDS, \url{https://tug.org/tds}) についての作業チームをTUGに
 発足させることにつながりました．作業チームはどのようにすれば一貫性があり，管理
 の容易な\TeX サポートファイルのコレクションを作成できるか議論を重ねました．
 TDSについての完全な原稿は1995年12月発行の\textsl{TUGboat}に掲載されましたが，
@@ -2622,7 +2621,7 @@ Thomas氏が\teTeX に加えていたほとんどすべての機能が利用可�
 がアップデートされました．パッケージの詳細はXMLファイルに保存されるようになり
 ました．一方で{\TL} 5における大きな変更として，すべての有償ソフトウェアは取り
 除かれました．このときから\TL に含まれるすべてのものはDebianフリーソフトウェア
-ガイドライン (\url{http://www.debian.org/intro/free}) 互換であることが求め
+ガイドライン (\url{https://www.debian.org/intro/free}) 互換であることが求め
 られるようになりました．私たちはすべてのパッケージのライセンスを確認するよう
 最善を尽くしましたが，もし何か間違いがあればご連絡ください．
 
@@ -2688,7 +2687,7 @@ dat}も用意されるようになりました．
 enc}以下のサブディレクトリのみが検索対象になりました．しばらくの間は\cmd{%
 updmap}コマンドが将来的に問題となり得るファイルについて警告を出します．
 
-より詳細な対策その他の情報については\url{http://tug.org/texlive/mapenc.html}%
+より詳細な対策その他の情報については\url{https://tug.org/texlive/mapenc.html}%
 を参照してください．
 
 \item \TeX コレクションに\MIKTEX ベースのインストール\CD が追加されました．
@@ -2733,12 +2732,13 @@ PDF出力が行われているかどうかを判定できなくなったから�
 今年のリリースでは可能な限り対処しましたが，来年以降は\DVI 出力を行っているときで
 あっても\cs{pdfoutput}が定義されている可能性があります．
 
-\item {\pdfTeX} (\url{http://pdftex.org}) には多くの新機能が追加されました：
+\item {\pdfTeX} (\url{https://tug.org/applications/pdftex/}) には多くの新機能が
+追加されました：
 \begin{itemize*}
 \item \cs{pdfmapfile}と\cs{pdfmapline}がドキュメント内からのフォントマップ
 アクセスをサポートします．
 \item Microtypographicフォント展開がより簡単に利用できるようになりました．\\
-\url{http://www.ntg.nl/pipermail/ntg-pdftex/2004-May/000504.html}
+\url{https://www.ntg.nl/pipermail/ntg-pdftex/2004-May/000504.html}
 \item 従来は専用の設定ファイル\file{pdftex.cfg}で設定していたパラメータは，今後
 プリミティブを用いて設定されなければなりません．具体的には\file{pdftexconfig.%
 tex}で設定されています．\file{pdftex.cfg}はもはやサポートされません．\file{%
@@ -2776,7 +2776,7 @@ label=aleph}にいくらかの情報があります．\ALEPH における\LaTeX 
 \dir{texmf-dist/doc/latex/base}の\file{ltnews}ファイルに詳細が記載されています．
 
 \item \DVI をPNG画像ファイルに変換する新しいプログラム\prog{dvipng}が追加され
-ました．\url{http://www.ctan.org/pkg/dvipng}を参照．
+ました．\url{https://ctan.org/pkg/dvipng}を参照．
 
 \item mediumサイズのフォント向けに\pkg{cbgreek}パッケージを導入しました．これは
 フォント作者 (Claudio Beccari) の同意と助言に基づくものです．除外されているフォント
@@ -2857,11 +2857,11 @@ latex --translate-file=empty.tcx yourfile.tex
 \subsubsection{2006--2007}
 
 2006--2007年における\TL への大きな出来事は\XeTeX の追加でした．このプログラム
-は\cmd{xetex}と\cmd{xelatex}として利用可能です（\url{http://scripts.sil.org/%
+は\cmd{xetex}と\cmd{xelatex}として利用可能です（\url{https://scripts.sil.org/%
 xetex}参照）．
 
-{\pdfTeX} (\url{http://tug.org/applications/pdftex}) と同様に，\MP にも将来的
-な拡張の計画も含めて特筆すべきアップデートがありました \url{http://tug.org/%
+{\pdfTeX} (\url{https://tug.org/applications/pdftex}) と同様に，\MP にも将来的
+な拡張の計画も含めて特筆すべきアップデートがありました \url{https://tug.org/%
 metapost/articles}．
 
 \TeX の\file{.fmt}（高速フォーマット）と\MP, \MF 用の同等ファイルは\dir{%
@@ -2885,7 +2885,7 @@ texmf/web2c}直下から同サブディレクトリに移されました（一�
 によって今後の開発基盤が安定すると期待しています．
 
 最後に，2006年5月にThomas Esserが\teTeX の更新を終了することを発表しました
-(\url{http://tug.org/tetex})．結果として，特に\GNU/Linuxのディストリビュータ
+(\url{https://tug.org/tetex})．結果として，特に\GNU/Linuxのディストリビュータ
 から，にわかに\TL が注目されることになりました．\TL には新しく\pkg{tetex}%
 スキームが追加され，これを用いると旧来の\teTeX と概ね同等のものをインストール
 することができます．私たちは，早晩この変化が全世界の人々の\TeX 環境の改善に
@@ -2900,7 +2900,7 @@ texmf/web2c}直下から同サブディレクトリに移されました（一�
 ました．この機能は\MIKTEX には何年も前からあったものです．今後は\CTAN で新しい
 パッケージがリリースされる度にアップデートを行うことができるはずです．
 
-大きな出来事として，新しいエンジン{\LuaTeX} (\url{http://luatex.org}) が追加
+大きな出来事として，新しいエンジン{\LuaTeX} (\url{https://luatex.org}) が追加
 されました．このエンジンは組版にさらなる柔軟性を与えるだけでなく，\TeX 文書の
 内外で利用できる素晴らしいスクリプト言語の処理系を提供してくれます．
 
@@ -2939,7 +2939,7 @@ polski}パッケージが主としてポーランド語サポートを提供し�
 にコンパイルするようになりました．
 
 最後に，`\TeX\ tuneup of 2008'に述べられているDonald Knuthによる変更が今回の
-リリースに反映されました．詳細は\url{http://tug.org/TUGboat/Articles/tb29-2/%
+リリースに反映されました．詳細は\url{https://tug.org/TUGboat/Articles/tb29-2/%
 tb92knut.pdf}を参照してください．
 
 \subsubsection{2009}
@@ -2947,7 +2947,7 @@ tb92knut.pdf}を参照してください．
 2009年，\LuaTeX のOpenTypeサポート等を活用するためLua\LaTeXTeX のデフォルト
 の出力フォーマットがPDFに変更されました．新しいコマンド名\cmd{dviluatex}と
 \cmd{dvilualatex}を使用すると\DVI 出力の\LuaTeX を実行できます．\LuaTeX の
-ウェブサイトは\url{http://luatex.org}です．
+ウェブサイトは\url{https://luatex.org}です．
 
 {\OMEGA} (Omega) 開発者らとの協議の後，オリジナルの\OMEGA エンジンと{\LAMBDA}
 (Lambda) フォーマットは削除されることになりました．後継である{\ALEPH} (Aleph)
@@ -2956,13 +2956,13 @@ tb92knut.pdf}を参照してください．
 Computer Modernを含め，新しいバージョンのAMS \TypeI フォントが追加されました．
 何年も前にKnuthが\MF のソース修正を行って変更されたいくつかのシェイプがついに
 反映され，またヒンティングも更新されました．EulerフォントもHermann Zapfによって
-大幅に再デザインされました（\url{http://tug.org/TUGboat/Articles/tb29-2/tb92%
+大幅に再デザインされました（\url{https://tug.org/TUGboat/Articles/tb29-2/tb92%
 hagen-euler.pdf}参照）．いずれについてもメトリクスは変更されていません．AMS%
-フォントのウェブサイトは\url{http://www.ams.org/tex/amsfonts.html}です．
+フォントのウェブサイトは\url{https://www.ams.org/tex/amsfonts.html}です．
 
 新しい\GUI フロントエンド{\TeX}worksがWindowsと\MacTeX 向けに追加されました．
 他のプラットフォーム向けのものや詳細情報については{\TeX}worksのウェブサイト
-(\url{http://tug.org/texworks}) を参照してください．{\TeX}worksはmacOS向けの
+(\url{https://tug.org/texworks}) を参照してください．{\TeX}worksはmacOS向けの
 統合開発環境{\TeX}Shopにインスパイアされたクロスプラットフォームなフロント
 エンドで，使い勝手の良さに重きを置いています．
 
@@ -2984,7 +2984,7 @@ dvipdfm}の最後のリリースから何年にも渡って蓄積された数多
 その他の雑多な変更：
 %
 \begin{itemize*}
-\item \pkg{lzma}の安定した代替として\pkg{xz}圧縮 (\url{http://tukaani.org/%
+\item \pkg{lzma}の安定した代替として\pkg{xz}圧縮 (\url{https://tukaani.org/%
   xz/})を採用しました．
 \item 後続の文字列が定義済みの変数と一致しない限り\samp{\$}をファイル名に使用
   できるようになりました．
@@ -3012,7 +3012,7 @@ Encapsulated {\PS} (EPS) ファイルをPDFに変換するようになりまし�
 \verb|\newcommand{\DoNotLoadEpstopdf}{}|（\cs{def}を用いてもよい）を記述して
 読み込み済みのように見せかけることで\pkg{epstopdf}使用を回避できます．また
 \pkg{pst-pdf}パッケージを使用した場合も読み込みは行われません．詳細については
-\pkg{epstopdf}パッケージのドキュメントを参照してください (\url{http://ctan.%
+\pkg{epstopdf}パッケージのドキュメントを参照してください (\url{https://ctan.%
 org/pkg/epstopdf-pkg})．
 
 関連する変更として，今年からいくつかの定められた外部コマンドが\TeX から（\cs{%
@@ -3053,7 +3053,7 @@ escape} 0}を実行して設定を上書きしてください．
 \pkg{i386-kfreebsd}, \pkg{x86\_64-darwin}, \pkg{x86\_64-solaris}.
 
 {\TL} 2009の変更ですが，昨年リリースノートに書き忘れたものがありました．
-\TeX4ht関連の多くの実行バイナリ (\url{http://tug.org/tex4ht}) がバイナリ用
+\TeX4ht関連の多くの実行バイナリ (\url{https://tug.org/tex4ht}) がバイナリ用
 ディレクトリから削除されました．汎用の\cmd{mk4ht}コマンドを用いてすべての
 \prog{tex4ht}コンビネーションを実行することができます．
 
@@ -3157,7 +3157,7 @@ DIST}は今後ともに\dir{texmf-dist}を参照することになります．
 
 \prog{tlmgr}: 新しく\code{pinning}アクションが追加され，複数のレポジトリの
 管理が簡単になりました．\code{tlmgr \lopt{help}}出力の該当セクションまたは
-オンライン\url{http://tug.org/texlive/doc/tlmgr.html#MULTIPLE-REPOSITORIES}%
+オンライン\url{https://tug.org/texlive/doc/tlmgr.html#MULTIPLE-REPOSITORIES}%
 に詳細が記述されています．
 
 プラットフォーム：\pkg{armhf-linux}, \pkg{mips-irix}, \pkg{i386-netbsd},
@@ -3183,7 +3183,7 @@ format}の文字列ぐらいでしょう．Knuthによれば，今回の変更�
 ありました．また\cmd{luajittex} (\url{http://foundry.supelec.fr/projects/%
 luajittex}) という新しい変種エンジンが追加されました（さらに，このエンジンの
 仲間として\code{texluajit}, \code{texluajitc}も追加されています）．この処理系
-はLuaのJITコンパイラを利用しています（詳細は\textsl{TUGboat}の記事\url{http:%
+はLuaのJITコンパイラを利用しています（詳細は\textsl{TUGboat}の記事\url{https:%
 //tug.org/TUGboat/tb34-1/tb106scarso.pdf}にあります）．\cmd{luajittex}は現在
 開発途上にあり，すべてのプラットフォームで利用可能なわけではなく，また\cmd{%
 luatex}ほど安定していない可能性があります．\TL チームも\cmd{luajittex}開発陣
@@ -3270,7 +3270,7 @@ fmtutil.cnf}を読み込むように再実装されました．\Webc の\cmd{mkt
 プラットフォーム：\pkg{kfreebsd}系のプラットフォームサポートは終了しました．
 これらのプラットフォームでは，それぞれシステムネイティブな機能を利用して簡単に
 \TL を導入できるようになったためです．いくつかの追加プラットフォームがカスタム
-バイナリの形でサポートされるようになりました (\url{http://tug.org/texlive/%
+バイナリの形でサポートされるようになりました (\url{https://tug.org/texlive/%
 custom-bin.html})．加えていくつかのプラットフォームサポートが\DVD では省略
 されるようになりましたが（単純に容量不足のためです），インターネット経由でこれ
 まで通りインストールすることができます．
@@ -3279,7 +3279,7 @@ custom-bin.html})．加えていくつかのプラットフォームサポート
 
 \LuaTeX: プリミティブについての大きな変更（リネームと削除）とノード構造の
 部分的な再設計がありました．この変更はHans Hagen氏による記事``{\LuaTeX} 0.90
-backend changes for PDF and more'' (\url{http://tug.org/TUGboat/tb37-1/%
+backend changes for PDF and more'' (\url{https://tug.org/TUGboat/tb37-1/%
 tb115hagen-pdf.pdf}) に要約されています．すべての詳細については\LuaTeX の
 マニュアル\OnCD{texmf-dist/doc/luatex/base/luatex.pdf}を参照してください．
 
@@ -3373,7 +3373,7 @@ TEXMFSYSVAR}に先んじて検索されるようになりました．これは�
 コマンドの実行または\sopt{user}オプションの利用）を指定せずに実行された場合，
 警告を表示するようになりました．これは長年に渡って意図せずユーザモードで
 スクリプトが実行され，その後システム側のアップデートが反映されない問題へ
-対処するための措置です．詳細は\url{http://tug.org/texlive/scripts-sys-user.%
+対処するための措置です．詳細は\url{https://tug.org/texlive/scripts-sys-user.%
 html}を参照してください．
 
 \cmd{install-tl}: macOSにおける\var{TEXMFHOME}等の個人用パスのデフォルト値が
@@ -3403,15 +3403,15 @@ escape\_commands}に追加されています（\prog{texosquery}はJREの古い�
 \KPS: システムディレクトリ以外に対してはデフォルトで大文字・小文字を区別せず
 ファイル検索を行うようになりました．これまで通り大文字・小文字を区別したい
 場合は\file{texmf.cnf}または環境変数で\var{texmf\_casefold\_search}を\code{0}%
-に設定してください．詳細は\KPS のマニュアル (\url{http://tug.org/kpathsea})
+に設定してください．詳細は\KPS のマニュアル (\url{https://tug.org/kpathsea})
 を参照してください．
 
 \epTeX, \eupTeX: 新プリミティブ\cs{epTeXversion}が追加されました．
 
 \LuaTeX: \TL\,2019でLua 5.3に移行するための準備として，ほとんどのプラット
 フォーム向けにバイナリ\cmd{luatex53}が追加されました．有効化するためには
-\code{luatex}にリネームしてください．もしくは{\ConTeXt} Garden (\url{http:%
-//wiki.contextgarden.net}) のファイルを使用してください（詳細はサイトを
+\code{luatex}にリネームしてください．もしくは{\ConTeXt} Garden (\url{%
+https://wiki.contextgarden.net}) のファイルを使用してください（詳細はサイトを
 参照してください）．
 
 \MP: 間違ったパス方向とTFM, PNG出力に関する問題が修正されました．
@@ -3515,14 +3515,14 @@ Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降
 を提供し，これまで以上に良質で品質の保証されたマクロ，フォント，その他\TeX
 に関連するあらゆる成果物を含むツリーを作っていくつもりです．こうした仕事は
 すべてボランティアが余暇を使用して行っており，そのために常にやるべきことが
-残っています．ぜひ\url{http://tug.org/texlive/contribute.html}を読んで，
+残っています．ぜひ\url{https://tug.org/texlive/contribute.html}を読んで，
 コントリビューションを検討してください．
 
 間違いの指摘や提案，ヘルプの要望は以下に送ってください（英語）：
 %
 \begin{quote}
 \email{tex-live@tug.org} \\
-\url{http://tug.org/texlive}
+\url{https://tug.org/texlive}
 \end{quote}
 %
 \medskip
