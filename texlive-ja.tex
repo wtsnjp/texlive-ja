@@ -26,19 +26,19 @@
 
 \subsection{\TL と\TeX コレクション}
 
-このドキュメントは\GNU/Linuxやその他のUNIXシステム，\macOS，Windows向けに
+このドキュメントはGNU/Linuxやその他のUNIXシステム，macOS，Windows向けに
 \TeX 関連プログラムを集めたディストリビューション\TL の概要について解説する
 ものです．
 
 この文書の読者は既にインターネット，{\TeX} Users Groupの配布する\TeX
-コレクション\DVD またはその他の方法を利用して\TL を入手していることと思います．
-\ref{sec:tl-coll-dists}節は\TeX コレクション\DVD の収録物について簡単に説明して
-います．\TL と\TeX コレクションは{\TeX} Users Groupの協力によって維持されています．
-このドキュメントは主として\TL それ自体を解説するものです．
+コレクションDVDまたはその他の方法を利用して\TL を入手していることと思います．
+\ref{sec:tl-coll-dists}節は\TeX コレクションDVDの収録物について簡単に説明して
+います．\TL と\TeX コレクションは{\TeX} Users Group (TUG) の協力によって維持され
+ています．このドキュメントは主として\TL それ自体を解説するものです．
 
 \TL には\TeX, \LaTeXe, \ConTeXt, \MF, \MP, \BibTeX 実行プログラムはもちろん，
-\TeX を拡張する多数のマクロパッケージやフォント，そしてそれらの付属ドキュメントが
-含まれています．また，世界中で利用される多様な言語を対象とする組版もサポート
+\TeX を拡張する多数のマクロパッケージやフォント，そしてそれらの付属ドキュメント
+が含まれています．また，世界中で利用されるさまざまな言語における組版もサポート
 されています．
 
 \TL のバージョンごとの主な変更点については，このドキュメントの末尾にある
@@ -47,44 +47,44 @@
 \subsection{サポートOS}
 \label{sec:os-support}
 
-\TL には\GNU/Linux, \macOS, Cygwinを含む，多くのUNIXベースプラットフォーム向けの
-バイナリを含んでいます．同梱されているソースを用いれば，デフォルトではサポート
+\TL にはGNU/Linux, macOS, Cygwinを含む，多くのUNIXベースプラットフォーム向けの
+バイナリが含まれています．同梱されているソースを用いれば，デフォルトではサポート
 されていないプラットフォームでコンパイルを行うこともできます．
 
-Windows については，Windows~7以上のバージョンをサポートしています．いまのところ
+Windowsについては，Windows~7以上のバージョンをサポートしています．いまのところ
 Windows Vistaでも概ね動作すると思いますが，Windows XPよりも古いものについては
 \TL のインストールすら成功しません．Windowsについては64-bit向けに個別の実行
 ファイルを用意していませんが，32-bit実行ファイルは問題なく64-bit環境でも
 動作するはずです．
 
-Windowsおよび\macOS に特有のその他の事情については\ref{sec:tl-coll-dists}節を
+WindowsおよびmacOSに特有のその他の事情については\ref{sec:tl-coll-dists}節を
 参照してください．
 
 \subsection{\TL のインストール（基本）}
 \label{sec:basic}
 
-\TL は\DVD またはインターネットを利用してインストールすることができます (\url{%
+\TL はDVDまたはインターネットを利用してインストールすることができます (\url{%
 https://tug.org/texlive/acquire.html})．ネットインストーラ自体はとても小さな
 プログラムで，これを実行すると必要とされるすべてのファイルをインターネットから
 ダウンロードします．
 
-\DVD インストーラはあなたのローカルディスクに\TL をインストールします．
-\TeX コレクション\DVD 上にある\TL のデータ（またはその\code{.iso}イメージ）
-を直接実行することはできませんが，\USB ディスクなどにポータブルインストールを
+DVDインストーラはあなたのローカルディスクに\TL をインストールします．
+\TeX コレクションDVD上にある\TL のデータ（またはその\code{.iso}イメージ）
+を直接実行することはできませんが，USBディスクなどにポータブルインストールを
 行うことも可能です（\ref{sec:portable-tl}節を参照）．インストールについては
 後ほど詳述しますが (\p.\pageref{sec:install})，ここでは「クイックスタート」
 として簡単に説明します：
 
 \begin{itemize*}
 \item インストールスクリプトの名称は\cmd{install-tl}です．このプログラムに\sopt{%
-gui}オプションを与えると「GUIモード」（Windowsと\macOS でデフォルト），\sopt{no-%
+gui}オプションを与えると「GUIモード」（WindowsとmacOSでデフォルト），\sopt{no-%
 gui}を与えると「テキストモード」（その他のプラットフォームでデフォルト）が実行され
 ます．UNIXプラットフォームでは，Perl/Tkがインストールされていれば旧来のPerl/Tkと
 wizardモードを利用することもできます．Windowsについては\ref{sec:wininst}節も参照
 してください．
 
 \item \TL をインストールすると「\TL マネージャ」(\cmd{tlmgr}) も利用可能になります．
-インストーラと同様，このプログラムにも\GUI モードとテキストモードがあります．\TL
+インストーラと同様，このプログラムにもGUIモードとテキストモードがあります．\TL
 マネージャを用いてパッケージのインストールやアンインストール，その他さまざまな設定
 タスクを実行することができます．
 \end{itemize*}
@@ -210,7 +210,7 @@ texwiki.texjp.org/?質問のしかた}) ページがありますので，初め�
 \subsection{\TeX コレクション: \TL, pro\TeX{}t, \MacTeX}
 \label{sec:tl-coll-dists}
 
-\TeX コレクション\DVD には以下のものが含まれています：
+\TeX コレクションDVDには以下のものが含まれています：
 
 \begin{description}
 \item[\TL]
@@ -218,7 +218,7 @@ texwiki.texjp.org/?質問のしかた}) ページがありますので，初め�
 です．ウェブサイト：\url{https://tug.org/texlive/}
 
 \item[\MacTeX]
-\macOS 向けの\TeX ディストリビューションで，専用のインストーラといくつかの
+macOS向けの\TeX ディストリビューションで，専用のインストーラといくつかの
 Mac用アプリケーションを\TL に追加しています．
 ウェブサイト：\url{https://tug.org/mactex/}
 
@@ -228,11 +228,11 @@ Mac用アプリケーションを\TL に追加しています．
 これは完全に\TL とは独立で，独自の導入ガイドがあります．
 ウェブサイト：\url{https://tug.org/protext/}
 
-\item[\CTAN]
-\CTAN リポジトリ (\url{https://ctan.org/}) のスナップショットです．
+\item[CTAN]
+CTANリポジトリ (\url{https://ctan.org/}) のスナップショットです．
 \end{description}
 
-\CTAN および\pkg{protext}は\TL と同じライセンスで配布されているわけでは
+CTANおよび\pkg{protext}は\TL と同じライセンスで配布されているわけでは
 ないので，再配布や変更を行う場合は十分にご注意ください．
 
 \subsection{\TL のトップレベルディレクトリ}
@@ -297,7 +297,7 @@ conf}を実行するとこれらの変数の値が表示されるので，各TEX
 ます．
 
 すべてのTEXMFツリーは，例え個人的なものであっても，標準的な\TeX の
-ディレクトリ構成 (\TDS, \url{https://tug.org/tds}) にしたがうべきです．
+ディレクトリ構成 (TDS, \url{https://tug.org/tds}) にしたがうべきです．
 ただし必要のないサブディレクトリやファイルは存在していなくても構いません．
 詳細については\ref{sec:local-personal-macros}節 (\p.\pageref{%
 sec:local-personal-macros}) を参照してください．ここで列挙するのはツリー
@@ -356,10 +356,10 @@ fmtutil-sys}などが，変更された設定データを保存するために�
     \begin{description}
     \item[\dir{bin}] ~
       \begin{description}
-      \item[\dir{i386-linux}] \GNU/Linux向けバイナリ (32-bit)
+      \item[\dir{i386-linux}] GNU/Linux向けバイナリ (32-bit)
       \item[\quad\vdots]
-      \item[\dir{x86_64-darwin}] \macOS 向けバイナリ
-      \item[\dir{x86_64-linux}] \GNU/Linux向けバイナリ (64-bit)
+      \item[\dir{x86_64-darwin}] macOS向けバイナリ
+      \item[\dir{x86_64-linux}] GNU/Linux向けバイナリ (64-bit)
       \item[\dir{win32}] Windows向けバイナリ
       \end{description}
     \item[\dir{texmf-dist}] \code{TEXMFDIST}, \code{TEXMFMAIN}
@@ -396,7 +396,7 @@ Knuthによるオリジナルの\TeX は既に開発が終了しており，ご�
 詳細については\OnCD{texmf-dist/doc/etex/base/etex_man.pdf}を参照してください．
 
 \item[\pdfTeX]
-この処理系には，\eTeX の機能に加えて\DVI 同様にPDFを出力する機能と，その他出力とは
+この処理系には，\eTeX の機能に加えてDVI同様にPDFを出力する機能と，その他出力とは
 関係のない多数の追加機能が搭載されています．この処理系は，\cmd{etex}, \cmd{latex},
 \cmd{pdflatex}など多くのフォーマット（コマンド）から呼び出されています．pdf\TeX の
 ウェブサイトは\url{https://tug.org/applications/pdftex/}です．\TL にはマニュアル
@@ -474,16 +474,16 @@ base/eptexdoc.pdf}をご覧ください．
 \cmd{makeindex}を日本語用に拡張したもの．
 
 \item[dvips]
-\DVI を\PS に変換するプログラム．
+DVIを\PS に変換するプログラム．
 
 \item[xdvi]
-X Windowsシステム向けの\DVI ビューア．
+X Windowsシステム向けのDVIビューア．
 
 \item[dviconcat, dviselect]
-\DVI のページを切り貼りするためのプログラム．
+DVIのページを切り貼りするためのプログラム．
 
 \item[dvipdfmx]
-\DVI をPDFに変換するプログラム．
+DVIをPDFに変換するプログラム．
 
 \item[psselect, psnup, \ldots]
 \PS ユーティリティ．
@@ -504,14 +504,14 @@ PDFユーティリティ．
 \subsection{インストーラの入手と起動}
 \label{sec:inst-start}
 
-\TL をインストールするためには，まず\TeX コレクション\DVD を入手するか\TL の
+\TL をインストールするためには，まず\TeX コレクションDVDを入手するか\TL の
 インターネット・インストーラをダウンロードします．より詳細な情報や\TL を入手
 するその他の方法については\url{https://tug.org/texlive/acquire.html}を参照して
 ください．
 %
 \begin{description}
 \item[インターネット・インストーラ（\code{.zip}または\code{.tar.gz}）]
-\CTAN の\dir{systems/texlive/tlnet}配下からダウンロードできます．\url{http://%
+CTANの\dir{systems/texlive/tlnet}配下からダウンロードできます．\url{http://%
 mirror.ctan.org/systems/texlive/tlnet}にアクセスすると，最寄りの最新ミラーに
 リダイレクトされるはずです．\file{install-tl.zip}（UNIXおよびWindows向け），
 またはそれよりもかなりファイルサイズの小さい\file{install-unx.tar.gz}（UNIX%
@@ -520,18 +520,18 @@ mirror.ctan.org/systems/texlive/tlnet}にアクセスすると，最寄りの最
 install-tl-windows.bat}が見つかるはずです．
 
 \item[インターネット・インストーラ（Windows用\code{.exe}）]
-上と同様に\CTAN からダウンロードし，ダブルクリックしてください．すると，
+上と同様にCTANからダウンロードし，ダブルクリックしてください．すると，
 インストーラの最初の画面（図\ref{fig:nsis}）が表示されるはずです．この画面では
 「インストール」または「展開のみ」のいずれかを選ぶことができます．
 
-\item[\TeX コレクション\DVD]
-\DVD 内の\dir{texlive}サブディレクトリを開いてください．Windowsでは，通常\DVD
+\item[\TeX コレクションDVD]
+DVD内の\dir{texlive}サブディレクトリを開いてください．Windowsでは，通常DVD
 を挿入するとインストーラが自動的に起動するはずです．{\TeX} Users Group (TUG) の
 会員になるか (\url{https://tug.org/usergroups.html})，TUGのオンラインストア
-(\url{https://tug.org/store}) で個別に購入すると\DVD を手に入れることができます．
-また，配布されている\ISO イメージからご自身で\DVD に焼くことも可能です．\DVD
-または\ISO から\TL をインストールした後，インターネットを利用して継続的にアップ
-デートを行いたい場合は\ref{sec:dvd-install-net-updates}節をご覧ください．
+(\url{https://tug.org/store}) で個別に購入するとDVDを手に入れることができます．
+また，配布されているISOイメージからご自身でDVDに焼くことも可能です．DVDまたは
+ISOから\TL をインストールした後，インターネットを利用して継続的にアップデートを
+行いたい場合は\ref{sec:dvd-install-net-updates}節をご覧ください．
 \end{description}
 %
 \begin{figure}[tb]
@@ -543,13 +543,13 @@ install-tl-windows.bat}が見つかるはずです．
 いずれの手段でインストーラを入手しても，まったく同じプログラムが起動します．
 入手方法の違いによって生じる差異のうち，ユーザにとって最も重要なことは，
 インターネット・インストーラを利用した場合はすべてのパッケージについて入手可能
-な最新バージョンがインストールされますが，\DVD や\ISO イメージを用いた場合には
+な最新バージョンがインストールされますが，DVDやISOイメージを用いた場合には
 年に1度のパブリックリリース時点での最新版がインストールされるということです．
 
 もしプロキシを利用してダウンロードする必要がある場合は，\file{~/.wgetrc}ファイル
 または環境変数を利用してWgetに対して適切なプロキシ設定を行うか (\url{https://%
 www.gnu.org/software/wget/manual/html_node/Proxies.html})，もしくはお好みで別の
-ダウンロード用ツールをご利用ください．\DVD や\ISO イメージからインストールを行う
+ダウンロード用ツールをご利用ください．DVDやISOイメージからインストールを行う
 場合は，プロキシ設定について気にする必要はありません．
 
 以降のセクションでは，このインストーラの使い方について詳しく説明します．
@@ -573,8 +573,8 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 ところで，インストーラのメッセージを見やすく表示するためには，ターミナルの
 ウィンドウサイズは十分に大きくしておいてください（図\ref{fig:text-main}）．
 
-インストーラを\GUI モードで起動するためには，予めTcl/Tkをインストールしておく
-必要があります．その上で，次のようにすると\GUI モードで起動できます：
+インストーラをGUIモードで起動するためには，予めTcl/Tkをインストールしておく
+必要があります．その上で，次のようにするとGUIモードで起動できます：
 %
 \begin{alltt}
 > \Ucom{perl install-tl -gui}
@@ -582,7 +582,7 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 
 古い\code{wizard}モードや\code{perltk}/\code{expert}オプションは，現在も使用
 可能です．これらはXFTサポートありでコンパイルされた\code{Perl::Tk}モジュールを
-必要とします．この要件は，基本的には\GNU/Linuxでは問題になりませんが，他の
+必要とします．この要件は，基本的にはGNU/Linuxでは問題になりませんが，他の
 プラットフォームでは問題かもしれません．利用可能なすべてのオプションを確認する
 には次を実行してください：
 %
@@ -601,24 +601,24 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 必要なプログラムの一部が含まれていません．詳細は\ref{sec:cygwin}節を参照して
 ください．
 
-\subsubsection{\macOS}
+\subsubsection{macOS}
 \label{sec:macos}
 
-\ref{sec:tl-coll-dists}節でも言及したように，\macOS には\MacTeX という専用の
+\ref{sec:tl-coll-dists}節でも言及したように，macOSには\MacTeX という専用の
 ディストリビューションがあります (\url{https://tug.org/mactex})．\MacTeX の
-インストーラは\macOS 向けにいくつかの最適化をしている（たとえば，いわゆる
-「{\TeX}Distデータ構造」を利用して複数の\macOS 向け\TeX ディストリビューション
+インストーラはmacOS向けにいくつかの最適化をしている（たとえば，いわゆる
+「{\TeX}Distデータ構造」を利用して複数のmacOS向け\TeX ディストリビューション
 (\MacTeX, Fink, MacPorts, \ldots) を簡単に切り替える機能があります）ので，\TL
 インストーラを利用するよりも，\MacTeX を利用したインストールをおすすめします
 （訳注：ただし敢えて\TL インストーラを利用することも可能です）．
 
 \MacTeX は完全な\TL ベースのディストリビューションで，主要な\TeX ツリーと
-含まれる実行バイナリはまったく同一です．通常の\TL に，\macOS 専用のドキュメント
+含まれる実行バイナリはまったく同一です．通常の\TL に，macOS専用のドキュメント
 とアプリケーションがいくつか追加されています．
 
 \subsubsection{Windows}\label{sec:wininst}
 
-もしZIPファイルをご自身でダウンロードして展開した場合や\DVD を挿入しても自動的に
+もしZIPファイルをご自身でダウンロードして展開した場合やDVDを挿入しても自動的に
 インストーラが起動しなかった場合は，\file{install-tl-windows.bat}をダブルクリック
 してください．
 
@@ -632,13 +632,13 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 \end{alltt}
 %
 を実行してください．もちろん絶対パスを指定して起動することも可能です．例えば，
-\TeX コレクション\DVD を利用していて，その光学ドライブが\dir{D:}であれば：
+\TeX コレクションDVDを利用していて，その光学ドライブが\dir{D:}であれば：
 %
 \begin{alltt}
 > \Ucom{D:{\bs}texlive{\bs}install-tl-windows}
 \end{alltt}
 %
-図\ref{fig:basic-w32}は\GUI インストーラ（Windowsではデフォルト）の初期画面を
+図\ref{fig:basic-w32}はGUIインストーラ（Windowsではデフォルト）の初期画面を
 示しています．
 
 テキストモードでのインストールを行いたい場合は次のようにしてください：
@@ -687,7 +687,7 @@ Actions:
  <Q> quit
 \end{boxedverbatim}
 \vskip-\baselineskip
-\caption{\TL インストーラのテキストモードでのメイン画面 (\GNU/Linux)}
+\caption{\TL インストーラのテキストモードでのメイン画面 (GNU/Linux)}
 \label{fig:text-main}
 \end{figure}
 
@@ -699,7 +699,7 @@ fig:advanced-lnx}のような画面に切り替わります．}\label{fig:basic-
 
 \begin{figure}[tb]
 \tlpng{advanced-lnx}{\linewidth}
-\caption{\TL インストーラ\GUI モードの「高度な設定」画面 (\GNU/Linux)}
+\caption{\TL インストーラGUIモードの「高度な設定」画面 (GNU/Linux)}
 \label{fig:advanced-lnx}
 \end{figure}
 
@@ -729,14 +729,14 @@ Cygwinでは，\TL のインストールを始める前に\file{setup.exe}プロ
 入力にしたがって適切に遷移していきます．
 
 テキストモードのインターフェースは，最小限のPerlしかない環境を含めなるべく多く
-のプラットフォームで動作するようとても原始的に作られています（訳注：\GUI モード
+のプラットフォームで動作するようとても原始的に作られています（訳注：GUIモード
 は日本語を含む多言語に対応していますが，テキストモードは英語のみです）．
 
-\subsubsection{\GUI モード}
+\subsubsection{GUIモード}
 \label{sec:graphical-inst}
 
-\GUI モードでは，デフォルトではわずかなオプションのみを提供するシンプルな画面で
-スタートします（図\ref{fig:basic-w32}）．\GUI モードを起動するには
+GUIモードでは，デフォルトではわずかなオプションのみを提供するシンプルな画面で
+スタートします（図\ref{fig:basic-w32}）．GUIモードを起動するには
 %
 \begin{alltt}
 > \Ucom{install-tl -gui}
@@ -855,7 +855,7 @@ Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2019}です．この配置�
 リリースを使用するか切り替えるようなことができます．
 
 インストール先のディレクトリはインストーラにおける\code{TEXDIR}を設定することに
-よって変更することができます．\GUI モードで\code{TEXDIR}やその他のオプションを設定
+よって変更することができます．GUIモードで\code{TEXDIR}やその他のオプションを設定
 するための画面は図\ref{fig:advanced-lnx}に示されています．インストール先を変更する
 必要があるのは，デフォルトのインストール先にあたるパーティションに十分な空き容量が
 ない場合（\TL をフルインストールするには数GBの容量が必要となります）や書き込み権限
@@ -882,7 +882,7 @@ cur}などバージョンに依存しない名前で管理したいとお考え�
 \code{TEXMFSYSCONFIG}にあたるディレクトリも合わせて変更されることになります．
 
 \code{TEXMFHOME}はユーザごとのマクロファイルやパッケージを配置するのに適した場所で，
-デフォルトでは\dir{~/texmf}です（\macOS では\dir{~/Library/texmf}）．\code{TEXDIR}%
+デフォルトでは\dir{~/texmf}です（macOSでは\dir{~/Library/texmf}）．\code{TEXDIR}%
 の場合とは異なり，\TeX を実行しているユーザのホームディレクトリを簡単に参照できる
 ように，このデフォルト値では\dir{~}が各々のインストールのために生成された設定
 ファイルに書き込まれています．\dir{~}はUNIXでは\dir{$HOME}に，Windowsでは\code{\%%
@@ -960,11 +960,11 @@ MANPATH}, \code{INFOPATH}に追加する必要があります．ただし，シ�
 上書きしてしまわないようにご注意ください．安全のため，このオプションは有効にしない
 ことをおすすめします．
 
-\item[after install, set {\CTAN} as source for package updates%
-（\CTAN をインストール後のパッケージ更新元に設定）]
-\TL を\DVD からインストールする場合，このオプションはデフォルトで有効です．大抵の
+\item[after install, set CTAN as source for package updates%
+（CTANをインストール後のパッケージ更新元に設定）]
+\TL をDVDからインストールする場合，このオプションはデフォルトで有効です．大抵の
 場合，\TL のユーザは年内に行われるパッケージのアップデートを受け取りたいと考える
-ためです．このオプションを無効化する場合があるとしたら，例えば\DVD からは一部の
+ためです．このオプションを無効化する場合があるとしたら，例えばDVDからは一部の
 インストールのみを行って，後に（別の方法で）補強したいような場合でしょう．いずれに
 せよ，インストール時およびインストール後に利用するパッケージリポジトリは，必要に
 応じて独立に設定することが可能です．詳細は\ref{sec:location}節と\ref{sec:dvd-install%
@@ -991,7 +991,7 @@ Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkイ
 \item[install \TeX works front end（統合開発環境\TeX worksをインストール）]
 \end{description}
 
-すべての設定が済みましたら，テキストモードでは`I'をタイプ，Perl/Tkの\GUI モードでは
+すべての設定が済みましたら，テキストモードでは`I'をタイプ，Perl/TkのGUIモードでは
 `Install TeX Live'ボタンを押すことによってインストールを実行してください．インストール
 が完了したら（他にすることがなければ）\ref{sec:postinstall}節までスキップしてください．
 
@@ -1010,8 +1010,8 @@ Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkイ
 %
 \begin{description}
 \item[\sopt{gui}]
-インストーラを（もし利用可能なら）\GUI モードで起動します．\GUI モードの実行には
-バージョン8.5以上のTcl/Tkが必要です．これは\macOS ではご自身でインストールしていただく
+インストーラを（もし利用可能なら）GUIモードで起動します．GUIモードの実行には
+バージョン8.5以上のTcl/Tkが必要です．これはmacOSではご自身でインストールしていただく
 必要がありますが，Windows用の\TL には同梱されているため特に何もする必要はありません．
 古いオプションである\sopt{gui=perltk}と\sopt{gui=wizard}も現在でも利用可能です．
 これらの実行のためにはXFTサポートが有効なPerl/Tkモジュールが必要です (\url{https://%
@@ -1028,8 +1028,8 @@ tug.org/texlive/distro.html#perltk})．Tcl/TkとPerl/Tkが利用可能でない�
 インストーラで利用可能な言語の一覧は\code{install-tl -help}で確認できます．
 
 \item[\sopt{portable}]
-\TL を\USB メモリなどにポータブルインストールします．ポータブルインストールは，
-インストーラの起動後にテキストモードの\code{V}コマンドまたは\GUI モードのメニュー
+\TL をUSBメモリなどにポータブルインストールします．ポータブルインストールは，
+インストーラの起動後にテキストモードの\code{V}コマンドまたはGUIモードのメニュー
 を利用して選択することもできます．詳細は\ref{sec:portable-tl}節を参照してください．
 
 \item[\sopt{profile \meta{ファイル}}]
@@ -1060,17 +1060,17 @@ tug.org/texlive/distro.html#perltk})．Tcl/TkとPerl/Tkが利用可能でない�
 \label{sec:location}
 
 デフォルトのネットワーク上パッケージリポジトリは\url{http://mirror.ctan.org}に
-よって自動的に選択される\CTAN ミラーです．
+よって自動的に選択されるCTANミラーです．
 
 このデフォルトを上書きしたい場合は，使用したいリポジトリを\code{ftp:}, \code{%
 http:}, \code{file:/}のいずれかからはじまるURL，または通常のディレクトリパスに
 よって指定します（\code{http:}または\code{ftp:}から始まるリポジトリ指定を
 行った場合，末尾の`\code{/}'や`\code{/tlpkg}'は無視されます）．
 
-例えば\CTAN の特定のミラーサーバを\url{http://ctan.example.org/tex-archive/%
+例えばCTANの特定のミラーサーバを\url{http://ctan.example.org/tex-archive/%
 systems/texlive/tlnet/}のように指定した場合，実際のホスト名と，そのホストに
-おける\CTAN のトップレベルパスを\code{ctan.example.org/tex-archive}の代わりに
-使用します．\CTAN ミラーの一覧は\url{https://ctan.org/mirrors}で確認できます．
+おけるCTANのトップレベルパスを\code{ctan.example.org/tex-archive}の代わりに
+使用します．CTANミラーの一覧は\url{https://ctan.org/mirrors}で確認できます．
 
 もし与えられた引数が（パスまたは\code{file:/} URLの形で）ローカルのディレクトリ
 を指していた場合，その下にある\dir{archive}サブディレクトリ内の圧縮ファイルが
@@ -1098,7 +1098,7 @@ UNIXシステムではご使用のプラットフォーム向けのバイナリ�
 検索パスに追加することができます．ただしmanページについては\code{PATH}を設定
 することによって自動的に検索可能になる場合もあります．
 
-例えば，Intel x86アーキテクチャ上の\GNU/Linuxで\prog{bash}などBourneシェルと
+例えば，Intel x86アーキテクチャ上のGNU/Linuxで\prog{bash}などBourneシェルと
 互換性のあるシェルを使用していて，なおかつデフォルトのディレクトリ設定の環境の
 下では\file{$HOME/.profile}（もしくは\file{.profile}から読み込まれている別の
 ファイルでも構いません）に次のような行を追加することで環境変数を設定できます：
@@ -1142,25 +1142,25 @@ MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
 
 各UNIX向けのバイナリディレクトリには，\file{man}という名前の\dir{texmf-dist%
 /doc/man}を指すシンボリックリンクが作成されています．一部の\prog{man}プログラム
-（例えば\macOS の標準\cmd{man}コマンド）は，これを利用して自動的にmanページの
+（例えばmacOSの標準\cmd{man}コマンド）は，これを利用して自動的にmanページの
 設定を最適化してくれる場合があります．
 
-\subsubsection{\DVD インストール後のインターネットを利用したアップデート}
+\subsubsection{DVDインストール後のインターネットを利用したアップデート}
 \label{sec:dvd-install-net-updates}
 
-\TL を\DVD からインストールした後，インターネットを利用してアップデートを行いたい
+\TL をDVDからインストールした後，インターネットを利用してアップデートを行いたい
 場合は，以下のコマンドを検索パスの設定の\emph{後}に行ってください：
 %
 \begin{alltt}
 > \Ucom{tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet}
 \end{alltt}
 %
-これによって以降\cmd{tlmgr}は最寄りの\CTAN ミラーを利用してアップデートを行う
-ようになります．\DVD からのインストール時に\ref{sec:options}節で説明したオプション
+これによって以降\cmd{tlmgr}は最寄りのCTANミラーを利用してアップデートを行う
+ようになります．DVDからのインストール時に\ref{sec:options}節で説明したオプション
 を介してこの設定をデフォルトにしておくこともできます．
 
 もしミラーの自動選択では問題がある場合は，\url{https://ctan.org/mirrors}から特定の
-\CTAN ミラーを指定することもできます．その際は\dir{tlnet}サブディレクトリまでの
+CTANミラーを指定することもできます．その際は\dir{tlnet}サブディレクトリまでの
 パスを正確に指定するようにしてください．
 
 \subsubsection{\XeTeX と\LuaTeX のためのシステム設定}
@@ -1171,7 +1171,7 @@ MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
 する方法でこれを実現していますが，そのしくみはまったく同じではありません．
 
 Windowsでは，\TL に含まれているフォントは自動的にフォント名を指定するだけで\XeTeX
-から利用できるように設定されます．\macOS では，フォント名による検索を有効にする
+から利用できるように設定されます．macOSでは，フォント名による検索を有効にする
 ためにはいくつかの手順が必要です（詳細は\MacTeX のウェブサイト\url{https://tug.org/%
 mactex}を参照してください）．他のUNIXシステムでの設定方法は，以下の通りです．
 
@@ -1232,7 +1232,7 @@ $HOME/texmf}または\winpath{\winenv{USERPROFILE}\\texmf}）はユーザごと�
 の値をメインの\TL ツリーとあまりかけ離れた位置に変更することは避けるべきです．
 さもないと将来のリリースの際に手動で変更を行う必要が発生する可能性があります．
 
-いずれのツリーについても，それぞれのファイルは\TDS に基づいたサブディレクトリに
+いずれのツリーについても，それぞれのファイルはTDSに基づいたサブディレクトリに
 配置されているべきです（\url{https://tug.org/tds}や\file{texmf-dist/web2c/texmf.%
 cnf}を参照してください）．例えば\LaTeX のクラスファイルやパッケージは\dir{%
 TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下の階層に配置
@@ -1341,7 +1341,7 @@ DISPLAY}の設定がまずい場合は\samp{Can't open display}エラーが発�
 > \Ucom{dvips sample2e.dvi -o sample2e.ps}
 \end{alltt}
 
-\item 今度は\DVI ファイルの代わりにPDFファイルを作成します．今回は\code{.tex}%
+\item 今度はDVIファイルの代わりにPDFファイルを作成します．今回は\code{.tex}%
 ファイルから直接PDFを生成してみます：
 %
 \begin{alltt}
@@ -1421,7 +1421,7 @@ Transcript written on opentype-info.log.
   \item \prog{GNU Emacs}: \url{https://www.gnu.org/software/emacs/emacs.html}%
     （Windowsでも利用可）
   \item \prog{Emacs Auc\TeX}: \url{https://www.gnu.org/software/auctex}%
-    （Windows版は\CTAN から入手可）
+    （Windows版はCTANから入手可）
   \item \prog{SciTE}: \url{https://www.scintilla.org/SciTE.html}
   \item \prog{Texmaker}: \url{https://www.xm1math.net/texmaker}
   \item \prog{\TeX studio}: \url{https://texstudio.org/}%
@@ -1476,11 +1476,11 @@ Windows向けには，\TL は\cmd{tlaunch}というランチャーを含んで�
 マニュアルを参照してください（\Ucom{texdoc tlaunch}を実行するか\url{https://%
 ctan.org/pkg/tlaunch}にアクセスすると閲覧できます）．
 
-\subsection{ポータブル (\USB) インストール}
+\subsection{ポータブル (USB) インストール}
 \label{sec:portable-tl}
 
 \TL インストーラに\sopt{portable}オプションを与えると（テキストモードで\code{V}%
-コマンドを実行したり\GUI モードで同等のオプションを利用した場合も同様です）\TL
+コマンドを実行したりGUIモードで同等のオプションを利用した場合も同様です）\TL
 は完全に自己完備のインストールを標準的なルート以下に作成します．これはシステムの
 いかなる環境にも依存しません．このような構成の\TL はUSBメモリに直接インストール
 したり，後からUSBにコピーしたりすることができます．
@@ -1504,19 +1504,19 @@ Windowsでは，ポータブルインストールのルートにある\cmd{tl-tr
 
 \begin{figure}[tb]
 \tlpng{tlshell-macos}{\linewidth}
-\caption{\prog{tlshell} \GUI のアクションメニュー (\macOS)}
+\caption{\prog{tlshell} GUIのアクションメニュー (macOS)}
 \label{fig:tlshell}
 \end{figure}
 
 \begin{figure}[tb]
 \tlpng{tlcockpit-packages}{.8\linewidth}
-\caption{\prog{tlmgr}の新しい{\GUI} (\prog{tlcockpit})}
+\caption{\prog{tlmgr}の新しい{GUI} (\prog{tlcockpit})}
 \label{fig:tlcockpit}
 \end{figure}
 
 \begin{figure}[tb]
 \tlpng{tlmgr-gui}{\linewidth}
-\caption{\prog{tlmgr}のレガシー\GUI モード．`Load'後のメインウィンドウ}
+\caption{\prog{tlmgr}のレガシーGUIモード．`Load'後のメインウィンドウ}
 \label{fig:tlmgr-gui}
 \end{figure}
 
@@ -1535,20 +1535,20 @@ Windowsでは，ポータブルインストールのルートにある\cmd{tl-tr
 texconfig}の操作に慣れている方々のために依然としてその配布およびメンテナンスを継続
 していますが，\prog{tlmgr}を使用することをおすすめします．
 
-\subsection{\prog{tlmgr}の\GUI}
+\subsection{\prog{tlmgr}のGUI}
 
-\TL には\prog{tlmgr}の\GUI が複数含まれています．\prog{tlshell}（図\ref{fig:%
-tlshell}）はTcl/Tkを利用した\GUI でWindowsと\macOS で利用可能です．\prog{%
-tlcockpit}はバージョン8以降のJavaとJavaFXで動作する\GUI です．これらはいずれも独立
+\TL には\prog{tlmgr}のGUIが複数含まれています．\prog{tlshell}（図\ref{fig:%
+tlshell}）はTcl/Tkを利用したGUIでWindowsとmacOSで利用可能です．\prog{%
+tlcockpit}はバージョン8以降のJavaとJavaFXで動作するGUIです．これらはいずれも独立
 したパッケージです．
 
-\prog{tlmgr}それ自体にも\GUI モードが存在します（図\ref{fig:tlmgr-gui}）：
+\prog{tlmgr}それ自体にもGUIモードが存在します（図\ref{fig:tlmgr-gui}）：
 %
 \begin{alltt}
 > \Ucom{tlmgr -gui}
 \end{alltt}
 %
-この\GUI 拡張の実行にはPerl/Tkが必要です．現在はWindows向けの\TL にはPerl/Tk%
+このGUI拡張の実行にはPerl/Tkが必要です．現在はWindows向けの\TL にはPerl/Tk%
 モジュールは同梱されていないので注意してください．
 
 \subsection{コマンド使用例}
@@ -1639,7 +1639,7 @@ Windowsでは\TL はいくつか追加の処理を行います：
 \begin{description}
 \item[メニューとショートカット]
 スタートメニューに`\TL'サブメニューを追加します．このサブメニューから\prog{tlmgr},
-\prog{texdoctk}や\PS ビューア (\prog{psv}) などの\GUI プログラムを起動したり，
+\prog{texdoctk}や\PS ビューア (\prog{psv}) などのGUIプログラムを起動したり，
 いくつかのドキュメントにアクセスしたりすることができます．
 
 \item[拡張子の関連付け]
@@ -1685,7 +1685,7 @@ PerlとGhostscriptは重要なので，\TL には「隠された」それらの�
 \PS /PDFビューア（図\ref{fig:psview}）．
 
 \item[dviout]
-\DVI ビューア．初期状態では，ファイルを\prog{dviout}でプレビューしようとすると，
+DVIビューア．初期状態では，ファイルを\prog{dviout}でプレビューしようとすると，
 フォント生成が行われるはずです．これはスクリーンフォントがインストールされていない
 ためです．しばらく使用していると，頻繁に利用されるフォントの生成が完了するため，
 フォント生成ウィンドウが現れることは稀になります．詳細はオンラインヘルプ（おすすめ）
@@ -1803,17 +1803,17 @@ CurtisによるUNIX下のchangefileをベースにしていました．その後
 の協力者の助けを得ながらメンテナンスを引き継ぎました．1997年にOlaf Weberがメンテナに
 なりましたが，2006年には再びKarl氏の管理下に戻りました．
 
-\Webc システムはUNIX, 32-bit Windows, \macOS などのOSで動作します．このシステムでは
+\Webc システムはUNIX, 32-bit Windows, macOSなどのOSで動作します．このシステムでは
 Knuthによる\TeX のオリジナルソースと，文芸的プログラミングシステム\WEB で書かれた
 いくつかの基本的なプログラムを使用し，それらをC言語ソースコードに変換します．このような
 方法で管理されている\TeX 関連のプログラムは以下の通りです：
 %
 \begin{cmddescription}
 \item[bibtex] 参考文献の管理
-\item[dvicopy] \DVI ファイルで参照されている仮想フォントの展開
-\item[dvitomp] \DVI をMPX（\MP 画像）に変換
-\item[dvitype] \DVI を可読テキストに変換
-\item[gftodvi] Generic fonts (GF) の見本 (\DVI) 作成
+\item[dvicopy] DVIファイルで参照されている仮想フォントの展開
+\item[dvitomp] DVIをMPX（\MP 画像）に変換
+\item[dvitype] DVIを可読テキストに変換
+\item[gftodvi] Generic fonts (GF) の見本 (DVI) 作成
 \item[gftopk] GFをpacked fonts (PK) に変換
 \item[gftype] GFを可読テキストに変換
 \item[mf] フォントファミリの作成
@@ -1836,7 +1836,7 @@ Knuthによる\TeX のオリジナルソースと，文芸的プログラミン�
 ドキュメントに記載されています．しかしながら，すべてのプログラムに共通するいくつかの
 基本事項を押さえておくと\Webc をインストールする際に役立ちます．
 
-\Webc に含まれるすべてのプログラムは，以下の標準的な\GNU オプションをサポートして
+\Webc に含まれるすべてのプログラムは，以下の標準的なGNUオプションをサポートして
 います：
 %
 \begin{description}
@@ -2081,7 +2081,7 @@ cd \var{/your/texmf/root} && \path|\|ls -1LAR ./ >ls-R
 \end{alltt}
 %
 を実行するだけです．なお，このスクリプトはシステムの\cmd{ls}コマンドが正しい
-形式で出力を行うことを前提にしています（{\GNU} \cmd{ls}なら問題ありません）．
+形式で出力を行うことを前提にしています（GNU \cmd{ls}なら問題ありません）．
 データベースが常に最新の状態であることを保証するには，\cmd{cron}を利用して
 定期的にデータベースを更新するのが簡単でしょう．そうすることによって，例えば
 \LaTeX パッケージをインストールしたりアップデートしたりして，新しいファイルが
@@ -2481,7 +2481,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item John Bowman．彼の高度なグラフィックツールAsymptoteを\TL に対応させるため数多く
   の変更を加えてくれました．
 \item Peter Breitenlohnerと\eTeX チーム．将来の\TeX のために安定した基盤を構築して
-  くれました．特にPeter氏は，長年に渡って{\GNU} autotools関連のヘルパーとして活躍し，
+  くれました．特にPeter氏は，長年に渡ってGNU autotools関連のヘルパーとして活躍し，
   ソースコードを最新の状態に保ってくれました．Peter．2015年10月に亡くなりましたが，
   私たちは彼のことを忘れません．
 \item Jin-Hwan ChoとすべてのDVIPDFM$x$チームメンバー．素晴らしいドライバを開発し，
@@ -2489,7 +2489,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Thomas Esser．彼の素晴らしい\teTeX パッケージなしには\TL は存在し得ません
   でした．
 \item Michel Goossens．この文書のオリジナル版の共著者です．
-\item Eitan Gurari．彼の\TeX4htは\TL 公式ドキュメントの\HTML 版生成に利用されています．
+\item Eitan Gurari．彼の\TeX4htは\TL 公式ドキュメントのHTML版生成に利用されています．
   彼は急な依頼をしても，毎年快く\TeX4htの改善に取り組んでくれました．Eitanは2009年
   6月に若くして亡くなりましたが，私たちは彼のことを忘れません．
 \item Hans Hagen．多くのテストを引き受け，また彼の\ConTeXt パッケージ (\url{http://%
@@ -2524,7 +2524,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
   何より，彼の\pkg{hyperref}パッケージについての偉業に敬意を表します．
 \item Petr Ol\v{s}ak．チェコ・スロバキア関連のプロダクトを統括し，注意深くチェック
   してくれました．
-\item 大島利雄．Windows向け\DVI ビューア\cmd{dviout}を開発してくれました．
+\item 大島利雄．Windows向けDVIビューア\cmd{dviout}を開発してくれました．
 \item Manuel P\'egouri\'e-Gonnard．パッケージアップデートとドキュメントの改善に協力
   してくれたほか，\cmd{texdoc}コマンドを開発しました．
 \item Fabrice Popineau．はじめて\TL のWindowsサポートを行い，またフランス語
@@ -2588,21 +2588,21 @@ Uwe Ziegenhagen（ドイツ語）．
 
 \subsection{過去}
 
-最初に議論が始まったのはオランダ\TeX ユーザ会が4All{\TeX} \CD をMS-DOSユーザの
+最初に議論が始まったのはオランダ\TeX ユーザ会が4All{\TeX} CDをMS-DOSユーザの
 ために用意し始めたときのことでした．そのときは，すべてのシステムに向けて1つの
-合理的な\CD を作成することが望ましいとされました．これは，当時にとってあまりに
-漠然とした目標でしたが，結果的には4All{\TeX} \CD を完成させたのみならず\TeX
+合理的なCDを作成することが望ましいとされました．これは，当時にとってあまりに
+漠然とした目標でしたが，結果的には4All{\TeX} CDを完成させたのみならず\TeX
 ディレクトリ構造 (TDS, \url{https://tug.org/tds}) についての作業チームをTUGに
 発足させることにつながりました．作業チームはどのようにすれば一貫性があり，管理
 の容易な\TeX サポートファイルのコレクションを作成できるか議論を重ねました．
 TDSについての完全な原稿は1995年12月発行の\textsl{TUGboat}に掲載されましたが，
-かなり早い段階から望ましい成果物は\CD 上のモデル構造であることは明らかでした．
+かなり早い段階から望ましい成果物はCD上のモデル構造であることは明らかでした．
 いま皆さんにとってお馴染みのディストリビューションは，この作業チームの議論の
-かなり直接的な成果と言えます．また4All{\TeX} \CD の成功から，同様の簡単な
+かなり直接的な成果と言えます．また4All{\TeX} CDの成功から，同様の簡単な
 システムを作ればUNIXユーザも恩恵に与ることができることも明らかで，この事実も
 \TL にもう1つの大きな流れを作りました．
 
-私たちは，1995年の秋にまずUNIXベースの{\TDS} \CD の開発に取り掛かり，すぐに
+私たちは，1995年の秋にまずUNIXベースのTDS CDの開発に取り掛かり，すぐに
 Thomas Esserの\teTeX が理想的なディストリビューションであることがわかりました．
 \teTeX はすでに複数のプラットフォームをサポートしており，さまざまなファイル
 システムに対応するように設計されていました．Thomas氏の協力を得て活動は1996年の
@@ -2640,7 +2640,7 @@ dat}も用意されるようになりました．
 \subsubsection{2003}
 
 2003年も例年通り数多くのアップデートと追加パッケージがあり\TL は巨大化して
-もはや1枚の\CD に収まらないことがわかりました．そのため，私たちはこれを3つの
+もはや1枚のCDに収まらないことがわかりました．そのため，私たちはこれを3つの
 異なるディストリビューションに分離しました（\ref{sec:tl-coll-dists}節 (\p.%
 \pageref{sec:tl-coll-dists}) を参照）．その他の変更点：
 %
@@ -2690,7 +2690,7 @@ updmap}コマンドが将来的に問題となり得るファイルについて�
 より詳細な対策その他の情報については\url{https://tug.org/texlive/mapenc.html}%
 を参照してください．
 
-\item \TeX コレクションに\MIKTEX ベースのインストール\CD が追加されました．
+\item \TeX コレクションに\MIKTEX ベースのインストールCDが追加されました．
 \MIKTEX 実装の\Webc がお好みの場合はそちらをお使いください．詳細は\ref{sec:%
 overview-tl}節 (\p.\pageref{sec:overview-tl}) を参照．
 
@@ -2721,7 +2721,7 @@ texmf-dist/doc/web2c/web2c.html#TCX-files}を確認してください．
 を出力する可能性があります．これは\TeX がバイト指向であるためです．）
 
 \item \prog{pdfetex}が (plain) \prog{tex} を除くすべてのフォーマットのデフォルト
-エンジンになりました（もちろん，\prog{latex}等で実行された場合は\DVI を出力します
+エンジンになりました（もちろん，\prog{latex}等で実行された場合はDVIを出力します
 ）．つまり，\eTeX 拡張 (\dir{texmf-dist/doc/etex/base/}) に加えて\pdfTeX  の
 microtypography機能も\LaTeX や\ConTeXt で利用可能になります．
 
@@ -2729,7 +2729,7 @@ microtypography機能も\LaTeX や\ConTeXt で利用可能になります．
 の利用が\emph{これまで以上に重要となった}ということを意味します．なぜなら単純に
 \cs{pdfoutput}（または他のプリミティブ）が定義されているかどうかを調べるだけでは
 PDF出力が行われているかどうかを判定できなくなったからです．この後方互換性について
-今年のリリースでは可能な限り対処しましたが，来年以降は\DVI 出力を行っているときで
+今年のリリースでは可能な限り対処しましたが，来年以降はDVI出力を行っているときで
 あっても\cs{pdfoutput}が定義されている可能性があります．
 
 \item {\pdfTeX} (\url{https://tug.org/applications/pdftex/}) には多くの新機能が
@@ -2775,13 +2775,13 @@ label=aleph}にいくらかの情報があります．\ALEPH における\LaTeX 
 公式にDebian公認のライセンスになりました．他のアップデートについての情報と合わせて
 \dir{texmf-dist/doc/latex/base}の\file{ltnews}ファイルに詳細が記載されています．
 
-\item \DVI をPNG画像ファイルに変換する新しいプログラム\prog{dvipng}が追加され
+\item DVIをPNG画像ファイルに変換する新しいプログラム\prog{dvipng}が追加され
 ました．\url{https://ctan.org/pkg/dvipng}を参照．
 
 \item mediumサイズのフォント向けに\pkg{cbgreek}パッケージを導入しました．これは
 フォント作者 (Claudio Beccari) の同意と助言に基づくものです．除外されているフォント
 は不可視・アウトライン・透過文字です．これらは比較的使用頻度の低いもので，私たち
-は容量を気にする必要がありました．フルセットのフォントはもちろん\CTAN から入手
+は容量を気にする必要がありました．フルセットのフォントはもちろんCTANから入手
 できます (\url{http://mirror.ctan.org/tex-archive/fonts/greek/cbfonts})．
 
 \item \prog{oxdvi}は廃止されました．\prog{xdvi}を使用してください．
@@ -2822,7 +2822,7 @@ updmap-sys}, \cmd{fmtutil-sys}が導入されました．\cmd{texconfig}, \cmd{u
 位置は必ず一致していなければなりません．詳細は\ref{sec:texmftrees}節 (\p.%
 \pageref{sec:texmftrees}) を参照してください．
 
-\item 昨年は\pdfTeX が使用されていたとしても，\DVI 出力を行う場合には\cs{%
+\item 昨年は\pdfTeX が使用されていたとしても，DVI出力を行う場合には\cs{%
 pdfoutput}等のプリミティブが未定義になるよう後方互換性を維持していました．
 今年は，予告していたとおり，この後方互換性に対するケアは終了します．そのため
 もし\egg\verb|\ifx\pdfoutput\undefined|\egg のようなコードを利用してPDF出力
@@ -2839,7 +2839,7 @@ empty.tcx}を用いてより簡単に\egg\verb|^^|\egg 表現を利用するか�
 latex --translate-file=empty.tcx yourfile.tex
 \end{verbatim}
 
-\item \DVI をPDFに変換するため，新しく\prog{dvipdfmx}プログラムが追加され
+\item DVIをPDFに変換するため，新しく\prog{dvipdfmx}プログラムが追加され
 ました．これは活発にメンテナンスされている\prog{dvipdfm}の後継です
 （\prog{dvipdfm}は今でも利用可能ですが，推奨はされません）．
 
@@ -2876,8 +2876,8 @@ texmf/web2c}直下から同サブディレクトリに移されました（一�
 （\LaTeX など他のコマンドは今後も\code{\%\&}を解釈します．）
 
 当然のことながら，この期間にも（いつも通り）上記以外に何百ものパッケージや
-プログラムのアップデートがありました．平常通り，それらについては{\CTAN}
-(\url{http://mirror.ctan.org}) を確認してください．
+プログラムのアップデートがありました．平常通り，それらについてはCTAN (\url{%
+http://mirror.ctan.org}) を確認してください．
 
 内部的には，ソースツリーをSubversionで管理するようになり，その標準Webインター
 フェースでソースツリーを閲覧できるようになりました（\TL のウェブサイトから
@@ -2885,7 +2885,7 @@ texmf/web2c}直下から同サブディレクトリに移されました（一�
 によって今後の開発基盤が安定すると期待しています．
 
 最後に，2006年5月にThomas Esserが\teTeX の更新を終了することを発表しました
-(\url{https://tug.org/tetex})．結果として，特に\GNU/Linuxのディストリビュータ
+(\url{https://tug.org/tetex})．結果として，特にGNU/Linuxのディストリビュータ
 から，にわかに\TL が注目されることになりました．\TL には新しく\pkg{tetex}%
 スキームが追加され，これを用いると旧来の\teTeX と概ね同等のものをインストール
 することができます．私たちは，早晩この変化が全世界の人々の\TeX 環境の改善に
@@ -2897,7 +2897,7 @@ texmf/web2c}直下から同サブディレクトリに移されました（一�
 の完全な情報は\file{tlpkg/texlive.tlpdb}というテキストファイルに保存される
 ようになりました．インフラ刷新による変化は色々ありますが，これによって一度
 インストールした\TL をインターネットを利用してアップグレードできるようになり
-ました．この機能は\MIKTEX には何年も前からあったものです．今後は\CTAN で新しい
+ました．この機能は\MIKTEX には何年も前からあったものです．今後はCTANで新しい
 パッケージがリリースされる度にアップデートを行うことができるはずです．
 
 大きな出来事として，新しいエンジン{\LuaTeX} (\url{https://luatex.org}) が追加
@@ -2946,21 +2946,21 @@ tb92knut.pdf}を参照してください．
 
 2009年，\LuaTeX のOpenTypeサポート等を活用するためLua\LaTeXTeX のデフォルト
 の出力フォーマットがPDFに変更されました．新しいコマンド名\cmd{dviluatex}と
-\cmd{dvilualatex}を使用すると\DVI 出力の\LuaTeX を実行できます．\LuaTeX の
+\cmd{dvilualatex}を使用するとDVI出力の\LuaTeX を実行できます．\LuaTeX の
 ウェブサイトは\url{https://luatex.org}です．
 
 {\OMEGA} (Omega) 開発者らとの協議の後，オリジナルの\OMEGA エンジンと{\LAMBDA}
 (Lambda) フォーマットは削除されることになりました．後継である{\ALEPH} (Aleph)
 と{\LAMED} (Lamed) は\OMEGA の機能を担うため今後も\TL に残ります．
 
-Computer Modernを含め，新しいバージョンのAMS \TypeI フォントが追加されました．
+Computer Modernを含め，新しいバージョンのAMS Type~1 フォントが追加されました．
 何年も前にKnuthが\MF のソース修正を行って変更されたいくつかのシェイプがついに
 反映され，またヒンティングも更新されました．EulerフォントもHermann Zapfによって
 大幅に再デザインされました（\url{https://tug.org/TUGboat/Articles/tb29-2/tb92%
 hagen-euler.pdf}参照）．いずれについてもメトリクスは変更されていません．AMS%
 フォントのウェブサイトは\url{https://www.ams.org/tex/amsfonts.html}です．
 
-新しい\GUI フロントエンド{\TeX}worksがWindowsと\MacTeX 向けに追加されました．
+新しいGUIフロントエンド{\TeX}worksがWindowsと\MacTeX 向けに追加されました．
 他のプラットフォーム向けのものや詳細情報については{\TeX}worksのウェブサイト
 (\url{https://tug.org/texworks}) を参照してください．{\TeX}worksはmacOS向けの
 統合開発環境{\TeX}Shopにインスパイアされたクロスプラットフォームなフロント
@@ -2993,7 +2993,7 @@ dvipdfm}の最後のリリースから何年にも渡って蓄積された数多
 \end{itemize*}
 
 最後に過去のバージョンに関することについて告知します．\TL のすべてのリリース
-は\url{ftp://tug.org/historic/systems/texlive}から入手できます（\CD ラベル等
+は\url{ftp://tug.org/historic/systems/texlive}から入手できます（CDラベル等
 のおまけもあります）．
 
 \subsubsection{2010}
@@ -3057,9 +3057,9 @@ escape} 0}を実行して設定を上書きしてください．
 ディレクトリから削除されました．汎用の\cmd{mk4ht}コマンドを用いてすべての
 \prog{tex4ht}コンビネーションを実行することができます．
 
-最後に，\TeX コレクション\DVD 上の\TL はライブ実行できなくなりました．
-1枚の\DVD だけではもはや十分なスペースが確保できないためです．有用な副作用
-として，物理\DVD からのインストールがこれまでよりかなり高速になりました．
+最後に，\TeX コレクションDVD上の\TL はライブ実行できなくなりました．
+1枚のDVDだけではもはや十分なスペースが確保できないためです．有用な副作用
+として，物理DVDからのインストールがこれまでよりかなり高速になりました．
 
 \subsubsection{2011}
 
@@ -3271,7 +3271,7 @@ fmtutil.cnf}を読み込むように再実装されました．\Webc の\cmd{mkt
 これらのプラットフォームでは，それぞれシステムネイティブな機能を利用して簡単に
 \TL を導入できるようになったためです．いくつかの追加プラットフォームがカスタム
 バイナリの形でサポートされるようになりました (\url{https://tug.org/texlive/%
-custom-bin.html})．加えていくつかのプラットフォームサポートが\DVD では省略
+custom-bin.html})．加えていくつかのプラットフォームサポートがDVDでは省略
 されるようになりましたが（単純に容量不足のためです），インターネット経由でこれ
 まで通りインストールすることができます．
 
@@ -3496,9 +3496,9 @@ omitcharset}が\code{1}に設定されている場合，\code{/CharSet}はPDF出
 \item \cmd{cwebbin} (\url{https://ctan.org/pkg/cwebbin}) が\TL における
   CWEB実装となりました．この実装ではより多くの言語がサポートされ，簡易な
   索引を作成する\cmd{ctwill}プログラムが追加されています．
-\item \cmd{chkdvifont}: \DVI ファイルやtfm/ofm, vf, gf, pkからフォント情報
+\item \cmd{chkdvifont}: DVIファイルやtfm/ofm, vf, gf, pkからフォント情報
   を抽出して報告します．
-\item \cmd{dvispc}: スペシャルを考慮して，\DVI をページ独立にします．
+\item \cmd{dvispc}: スペシャルを考慮して，DVIをページ独立にします．
 \end{itemize*}
 
 \MacTeX: \pkg{x86\_64-darwin}のサポート対象は10.12以上 (Sierra, High~Sierra,
