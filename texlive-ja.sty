@@ -13,10 +13,8 @@
 \RequirePackage{float}
 \RequirePackage{graphicx}
 \RequirePackage{longtable}
-%\RequirePackage{shortvrb}
 \RequirePackage[normalem]{ulem}
 \RequirePackage[obeyspaces]{url}
-\RequirePackage{relsize}% for a proper \acro command.
 \RequirePackage{textcomp}% including \textbullet
 \RequirePackage{fancyvrb}
 
@@ -67,7 +65,6 @@
 
 \def\p.{p.\,}
 \renewcommand*{\slash}{/\penalty\z@\hskip\z@skip }
-\DeclareRobustCommand{\acro}[1]{\textscale{.9}{#1}\@}
 
 % various sorts of names
 \newcommand*{\pkg}[1]{\eghostguarded{\textsf{#1}}}
@@ -86,51 +83,21 @@
 \newcommand*{\winenv}[1]{\code{\%#1\%}}
 \newcommand*{\winpath}[1]{{\def\\{\char`\\}\code{#1}}}
 
-% followings are just for reference (from tex-live.sty)
-%\newcommand*{\colname}[1]{\eghostguarded{\emph{#1}}}% collection name
-%\newcommand*{\var}[1]{{\sl #1}}% not \textsl, for roman not typewriter slanted.
-%\newcommand*{\ttvar}[1]{\texttt{\var{#1}}}
-
 % bold command input (originally, it was underline?)
 \newcommand*{\Ucom}[1]{{\bfseries\ttfamily #1}}
 
-% \CDref is for url's with a #, where we need to write the target url and
-% displayed url separately in the input, due to catcode madness.
-% (We could simplify/remove this next time, I think.)
-\newcommand*{\CDref}[2]{\texttt{#1}}
-
-% \OnCD no longer has any use at all, since we don't have unpacked files
-% on the DVD and it has never worked when reading the PDF online.
-\newcommand*{\OnCD}[1]{\path{#1}}
-% 
-% \OnCD is currently for any other reference to a file or directory in
-% the distribution.  PDF readers only open .pdf files, though, so we
-% should change this to only use \href for those.  Or more likely use
-% different macros in the source.
-%\def\OnCD#1{\href{../../../../#1}{\path{#1}}}
-%
-% \href incorrectly appends .pdf to anything without an extension; these
-% definitions using \hyper@linkurl do not, but they fail for .pdf
-% references -- which are the only ones that work anyway.  So this is
-% useless, in practice.
-%\def\CDref#1#2{\hyper@linkurl{#2}{../../../../#1}}
-%\def\OnCD#1{\hyper@linkurl{\path{#1}}{../../../../#1}}
-
-% GUI menu/button/tab sequence:
-\newcommand*{\guiseq}[1]{\textsf{#1}}
-\newcommand*{\arw}{\unskip$\rightarrow$\ignorespaces}
-
-% Special names.
+% special names
 \newcommand*{\dpi}{$\,$dpi}
 \newcommand*{\bs}{\char`\\}
 \newcommand*{\cs}[1]{\eghostguarded{\texttt{\bs #1}}}
 \newcommand*{\Q}[1]{\par\vskip6pt\leftline{#1}\par}
 \newcommand*{\hyph}{-}
 
-% many abbreviations.
+% abbreviations
 \newcommand*{\KPS}{Kpathsea}
 \newcommand*{\PS}{Post\-Script}
 \newcommand*{\WEB}{\texttt{WEB}}
+\newcommand*{\Webc}{Web2C}
 
 % ------------------------------------------------------------- TeX logos
 
@@ -151,22 +118,11 @@
 % logos not in bxtexlogo
 \newcommand*{\TeXXeT}{\TeX-{}-%
   \kern-.1emX\kern-.125em\lower.5ex\hbox{E}\kern-.1667emT\@}
-\newcommand*\MIKTEX{MiK\kern-.025em \TeX}% per www.miktex.org
-\newcommand*\fpTeX{\textrm{fp}\TeX}
-\newcommand*\ProTeXt{pro\TeX t}
-\newcommand*\teTeX{\textrm{te}\TeX}
-\newcommand*\TL{\TeX\,\,Live}
-\newcommand*\MacTeX{Mac\TeX}
-\newcommand*\OzMF{OzMF}
-\newcommand*\OzMP{OzMP}
-\newcommand*\OzTeX{O\kern-.03em z\kern-.15em\TeX}
-\newcommand*\XEmTeX{\textrm{XEm}\TeX}
-\newcommand*\XEmacs{\textrm{XEmacs}}
-\newcommand*\Webc{Web2C}
-
-% from pictex.tex:
-\ifx\PiC\undefined \def\PiC{P\kern-.12em\lower.5ex\hbox{I}\kern-.075emC} \fi
-\ifx\PiCTeX\undefined \def\PiCTeX{\PiC\kern-.11em\TeX} \fi
+\newcommand*{\MIKTEX}{MiK\kern-.025em \TeX}% per www.miktex.org
+\newcommand*{\ProTeXt}{pro\TeX t}
+\newcommand*{\teTeX}{\textrm{te}\TeX}
+\newcommand*{\TL}{\TeX\,\,Live}
+\newcommand*{\MacTeX}{Mac\TeX}
 
 % ------------------------------------------------------------- Verbatim
 

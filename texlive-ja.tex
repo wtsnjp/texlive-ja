@@ -134,7 +134,7 @@ chroot}を利用したりしてください．
 
 \item[{\TeX} FAQ]
 \TeX に関するよくあるFAQを集めた巨大なデータベースです．最も基礎的な質問から
-とても難解な質問まで含まれています．\TL では\OnCD{texmf-dist/doc/generic/FAQ-en/}
+とても難解な質問まで含まれています．\TL では\dir{texmf-dist/doc/generic/FAQ-en/}%
 に含まれているほか，インターネット経由でも読むことができます (\url{https://texfaq.%
 org/})．\TeX について質問がある場合は，まずここをチェックしてください．
 
@@ -265,7 +265,7 @@ CTANおよび\pkg{protext}は\TL と同じライセンスで配布されてい�
 %\file{README} files (in various languages) are at the top level of
 %the distribution.
 %
-ドキュメントを探す際には，同じくトップレベルにある\OnCD{doc.html}が役立ちます．
+ドキュメントを探す際には，同じくトップレベルにある\file{doc.html}が役立ちます．
 このファイルには\dir{texmf-dist/doc}以下に含まれるほとんどすべてのドキュメント
 （パッケージ，フォーマット，フォント，プログラムのマニュアルやmanページなど）が
 掲載されています．また\TL に含まれるドキュメントを検索するには\cmd{texdoc}%
@@ -275,15 +275,15 @@ CTANおよび\pkg{protext}は\TL と同じライセンスで配布されてい�
 されています：
 
 \begin{itemize*}
-\item チェコ・スロバキア語：\OnCD{texmf-dist/doc/texlive/texlive-cz}
-\item ドイツ語\OnCD{texmf-dist/doc/texlive/texlive-de}
-\item 英語：\OnCD{texmf-dist/doc/texlive/texlive-en}
-\item フランス語：\OnCD{texmf-dist/doc/texlive/texlive-fr}
-\item イタリア語：\OnCD{texmf-dist/doc/texlive/texlive-it}
-\item ポーランド語：\OnCD{texmf-dist/doc/texlive/texlive-pl}
-\item ロシア語：\OnCD{texmf-dist/doc/texlive/texlive-ru}
-\item セルビア語：\OnCD{texmf-dist/doc/texlive/texlive-sr}
-\item 簡体字中国語：\OnCD{texmf-dist/doc/texlive/texlive-zh-cn}
+\item チェコ・スロバキア語：\dir{texmf-dist/doc/texlive/texlive-cz}
+\item ドイツ語\dir{texmf-dist/doc/texlive/texlive-de}
+\item 英語：\dir{texmf-dist/doc/texlive/texlive-en}
+\item フランス語：\dir{texmf-dist/doc/texlive/texlive-fr}
+\item イタリア語：\dir{texmf-dist/doc/texlive/texlive-it}
+\item ポーランド語：\dir{texmf-dist/doc/texlive/texlive-pl}
+\item ロシア語：\dir{texmf-dist/doc/texlive/texlive-ru}
+\item セルビア語：\dir{texmf-dist/doc/texlive/texlive-sr}
+\item 簡体字中国語：\dir{texmf-dist/doc/texlive/texlive-zh-cn}
 \end{itemize*}
 
 \subsection{いろいろなTEXMFツリー（概要）}
@@ -393,15 +393,15 @@ Knuthによるオリジナルの\TeX は既に開発が終了しており，ご�
 この処理系ではいくつかの追加プリミティブ（主としてマクロ展開，文字列スキャン，
 マークのクラス，デバッグに関わるもの）と双方向組版のための\TeXXeT 拡張が利用可能
 です．デフォルトモードでは，\eTeX はオリジナルの\TeX と完全な互換性があります．
-詳細については\OnCD{texmf-dist/doc/etex/base/etex_man.pdf}を参照してください．
+詳細については\file{texmf-dist/doc/etex/base/etex_man.pdf}を参照してください．
 
 \item[\pdfTeX]
 この処理系には，\eTeX の機能に加えてDVI同様にPDFを出力する機能と，その他出力とは
 関係のない多数の追加機能が搭載されています．この処理系は，\cmd{etex}, \cmd{latex},
 \cmd{pdflatex}など多くのフォーマット（コマンド）から呼び出されています．pdf\TeX の
 ウェブサイトは\url{https://tug.org/applications/pdftex/}です．\TL にはマニュアル
-(\OnCD{texmf-dist/doc/pdftex/manual/pdftex-a.pdf}) とpdf\TeX の拡張機能の利用例を
-示した文書 (\OnCD{texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex}) も収録されて
+(\file{texmf-dist/doc/pdftex/manual/pdftex-a.pdf}) とpdf\TeX の拡張機能の利用例を
+示した文書 (\file{texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex}) も収録されて
 います．
 
 \item[\LuaTeX]
@@ -411,7 +411,7 @@ Knuthによるオリジナルの\TeX は既に開発が終了しており，ご�
 https://www.lua.org/}) のインタプリタが組み込まれており，\TeX における厄介な問題に
 対処するのにとても役立ちます．\cmd{texlua}として呼び出した場合は独立のLua処理系の
 ように振る舞います．そのため\TL に含まれる一部のプログラムもこのLua処理系によって
-実行されています．ウェブサイト：\url{https://luatex.org/}，マニュアル：\OnCD{%
+実行されています．ウェブサイト：\url{https://luatex.org/}，マニュアル：\file{%
 texmf-dist/doc/luatex/base/luatex.pdf}．
 
 \item[\XeTeX]
@@ -426,7 +426,7 @@ Processes' (OTPs) もサポートしており，任意の入力について複�
 可能です．
 
 \item[{\ALEPH} (Aleph)]
-\OMEGA と\eTeX を組み合わせた処理系です．詳細については\OnCD{texmf-dist/doc/aleph/%
+\OMEGA と\eTeX を組み合わせた処理系です．詳細については\dir{texmf-dist/doc/aleph/%
 base}を参照してください．
 \end{description}
 %
@@ -438,7 +438,7 @@ base}を参照してください．
 \item[\pTeX]
 Knuthによるオリジナルの\TeX 処理系を日本語組版用に拡張したものです．和文フォントを
 扱うことができるように拡張されているほか，禁則処理や縦組みにも対応しています．詳細に
-ついては\OnCD{texmf-dist/doc/ptex/ptex-manual/ptex-manual.pdf}を参照してください．
+ついては\file{texmf-dist/doc/ptex/ptex-manual/ptex-manual.pdf}を参照してください．
 
 \item[\upTeX]
 \pTeX の派生エンジンで，内部コードがUnicodeに変更されています．基本的には\upTeX は
@@ -448,13 +448,13 @@ Knuthによるオリジナルの\TeX 処理系を日本語組版用に拡張し�
 \item[\epTeX, \eupTeX]
 \pTeX と\upTeX に\eTeX 相当の拡張機能を追加したエンジンです．現在\TL に含まれる
 \cmd{platex}, \cmd{uplatex}コマンドではデフォルトでこれらの処理系が呼び出されます．
-最近は\pdfTeX 由来の機能も一部利用できます．詳細は\OnCD{texmf-dist/doc/ptex/ptex-%
+最近は\pdfTeX 由来の機能も一部利用できます．詳細は\file{texmf-dist/doc/ptex/ptex-%
 base/eptexdoc.pdf}をご覧ください．
 \end{description}
 %
 また\LuaTeX-jaというマクロパッケージを用いると\LuaTeX でも日本語組版を実現できます．
 詳しくはウェブサイト\url{https://ja.osdn.net/projects/luatex-ja/}またはドキュメント
-\OnCD{texmf-dist/doc/luatex/luatexja/luatexja-ja.pdf}を参照してください．
+\file{texmf-dist/doc/luatex/luatexja/luatexja-ja.pdf}を参照してください．
 
 \subsection{\TL に含まれるその他の著名なソフトウェア}
 
@@ -3281,7 +3281,7 @@ custom-bin.html})．加えていくつかのプラットフォームサポート
 部分的な再設計がありました．この変更はHans Hagen氏による記事``{\LuaTeX} 0.90
 backend changes for PDF and more'' (\url{https://tug.org/TUGboat/tb37-1/%
 tb115hagen-pdf.pdf}) に要約されています．すべての詳細については\LuaTeX の
-マニュアル\OnCD{texmf-dist/doc/luatex/base/luatex.pdf}を参照してください．
+マニュアル\file{texmf-dist/doc/luatex/base/luatex.pdf}を参照してください．
 
 \MF: \MF にLua処理系を組み込んだ実験的なプログラムMFluaとMFluajitが追加され
 ました．現状これらは試用と実験のためのものです．
