@@ -2,7 +2,7 @@
 % TeX Live documentation.  Originally written by Sebastian Rahtz and
 % Michel Goossens, now maintained by Karl Berry and others.
 % Public domain.
-\documentclass[uplatex,dvipdfmx]{jsarticle}
+\documentclass[uplatex,dvipdfmx,tombow]{jsarticle}
 
 \usepackage{texlive-ja}
 
@@ -252,14 +252,14 @@ CTANおよび\pkg{protext}は\TL と同じライセンスで配布されてい�
 
 \item[\dir{source}]
 \TL に含まれるすべてのプログラムのソースコードです．\Webc で記述された，\TeX
-ディストリビューションのコアプログラムのものも含みます．
+ディストリビューションのコアプログラムのソースコードも含まれています．
 
 \item[\dir{texmf-dist}]
 最も重要なTEXMFツリーです．詳しくは下にある\dir{TEXMFDIST}の項目を参照して
 ください．
 
 \item[\dir{tlpkg}]
-インストールに必要なスクリプトやWindows向けのサポートプログラムを含んでいます．
+インストールに必要なスクリプトやWindows向けの補助プログラムを含んでいます．
 \end{description}
 %
 %In addition to the directories above, the installation scripts and
@@ -331,16 +331,16 @@ fmtutil-sys}などが，変更された設定データを保存するために�
 変化します．
 
 \item[\var{TEXMFVAR}]
-この（ユーザ向けの）ツリーは\cmd{texconfig}, \cmd{updmap}, \cmd{fmtutil}など
-がフォーマットや生成されたmapファイルなどの実行時（キャッシュ）データを保存
-するためのものです．
+この（ユーザ向けの）ツリーは\cmd{texconfig}, \cmd{updmap-user}, \cmd{fmtutil-%
+user}などがフォーマットや生成されたmapファイルなどの実行時（キャッシュ）データ
+を保存するためのものです．
 
 \item[\var{TEXMFCONFIG}]
-この（ユーザ向けの）ツリーは\cmd{texconfig}, \cmd{updmap}, \cmd{fmtutil}など
-が変更された設定データを保存するために利用するものです．
+この（ユーザ向けの）ツリーは\cmd{texconfig}, \cmd{updmap-user}, \cmd{fmtutil-%
+user}などが変更された設定データを保存するために利用するものです．
 
 \item[\var{TEXMFCACHE}]
-このツリーは\ConTeXt\ MkIVおよびLua\LaTeX が実行時（キャッシュ）データを保存
+このツリーは\ConTeXt\ MkIVおよび\LuaLaTeX が実行時（キャッシュ）データを保存
 するためのものです．デフォルトでは\var{TEXMFSYSVAR}（またはこれが書き込み
 不能な場合は\var{TEXMFVAR}）に設定されています．
 \end{description}
@@ -392,7 +392,7 @@ Knuthによるオリジナルの\TeX は既に開発が終了しており，ご�
 \begin{description}
 \item[\eTeX]\label{text:etex}
 この処理系ではいくつかの追加プリミティブ（主としてマクロ展開，文字列スキャン，
-マークのクラス，デバッグに関わるもの）と双方向組版のための\TeXXeT 拡張が利用可能
+\cs{marks}クラス，デバッグに関わるもの）と双方向組版のための\TeXXeT 拡張が利用可能
 です．デフォルトモードでは，\eTeX はオリジナルの\TeX と完全な互換性があります．
 詳細については\file{texmf-dist/doc/etex/base/etex_man.pdf}を参照してください．
 
@@ -549,7 +549,7 @@ ISOから\TL をインストールした後，インターネットを利用し�
 
 もしプロキシを利用してダウンロードする必要がある場合は，\file{~/.wgetrc}ファイル
 または環境変数を利用してWgetに対して適切なプロキシ設定を行うか (\url{https://%
-www.gnu.org/software/wget/manual/html_node/Proxies.html})，もしくはお好みで別の
+www.gnu.org/software/wget/manual/html_node/Proxies.html})，もしくはお好みで他の
 ダウンロード用ツールをご利用ください．DVDやISOイメージからインストールを行う
 場合は，プロキシ設定について気にする必要はありません．
 
@@ -639,7 +639,7 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 > \winpath{D:\\texlive\\install-tl-windows}
 \end{alltt}
 %
-図\ref{fig:basic-w32}はGUIインストーラ（Windowsではデフォルト）の初期画面を
+図\ref{fig:installer-basic}はGUIインストーラ（Windowsではデフォルト）の初期画面を
 示しています．
 
 テキストモードでのインストールを行いたい場合は次のようにしてください：
@@ -693,15 +693,15 @@ Actions:
 \end{figure}
 
 \begin{figure}[tb]
-\tlpng{basic-w32}{.6\linewidth}
-\caption{\TL インストーラの基本画面 (Windows)．「Advanced」ボタンを押すと図\ref{%
-fig:advanced-lnx}のような画面に切り替わります．}\label{fig:basic-w32}
+\tlpng{basic-mac-ja}{.6\linewidth}
+\caption{\TL インストーラの基本画面 (macOS)．「高度な設定」ボタンを押すと図\ref{%
+fig:installer-advanced}のような画面に切り替わります．}\label{fig:installer-basic}
 \end{figure}
 
 \begin{figure}[tb]
-\tlpng{advanced-lnx}{\linewidth}
-\caption{\TL インストーラGUIモードの「高度な設定」画面 (GNU/Linux)}
-\label{fig:advanced-lnx}
+\tlpng{advanced-mac-ja}{\linewidth}
+\caption{\TL インストーラGUIモードの「高度な設定」画面 (macOS)}
+\label{fig:installer-advanced}
 \end{figure}
 
 \subsubsection{Cygwin}
@@ -736,15 +736,15 @@ Cygwinでは，\TL のインストールを始める前に\file{setup.exe}プロ
 \subsubsection{GUIモード}
 \label{sec:graphical-inst}
 
-GUIモードでは，デフォルトではわずかなオプションのみを提供するシンプルな画面で
-スタートします（図\ref{fig:basic-w32}）．GUIモードを起動するには
+GUIモードはデフォルトではわずかなオプションのみを提供するシンプルな画面で
+スタートします（図\ref{fig:installer-basic}）．GUIモードを起動するには
 %
 \begin{alltt}
 > install-tl -gui
 \end{alltt}
 %
-を実行します．「Advanced」ボタンを押すとテキストモードとほぼ同程度のオプションを
-提供する画面に切り替わります（図\ref{fig:advanced-lnx}）．
+を実行します．「高度な設定」ボタンを押すとテキストモードとほぼ同程度のオプションを
+提供する画面に切り替わります（図\ref{fig:installer-advanced}）．
 
 \subsubsection{その他のレガシーなモード}
 
@@ -787,7 +787,7 @@ Available platforms:
 \end{figure}
 
 図\ref{fig:bin-text}はテキストモードのバイナリ選択メニューを示しています．デフォルト
-ではインストーラ実行時にご使用中のプラットフォーム向けのバイナリだけがインストール
+ではインストーラ実行時に使用中のプラットフォーム向けのバイナリだけがインストール
 されます．このメニューを利用すると，その他のプラットフォーム向けのバイナリも同様に
 インストールすることを選択することができます．このメニューは\TeX ツリーをさまざまな
 環境に共通のネットワークで共有する場合やデュアルブートシステムでは有用です．
@@ -825,7 +825,7 @@ Select scheme:
 言語別のスキームが用意されています．
 
 \begin{figure}[tb]
-\centering \tlpng{stdcoll}{.7\linewidth}
+\centering \tlpng{stdcoll-ja}{.7\linewidth}
 \caption{コレクション選択メニュー}\label{fig:collections-gui}
 \end{figure}
 
@@ -833,8 +833,8 @@ Select scheme:
 をさらに利用目的に応じて最適化することができます（訳注：\pkg{full}スキーム以外
 のスキームには日本語組版に必要な\pTeX 系エンジンや\LuaTeX-jaなどは含まれていません．
 したがって\pkg{full}スキーム以外のスキームを選択した場合，日本語組版を行うため
-には原則としてJapaneseコレクション (\pkg{collection-langjapanese}) を追加する
-必要があります）．
+には原則として日本語コレクション (\pkg{collection-langjapanese}) を追加する必要が
+あります）．
 
 コレクションはスキームよりも細かなパッケージのセットです．基本的には，スキームという
 のはいくつかのコレクションを集めたもので，コレクションは1つまたは複数のパッケージを
@@ -857,11 +857,11 @@ Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2019}です．この配置�
 
 インストール先のディレクトリはインストーラにおける\code{TEXDIR}を設定することに
 よって変更することができます．GUIモードで\code{TEXDIR}やその他のオプションを設定
-するための画面は図\ref{fig:advanced-lnx}に示されています．インストール先を変更する
-必要があるのは，デフォルトのインストール先にあたるパーティションに十分な空き容量が
-ない場合（\TL をフルインストールするには数GBの容量が必要となります）や書き込み権限
-がない場合です（\TL をインストールするのに管理者 (root) 権限は必要ありませんが，
-インストール先ディレクトリへの書き込み権限は必要です）．
+するための画面は図\ref{fig:installer-advanced}に示されています．インストール先を
+変更する必要があるのは，デフォルトのインストール先にあたるパーティションに十分な
+空き容量がない場合（\TL をフルインストールするには数GBの容量が必要となります）や
+書き込み権限がない場合です（\TL をインストールするのに管理者 (root) 権限は必要
+ありませんが，インストール先ディレクトリへの書き込み権限は必要です）．
 
 インストール先のディレクトリは，インストーラを実行する前にいくつかの環境変数（よく
 用いられるのは\var{TEXLIVE\_INSTALL\_PREFIX}と\var{TEXLIVE\_INSTALL\_TEXDIR}）を
@@ -870,7 +870,7 @@ Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2019}です．この配置�
 参照してください．
 
 合理的なインストール場所の変更先は（特にあなたが\TL を利用する単独のユーザである
-場合には）ホームディレクトリ以下でしょう．メタキャラクタ\dir{~}を用いるとこれを
+場合には）ホームディレクトリ以下でしょう．メタ文字\dir{~}（チルダ）を用いるとこれを
 簡単に指定することができます（例：\dir{~/texlive/2019}）．
 
 複数の\TL リリースを同時にインストールできるようにするためにも，インストール先の

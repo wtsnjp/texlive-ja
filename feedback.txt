@@ -6,6 +6,11 @@ Sec. 2.2 (p.5)
 > files (in various languages) are at the top level of the distribution.
 Really? Maybe these have been moved to readme-* dirs?
 
+Sec. 2.3 (p.5)
+In the descriptions for TEXMFVAR and TEXMFCONFG, there are mentions to
+`updmap` and `fmtutil`. Considering the change in TL2017, isn't it better to
+replace those with `updmap-user` and `fmtutil-user`, respectively?
+
 Sec. 2.4 (p.6)
 > Its web site is http://www.pdftex.org/
 It seems the website is gone. The URL redirects to
