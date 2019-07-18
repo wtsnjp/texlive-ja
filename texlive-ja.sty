@@ -17,6 +17,7 @@
 \RequirePackage[obeyspaces]{url}
 \RequirePackage{textcomp}% including \textbullet
 \RequirePackage{fancyvrb}
+\RequirePackage{pxrubrica}
 
 % ------------------------------------------------------------- pxghost
 % from pxghost.sty (https://gist.github.com/zr-tex8r/4461060)
@@ -77,6 +78,7 @@
 \newcommand*{\lopt}[1]{\code{\hyph\hyph#1}}
 \newcommand*{\var}[1]{{\chardef\_=`\_\code{#1}}}
 \newcommand*{\meta}[1]{$\langle$\mbox{}{\normalfont #1}\mbox{}$\rangle$}
+\newcommand*{\optional}[1]{\textrm{[\code{#1}]}}
 \newcommand*{\samp}[1]{`\texttt{#1}'}
 
 % Windows-specific
