@@ -18,6 +18,8 @@
 \RequirePackage{textcomp}% including \textbullet
 \RequirePackage{fancyvrb}
 \RequirePackage{pxrubrica}
+\RequirePackage{hyperref}
+\RequirePackage{pxjahyper}
 
 % ------------------------------------------------------------- pxghost
 % from pxghost.sty (https://gist.github.com/zr-tex8r/4461060)
@@ -115,13 +117,13 @@
 \newcommand{\ALEPH}{\eghostguarded{\logoAleph}}
 
 % logos not in bxtexlogo
-\newcommand*{\TeXXeT}{\TeX-{}-%
+\DeclareRobustCommand{\TL}{\texorpdfstring{\TeX\,\,Live}{TeX Live}}
+\DeclareRobustCommand{\TeXXeT}{\TeX-{}-%
   \kern-.1emX\kern-.125em\lower.5ex\hbox{E}\kern-.1667emT\@}
-\newcommand*{\MIKTEX}{MiK\kern-.025em \TeX}% per www.miktex.org
-\newcommand*{\ProTeXt}{pro\TeX t}
-\newcommand*{\teTeX}{\textrm{te}\TeX}
-\newcommand*{\TL}{\TeX\,\,Live}
-\newcommand*{\MacTeX}{Mac\TeX}
+\DeclareRobustCommand{\MIKTEX}{MiK\kern-.025em \TeX}% per www.miktex.org
+\DeclareRobustCommand{\ProTeXt}{pro\TeX t}
+\DeclareRobustCommand{\teTeX}{\textrm{te}\TeX}
+\DeclareRobustCommand{\MacTeX}{Mac\TeX}
 
 % ------------------------------------------------------------- Verbatim
 
@@ -215,96 +217,27 @@
 % Japanese translaion supports only PDF (HTML version is not available)
 \typeout{TeX Live documentation in PDF format}
 
-% emacs-page output setup
-\newif\ifSingleColumn
+% title
+\def\title#1{\gdef\@title{{\huge #1}}}
+\def\editor#1{\gdef\@editor{#1}}
+\def\translator#1{\gdef\@translator{#1}}
+\def\tlurl#1{\gdef\@tlurl{\url{#1}}}
+\author{\@editor\space 編 \\ \@translator\space 訳 \\[3mm] \@tlurl}
 
-% By default, we won't be creating hyperlinks.
-\newcommand*{\href}[2]{#2}
-\newcommand*{\hypertarget}[2]{}
+% hyperref settings
 \newcommand*{\email}[1]{\href{mailto:#1}{\path{#1}}}  % \path comes from url
-\newcommand*{\htmlanchor}[1]{}
-
 \definecolor{hypercolor}{rgb}{0.5,0.0,0.5} % purplish external links.
+\hypersetup{
+  breaklinks, colorlinks, linkcolor=hypercolor, citecolor=hypercolor,
+  urlcolor=hypercolor, filecolor=hypercolor, bookmarksopen, hyperindex
+}
 
-\RequirePackage[breaklinks,
-                colorlinks,linkcolor=hypercolor,citecolor=hypercolor,
-                  urlcolor=hypercolor,filecolor=hypercolor,
-                bookmarksopen,
-                %pdfstartview={FitBH -320000}, % fails with acrobat7
-                hyperindex]
-      {hyperref}
-\SingleColumntrue
-\newenvironment{multicols}[1]{}{}
-
-% hacking at sections etc., to pay attention to baskerville status
-\newcommand{\@condend@multicols}{%
-  \ifSingleColumn
-  \else
-    \def\@tempa{multicols}%
-    \ifx\@tempa\@currenvir
-      \end{multicols}%
-    \fi
-  \fi
-}
-\let\Section\section
-\renewcommand{\section}{%
-  \@ifstar
-    {\Section*}%
-    {%
-      \@condend@multicols
-      \@dblarg\@full@section
-    }%
-}
-\def\@full@section[#1]#2{%
-  \Section[#1]{#2}%
-  \ifSingleColumn\else\begin{multicols}{2}\fi
-}
-\let\SubSection\subsection
-\renewcommand{\subsection}{%
-  \@ifstar{\SubSection*}%
-  {%
-    \@condend@multicols
-    \@dblarg\@full@subsection
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle = {\@title},
+    pdfauthor = {\@editor 編，\@translator 訳},
   }
 }
-\def\@full@subsection[#1]#2{%
-  \SubSection[#1]{#2}%
-  \ifSingleColumn\else\begin{multicols}{2}\fi
-}
-
-% calm things down a bit if we're in a multiple-column version
-\ifSingleColumn
-\else
-    \def\@listI{\leftmargin\leftmargini
-     \parsep \z@
-     \topsep 2\p@ \@plus 1\p@ \@minus 1\p@
-     \itemsep \z@ \@plus .1\p@
-    }
-    \let\@listi\@listI
-    \@listi
-    \def\@listii{\leftmargin\leftmarginii
-     \labelwidth\leftmarginii\advance\labelwidth-\labelsep
-     \topsep 2\p@ \@plus 1\p@ \@minus 1\p@
-     \parsep \z@
-     \itemsep \z@ \@plus .1\p@
-    }
-    \def\@listiii{\leftmargin\leftmarginiii
-     \labelwidth\leftmarginiii\advance\labelwidth-\labelsep
-     \topsep 1\p@ \@plus 1\p@ \@minus 1\p@
-     \parsep \z@
-     \partopsep \z@
-     \itemsep \topsep
-    }
-    \def\@listiv{\leftmargin\leftmarginiv
-     \labelwidth\leftmarginiv\advance\labelwidth-\labelsep
-    }
-    \def\@listv{\leftmargin\leftmarginv
-     \labelwidth\leftmarginv\advance\labelwidth-\labelsep
-    }
-    \def\@listvi{\leftmargin\leftmarginvi
-     \labelwidth\leftmarginvi\advance\labelwidth-\labelsep
-    }
-\fi
 
 % array package stuff
 \def\arraybackslash{\let\\=\@arraycr}
