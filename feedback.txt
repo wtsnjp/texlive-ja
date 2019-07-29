@@ -55,3 +55,6 @@ Sec. 7.1.2 (p.26)
 Sec. 7.1.5 (p.27)
 "$TEXMFDIST/tex trees only)"
 An unopened parenthesis.
+
+Other requests I've got:
+- Could you please mention how to setup GPG?
