@@ -143,15 +143,6 @@
 % graphics path
 \graphicspath{{texlive-common/}{img/}}
 
-% Include an image.
-% #1 - name of image (pictures/#1.jpg, always .jpg please)
-% #2 - bb for html
-% #3 - width for TeX
-\def\tlimage#1#2#3{%
-  \includegraphics[width=#3]{pictures/#1.jpg}
-  \\[5mm]
-}
-
 \def\tlpng#1#2{%
   \par
   \centerline{\includegraphics[width=#2]{#1.png}}%
