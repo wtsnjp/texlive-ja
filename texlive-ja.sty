@@ -2,7 +2,7 @@
 % Edited by Takuto ASAKURA for Japanese version.
 % Public domain.
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{texlive-ja}[2019/04/10 Japanese TeX Live Guide style]
+\ProvidesPackage{texlive-ja}[2019/08/21 Japanese TeX Live Guide style]
 
 % ------------------------------------------------------------- Packages
 
@@ -81,7 +81,7 @@
 \newcommand*{\var}[1]{{\chardef\_=`\_\code{#1}}}
 \newcommand*{\meta}[1]{$\langle$\mbox{}{\normalfont #1}\mbox{}$\rangle$}
 \newcommand*{\optional}[1]{\textrm{[\code{#1}]}}
-\newcommand*{\samp}[1]{`\texttt{#1}'}
+\newcommand*{\samp}[1]{`\texttt{#1}'\@}
 
 % Windows-specific
 \newcommand*{\winenv}[1]{\code{\%#1\%}}
