@@ -167,3 +167,7 @@ TSWLatexianTemp*
 # local symlinks
 texlive-common
 texlive-en
+
+# generated files
+tmp/
+*.zip
