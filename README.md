@@ -1,12 +1,12 @@
 # 日本語版『TeX Live ガイド』
 
-TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/texlive-en.html), [PDF](https://www.tug.org/texlive/doc/texlive-en/texlive-en.pdf)) の日本語翻訳です．全編の翻訳が完了し，TeX Live 2020 収録を目指して現在校正作業中です．プレビュー版 PDF は下記リンクに置いてあります：
+TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/texlive-en.html), [PDF](https://www.tug.org/texlive/doc/texlive-en/texlive-en.pdf)) の日本語翻訳プロジェクトです．全編の翻訳・執筆が完了し，TeX Live 2020 収録を目指して現在校正作業中です．プレビュー版 PDF は下記リンクに置いてあります：
 
 * <https://wtsnjp.com/pdf/texlive-ja.pdf>
 
 ## 翻訳方針
 
-原版からの翻訳は，以下のような方針で行っています．
+日本語版『TeX Live ガイド』は，以下のような方針で作成しています．
 
 * 現時点では，日本語ガイドは PDF 版のみをサポートする予定
 * 意訳を厭わず，なるべく読みやすい翻訳を目指す

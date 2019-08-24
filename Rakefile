@@ -43,7 +43,7 @@ task :archive => :build do
 
   # copy supplementary files
   cd PWD
-  pkg_contents = ["README.md", "img", "#{PKG_NAME}.sty"]
+  pkg_contents = ["img", "#{PKG_NAME}.sty"]
   cp_r pkg_contents, TARGET_DIR
 
   # copy the main document from the build dir
