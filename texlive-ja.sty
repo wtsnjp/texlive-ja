@@ -209,11 +209,15 @@
 \typeout{TeX Live documentation in PDF format}
 
 % title
-\def\title#1{\gdef\@title{{\huge #1}}}
-\def\editor#1{\gdef\@editor{#1}}
-\def\translator#1{\gdef\@translator{#1}}
-\def\tlurl#1{\gdef\@tlurl{\url{#1}}}
-\author{原版編集：\@editor \\ 日本語版：\@translator \\[3mm] \@tlurl}
+\def\Title#1{\gdef\@title{{\huge #1}}}
+\def\Editor#1{\gdef\@editor{#1}}
+\def\JaAuthor#1{\gdef\@translator{#1}}
+\def\JaInfo#1{\gdef\@jainfo{#1}}
+\def\TLUrl#1{\gdef\@tlurl{\url{#1}}}
+\author{%
+  原版編集：\@editor \\
+  日本語版：\@translator\thanks{\@jainfo} \\[3mm]
+  \@tlurl}
 
 % hyperref settings
 \newcommand*{\email}[1]{\href{mailto:#1}{\path{#1}}}  % \path comes from url
