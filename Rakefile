@@ -47,6 +47,7 @@ task :archive => :build do
   cp_r pkg_contents, TARGET_DIR
 
   # create zip archive
-  target_zip = REPO_ROOT + "#{PKG_NAME}.zip"
-  sh "zip -q -r #{target_zip} #{TARGET_DIR}"
+  cd TMP_DIR
+  sh "zip -q -r #{PKG_NAME}.zip #{PKG_NAME}"
+  mv "#{PKG_NAME}.zip", REPO_ROOT
 end
