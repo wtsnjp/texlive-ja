@@ -1,6 +1,6 @@
 # 日本語版『TeX Live ガイド』
 
-TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/texlive-en.html), [PDF](https://www.tug.org/texlive/doc/texlive-en/texlive-en.pdf)) の日本語翻訳プロジェクトです．全編の翻訳・執筆が完了し，TeX Live 2020 収録を目指して現在校正作業中です．プレビュー版 PDF は下記リンクに置いてあります：
+TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/texlive-en.html), [PDF](https://www.tug.org/texlive/doc/texlive-en/texlive-en.pdf)) の日本語版制作プロジェクトです．全編の翻訳・執筆が完了し，現在は校正作業中です．プレビュー版 PDF は下記リンクに置いてあります：
 
 * <https://wtsnjp.com/pdf/texlive-ja.pdf>
 
@@ -27,7 +27,7 @@ TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/t
 $ llmk texlive-ja.tex
 ```
 
-なお，本リポジトリには画像データなど全言語版に共通の素材は含まれていません．ビルドを通すためには，適宜 [texlive-common](https://www.tug.org/texlive/doc/texlive-common/) をダウンロードして  `texlive-ja.tex` と同じ階層に配置してください．
+なお，本リポジトリには一部の画像データなど他言語版と共通の素材は含まれていません．ビルドを通すためには，[texlive-common](https://www.tug.org/texlive/doc/texlive-common/), [texlive-en](https://www.tug.org/texlive/doc/texlive-en/) ディレクトリが TeX から見えるようになっている必要があります（例えば `texlive-ja.tex` と同じ階層に配置すれば OK です）．
 
 ## ライセンス
 
