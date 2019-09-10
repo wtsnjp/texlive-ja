@@ -1641,18 +1641,19 @@ texlive/tlmgr.html}にアクセスするか，以下を実行してください�
 \subsection{Windows専用の機能}
 \label{sec:winfeatures}
 
-Windowsでは\TL はいくつか追加の処理を行います：
+Windowsでは\TL インストーラはいくつか追加の処理を行います：
 %
 \begin{description}
 \item[メニューとショートカット]
 スタートメニューに`\TL'サブメニューを追加します．このサブメニューから\prog{tlmgr},
-\prog{texdoctk}や\PS ビューア (\prog{psv}) などのGUIプログラムを起動したり，
-いくつかのドキュメントにアクセスしたりすることができます．
+\prog{texdoctk}や\prog{PS\_View} (\prog{psv}) \PS ビューアなどのGUIプログラムを
+起動したり，いくつかのドキュメントにアクセスしたりすることができます．
 
 \item[拡張子の関連付け]
-設定が有効になっている場合，\prog{\TeX works}, \prog{Dviout}, \prog{PS\_View}などを
-それぞれが扱う拡張子に関連付けます．また関連するファイルを右クリックして「プログラム
-から開く」を選択した場合に\TL のプログラムが候補に上がるようになります．
+設定が有効になっている場合，\prog{\TeX works}, \prog{Dviout}, \prog{PS\_View}など
+をそれぞれが扱う拡張子に関連付けます．あるいは，関連するファイルを右クリックして
+「プログラムから開く」を選択した場合にこれらのプログラムが候補に上がるようになり
+ます．
 
 \item[ビットマップからEPSへの変換]
 各種のビットマップ画像を右クリックして「プログラムから開く」を選択した場合に\prog{%
@@ -1721,7 +1722,7 @@ Sumatra PDF viewer (\url{https://sumatrapdfreader.org/}) などをインスト�
 \caption{PS\_View: かなり高い倍率まで拡大することができます．}\label{fig:psview}
 \end{figure}
 
-\subsection{ユーザプロフィールがホームディレクトリ扱い}
+\subsection{ユーザプロファイルがホームディレクトリ扱い}
 \label{sec:winhome}
 
 Windowsにおいて，UNIXのホームディレクトリに相当するのは\winenv{USERPROFILE}ディレクトリ
@@ -1734,10 +1735,10 @@ Windowsにおいて，UNIXのホームディレクトリに相当するのは\wi
 
 Windowsではほとんどすべての設定データはレジストリに保存されます．レジストリには数個の
 ルートの下に階層的に構成されたキーが多数含まれています．簡単に言うと，インストール
-プログラムにとって最も重要なものは\var{HKEY\_CURRENT\_USER}, \var{HKEY\_LOCAL\_MACHINE},
-\var{HKCU}, \var{HKLM}です．レジストリのキー\var{HKCU}はユーザのホームディレクトリ内を
-参照します（\ref{sec:winhome}節を参照）．\var{HKLM}は通常Windowsディレクトリ内のサブ
-ディレクトリです．
+プログラムにとって最も重要なものは\var{HKEY\_CURRENT\_USER}と\var{HKEY\_LOCAL\_MACHINE}%
+（略称は\var{HKCU}と\var{HKLM}）です．レジストリのキー\var{HKCU}はユーザのホーム
+ディレクトリ内を参照します（\ref{sec:winhome}節を参照）．\var{HKLM}は通常Windows%
+ディレクトリ内のサブディレクトリです．
 
 一部の項目については環境変数によってシステム情報を引き渡すことができますが，ショート
 カットの位置などはレジストリを変更しないことには設定を反映することができません．また
@@ -1778,7 +1779,7 @@ Windowsでは管理者アカウントにログインしていても，明示的�
 
 WindowsとCygwin（Cygwinインストールの詳細については\ref{sec:cygwin}節を参照してくだ
 さい）では，\TL に含まれるいくつかのプログラムがメモリを使い果たす場合があります．
-例えば\prog{asy}で25,000,000リールの配列を確保しようとしたり，\LuaTeX で多書体組を
+例えば\prog{asy}で2,500万要素の実数配列を確保しようとしたり，\LuaTeX で多書体組を
 行おうとしたりするとメモリが不足する可能性があります．
 
 Cygwinではユーザマニュアル (\url{https://www.cygwin.com/cygwin-ug-net/setup-maxmem.%
