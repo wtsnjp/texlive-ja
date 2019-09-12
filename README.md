@@ -1,8 +1,9 @@
 # 日本語版『TeX Live ガイド』
 
-TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/texlive-en.html), [PDF](https://www.tug.org/texlive/doc/texlive-en/texlive-en.pdf)) の日本語版制作プロジェクトです．全編の翻訳・執筆が完了し，現在は校正作業中です．プレビュー版 PDF は下記リンクに置いてあります：
+TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/texlive-en.html), [PDF](https://www.tug.org/texlive/doc/texlive-en/texlive-en.pdf)) の日本語版制作プロジェクトです．全編の翻訳・執筆が完了し，現在は校正作業中です．ビルド済み PDF は下記リンクに置いてあります：
 
-* <https://wtsnjp.com/pdf/texlive-ja.pdf>
+* TeX Live 版：<https://tug.org/texlive/doc/texlive-ja/texlive-ja.pdf>
+* プレビュー版：<https://wtsnjp.com/pdf/texlive-ja.pdf>
 
 ## 翻訳方針
 
