@@ -1,8 +1,8 @@
 % TeX Live documentation style. Written by many people over many years.
 % Edited by Takuto ASAKURA for Japanese version.
 % Public domain.
-\NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{texlive-ja}[2019/08/21 Japanese TeX Live Guide style]
+\NeedsTeXFormat{pLaTeX2e}[2018/03/09]
+\ProvidesPackage{texlive-ja}[2019/09/24 Japanese TeX Live Guide style]
 
 % ------------------------------------------------------------- Packages
 
@@ -17,31 +17,10 @@
 \RequirePackage[obeyspaces]{url}
 \RequirePackage{textcomp}% including \textbullet
 \RequirePackage{fancyvrb}
+\RequirePackage{bxghost}
 \RequirePackage{pxrubrica}
 \RequirePackage{hyperref}
 \RequirePackage{pxjahyper}
-
-% ------------------------------------------------------------- pxghost
-% from pxghost.sty (https://gist.github.com/zr-tex8r/4461060)
-
-% use an arbitrary font available in T1 encoding
-\font\pxqgg@TI=ec-lmr10 at 1.23456pt
-\chardef\pxqgg@cwm=23 % compwordmark (in T1)
-\xspcode\pxqgg@cwm=3 % allow xkanjiskip around
-%%<*> \eghostguarded{<text>}
-\newcommand*\eghostguarded{%
-  \ifmmode \expandafter\@firstofone
-  \else \expandafter\pxqgg@eghostguarded@a
-  \fi
-}
-\def\pxqgg@eghostguarded@a#1{%
-  {\pxqgg@TI\pxqgg@cwm}%
-  #1%
-  {\pxqgg@TI\pxqgg@cwm}%
-}
-
-% shortcut
-\def\egg{\eghostguarded{}}
 
 % ------------------------------------------------------------- LaTeX style
 
