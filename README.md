@@ -18,7 +18,6 @@ TeX Live の公式ガイド ([HTML](https://www.tug.org/texlive/doc/texlive-en/t
 
 * `texlive-ja.tex`: 日本語版『TeX Live ガイド』のソース
 * `texlive-ja.sty`: `tex-live.sty` を日本語版用に改造したスタイルファイル
-* `feedback.txt`: 英語版へのフィードバック
 
 ## ビルド方法
 
