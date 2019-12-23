@@ -4,12 +4,16 @@ require 'pathname'
 
 # basics
 PKG_NAME = "texlive-ja"
+REF_REV = "r50390"
 
 # directories
 REPO_ROOT = Pathname.pwd
 TMP_DIR = REPO_ROOT + "tmp"
 BUILD_DIR = TMP_DIR + "build"
 TARGET_DIR = TMP_DIR + PKG_NAME
+
+SVN_ROOT = Pathname(Dir.home) + "repos/tug.org"
+TEXLIVE_EN = "Master/texmf-dist/doc/texlive/texlive-en"
 
 # cleaning
 CLEAN.include([
@@ -50,4 +54,10 @@ task :archive => :build do
   cd TMP_DIR
   sh "zip -q -r #{PKG_NAME}.zip #{PKG_NAME}"
   mv "#{PKG_NAME}.zip", REPO_ROOT
+end
+
+desc "Show the diff from the last referenced texlive-en"
+task :diff do
+  cd SVN_ROOT
+  sh "svn diff -r #{REF_REV}:HEAD #{TEXLIVE_EN}"
 end
