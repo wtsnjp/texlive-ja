@@ -7,19 +7,48 @@
 
 \usepackage{texlive-ja}
 
-\Title{\TL ガイド 2019}
+\Title{\TL ガイド 2020}
 \Editor{Karl Berry}
-\JaAuthor{朝倉卓人}
-\JaInfo{\url{https://github.com/wtsnjp/texlive-ja}}
+\JaAuthor{朝倉卓人 (wtsnjp)}
 \TLUrl{https://tug.org/texlive/}
 
-\date{2019年8月}
+\date{2020年2月}
 
 \begin{document}
 \maketitle
 \thispagestyle{empty}
 
 \tableofcontents
+
+\section*{訳者まえがき：日本語版『\TL ガイド』について}
+
+この文書は毎年更新される\TL の公式ドキュメント\textsl{The {\TL} Guide}を個人が
+翻訳したものです．内容としては\TL についてのごく初歩的な知識，インストール
+方法，\TL マネージャを用いた\TL 管理方法が順番に解説され，さらに後半では\KPS
+ライブラリの基礎や今日までの\TL における主な変更の履歴など，少し高級な事項まで
+が扱われています．
+
+\TL ガイドは日本語を含め約10ヶ国語に翻訳されていることからもわかるように，
+欧米圏のユーザのみならず全世界の\TL ユーザ向けの文書です．しかし，基礎的な解説
+の中で言及されている\TeX 関連プログラムは主として欧文向けのものに限られ，この
+日本語版\TL ガイドの読者がおそらく必要としているだろう，\TeX で和文を処理する
+際に必要な情報は不足している部分があることを否めません．そのような情報を本文書
+だけで完全に補完することは難しいですが，訳者が可能な範囲で，日本語ユーザにとって
+有益と思われる補足情報をいくつかの「日本語\TeX ユーザ向けのノート」コラムや訳注
+の形で追加しています．
+
+本翻訳ドキュメントについて，訳者は慎重な翻訳と技術的に正確な記述を心がけており
+ますが，一部に不正確な翻訳や技術的に誤った記述が含まれている可能性があります．
+本ドキュメントの内容に基づく運用結果については責任を負いかねますので，ご了承
+ください．また具体的に翻訳が不適切な箇所等を見つけられましたら，ぜひ本翻訳
+プロジェクトのGitHubリポジトリまでご報告をお願いいたします：
+%
+\begin{quote}
+\url{https://github.com/wtsnjp/texlive-ja}
+\end{quote}
+
+最後に，本翻訳ドキュメントの作成にあたって八登祟之氏から多数のフィードバック
+をいただきました．この場を借りて深く御礼申し上げます．
 
 \section{イントロダクション}\label{sec:intro}
 
@@ -173,8 +202,8 @@ stackexchange.com}，Usenetニュースグループ\url{news:comp.text.tex}，�
 メールアドレスを確認することができます．
 \end{description}
 %
-%% 日本語版追記ここから %%
-以上のリストは主に英語での情報提供・コミュニケーションを行う場所ですが，日本語
+\begin{janote}
+上記リストは主に英語での情報提供・コミュニケーションを行う場所ですが，日本語
 でのサポートが必要な場合は，次のようなウェブサイトが利用できます：
 %
 \begin{description}
@@ -197,7 +226,7 @@ texwiki.texjp.org/?質問のしかた}) ページがありますので，初め�
 ここの\LaTeX タグ (\url{https://ja.stackoverflow.com/questions/tagged/latex})
 にも少しずつ\TeX/\LaTeX 関連の質問が投稿されるようになってきています．
 \end{description}
-%% 日本語版追記ここまで %%
+\end{janote}
 
 \TeX ユーザは上記のような場所でサポートを受けることができる一方で，あなた自身が
 他の質問者の手助けをすることも可能です．いずれのコミュニティも全世界に開かれた
@@ -431,7 +460,7 @@ Omegaと\eTeX を組み合わせた処理系です．詳細については\dir{t
 base}を参照してください．
 \end{description}
 %
-%% 日本語版追記ここから %%
+\begin{janote}
 上記の\TeX 処理系は主として欧文組版を行うために開発されたもので，そのままでは日本語
 の組版には適しません．幸い\TL には日本語組版を行うために拡張されたエンジンもいくつか
 収録されています：
@@ -457,10 +486,9 @@ base/eptexdoc.pdf}をご覧ください．
 また\LuaTeX-jaというマクロパッケージを用いると\LuaTeX でも日本語組版を実現できます．
 詳しくはウェブサイト\url{https://ja.osdn.net/projects/luatex-ja/}またはドキュメント
 \file{texmf-dist/doc/luatex/luatexja/luatexja-ja.pdf}を参照してください．
-%% 日本語版追記ここまで %%
+\end{janote}
 
 \subsection{\TL に含まれるその他の著名なソフトウェア}
-% Note: 日本語向けのプログラム（pbibtex, mendex など）は日本語版独自に追記
 
 ここに少しですが，\TL に含まれていて，よく利用されるプログラムを列挙しておきます：
 %
@@ -468,14 +496,8 @@ base/eptexdoc.pdf}をご覧ください．
 \item[bibtex, biber]
 参考文献リストの作成を補助するプログラム．
 
-\item[pbibtex, upbibtex]
-\cmd{bibtex}を日本語用に拡張したもの．
-
 \item[makeindex, xindy]
 索引の作成を補助するプログラム．
-
-\item[mendex, upmendex]
-\cmd{makeindex}を日本語用に拡張したもの．
 
 \item[dvips]
 DVIを\PS に変換するプログラム．
@@ -501,6 +523,18 @@ PDFユーティリティ．
 \item[htlatex, \ldots]
 \cmd{tex4ht}は\AllTeX をHTMLやXMLに変換するプログラム．
 \end{cmddescription}
+
+\begin{janote}
+日本では，上記に加えて次のプログラムもよく用いられます：
+%
+\begin{cmddescription}
+\item[pbibtex, upbibtex]
+\cmd{bibtex}を日本語用に拡張したもの．
+
+\item[mendex, upmendex]
+\cmd{makeindex}を日本語用に拡張したもの．
+\end{cmddescription}
+\end{janote}
 
 \section{\TL のインスール}
 \label{sec:install}
@@ -1274,6 +1308,16 @@ TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下�
 もしどうしてもサードパーティフォントを一般の\TeX 処理系で利用できるように設定を
 行う必要がある場合は，\url{https://tug.org/fonts/fontinstall.html}にその方法に
 ついて（可能な範囲での）解説がありますので，参考にしてください．
+
+\begin{janote}
+上述の通り，\XeTeX や\LuaTeX を除く古典的な\TeX 処理系でサードパーティフォント
+を利用するのは欧文フォントであっても難しいのですが，\pTeX や\upTeX 用にサード
+パーティの和文フォントを設定するのはさらに難易度が高く，初心者にはおすすめ
+できません（自由にフォントを選びたい場合は\LuaTeX-ja の利用を検討してください）．
+しかし，幸い\TL にはよく使われる和文フォントの埋め込みについて設定を自動化する
+ためのプログラム\cmd{kanji-config-updmap}が付属しています．詳細は\TL に含まれる
+\cmd{kanji-config-updmap}のドキュメント（日本語）を参照してください．
+\end{janote}
 
 \subsection{インストールした\TL をテストする}
 \label{sec:test-install}

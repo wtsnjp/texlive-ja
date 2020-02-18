@@ -182,6 +182,43 @@
  {\begin{lrbox}{\mylrbox}}
  {\end{lrbox}}
 
+% ------------------------------------------------------------- Boxes
+
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{janote}
+  {
+    empty, left=2mm, right=2mm, top=-1mm,
+    attach boxed title to top left={xshift=1.2zw},
+    boxed title style={
+      empty, left=-1mm, right=-1mm,
+    },
+    colframe=black, coltitle=black, coltext=black, breakable,
+    underlay unbroken={
+      \draw [black, line width=.5pt]
+        (title.east) -- (title.east-|frame.east) -- (frame.south east)
+          -- (frame.south west) -- (title.west-|frame.west) -- (title.west);
+    },
+    underlay first={
+      \draw [black, line width=.5pt] (title.east) -- (title.east-|frame.east)
+        -- (frame.south east);
+      \draw [black, line width=.5pt] (frame.south west)
+        -- (title.west-|frame.west) -- (title.west);
+    },
+    underlay middle={
+      \draw [black, line width=.5pt]
+        (frame.north east) -- (frame.south east) ;
+      \draw [black, line width=.5pt] (frame.south west) -- (frame.north west) ;
+    },
+    underlay last={
+      \draw [black, line width=.5pt] (frame.north east) -- (frame.south east)
+        -- (frame.south west) -- (frame.north west) ;
+    },
+    fonttitle=\sffamily\gtfamily,
+    title={日本語\TeX ユーザ向けノート},
+  }
+
 % ------------------------------------------------------------- LaTeX hacks
 
 % Japanese translaion supports only PDF (HTML version is not available)
@@ -191,11 +228,10 @@
 \def\Title#1{\gdef\@title{{\huge #1}}}
 \def\Editor#1{\gdef\@editor{#1}}
 \def\JaAuthor#1{\gdef\@translator{#1}}
-\def\JaInfo#1{\gdef\@jainfo{#1}}
 \def\TLUrl#1{\gdef\@tlurl{\url{#1}}}
 \author{%
   原版編集：\@editor \\
-  日本語版：\@translator\thanks{\@jainfo} \\[3mm]
+  日本語版：\@translator \\[3mm]
   \@tlurl}
 
 % hyperref settings
