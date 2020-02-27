@@ -8,11 +8,11 @@ REF_REV = "r50390"
 
 # directories
 REPO_ROOT = Pathname.pwd
-TMP_DIR = REPO_ROOT + "tmp"
-BUILD_DIR = TMP_DIR + "build"
-TARGET_DIR = TMP_DIR + PKG_NAME
+TMP_DIR = REPO_ROOT / "tmp"
+BUILD_DIR = TMP_DIR / "build"
+TARGET_DIR = TMP_DIR / PKG_NAME
 
-SVN_ROOT = Pathname(Dir.home) + "repos/tug.org"
+SVN_ROOT = Pathname(Dir.home) / "repos/tug.org"
 TEXLIVE_EN = "Master/texmf-dist/doc/texlive/texlive-en"
 
 # cleaning
@@ -31,7 +31,7 @@ task :build do
   mkdir_p BUILD_DIR
 
   # generate the main source (without the tombow option)
-  main_tex = BUILD_DIR + "#{PKG_NAME}.tex"
+  main_tex = BUILD_DIR / "#{PKG_NAME}.tex"
   sh "sed s/,tombow// #{PKG_NAME}.tex > #{main_tex}"
 
   # build the document
@@ -46,8 +46,8 @@ task :archive => :build do
   mkdir_p TARGET_DIR
 
   # copy files to the target dir
-  pkg_contents = ["img", "#{PKG_NAME}.sty"].map{|c| REPO_ROOT + c}
-  pkg_contents += ["#{PKG_NAME}.tex", "#{PKG_NAME}.pdf"].map{|c| BUILD_DIR + c}
+  pkg_contents = ["img", "#{PKG_NAME}.sty"].map{|c| REPO_ROOT / c}
+  pkg_contents += ["#{PKG_NAME}.tex", "#{PKG_NAME}.pdf"].map{|c| BUILD_DIR / c}
   cp_r pkg_contents, TARGET_DIR
 
   # create zip archive
