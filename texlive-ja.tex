@@ -12,7 +12,7 @@
 \JaAuthor{朝倉卓人 (wtsnjp)}
 \TLUrl{https://tug.org/texlive/}
 
-\date{2020年2月}
+\date{2020年3月}
 
 \begin{document}
 \maketitle
@@ -140,6 +140,14 @@ chroot}を利用したりしてください．
 行うことができますが，その機能もまたさまざまな方法で利用され得ます．再度の注意に
 なりますが，ご自身で作成されたわけではないドキュメントは，必ず新しい
 サブディレクトリで実行するのが無難です．
+
+セキュリティに関する別の観点として，ダウンロードしたファイルが元々作成されていた
+ものから改変されていないかどうかということがあります．\prog{tlmgr}%
+（\ref{sec:tlmgr}節）は\prog{gpg} (GNU Privacy Guard) が利用可能な場合，
+ダウンロードしたファイルについて自動的に暗号理論に基づく検証を行います．
+\prog{gpg}は\TL に含まれていませんが，このプログラムについての情報は
+\url{https://texlive.info/tlgpg/}に記載してありますので必要に応じて参照して
+ください．
 
 \subsection{サポート情報}
 \label{sec:help}
@@ -292,10 +300,6 @@ CTANおよび\pkg{protext}は\TL と同じライセンスで配布されてい�
 インストールに必要なスクリプトやWindows向けの補助プログラムを含んでいます．
 \end{description}
 %
-%In addition to the directories above, the installation scripts and
-%\file{README} files (in various languages) are at the top level of
-%the distribution.
-%
 ドキュメントを探す際には，同じくトップレベルにある\file{doc.html}が役立ちます．
 このファイルには\dir{texmf-dist/doc}以下に含まれるほとんどすべてのドキュメント
 （パッケージ，フォーマット，フォント，プログラムのマニュアルやmanページなど）が
@@ -304,13 +308,14 @@ CTANおよび\pkg{protext}は\TL と同じライセンスで配布されてい�
 
 この\TL ガイド自体は\dir{texmf-dist/doc/texlive}以下にあり，多数の言語に翻訳
 されています：
-
+%
 \begin{itemize*}
 \item チェコ・スロバキア語：\dir{texmf-dist/doc/texlive/texlive-cz}
 \item ドイツ語\dir{texmf-dist/doc/texlive/texlive-de}
 \item 英語：\dir{texmf-dist/doc/texlive/texlive-en}
 \item フランス語：\dir{texmf-dist/doc/texlive/texlive-fr}
 \item イタリア語：\dir{texmf-dist/doc/texlive/texlive-it}
+\item 日本語：\dir{texmf-dist/doc/texlive/texlive-ja}
 \item ポーランド語：\dir{texmf-dist/doc/texlive/texlive-pl}
 \item ロシア語：\dir{texmf-dist/doc/texlive/texlive-ru}
 \item セルビア語：\dir{texmf-dist/doc/texlive/texlive-sr}
@@ -381,8 +386,8 @@ user}などが変更された設定データを保存するために利用する
 \item[システム用ルート] 複数の\TL を配置できます
   （デフォルト値はUNIXでは\dir{/usr/local/texlive}）
   \begin{description}
-  \item[\dir{2018}] 前年のリリース
-  \item[\dir{2019}] 最新のリリース
+  \item[\dir{2019}] 前年のリリース
+  \item[\dir{2020}] 最新のリリース
     \begin{description}
     \item[\dir{bin}] ~
       \begin{description}
@@ -400,8 +405,8 @@ user}などが変更された設定データを保存するために利用する
   \end{description}
 \item[ユーザのホームディレクトリ] （\dir{$HOME}または\winenv{USERPROFILE}）
   \begin{description}
-  \item[\dir{.texlive2018}] 前年リリースに適用するユーザごとのデータ（設定や生成物）
-  \item[\dir{.texlive2019}] 最新リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[\dir{.texlive2019}] 前年リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[\dir{.texlive2020}] 最新リリースに適用するユーザごとのデータ（設定や生成物）
     \begin{description}
     \item[\dir{texmf-var}] \var{TEXMFVAR}, \var{TEXMFCACHE}
     \item[\dir{texmf-config}] \var{TEXMFCONFIG}
@@ -693,7 +698,7 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 
 \begin{figure}[tb]
 \begin{boxedverbatim}
-Installing TeX Live 2019 from: ...
+Installing TeX Live 2020 from: ...
 Platform: x86_64-linux => 'GNU/Linux on x86_64'
 Distribution: inst (compressed)
 Directory for temporary files: /tmp
@@ -709,7 +714,7 @@ Directory for temporary files: /tmp
 
  <D> directories:
    TEXDIR (the main TeX directory):
-     /usr/local/texlive/2019
+     /usr/local/texlive/2020
    ...
 
  <O> options:
@@ -886,8 +891,8 @@ Select scheme:
 \label{sec:directories}
 
 デフォルトの\TL 構成については\ref{sec:texmftrees}節 (\p.\pageref{sec:texmftrees})
-で説明しました．デフォルトのインストール先はUNIXでは\dir{/usr/local/texlive/2019}，
-Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2019}です．この配置は複数の\TL
+で説明しました．デフォルトのインストール先はUNIXでは\dir{/usr/local/texlive/2020}，
+Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2020}です．この配置は複数の\TL
 を同時にインストールすることを可能にします．例えば複数のリリース（典型的には，年度
 ごと）の\TL をインストールしておき，単純に検索パスを変更することによってどの
 リリースを使用するか切り替えるようなことができます．
@@ -908,7 +913,7 @@ Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2019}です．この配置�
 
 合理的なインストール場所の変更先は（特にあなたが\TL を利用する単独のユーザである
 場合には）ホームディレクトリ以下でしょう．メタ文字\dir{~}（チルダ）を用いるとこれを
-簡単に指定することができます（例：\dir{~/texlive/2019}）．
+簡単に指定することができます（例：\dir{~/texlive/2020}）．
 
 複数の\TL リリースを同時にインストールできるようにするためにも，インストール先の
 ディレクトリ名には「年」を含めることをおすすめします（もし\dir{/usr/local/texlive-%
@@ -977,9 +982,9 @@ Options customization:
 しますが，それでもこのオプションは有効にしておくことを推奨します．このオプションを
 無効にした場合，各ユーザがフォーマットを使用したいときにフォーマットが生成され，
 \code{TEXMFVAR}ツリーに保存されることになります．その場合，生成されたフォーマット
-は，仮にバイナリやハイフンパターンの更新が入ったとしても，自動的にはアップデート
-されないため，いつまでも非互換なフォーマットファイルを使用し続けることになる可能性
-があります．
+は，仮にコアパッケージやハイフンパターンの更新が入ったとしても，自動的にはアップ
+デートされないため，いつまでも非互換なフォーマットファイルを使用し続けることになる
+可能性があります．
 
 \item[install font/macro \dots\ tree%
 （フォント・マクロの 〜 ツリーをインストール）]
@@ -1142,18 +1147,18 @@ UNIXシステムではご使用のプラットフォーム向けのバイナリ�
 ファイルでも構いません）に次のような行を追加することで環境変数を設定できます：
 %
 \begin{sverbatim}
-PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH; export PATH
-MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH; export MANPATH
-INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH; export INFOPATH
+PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH; export PATH
+MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH; export MANPATH
+INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH; export INFOPATH
 \end{sverbatim}
 %
 cshやtcshの場合は，編集すべきファイルは典型的には\file{$HOME/.cshrc}で，次の
 ような行を追加します：
 %
 \begin{sverbatim}
-setenv PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
-setenv MANPATH /usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
-setenv INFOPATH /usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+setenv PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
+setenv MANPATH /usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
+setenv INFOPATH /usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 \end{sverbatim}
 %
 もちろん，既にいわゆる「ドットファイル」（各種の設定ファイル）に何かしらの設定
@@ -1171,8 +1176,8 @@ setenv INFOPATH /usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
 というファイルの存在を確かめて，もし存在していたら次のような内容を追記します：
 %
 \begin{sverbatim}
-MANPATH_MAP /usr/local/texlive/2019/bin/x86_64-linux \
-            /usr/local/texlive/2019/texmf-dist/doc/man
+MANPATH_MAP /usr/local/texlive/2020/bin/x86_64-linux \
+            /usr/local/texlive/2020/texmf-dist/doc/man
 \end{sverbatim}
 %
 第二に各種の検索パスや環境変数のデフォルト値を設定するためのファイル\file{%
@@ -1588,19 +1593,20 @@ texconfig}の操作に慣れている方々のために依然としてその配�
 
 \subsection{\prog{tlmgr}のGUI}
 
-\TL には\prog{tlmgr}のGUIが複数含まれています．\prog{tlshell}（図\ref{fig:%
-tlshell}）はTcl/Tkを利用したGUIでWindowsとmacOSで利用可能です．\prog{%
-tlcockpit}はバージョン8以降のJavaとJavaFXで動作するGUIです．これらはいずれも独立
-したパッケージです．
+\TL には\prog{tlmgr}のGUIフロントエンドが複数含まれています．重要なものが2つあり
+ます．ひとつは図\ref{fig:tlshell}で表示されているのは\prog{tlshell}というTcl/Tkを
+利用したGUIで，WindowsとmacOSで利用可能です．もうひとつは図\ref{fig:tlcockpit}で
+表示されている\prog{tlcockpit}で，動作にはバージョン8以降のJavaとJavaFXが必要です．
+これらはいずれも独立したパッケージです．
 
-\prog{tlmgr}それ自体にもGUIモードが存在します（図\ref{fig:tlmgr-gui}）：
+\prog{tlmgr}もネイティブのGUIモードを持っています（図\ref{fig:tlmgr-gui}）：
 %
 \begin{alltt}
 > tlmgr -gui
 \end{alltt}
 %
-このGUI拡張の実行にはPerl/Tkが必要です．現在はWindows向けの\TL にはPerl/Tk%
-モジュールは同梱されていないので注意してください．
+しかし，このGUI拡張の実行にはPerl/Tkが必要です．現在はWindows向けの\TL には
+Perl/Tkモジュールは同梱されていないので注意してください．
 
 \subsection{コマンド使用例}
 
@@ -1642,12 +1648,12 @@ running post install action for xetex
 install: xetex-def
 ...
 running mktexlsr
-mktexlsr: Updating /usr/local/texlive/2019/texmf-dist/ls-R...
+mktexlsr: Updating /usr/local/texlive/2020/texmf-dist/ls-R...
 ...
 running fmtutil-sys --missing
 ...
 Transcript written on xelatex.log.
-fmtutil: /usr/local/texlive/2019/texmf-var/web2c/xetex/xelatex.fmt installed.
+fmtutil: /usr/local/texlive/2020/texmf-var/web2c/xetex/xelatex.fmt installed.
 \end{fverbatim}
 
 上の出力からわかるように，\prog{tlmgr}は依存パッケージもインストールし，ファイル名
@@ -1826,7 +1832,7 @@ WindowsとCygwin（Cygwinインストールの詳細については\ref{sec:cygw
 例えば\prog{asy}で2,500万要素の実数配列を確保しようとしたり，\LuaTeX で多書体組を
 行おうとしたりするとメモリが不足する可能性があります．
 
-Cygwinではユーザマニュアル (\url{https://www.cygwin.com/cygwin-ug-net/setup-maxmem.%
+Cygwinではユーザマニュアル (\url{https://cygwin.com/cygwin-ug-net/setup-maxmem.%
 html}) の説明に従うことによってメモリ上限を増やすことができます．
 
 Windowsの場合はいくつかの手順を行う必要があります．まず\code{moremem.reg}という
@@ -1894,8 +1900,13 @@ Knuthによる\TeX のオリジナルソースと，文芸的プログラミン�
 %
 \begin{description}
 \item[\lopt{help}] 基本的な使用法を表示
-\item[\lopt{verbose}] より詳細な実行メッセージを表示
 \item[\lopt{version}] バージョン情報を表示して終了
+\end{description}
+%
+さらに，ほとんどが以下のオプションもサポートしています：
+%
+\begin{description}
+\item[\lopt{verbose}] より詳細な実行メッセージを表示
 \end{description}
 
 \Webc プログラムはファイル探索に\KPS ライブラリ (\url{https://tug.org/kpathsea}) を
@@ -1963,9 +1974,9 @@ sec:filename-database}節）が$p$について用意されているかを調べ�
 この変数の内容を変更したりシステムディレクトリを上書きするように環境変数の値を
 設定することは推奨されません．
 
-代わりに，通常のインストールを行うと\file{.../2019/texmf.cnf}が生成されます．
+代わりに，通常のインストールを行うと\file{.../2020/texmf.cnf}が生成されます．
 どうしてもデフォルト設定を変更する必要が生じた場合は（通常は必要ありません），この
-ファイルに変更を加えてください．メインの設定ファイルは\file{.../2019/texmf-dist/%
+ファイルに変更を加えてください．メインの設定ファイルは\file{.../2020/texmf-dist/%
 web2c/texmf.cnf}です．このファイルを変更してもディストリビューション側でアップデート
 があると変更内容が失われてしまうため，ユーザはこのファイルを編集すべきではありません．
 
@@ -1988,7 +1999,8 @@ web2c/texmf.cnf}です．このファイルを変更してもディストリビ�
 texmf.cnf}の内容を上書きします．
 
 \begin{itemize*}
-\item \code{\%}はコメント開始文字で，行末までコメントとして扱われます．
+\item \code{\%}はコメント開始文字で，行末までコメントとして扱われます．\code{\%}の
+  前にいくつか空白文字があっても同様です．
 \item 空行は無視されます．
 \item 行末の\code{\bs}は行継続文字としてはたらきます．すなわち，次の行の内容も同じ行
   として扱われます．行頭の連続する空白文字は無視されます．
@@ -2006,11 +2018,18 @@ texmf.cnf}の内容を上書きします．
   プログラム名}または\code{\meta{プログラム名}.exe}という名前のプログラムの実行中のみで
   適用されます．この機能を用いると，例えば\TeX 処理系の種類ごとに異なる検索パスを適用
   することができます．
-\item \meta{値}には\samp{\%}と\samp{@}を除く任意の文字を含めることができます．\code{%
-  \$\meta{変数}.\meta{プログラム名}}という形の変数は，右辺では使うことができません．
-  そのような場合は，必ず別の変数を追加して使用してください．\meta{値}内の\samp{;}は
-  UNIX環境下では\samp{:}に置換されます．この機能は1つの\file{texmf.cnf}をUNIX, MS-DOS,
-  Windowsで共有するのに便利です．
+\item 文字列とみなせる限り，\var{value}にはあらゆる文字を含めることができます．
+  しかし，実際には\file{texmf.cnf}に記述されるほとんどの変数はパス展開に関係し，
+  そのパス展開においてはさまざまな特殊文字が使用される（\ref{sec:cnf-special-chars}節
+  を参照）ため，ディレクトリ名としてはブレースやコンマを使用することはできません．
+  
+  また変数中の\samp{;}はUNIX環境においては\samp{:}に読み替えられます．これは単一の
+  \file{texmf.cnf}ファイルでUNIXとWindowsの双方をサポートするための措置です．この
+  読み替えは検索パスに限らずすべての変数について適用されますが，幸い\samp{;}は検索
+  パス以外の変数には必要のない文字です．
+  
+  なお\code{\$\var{var}.\var{prog}}という表記は右辺ではサポートされません．代替手段
+  として，そのようなことをしたい場合には新しい変数を追加してください．
 \item すべての定義は展開される前に読み込まれるので，定義前の変数も右辺に含めることが
   可能です．
 \end{itemize*}
@@ -2023,10 +2042,10 @@ texmf.cnf}の内容を上書きします．
 \label{sec:path-expansion}
 
 \KPS はUNIXシェルと同様にいくつかの特殊文字や検索パスの構造を認識します．一般の
-例として，複雑なパス\dir{$USER/{foo,bar}//baz}は\var{\$USER}のホームディレクトリ
-直下のディレクトリ\dir{foo}と\dir{bar}以下にある，\file{baz}という名前のファイル
-またはディレクトリを含むすべてのサブディレクトリに展開されます．これらのパス展開の
-詳細については以下のセクションを参照してください．
+例として，パス\dir{$USER/{foo,bar}//baz}は\var{\$USER}のホームディレクトリ直下の
+ディレクトリ\dir{foo}と\dir{bar}以下にある，\file{baz}という名前のファイルまたは
+ディレクトリを含むすべてのサブディレクトリに展開されます．これらのパス展開の詳細
+については以下のセクションを参照してください．
 
 \subsubsection{デフォルト展開}
 \label{sec:default-expansion}
@@ -2061,8 +2080,9 @@ TEXINPUTS}の値が
 
 ブレース展開は便利な機能で，例えば\dir{v{a,b}w}は\code{vaw:vbw}に展開されます．
 ネストすることも可能です．この機能は\var{\$TEXMF}にブレースリストを与えることに
-より複数の\TeX ヒエラルキーを共存させるのにも利用されています．具体的には\file{%
-texmf.cnf}では次のような設定が行われています（この例のために単純化しています）：
+より複数の\TeX ヒエラルキーを共存させるのにも利用されています．具体的には，
+デフォルトの\file{texmf.cnf}では次のような設定が行われています（この例のために
+単純化しています）：
 %
 \begin{verbatim}
   TEXMF = {$TEXMFVAR,$TEXMFHOME,!!$TEXMFLOCAL,!!$TEXMFDIST}
@@ -2077,9 +2097,6 @@ texmf.cnf}では次のような設定が行われています（この例のた�
 この設定の下では，まずカレントディレクトリがチェックされ，続いて\code{\$TEXMFVAR/%
 tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツリー
 が（最後2つについては\file{ls-R}データベースを利用しつつ）検索されることになります．
-これにより``frozen''なTEXMFツリー（例えばCDに入れてあるもの）と常に最新版にアップ
-デートしているTEXMFツリーを並行的に運用しているとして，\var{\$TEXMF}変数をすべての
-定義に使用しておけば，常に最新のTEXMFツリーを先に検索するようにすることができます．
 
 \subsubsection{サブディレクトリ展開}
 \label{sec:subdirectory-expansion}
@@ -2098,40 +2115,49 @@ tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツ
 \samp{//}を1つのパスに複数含めることは可能ですが，パスの先頭に置かれた\samp{//}は
 無視されます．
 
-\subsubsection{特殊文字の一覧（要約）}
+\subsubsection{\code{texmf.cnf}で使用できる特殊文字の概要}
+\label{sec:cnf-special-chars}
 
-以下のリストに\KPS 設定ファイルで利用できる特殊文字について要約しておきます：
+以下のリストに\KPS 設定ファイルで利用できる特殊文字と構造について要約しておきます：
 %
 \begin{description}
 \newcommand{\CODE}[1]{\makebox[3em][l]{\code{#1}}}
-\item[\CODE{:}] パス設定の区切り文字．先頭や末尾に置かれた場合はデフォルトパス展開
-  されます．
+\item[\CODE{:}] パス設定の区切り文字．先頭や末尾，あるいは途中において連続して，
+  置かれた場合はデフォルトパス展開されます．
 \item[\CODE{;}] 非UNIXシステムでの区切り文字（挙動は\code{:}と同様）
 \item[\CODE{\$}] 変数展開
 \item[\CODE{\string~}] ユーザのホームディレクトリを表す
 \item[\CODE{\char`\{...\char`\}}] ブレース展開
+\item[\CODE{,}] ブレース内における要素の区切り文字
 \item[\CODE{//}] サブディレクトリ展開．先頭を除き，パス中どこでも利用可能
 \item[\CODE{\%}] コメントの開始
-\item[\CODE{\bs}] 行継続（複数行エントリの記述に使用）
+\item[\CODE{\bs}] 行末に置くと，行継続文字としてはたらき複数行入力を可能にします
 \item[\CODE{!!}] ファイル名データベースの使用を\emph{強制}
   （ディスク検索を\emph{禁止}）
 \end{description}
+
+これらの文字が，正確にどのタイミングで特殊なものとして扱われるのか，あるいは
+その文字そのものとして扱われるのかは文脈に依存します．それぞれのルールは，
+種々の処理（パース，展開，検索など）のうちの固有のタイミングで適用されるため，
+残念ながら簡潔に説明することはできません．また，汎用のエスケープ手段も存在して
+いません．とくに\samp{\bs}は\file{texmf.cnf}内においては「エスケープ文字」では
+ないので注意してください．
+
+インストールを行う際にディレクトリ名を選ぶ際には，すべての特殊文字を含めないよう
+にするのが無難です．
 
 \subsection{ファイル名データベース}
 \label{sec:filename-database}
 
 \KPS は検索のためのディスクアクセスをある程度軽減する仕組みを持っています．
-それでも，十分な大きさの\TeX インストール構成で指定されたファイルについて，
-それが存在する可能性のあるすべてのディレクトリを検索するとかなり長い時間が
-かかってしまいます（特に何百ものフォントディレクトリを探索する場合には顕著
-です）．そのため\KPS は\file{ls-R}という名前のプレインテキスト「データベース」
-にファイルとディレクトリの情報を予め書き込んでおき，過剰なディスクアクセス
-を回避しています．
+それでも，標準的な\TL やその他十分な大きさの\TeX インストール構成において，
+指定されたファイルについて，それが存在する可能性のあるすべてのディレクトリ
+を検索するとかなり長い時間がかかってしまいます．そのため\KPS は\file{ls-R}%
+という名前のプレインテキスト「データベース」にファイルとディレクトリの情報
+を予め書き込んでおき，過剰なディスクアクセスを回避しています．
 
 また\file{aliases}というもう1つのデータベースファイルを利用すると，\file{%
-ls-R}に含まれているファイル名に別名（エイリアス）を付けることができます．この
-機能は，ソースファイルに含まれているDOS 8.3形式のファイル名を確認する際に便利
-です．
+ls-R}に含まれているファイル名に別名（エイリアス）を付けることができます．
 
 \subsubsection{ファイル名データベース}
 \label{sec:ls-R}
@@ -2194,7 +2220,7 @@ fonts (PK) を検索するときにのみ効果を発揮します．\cmd{dvips}�
 （曖昧でない）拡張子がないフォーマットについては，このオプションを用いて明示的
 に指定する必要があります．その際\meta{フォーマット名}には\code{tex}や\code{enc
 files}などを指定します．具体的なフォーマット名のリストについては\code{kpsewhich
-\lopt{help}}を参照してください．
+\lopt{help-formats}}を参照してください．
 
 \item[\code{\lopt{mode}=\meta{モード名}}]
 モード名を設定します．このオプションもGFおよびPKの検索用です．デフォルト値は
@@ -2529,9 +2555,47 @@ kdebug:search(cmr10.pfb) => /usr/local/texmf/fonts/type1/public/cm/cmr10.pfb
 は\code{50000}です．
 \end{description}
 %
-もちろん，こうしたパラメタの存在は動的な配列・メモリ確保の完全な代替となるものでは
-ありません．しかし，そうした変更を現在の\TeX ソースに対して適用するのは容易でない
-ので，これらの実行時パラメタの存在はある程度の柔軟性をもたせる実用上の妥協策です．
+こうしたパラメタの存在は動的な配列・メモリ確保の完全な代替となるものではありません．
+しかし，そうした変更を現在の\TeX ソースに対して適用するのは容易でないので，これらの
+実行時パラメタの存在はある程度の柔軟性をもたせる実用上の妥協策です．
+
+\subsection{\code{\$TEXMFDOTDIR}}
+\label{sec:texmfdotdir}
+
+TODO
+
+%In various places above, we gave various search paths starting with
+%\code{.} (to search the current directory first), as in
+%\begin{alltt}\small
+%TEXINPUTS=.;$TEXMF/tex//
+%\end{alltt}
+%
+%This is a simplification. The \code{texmf.cnf} file we distribute in
+%\TL{} uses \filename{$TEXMFDOTDIR} instead of just \samp{.}, as in:
+%\begin{alltt}\small
+%TEXINPUTS=$TEXMFDOTDIR;$TEXMF/tex//
+%\end{alltt}
+%(In the distributed file, the second path element is also slightly more
+%complicated than \filename{$TEXMF/tex//}. But that's minor; here we want
+%to discuss the \filename{$TEXMFDOTDIR} feature.)
+%
+%The reason to use the variable \filename{$TEXMFDOTDIR} in the path
+%definitions instead of simply \samp{.} is purely so that it can be
+%overridden. For example, a complex document may have many source files
+%arranged in many subdirectories. To handle that, you can set
+%\filename{TEXMFDOTDIR} to \filename{.//} (for example, in the environment when
+%you build the document) and they will all get searched. (Warning: don't
+%use \filename{.//} by default; it's usually highly undesirable, and
+%potentially insecure, to search through all subdirectories for an
+%arbitrary document.)
+%
+%As another example, you may wish not to search the current directory at
+%all, e.g., if you have arranged for all the files to be found via
+%explicit paths. You can set \filename{$TEXMFDOTDIR} to, say,
+%\filename{/nonesuch} or any other nonexistent directory for this.
+%
+%The default value of \filename{$TEXMFDOTDIR} is just \samp{.}, as set in our
+%\filename{texmf.cnf}.
 
 \section{謝辞}
 
@@ -2561,12 +2625,14 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Eitan Gurari．彼の\TeX4htは\TL 公式ドキュメントのHTML版生成に利用されています．
   彼は急な依頼をしても，毎年快く\TeX4htの改善に取り組んでくれました．Eitanは2009年
   6月に若くして亡くなりましたが，私たちは彼のことを忘れません．
-\item Hans Hagen．多くのテストを引き受け，また彼の\ConTeXt パッケージ (\url{http://%
-  pragma-ade.com}) を\TL フレームワークに対応させてくれました．
+\item Hans Hagen．多くのテストを引き受け，彼の\ConTeXt パッケージ (\url{http://%
+  pragma-ade.com}) を\TL フレームワークに対応させるとともに，継続的に\TeX 開発に
+  協力してくれました．
 \item \Thanh, Martin Schr\"oderと\pdfTeX チーム (\url{https://tug.org/applications/%
   pdftex/})．彼らは\TeX を継続的に拡張してくれています．
 \item Hartmut Henkel．\pdfTeX, \LuaTeX をはじめ多くのプロジェクトに顕著な貢献を
   してくれました．
+\item 平田俊作．DVIPDFM$x$について多くの新規および継続的な貢献をしてくれました．
 \item Taco Hoekwater．\MP と {(Lua)\TeX} (\url{https://luatex.org}) 自体に対して大きな
   変更を施したほか，\ConTeXt の\TL 対応や\KPS のマルチスレッド機能，その他数々の貢献
   をしてくれました．
@@ -2579,6 +2645,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Jonathan Kew．優れた\TeX エンジンである\XeTeX を開発し，時間と労力を割いてその
   処理系を\TL に導入してくれました．彼はさらに初期バージョンの\MacTeX を開発し，我々の
   おすすめするフロントエンドである\TeX worksも開発しました．
+\item 北川弘典．\pTeX と関連する多くのサポートを担ってくれました．
 \item Dick Koch．\TL チームと友好的かつ緊密に連携しながらMac{\TeX} (\url{https://tug.%
   org/mactex}) のメンテナンスを行ってくれています．
 \item Reinhard Kotucha．{\TL} 2008のインフラとインストーラに対する主要な貢献者で，
@@ -2586,11 +2653,14 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
   くれています．
 \item Siep Kroonenberg．彼も{\TL} 2008のインフラとインストーラの（特にWindowsについて）
   主要貢献者で，その新機能について解説するためマニュアルを大幅に改定してくれました．
+\item Clerk Ma．エンジンのバグ修正と拡張を行ってくれました．
 \item Mojca Miklavec．\ConTeXt 開発の重要な協力者で，多くのバイナリビルドを行い，
   その他にも多くの仕事を行ってくれています．
 \item Heiko Oberdiek．\pkg{epstopdf}をはじめ数々のパッケージを開発し，巨大だった
   \pkg{pst-geo}データファイルを圧縮して\TL に含められるようにしてくれました．そして
   何より，彼の\pkg{hyperref}パッケージについての偉業に敬意を表します．
+\item Phelype Oleinik．2020年にグループ区切りでの\cs{input}対応を多くのエンジンに
+  適用したほか，多くの貢献をしてくれました．
 \item Petr Ol\v{s}ak．チェコ・スロバキア関連のプロダクトを統括し，注意深くチェック
   してくれました．
 \item 大島利雄．Windows向けDVIビューア\cmd{dviout}を開発してくれました．
@@ -2604,6 +2674,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Sebastian Rahtz．\TL の創始者で，長年そのメンテナンスを行っていました．
   彼は2016年3月に亡くなりましたが，私たちは彼のことを忘れません．
 \item Luigi Scarso．\MP, \LuaTeX その他のプログラムを継続的に開発してくれています．
+\item Andreas Scherer．\TL で用いているCWEB実装である\code{cwebbin}の開発．
 \item Tomasz Trzeciak．Windowsについて広範な協力をしてくれました．
 \item Vladimir Volovich．さまざまなプログラムの\TL への組み込みとメンテナンスの
   ために多くの手伝いをしてくれました．特に\cmd{xindy}の組み込みが実現したのは彼の
@@ -2614,6 +2685,9 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Olaf Weber．過去何年にも渡って辛抱強く\Webc のメンテナンスを行ってくれました．
 \item Gerben Wierda．初期のmacOSサポートの開発とメンテナンスを行ってくれました．
 \item Graham Williams．\TeX カタログの創始者です．
+\item Joseph Wright．各種エンジンで同じプリミティブを使用できるようにするため多くの
+  貢献をしてくれました．
+\item 山下弘展．\pTeX と関連する多くのサポートを担ってくれました．
 \end{itemize*}
 
 バイナリのビルド担当者：
@@ -2837,9 +2911,9 @@ pdftexconfig.tex}が変更された場合，すべての\file{.fmt}ファイル�
 と\url{http://www.olsak.net/enctex.html}を参照してください．
 
 \item \eTeX と\OMEGA を組み合わせた新エンジン\ALEPH が利用可能になりました．
-\dir{texmf-dist/doc/aleph/base}と\url{http://www.tex.ac.uk/cgi-bin/texfaq2html?%
-label=aleph}にいくらかの情報があります．\ALEPH における\LaTeX ベースのフォーマット
-は\prog{lamed}といいます．
+\dir{texmf-dist/doc/aleph/base}と\url{https://texfaq.org/FAQ-enginedev}に
+いくらかの情報があります．\ALEPH における\LaTeX ベースのフォーマットは
+\prog{lamed}といいます．
 
 \item 最新の\LaTeX は新しいバージョンのLPPLの下でインストールされました．これで
 公式にDebian公認のライセンスになりました．他のアップデートについての情報と合わせて
@@ -2947,7 +3021,7 @@ texmf/web2c}直下から同サブディレクトリに移されました（一�
 
 当然のことながら，この期間にも（いつも通り）上記以外に何百ものパッケージや
 プログラムのアップデートがありました．平常通り，それらについてはCTAN (\url{%
-http://mirror.ctan.org}) を確認してください．
+https://ctan.org}) を確認してください．
 
 内部的には，ソースツリーをSubversionで管理するようになり，その標準Webインター
 フェースでソースツリーを閲覧できるようになりました（\TL のウェブサイトから
@@ -3028,7 +3102,7 @@ Computer Modernを含め，新しいバージョンのAMS Type~1 フォントが
 反映され，またヒンティングも更新されました．EulerフォントもHermann Zapfによって
 大幅に再デザインされました（\url{https://tug.org/TUGboat/Articles/tb29-2/tb92%
 hagen-euler.pdf}参照）．いずれについてもメトリクスは変更されていません．AMS%
-フォントのウェブサイトは\url{https://www.ams.org/tex/amsfonts.html}です．
+フォントのウェブサイトは\url{https://ams.org/tex/amsfonts.html}です．
 
 新しいGUIフロントエンド{\TeX}worksがWindowsと\MacTeX 向けに追加されました．
 他のプラットフォーム向けのものや詳細情報については{\TeX}worksのウェブサイト
@@ -3114,6 +3188,7 @@ escape} 0}を実行して設定を上書きしてください．
 \item \pTeX エンジンと関連する日本語組版のためのユーティリティ
 \item {\BibTeX}U: Unicodeサポートが有効な\BibTeX
 \item \prog{chktex}: \LaTeXTeX 文書をチェックするツール
+  （元々\url{http://baruch.ev-en.org/proj/chktex}から提供されていたもの）
 \item \prog{dvisvgm}: DVIをSVGに変換するツール
   (\url{http://dvisvgm.sourceforge.net})
 \end{itemize*}
@@ -3395,8 +3470,8 @@ pdfinfoomitdate}, \cs{pdftrailerid}, \cs{pdfsuppressptexinfo}が追加されま�
 インフラ：システムレベルの\cmd{tlmgr}設定ファイルがサポートされました．また
 パッケージのチェックサムを認証する機能が追加されました．GPGが利用可能な場合は
 ネットワークアップデート時に署名も認証されるようになります．これらの認証は
-インストーラと\cmd{tlmgr}の両方で行われます（GPGが利用できない場合，アップ
-デートはこれまで通り処理されます）．
+インストーラと\cmd{tlmgr}の両方で行われます．GPGが利用できない場合，アップ
+デートはこれまで通り処理されます．
 
 プラットフォーム：\pkg{alpha-linux}と\pkg{mipsel-linux}は削除されました．
 
@@ -3518,8 +3593,7 @@ UTF-8やプリミティブ周りのさまざまな不具合が修正されまし
 \item Windows XPはもはやサポートされません．
 \end{itemize*}
 
-\subsection{現在：2019}
-\label{sec:tlcurrent}
+\subsubsection{2019}
 
 \KPS: ブレース展開とパス分割の一貫性が高まりました．設定ファイルでは\samp{.}を
 ハードコードする代わりに新しい変数\var{TEXMFDOTDIR}を使用することになりました．
@@ -3577,6 +3651,11 @@ Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降
 なためです）．
 
 プラットフォーム：\pkg{sparc-solaris}は削除されました．
+
+\subsection{現在：2020}
+\label{sec:tlcurrent}
+
+TODO
 
 \subsection{未来}
 
