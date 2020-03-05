@@ -3656,72 +3656,76 @@ Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降
 \subsection{現在：2020}
 \label{sec:tlcurrent}
 
-TODO
+全般：
+%
+\begin{itemize}
+\item すべての\TeX エンジン（\cmd{tex}を含む）の\cs{input}プリミティブが，
+  ファイル名をグループ区切りの引数として受け取れるようになりました．この拡張
+  はシステム非依存です．標準的なスペーストークン区切りのファイル名に関する
+  挙動は従来から一切変更されていません．このグループ区切り引数は\LuaTeX では
+  元々実装されていたもので，今年からすべてのエンジンで利用可能になりました．
+  ASCIIのダブルクオテーション文字 (\code{"}) はファイル名から除去されますが，
+  トークン化の後は変更されることなくそのまま残ります．この変更は今のところ
+  \LaTeX の\cs{input}コマンドには影響を与えません．このコマンドは標準の
+  \cs{input}プリミティブを再定義したマクロだからです．
+%
+\item 新しいオプション\lopt{cnf-line}が\cmd{kpsewhich}, \cmd{tex}, \cmd{mf}と
+  その他すべてのエンジンで利用可能になりました．このオプションは任意の
+  texmf設定項目をコマンドラインで指定するためのものです．
+%
+\item ここ数年でさまざまなプリミティブが各種エンジンに追加されたのは，すべての
+  処理系で共通の機能を利用可能にするためです．
+  (cf.\,\textsl{\LaTeX\ News \#31}, \url{https://latex-project.org/news})
 
-%General: \begin{itemize}
-%\item The \cs{input} primitive in all \TeX\ engines, including
-%\texttt{tex}, now also accepts a group-delimited filename argument, as a
-%system-dependent extension. The usage with a standard
-%space/token-delimited filename is completely unchanged. The
-%group-delimited argument was previously implemented in Lua\TeX; now it
-%is available in all engines. ASCII double quote characters (\texttt{"})
-%are removed from the filename, but it is otherwise left unchanged after
-%tokenization. This does not currently affect \LaTeX's \cs{input} command,
-%as that is a macro redefinition of the standard \cs{input} primitive.
+\end{itemize}
+
+\epTeX, \eupTeX: 新しいプリミティブ\cs{Uchar}, \cs{Ucharcat},
+\cs{current(x)spacingmode}, \cs{ifincsname}が追加されました．また
+\cs{fontchar??}と\cs{iffontchar}の仕様が改訂されました．\eupTeX に限り
+\cs{currentcjktoken}も利用可能になりました．
+
+\LuaTeX: HarfBuzzライブラリと統合され，\cmd{luahbtex}と\cmd{luajithbtex}が
+追加されました．前者は\cmd{lualatex}で使用されることになりました．新しい
+プリミティブとして\cs{eTeXgluestretch}, \cs{eTeXglueshrink},
+\cs{eTeXglueorder}が追加されました．
+
+\pdfTeX: 新プリミティブ\cs{pdfmajorversion}が追加されました．これは単に
+PDF出力のバージョン番号を変更するもので，PDFの内容そのものに対しては一切の
+効果を持ちません．\cs{pdfximage}と類似するコマンドは\cs{openin}と同様の
+方法で画像ファイルを検索するようになりました．
+
+\pTeX: 新プリミティブ\cs{ifjfont}, \cs{iftfont}が追加されました．\epTeX,
+\upTeX, \eupTeX についても同様です．
+
+\XeTeX: \cs{Umathchardef}, \cs{XeTeXinterchartoks}, \cs{pdfsavepos}の
+挙動が修正されました．
+
+Dvips: ビットマップフォントについてエンコーディングが出力されるようになり，
+コピー＆ペーストがしやすくなりました
+(\url{https://tug.org/TUGboat/tb40-2/tb125rokicki-type3search.pdf})．
+
+\MacTeX: \MacTeX と\pkg{x86\_64-darwinlegacy}のサポート対象がmacOS 10.13%
+以上 (High~Sierra, Mojave, Catalina) になりました．
+\pkg{x86\_64-darwinlegacy}はmacOS 10.6以上をサポートします．Apple社の
+要請に基づき，\MacTeX は公証を受け，そのコマンドラインプログラムは
+hardened runtimeをもつようになっています．BibDeskと\TL ユーティリティは
+公証を受けていないため\MacTeX に含まれていませんが，\file{README}には
+それらを入手できるURLが記載されています．
+
+\cmd{tlmgr}とインフラ：
 %
-%\item New option \texttt{--cnf-line} for \texttt{kpsewhich}, \texttt{tex},
-%\texttt{mf}, and all other engines, to support arbitrary configuration
-%settings on the command line.
-%
-%\item The addition of various primitives to various engines in this and
-%previous years is intended to result in a common set of functionality
-%available across all engines (\textsl{\LaTeX\ News \#31},
-%\url{https://latex-project.org/news}).
-%
-%\end{itemize}
-%
-%ep\TeX, eup\TeX: New primitives \cs{Uchar}, \cs{Ucharcat},
-%\cs{current(x)spacingmode}, \cs{ifincsname}; revise \cs{fontchar??} and
-%\cs{iffontchar}. For eup\TeX only: \cs{currentcjktoken}.
-%
-%Lua\TeX: Integration with HarfBuzz library, available as new engines
-%\texttt{luahbtex} (used for \texttt{lualatex}) and \texttt{luajithbtex}.
-%New primitives: \cs{eTeXgluestretch}, \cs{eTeXglueshrink},
-%\cs{eTeXglueorder}.
-%
-%pdf\TeX: New primitive \cs{pdfmajorversion}; this merely changes the
-%version number in the PDF output; it has no effect on any PDF content.
-%\cs{pdfximage} and similar now search for image files in the same way as
-%\cs{openin}.
-%
-%p\TeX: New primitives \cs{ifjfont}, \cs{iftfont}. Also in ep\TeX,
-%up\TeX, eup\TeX.
-%
-%Xe\TeX: Fixes for \cs{Umathchardef}, \cs{XeTeXinterchartoks}, \cs{pdfsavepos}.
-%
-%Dvips: Output encodings for bitmap fonts, for better copy/paste
-%capabilities
-%(\url{https://tug.org/TUGboat/tb40-2/tb125rokicki-type3search.pdf}).
-%
-%Mac\TeX: Mac\TeX\ and \texttt{x86\_64-darwin} now require 10.13 or
-%higher (High~Sierra, Mojave, and Catalina);
-%\texttt{x86\_64-darwinlegacy} supports 10.6 and newer. Mac\TeX\ is
-%notarized and command line programs have hardened runtimes, as now
-%required by Apple for install packages. BibDesk and \TeX\ Live Utility
-%are not in Mac\TeX\ because they are not notarized, but a
-%\filename{README} file lists urls where they can be obtained.
-%
-%\code{tlmgr} and infrastructure: \begin{itemize*}
-%\item Automatically retry (once) packages that fail to download.
-%\item New option \texttt{tlmgr check texmfdbs}, to 
-%to check consistency of \texttt{ls-R} files and \texttt{!!}
-%specifications for each tree.
-%\item Use versioned filenames for the package containers, as in
-%\texttt{tlnet/archive/\textsl{pkgname}.rNNN.tar.xz}; should be
-%invisible to users, but a notable change in distribution.
-%\item \texttt{catalogue-date} information no longer propagated from the
-%\TeX~Catalogue, since it was often unrelated to package updates.
-%\end{itemize*}
+\begin{itemize*}
+\item ダウンロード失敗時に（一度だけ）自動的に再試行するようになりました．
+\item 新オプション\code{tlmgr check texmfdbs}が追加されました．これにより
+  \file{ls-R}ファイルと各ツリーにおける\code{!!}指定の整合性を確認する
+  ことができます．
+\item パッケージコンテナに\code{tlnet/archive/\textsl{pkgname}.rNNN.tar.xz}%
+  といった形でバージョン情報を含むファイル名が用いられるようになりました．
+  この変更はユーザに直接影響しないはずですが，ディストリビューションとしては
+  大きな変更点です．
+\item \code{catalogue-date}情報は，パッケージアップデートには関係がないことが
+  多いため，\TeX カタログには伝達されないことになりました．
+\end{itemize*}
 
 \subsection{未来}
 
