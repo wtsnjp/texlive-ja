@@ -227,12 +227,12 @@
 % title
 \def\Title#1{\gdef\@title{{\huge #1}}}
 \def\Editor#1{\gdef\@editor{#1}}
-\def\JaAuthor#1{\gdef\@translator{#1}}
-\def\TLUrl#1{\gdef\@tlurl{\url{#1}}}
+\def\Translator#1{\gdef\@translator{#1}}
+\def\Website#1{\gdef\@website{\url{#1}}}
 \author{%
-  原版編集：\@editor \\
-  日本語版：\@translator \\[3mm]
-  \@tlurl}
+  {\@editor} 編 \\
+  {\@translator} 訳 \\[3mm]
+  \@website}
 
 % hyperref settings
 \newcommand*{\email}[1]{\href{mailto:#1}{\path{#1}}}  % \path comes from url
