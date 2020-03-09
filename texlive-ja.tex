@@ -710,7 +710,7 @@ Directory for temporary files: /tmp
  <S> set installation scheme: scheme-full
 
  <C> customizing installation collections
-     40 collections out of 41, disk space required: 5829 MB
+     40 collections out of 41, disk space required: 6536 MB
 
  <D> directories:
    TEXDIR (the main TeX directory):
@@ -809,12 +809,12 @@ Available platforms:
 ===============================================================================
    a [ ] Cygwin on Intel x86 (i386-cygwin)
    b [ ] Cygwin on x86_64 (x86_64-cygwin)
-   c [ ] MacOSX current (10.12-) on x86_64 (x86_64-darwin)
+   c [ ] MacOSX current (10.13-) on x86_64 (x86_64-darwin)
    d [ ] MacOSX legacy (10.6-) on x86_64 (x86_64-darwinlegacy)
    e [ ] FreeBSD on x86_64 (amd64-freebsd)
    f [ ] FreeBSD on Intel x86 (i386-freebsd)
    g [ ] GNU/Linux on ARM64 (aarch64-linux)
-   h [ ] GNU/Linux on ARMhf (armhf-linux)
+   h [ ] GNU/Linux on ARMv6/RPi (armhf-linux)
    i [ ] GNU/Linux on Intel x86 (i386-linux)
    j [X] GNU/Linux on x86_64 (x86_64-linux)
    k [ ] GNU/Linux on x86_64 with musl (x86_64-linuxmusl)
@@ -1696,14 +1696,13 @@ Windowsでは\TL インストーラはいくつか追加の処理を行います
 \begin{description}
 \item[メニューとショートカット]
 スタートメニューに`\TL'サブメニューを追加します．このサブメニューから\prog{tlmgr},
-\prog{texdoctk}や\prog{PS\_View} (\prog{psv}) \PS ビューアなどのGUIプログラムを
-起動したり，いくつかのドキュメントにアクセスしたりすることができます．
+\prog{texdoctk}などのGUIプログラムや，いくつかのドキュメントにアクセスすることが
+できます．
 
 \item[拡張子の関連付け]
-設定が有効になっている場合，\prog{\TeX works}, \prog{Dviout}, \prog{PS\_View}など
-をそれぞれが扱う拡張子に関連付けます．あるいは，関連するファイルを右クリックして
-「プログラムから開く」を選択した場合にこれらのプログラムが候補に上がるようになり
-ます．
+設定が有効になっている場合，\prog{\TeX works}, \prog{Dviout}などを，それぞれが
+扱う拡張子に関連付けます．あるいは，関連するファイルを右クリックして「プログラム
+から開く」を選択した場合にこれらのプログラムが候補に上がるようになります．
 
 \item[ビットマップからEPSへの変換]
 各種のビットマップ画像を右クリックして「プログラムから開く」を選択した場合に\prog{%
@@ -1740,9 +1739,6 @@ PerlとGhostscriptは重要なので，\TL には\kenten{隠された}それら�
 Ghostscriptは完全版ではなく，またシステムに別途インストールされたものとは一切干渉
 しません．
 
-\item[PS\_View]
-\PS /PDFビューア（図\ref{fig:psview}）．
-
 \item[dviout]
 DVIビューア．初期状態では，ファイルを\prog{dviout}でプレビューしようとすると，
 フォント生成が行われるはずです．これはスクリーンフォントがインストールされていない
@@ -1766,11 +1762,6 @@ Sumatra PDF viewer (\url{https://sumatrapdfreader.org/}) などをインスト�
 することができます．必要に応じて\prog{fc-cache}を事前に実行してフォント情報を更新して
 ください．
 \end{description}
-%
-\begin{figure}[tb]
-\centering \tlpng{psview}{.6\linewidth}
-\caption{PS\_View: かなり高い倍率まで拡大することができます．}\label{fig:psview}
-\end{figure}
 
 \subsection{ユーザプロファイルがホームディレクトリ扱い}
 \label{sec:winhome}
