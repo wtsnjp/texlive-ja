@@ -4,7 +4,7 @@ require 'pathname'
 
 # basics
 PKG_NAME = "texlive-ja"
-REF_REV = "r50390"
+REF_REV = "r54194"
 
 # directories
 REPO_ROOT = Pathname.pwd
@@ -59,5 +59,5 @@ end
 desc "Show the diff from the last referenced texlive-en"
 task :diff do
   cd SVN_ROOT
-  sh "svn diff -r #{REF_REV}:HEAD #{TEXLIVE_EN}"
+  sh "svn diff -r #{REF_REV}:HEAD #{TEXLIVE_EN}/{texlive-en.tex,tex-live.sty}"
 end
