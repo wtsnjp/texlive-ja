@@ -3,6 +3,7 @@
 % English version is originally written by Sebastian Rahtz and
 % Michel Goossens, now maintained by Karl Berry and others.
 % Japanese edition is by Takuto ASAKURA. Public domain.
+\RequirePackage{plautopatch}
 \documentclass[uplatex,dvipdfmx,tombow]{jsarticle}
 
 \usepackage{texlive-ja}
@@ -54,7 +55,7 @@
 
 \subsection{\TL と\TeX コレクション}
 
-このドキュメントはGNU/Linuxやその他のUNIXシステム，macOS，Windows向けに
+このドキュメントはGNU/Linuxやその他のUnix系システム，macOS，Windows向けに
 \TeX 関連プログラムを集めたディストリビューション\TL の概要について解説する
 ものです．
 
@@ -75,7 +76,7 @@
 \subsection{サポートOS}
 \label{sec:os-support}
 
-\TL にはGNU/Linux, macOS, Cygwinを含む，多くのUNIXベースプラットフォーム向けの
+\TL にはGNU/Linux, macOS, Cygwinを含む，多くのUnix系プラットフォーム向けの
 バイナリが含まれています．同梱されているソースを用いれば，デフォルトではサポート
 されていないプラットフォームでコンパイルを行うこともできます．
 
@@ -107,7 +108,7 @@ DVDインストーラはあなたのローカルディスクに\TL をインス�
 \item インストールスクリプトの名称は\cmd{install-tl}です．このプログラムに\sopt{%
 gui}オプションを与えると「GUIモード」（WindowsとmacOSでデフォルト），\sopt{no-%
 gui}を与えると「テキストモード」（その他のプラットフォームでデフォルト）が実行され
-ます．UNIXプラットフォームでは，Perl/Tkがインストールされていれば旧来のPerl/Tkと
+ます．Unix系プラットフォームでは，Perl/Tkがインストールされていれば旧来のPerl/Tkと
 wizardモードを利用することもできます．Windowsについては\ref{sec:wininst}節も参照
 してください．
 
@@ -384,7 +385,7 @@ user}などが変更された設定データを保存するために利用する
 %
 \begin{description}
 \item[システム用ルート] 複数の\TL を配置できます
-  （デフォルト値はUNIXでは\dir{/usr/local/texlive}）
+  （デフォルト値はUnix系では\dir{/usr/local/texlive}）
   \begin{description}
   \item[\dir{2019}] 前年のリリース
   \item[\dir{2020}] 最新のリリース
@@ -556,8 +557,8 @@ PDFユーティリティ．
 \item[インターネット・インストーラ（\file{.zip}または\file{.tar.gz}）]
 CTANの\dir{systems/texlive/tlnet}配下からダウンロードできます．\url{http://%
 mirror.ctan.org/systems/texlive/tlnet}にアクセスすると，最寄りの最新ミラーに
-リダイレクトされるはずです．\file{install-tl.zip}（UNIXおよびWindows向け），
-またはそれよりもかなりファイルサイズの小さい\file{install-unx.tar.gz}（UNIX%
+リダイレクトされるはずです．\file{install-tl.zip}（Unix系およびWindows向け），
+またはそれよりもかなりファイルサイズの小さい\file{install-unx.tar.gz}（Unix系
 専用）のお好きな方をダウンロードしてください．ダウンロードしたアーカイブを展開
 すると\dir{install-tl}サブディレクトリ以下に\file{install-tl}および\file{%
 install-tl-windows.bat}が見つかるはずです．
@@ -597,11 +598,11 @@ www.gnu.org/software/wget/manual/html_node/Proxies.html})，もしくはお好�
 
 以降のセクションでは，このインストーラの使い方について詳しく説明します．
 
-\subsubsection{UNIX}
+\subsubsection{Unix系}
 
 以降では\code{>}はシェル・プロンプトを表し，ユーザの入力はタイプライタ体で
 \code{command}のように表現することにします．\TL のインストーラ\cmd{install-%
-tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプトを起動する最も簡単
+tl}はPerlスクリプトです．Unix系システムでこのスクリプトを起動する最も簡単
 な方法は以下を実行することです：
 %
 \begin{alltt}
@@ -633,14 +634,14 @@ tl}はPerlスクリプトです．UNIX互換なシステムでこのスクリプ
 > perl install-tl -help
 \end{alltt}
 
-\paragraph{UNIXのパーミッションについて}
+\paragraph{Unixのパーミッションについて}
 \TL インストーラは，実行時の\cmd{umask}設定を反映します．したがって，もし利用
 中のユーザだけでなく他のユーザも利用可能な形で\TL をインストールしたい場合は，
 \code{umask 002}など適切なパーミッション設定になっているかよくご確認ください．
 \cmd{umask}コマンドの詳細については，システムのマニュアルを参照してください．
 
 \paragraph{Cygwinへの注意}
-他のUNIX互換システムと異なり，Cygwinにはデフォルトでは\TL インストーラの実行に
+他のUnix系システムと異なり，Cygwinにはデフォルトでは\TL インストーラの実行に
 必要なプログラムの一部が含まれていません．詳細は\ref{sec:cygwin}節を参照して
 ください．
 
@@ -762,8 +763,8 @@ Cygwinでは，\TL のインストールを始める前に\file{setup.exe}プロ
 
 \subsubsection{テキストモード}
 
-図\ref{fig:text-main}はUNIXにおけるテキストモードのメイン画面を示しています．
-テキストモードはUNIXではデフォルトです．
+図\ref{fig:text-main}はUnix系におけるテキストモードのメイン画面を示しています．
+テキストモードはUnix系ではデフォルトです．
 
 このモードは，完全にコマンドラインで完結するもので，カーソルによる操作のサポートは
 まったくありません．例えば，Tabキーによってチェックボックスや入力フォーム間を移動
@@ -800,7 +801,7 @@ perltk}や\sopt{gui=wizard}オプションを与えると起動できます．
 インストーラは直感的に操作できるように設計されていますが，このセクションでは多様な
 オプションやサブメニューについて簡単に説明します．
 
-\subsubsection{バイナリ選択メニュー（UNIXのみ）}
+\subsubsection{バイナリ選択メニュー（Unix系のみ）}
 \label{sec:binary}
 
 \begin{figure}[tb]
@@ -891,7 +892,7 @@ Select scheme:
 \label{sec:directories}
 
 デフォルトの\TL 構成については\ref{sec:texmftrees}節 (\p.\pageref{sec:texmftrees})
-で説明しました．デフォルトのインストール先はUNIXでは\dir{/usr/local/texlive/2020}，
+で説明しました．デフォルトのインストール先はUnix系では\dir{/usr/local/texlive/2020}，
 Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2020}です．この配置は複数の\TL
 を同時にインストールすることを可能にします．例えば複数のリリース（典型的には，年度
 ごと）の\TL をインストールしておき，単純に検索パスを変更することによってどの
@@ -928,7 +929,7 @@ cur}などバージョンに依存しない名前で管理したいとお考え�
 デフォルトでは\dir{~/texmf}です（macOSでは\dir{~/Library/texmf}）．\code{TEXDIR}%
 の場合とは異なり，\TeX を実行しているユーザのホームディレクトリを簡単に参照できる
 ように，このデフォルト値では\dir{~}が各々のインストールのために生成された設定
-ファイルに書き込まれています．\dir{~}はUNIXでは\dir{$HOME}に，Windowsでは\winenv{%
+ファイルに書き込まれています．\dir{~}はUnix系では\dir{$HOME}に，Windowsでは\winenv{%
 USERPROFILE}にそれぞれ展開されます．繰り返しの注意になりますが，\code{TEXMFHOME}%
 も他のTEXMFツリーと同様にTDSにしたがった構成になっているべきです（必要のないファイル
 やディレクトリは配置されていなくも構いません）．
@@ -993,7 +994,7 @@ Options customization:
 
 \item[create symlinks in standard directories%
 （標準ディレクトリにシンボリックリンクを作成）]
-このオプションはUNIXのみで利用可能で，環境変数の変更を回避する手段です．この
+このオプションはUnix系のみで利用可能で，環境変数の変更を回避する手段です．この
 オプションを有効にしない場合，\TL のディレクトリは通常手動で\code{PATH}, \code{%
 MANPATH}, \code{INFOPATH}に追加する必要があります．ただし，シンボリックリンクの
 作成先ディレクトリについて書き込み権限が必要です．このオプションは一般的に知られた
@@ -1124,12 +1125,12 @@ systems/texlive/tlnet/}のように指定した場合，実際のホスト名と
 
 場合によっては，インストール後に多少の手順を行う必要があるかもしれません．
 
-\subsubsection{UNIXにおける環境変数の設定}
+\subsubsection{Unix系における環境変数の設定}
 \label{sec:env}
 
 インストール時に標準ディレクトリにシンボリックリンクを作成している（\ref{sec:%
 options}節を参照）場合は，環境変数を変更する必要はありません．それ以外の場合，
-UNIXシステムではご使用のプラットフォーム向けのバイナリのあるディレクトリを
+Unix系システムではご使用のプラットフォーム向けのバイナリのあるディレクトリを
 検索パスに追加する必要があります（Windowsではインストーラが行うので気にする
 必要はありません）．
 
@@ -1183,10 +1184,10 @@ MANPATH_MAP /usr/local/texlive/2020/bin/x86_64-linux \
 第二に各種の検索パスや環境変数のデフォルト値を設定するためのファイル\file{%
 /etc/environment}の内容を確認することです．
 
-各UNIX向けのバイナリディレクトリには，\file{man}という名前の\dir{texmf-dist%
-/doc/man}を指すシンボリックリンクが作成されています．一部の\prog{man}プログラム
-（例えばmacOSの標準\cmd{man}コマンド）は，これを利用して自動的にmanページの
-設定を最適化してくれる場合があります．
+各Unix系システム向けのバイナリディレクトリには，\file{man}という名前の
+\dir{texmf-dist/doc/man}を指すシンボリックリンクが作成されています．一部の
+\prog{man}プログラム（例えばmacOSの標準\cmd{man}コマンド）は，これを利用
+して自動的にmanページの設定を最適化してくれる場合があります．
 
 \subsubsection{DVDインストール後のインターネットを利用したアップデート}
 \label{sec:dvd-install-net-updates}
@@ -1216,7 +1217,7 @@ CTANミラーを指定することもできます．その際は\dir{tlnet}サ�
 Windowsでは，\TL に含まれているフォントは自動的にフォント名を指定するだけで\XeTeX
 から利用できるように設定されます．macOSでは，フォント名による検索を有効にする
 ためにはいくつかの手順が必要です（詳細は\MacTeX のウェブサイト\url{https://tug.org/%
-mactex}を参照してください）．他のUNIXシステムでの設定方法は，以下の通りです．
+mactex}を参照してください）．他のUnix系システムでの設定方法は，以下の通りです．
 
 この設定を簡単にするために，\pkg{xetex}パッケージのインストール時（最初の\TL
 インストール時または追加インストール時）に必要な設定が\file{TEXMFSYSVAR/fonts/%
@@ -1333,14 +1334,14 @@ TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下�
 おそらく，多くの人がまず最初に動作確認したいのはファイル編集を行うフロントエンド
 でしょう．\TL はWidows（のみ）では{\TeX}works (\url{https://tug.org/texworks}) を，
 \MacTeX は{\TeX}Shop (\url{https://pages.uoregon.edu/koch/texshop}) をインストール
-します．他のUNIXシステムではどのエディタを利用するかはユーザが決めてください．
+します．他のUnix系システムではどのエディタを利用するかはユーザが決めてください．
 エディタの選択肢はとてもたくさんあり，その一部は次のセクションでリストアップされて
 います．また\url{https://tug.org/interest.html#editors}も参考になるかと思います．
 基本的にはどんなテキストエディタでも使用できます．\TeX のための特別な機能は，
 なくてならないものではありません．
 
 残りのセクションでは，新しい\TL が正常に動作するか確認する基本的な手順を解説します．
-なお，ここではUNIXコマンドを使用した方法を紹介します．macOSやWindowsのユーザは，
+なお，ここではUnixコマンドを使用した方法を紹介します．macOSやWindowsのユーザは，
 GUIを利用してテストをしたいと考えるかもしれませんが，根本的な部分は変わりません．
 
 \begin{enumerate}
@@ -1750,7 +1751,7 @@ DVIビューア．初期状態では，ファイルを\prog{dviout}でプレビ�
 PDFビューア機能をもつ\TeX 用の統合開発環境．
 
 \item[各種コマンドラインツール]
-\TL バイナリと同時に，多数のWindows移植版のUNIXコマンドもインストールされます．\cmd{%
+\TL バイナリと同時に，多数のWindows移植版のUnixコマンドもインストールされます．\cmd{%
 gzip}, \cmd{zip}, \cmd{unzip}や\prog{poppler}関連の\cmd{pdfinfo}, \cmd{pdffonts}など
 です．Windows版\TL にはスタンドアロンなPDFビューアは含まれていません．必要に応じて
 Sumatra PDF viewer (\url{https://sumatrapdfreader.org/}) などをインストールしてくだ
@@ -1766,9 +1767,9 @@ Sumatra PDF viewer (\url{https://sumatrapdfreader.org/}) などをインスト�
 \subsection{ユーザプロファイルがホームディレクトリ扱い}
 \label{sec:winhome}
 
-Windowsにおいて，UNIXのホームディレクトリに相当するのは\winenv{USERPROFILE}ディレクトリ
+Windowsにおいて，Unix系のホームディレクトリに相当するのは\winenv{USERPROFILE}ディレクトリ
 です．Windows Vista以降のWindowsでは，そのデフォルト値は\winpath{C:\\Users\\<username>}%
-です．\file{texmf.cnf}内および\KPS 全般において，\dir{~}はWindowsとUNIXのいずれにおいて
+です．\file{texmf.cnf}内および\KPS 全般において，\dir{~}はWindowsとUnix系のいずれにおいて
 も適切に展開されます．
 
 \subsection{レジストリ}
@@ -1848,12 +1849,12 @@ Windows Registry Editor Version 5.00
 
 少し\Webc の歴史的経緯について触れておきます．\Webc のオリジナル作者はTomas Rokickiで
 1987年に最初の\TeX -to-Cシステムを開発しました．このシステムはHoward TrickeyとPavel
-CurtisによるUNIX下のchangefileをベースにしていました．その後Tim Morganがこのシステムの
-メンテナとなり，その期間システムはWeb-to-Cと呼ばれていました．1990年にKarl Berryが多く
-の協力者の助けを得ながらメンテナンスを引き継ぎました．1997年にOlaf Weberがメンテナに
-なりましたが，2006年には再びKarl Berryの管理下に戻りました．
+CurtisによるUnix系システム下のchangefileをベースにしていました．その後Tim Morganがこの
+システムのメンテナとなり，その期間システムはWeb-to-Cと呼ばれていました．1990年に
+Karl Berryが多くの協力者の助けを得ながらメンテナンスを引き継ぎました．1997年に
+Olaf Weberがメンテナになりましたが，2006年には再びKarl Berryの管理下に戻りました．
 
-\Webc システムはUNIX, 32-bit Windows, macOSなどのOSで動作します．このシステムでは
+\Webc システムはUnix系, 32-bit Windows, macOSなどのOSで動作します．このシステムでは
 Knuthによる\TeX のオリジナルソースと，文芸的プログラミングシステム\WEB で書かれた
 いくつかの基本的なプログラムを使用し，それらをC言語ソースコードに変換します．このような
 方法で管理されている\TeX 関連のプログラムは以下の通りです：
@@ -1918,7 +1919,7 @@ Knuthによる\TeX のオリジナルソースと，文芸的プログラミン�
 確認します．この場合，まず\file{./my-file}を確認し，次に\file{/dir/my-file}を確認
 して最初にみつけたもの（状況によっては，見つけたものすべて）を返します．
 
-あらゆるOSに適切に対応するため，非UNIXシステムにおいては\KPS はコロン (\samp{:}) と
+あらゆるOSに適切に対応するため，非Unix系システムにおいては\KPS はコロン (\samp{:}) と
 スラッシュ (\samp{/}) 以外の記号をファイル名の区切り文字として扱うことができます．
 
 特定のパス要素$p$を確認する際，\KPS はまず利用可能なファイル名データベース（\ref{%
@@ -2014,8 +2015,8 @@ texmf.cnf}の内容を上書きします．
   そのパス展開においてはさまざまな特殊文字が使用される（\ref{sec:cnf-special-chars}節
   を参照）ため，ディレクトリ名としてはブレースやコンマを使用することはできません．
   
-  また変数中の\samp{;}はUNIX環境においては\samp{:}に読み替えられます．これは単一の
-  \file{texmf.cnf}ファイルでUNIXとWindowsの双方をサポートするための措置です．この
+  また変数中の\samp{;}はUnix系の環境においては\samp{:}に読み替えられます．これは単一の
+  \file{texmf.cnf}ファイルでUnix系とWindowsの双方をサポートするための措置です．この
   読み替えは検索パスに限らずすべての変数について適用されますが，幸い\samp{;}は検索
   パス以外の変数には必要のない文字です．
   
@@ -2032,7 +2033,7 @@ texmf.cnf}の内容を上書きします．
 \subsubsection{パス展開}
 \label{sec:path-expansion}
 
-\KPS はUNIXシェルと同様にいくつかの特殊文字や検索パスの構造を認識します．一般の
+\KPS はUnixシェルと同様にいくつかの特殊文字や検索パスの構造を認識します．一般の
 例として，パス\dir{~$USER/{foo,bar}//baz}は\var{\$USER}のホームディレクトリ直下の
 ディレクトリ\dir{foo}と\dir{bar}以下にある，\file{baz}という名前のファイルまたは
 ディレクトリを含むすべてのサブディレクトリに展開されます．これらのパス展開の詳細
@@ -2115,7 +2116,7 @@ tex}, \code{\$TEXMFHOME/tex}, \code{\$TEXMFLOCAL/tex}, \code{\$TEXMFDIST/tex}ツ
 \newcommand{\CODE}[1]{\makebox[3em][l]{\code{#1}}}
 \item[\CODE{:}] パスの先頭や末尾に書かれた場合および途中で2つ続けて書かれた場合，
   その部分はデフォルトパスの展開形で置き換えらる
-\item[\CODE{;}] 非UNIXシステムでの区切り文字（挙動は\code{:}と同様）
+\item[\CODE{;}] 非Unix系システムでの区切り文字（挙動は\code{:}と同様）
 \item[\CODE{\$}] 変数展開
 \item[\CODE{\string~}] ユーザのホームディレクトリを表す
 \item[\CODE{\char`\{...\char`\}}] ブレース展開
@@ -2193,7 +2194,7 @@ cd \var{/your/texmf/root} && \path|\|ls -1LAR ./ >ls-R
 
 \KPS はオプションでないすべての引数をファイル名として受け取って，それぞれに
 ついて見つかった最初のファイルを返します．特定の名前のファイルをすべて列挙する
-オプションはありません（そのような場合はUNIXの\cmd{find}コマンドを使用して
+オプションはありません（そのような場合はUnixの\cmd{find}コマンドを使用して
 ください）．
 
 よく使われるオプションを一覧にしておきます：
@@ -2734,10 +2735,10 @@ Uwe Ziegenhagen（ドイツ語）．
 段階から望ましい成果物はCD上のモデル構造であることは明らかでした．いま皆さんに
 とってお馴染みのディストリビューションは，この作業チームの議論のかなり直接的な
 成果と言えます．また4All{\TeX} CDの成功から，同様の簡単なシステムを作れば
-UNIXユーザも恩恵に与ることができることも明らかで，この事実も\TL にもう1つの
-大きな流れを作りました．
+Unix系システムのユーザも恩恵に与ることができることも明らかで，この事実も\TL
+にもう1つの大きな流れを作りました．
 
-私たちは，1995年の秋にまずUNIXベースのTDS CDの開発に取り掛かり，すぐに
+私たちは，1995年の秋にまずUnix系のTDS CDの開発に取り掛かり，すぐに
 Thomas Esserの\teTeX が理想的なディストリビューションであることがわかりました．
 \teTeX はすでに複数のプラットフォームをサポートしており，さまざまなファイル
 システムに対応するように設計されていました．Thomas氏の協力を得て活動は1996年の
@@ -3040,7 +3041,7 @@ https://ctan.org}) を確認してください．
 されました．このエンジンは組版にさらなる柔軟性を与えるだけでなく，\TeX 文書の
 内外で利用できる素晴らしいスクリプト言語の処理系を提供してくれます．
 
-WindowsとUNIXベースプラットフォームのサポートがより統一的になりました．具体的
+WindowsとUnix系プラットフォームのサポートがより統一的になりました．具体的
 には，\TL に同梱されるようになった処理系によってWindowsでもPerlスクリプトと
 Luaスクリプトが利用可能になりました．
 
