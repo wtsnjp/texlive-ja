@@ -8,12 +8,12 @@
 
 \usepackage{texlive-ja}
 
-\Title{\TL ガイド 2020}
+\Title{\TL ガイド 2021}
 \Editor{Karl Berry}
 \Translator{朝倉卓人 (wtsnjp)}
 \Website{https://tug.org/texlive/}
 
-\date{2020年3月}
+\date{2021年3月}
 
 \begin{document}
 \maketitle
@@ -84,7 +84,8 @@ Windowsについては，Windows~7以上のバージョンをサポートして�
 Windows Vistaでも概ね動作すると思いますが，Windows XPよりも古いものについては
 \TL のインストールすら成功しません．Windowsについては64-bit向けに個別の実行
 ファイルを用意していませんが，32-bit実行ファイルは問題なく64-bit環境でも
-動作するはずです．
+動作するはずです．ただし64-bitバイナリを追加するオプションについては
+\url{https://tug.org/texlive/windows.html}を参照してください．
 
 WindowsおよびmacOSに対する\TL 以外のディストリビューションについては\ref{sec:%
 tl-coll-dists}節を参照してください．
@@ -105,12 +106,11 @@ DVDインストーラはあなたのローカルディスクに\TL をインス�
 として簡単に説明します：
 
 \begin{itemize*}
-\item インストールスクリプトの名称は\cmd{install-tl}です．このプログラムに\sopt{%
-gui}オプションを与えると「GUIモード」（WindowsとmacOSでデフォルト），\sopt{no-%
-gui}を与えると「テキストモード」（その他のプラットフォームでデフォルト）が実行され
-ます．Unix系プラットフォームでは，Perl/Tkがインストールされていれば旧来のPerl/Tkと
-wizardモードを利用することもできます．Windowsについては\ref{sec:wininst}節も参照
-してください．
+\item Unix系ではインストールスクリプトは\cmd{install-tl}です．Windowsでは
+代わりに\cmd{install-tl-windows}を実行する必要があります．このプログラムに
+\sopt{gui}オプションを与えると「GUIモード」（WindowsとmacOSでデフォルト），
+\sopt{no-gui}を与えると「テキストモード」（その他のプラットフォームで
+デフォルト）が実行されます．
 
 \item \TL をインストールすると「\TL マネージャ」(\cmd{tlmgr}) も利用可能になります．
 インストーラと同様，このプログラムにもGUIモードとテキストモードがあります．\TL
@@ -387,14 +387,14 @@ user}などが変更された設定データを保存するために利用する
 \item[システム用ルート] 複数の\TL を配置できます
   （デフォルト値はUnix系では\dir{/usr/local/texlive}）
   \begin{description}
-  \item[\dir{2019}] 前年のリリース
-  \item[\dir{2020}] 最新のリリース
+  \item[\dir{2020}] 前年のリリース
+  \item[\dir{2021}] 最新のリリース
     \begin{description}
     \item[\dir{bin}] ~
       \begin{description}
       \item[\dir{i386-linux}] GNU/Linux向けバイナリ (32-bit)
       \item[\quad\vdots]
-      \item[\dir{x86_64-darwin}] macOS向けバイナリ
+      \item[\dir{universal-darwin}] macOS向けバイナリ
       \item[\dir{x86_64-linux}] GNU/Linux向けバイナリ (64-bit)
       \item[\dir{win32}] Windows向けバイナリ
       \end{description}
@@ -406,8 +406,8 @@ user}などが変更された設定データを保存するために利用する
   \end{description}
 \item[ユーザのホームディレクトリ] （\dir{$HOME}または\winenv{USERPROFILE}）
   \begin{description}
-  \item[\dir{.texlive2019}] 前年リリースに適用するユーザごとのデータ（設定や生成物）
-  \item[\dir{.texlive2020}] 最新リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[\dir{.texlive2020}] 前年リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[\dir{.texlive2021}] 最新リリースに適用するユーザごとのデータ（設定や生成物）
     \begin{description}
     \item[\dir{texmf-var}] \var{TEXMFVAR}, \var{TEXMFCACHE}
     \item[\dir{texmf-config}] \var{TEXMFCONFIG}
@@ -434,25 +434,28 @@ Knuthによるオリジナルの\TeX は既に開発が終了しており，ご�
 \item[\pdfTeX]
 この処理系には，\eTeX の機能に加えてDVI同様にPDFを出力する機能と，その他出力とは
 関係のない多数の追加機能が搭載されています．この処理系は，\cmd{etex}, \cmd{latex},
-\cmd{pdflatex}など多くのフォーマット（コマンド）から呼び出されています．pdf\TeX の
-ウェブサイトは\url{https://tug.org/applications/pdftex/}です．\TL にはマニュアル
-(\file{texmf-dist/doc/pdftex/manual/pdftex-a.pdf}) とpdf\TeX の拡張機能の利用例を
-示した文書 (\file{texmf-dist/doc/pdftex/samplepdftex/samplepdf.tex}) も収録されて
-います．
+\cmd{pdflatex}など多くの一般的なフォーマット（コマンド）から呼び出されています．
+\pdfTeX のウェブサイトは\url{https://tug.org/applications/pdftex/}です．\TL
+にはマニュアル (\file{texmf-dist/doc/pdftex/manual/pdftex-a.pdf}) と\pdfTeX の
+拡張機能の利用例を示した文書 (\file{texmf-dist/doc/pdftex/samplepdftex/%
+samplepdf.tex}) も収録されています．
 
 \item[\LuaTeX]
-\pdfTeX の後継として開発されているもので（完全ではありませんが）概ね後方互換性が
-あります．またAlephの上位互換となることも目標になっていますが，これについても完全な
-互換性があるわけではありません．この\TeX エンジンには軽量スクリプト言語Lua (\url{%
+Unicodeによる入力とOpenType\slash TrueTypeフォントおよびシステムフォントのサポート
+を追加した処理系です．この\TeX エンジンには軽量スクリプト言語Lua (\url{%
 https://www.lua.org/}) のインタプリタが組み込まれており，\TeX における厄介な問題に
 対処するのにとても役立ちます．\cmd{texlua}として呼び出した場合は独立のLua処理系の
-ように振る舞います．そのため\TL に含まれる一部のプログラムもこのLua処理系によって
-実行されています．ウェブサイト：\url{https://luatex.org/}，マニュアル：\file{%
+ように振る舞います．ウェブサイト：\url{https://luatex.org/}，マニュアル：\file{%
 texmf-dist/doc/luatex/base/luatex.pdf}．
 
+\item[($\varepsilon$-)(u)\pTeX]
+日本語組版をネイティブにサポートする処理系です．\pTeX がベースですが，\eTeX 拡張
+が利用可能な\epTeX とUnicodeサポートを含む\upTeX もあります（詳細はこのリストの
+下のコラムを参照）．
+
 \item[\XeTeX]
-Unicodeによる入力とOpenTypeフォントおよびシステムフォントの利用を，サードパーティ
-製のライブラリを利用してサポートする\TeX 処理系です．
+Unicodeによる入力とOpenType\slash TrueTypeフォントおよびシステムフォントの利用を
+サードパーティ製のライブラリを利用してサポートする\TeX 処理系です．
 ウェブサイト：\url{https://tug.org/xetex}．
 
 \item[{\OMEGA} (Omega)]
@@ -467,9 +470,9 @@ base}を参照してください．
 \end{description}
 %
 \begin{janote}
-上記の\TeX 処理系は主として欧文組版を行うために開発されたもので，そのままでは日本語
-の組版には適しません．幸い\TL には日本語組版を行うために拡張されたエンジンもいくつか
-収録されています：
+日本語組版向けに開発された\pTeX 系の処理系を除いては，欧文組版を行うために
+開発されたもので，多くがそのままでは日本語組版には適しません．\TL に含まれる
+処理系の中で，日本語組版に適したものを以下に列挙します．
 %
 \begin{description}
 \item[\pTeX]
@@ -486,7 +489,7 @@ Knuthによるオリジナルの\TeX 処理系を日本語組版用に拡張し�
 \pTeX と\upTeX に\eTeX 相当の拡張機能を追加したエンジンです．現在\TL に含まれる
 \cmd{platex}, \cmd{uplatex}コマンドではデフォルトでこれらの処理系が呼び出されます．
 最近は\pdfTeX 由来の機能も一部利用できます．詳細は\file{texmf-dist/doc/ptex/ptex-%
-base/eptexdoc.pdf}をご覧ください．
+base/eptexdoc.pdf}を参照してください．
 \end{description}
 %
 また\LuaTeX-jaというマクロパッケージを用いると\LuaTeX でも日本語組版を実現できます．
@@ -625,10 +628,8 @@ tl}はPerlスクリプトです．Unix系システムでこのスクリプトを
 \end{alltt}
 
 古い\code{wizard}モードや\code{perltk}/\code{expert}オプションは，現在も使用
-可能です．これらはXFTサポートありでコンパイルされた\code{Perl::Tk}モジュールを
-必要とします．この要件は，基本的にはGNU/Linuxでは問題になりませんが，他の
-プラットフォームでは問題かもしれません．利用可能なすべてのオプションを確認する
-には次を実行してください：
+可能です．しかしその機能は\sopt{gui}と同等になりました．利用可能なすべての
+オプションを確認するには次を実行してください：
 %
 \begin{alltt}
 > perl install-tl -help
@@ -699,7 +700,7 @@ tl}はPerlスクリプトです．Unix系システムでこのスクリプトを
 
 \begin{figure}[tb]
 \begin{boxedverbatim}
-Installing TeX Live 2020 from: ...
+Installing TeX Live 2021 from: ...
 Platform: x86_64-linux => 'GNU/Linux on x86_64'
 Distribution: inst (compressed)
 Directory for temporary files: /tmp
@@ -711,11 +712,11 @@ Directory for temporary files: /tmp
  <S> set installation scheme: scheme-full
 
  <C> customizing installation collections
-     40 collections out of 41, disk space required: 6536 MB
+     40 collections out of 41, disk space required: 7172 MB
 
  <D> directories:
    TEXDIR (the main TeX directory):
-     /usr/local/texlive/2020
+     /usr/local/texlive/2021
    ...
 
  <O> options:
@@ -730,7 +731,7 @@ Actions:
  <H> help
  <Q> quit
 \end{boxedverbatim}
-\vskip-\baselineskip
+\vskip-.5\baselineskip
 \caption{\TL インストーラのテキストモードでのメイン画面 (GNU/Linux)}
 \label{fig:text-main}
 \end{figure}
@@ -810,7 +811,7 @@ Available platforms:
 ===============================================================================
    a [ ] Cygwin on Intel x86 (i386-cygwin)
    b [ ] Cygwin on x86_64 (x86_64-cygwin)
-   c [ ] MacOSX current (10.13-) on x86_64 (x86_64-darwin)
+   c [ ] MacOSX current (10.14-) on ARM/x86_64 (universal-darwin)
    d [ ] MacOSX legacy (10.6-) on x86_64 (x86_64-darwinlegacy)
    e [ ] FreeBSD on x86_64 (amd64-freebsd)
    f [ ] FreeBSD on Intel x86 (i386-freebsd)
@@ -892,8 +893,8 @@ Select scheme:
 \label{sec:directories}
 
 デフォルトの\TL 構成については\ref{sec:texmftrees}節 (\p.\pageref{sec:texmftrees})
-で説明しました．デフォルトのインストール先はUnix系では\dir{/usr/local/texlive/2020}，
-Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2020}です．この配置は複数の\TL
+で説明しました．デフォルトのインストール先はUnix系では\dir{/usr/local/texlive/2021}，
+Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2021}です．この配置は複数の\TL
 を同時にインストールすることを可能にします．例えば複数のリリース（典型的には，年度
 ごと）の\TL をインストールしておき，単純に検索パスを変更することによってどの
 リリースを使用するか切り替えるようなことができます．
@@ -914,7 +915,7 @@ Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2020}です．この配置�
 
 合理的なインストール場所の変更先は（特にあなたが\TL を利用する単独のユーザである
 場合には）ホームディレクトリ以下でしょう．メタ文字\dir{~}（チルダ）を用いるとこれを
-簡単に指定することができます（例：\dir{~/texlive/2020}）．
+簡単に指定することができます（例：\dir{~/texlive/2021}）．
 
 複数の\TL リリースを同時にインストールできるようにするためにも，インストール先の
 ディレクトリ名には「年」を含めることをおすすめします（もし\dir{/usr/local/texlive-%
@@ -958,7 +959,7 @@ Options customization:
                 info to:
  <Y> after install, set CTAN as source for package updates: [X]
 \end{boxedverbatim}
-\vskip-\baselineskip
+\vskip-.5\baselineskip
 \caption{Options menu (Unix)}\label{fig:options-text}
 \end{figure}
 
@@ -1015,11 +1016,11 @@ MANPATH}, \code{INFOPATH}に追加する必要があります．ただし，シ�
 -net-updates}節を参照してください．
 \end{description}
 
-Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkインターフェースで利用可能
+Windowsのみで利用可能なオプションも，上級者向けのGUIインターフェースで利用可能
 です：
 %
 \begin{description}
-\item[adjust PATH setting in registry（レジストリのPATH設定を最適化）]
+\item[adjust searchpath（検索パスを調整）]
 このオプションによってすべてのプログラムが確実に検索パス中で\TL のバイナリを見つけ
 られるようにします．
 
@@ -1028,16 +1029,17 @@ Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkイ
 には`TeX Live menu'と`No shortcuts'の他に`Launcher entry'という第三の選択肢も
 あります．このオプションについては\ref{sec:sharedinstall}節で説明します．
 
-\item[change file associations（拡張子の関連付けを変更）]
+\item[file associations（拡張子の関連付け）]
 このオプションでの選択肢は`Only new'（拡張子の関連付けを行うが，既に存在する関連
 付けの上書きは行わない），`All'，`None'の3つです．
 
 \item[install \TeX works front end（統合開発環境\TeX worksをインストール）]
 \end{description}
 
-すべての設定が済みましたら，テキストモードでは`I'をタイプ，Perl/TkのGUIモードでは
-`Install TeX Live'ボタンを押すことによってインストールを実行してください．インストール
-が完了したら（他にすることがなければ）\ref{sec:postinstall}節までスキップしてください．
+すべての設定が済みましたら，テキストモードでは`I'をタイプ，GUIモードでは
+`Install'ボタンを押すことによってインストールを実行してください．インストール
+が完了したら（他にすることがなければ）\ref{sec:postinstall}節までスキップして
+ください．
 
 \subsection{\cmd{install-tl}のコマンドラインオプション}
 \label{sec:cmdline}
@@ -1055,12 +1057,12 @@ Windowsのみで利用可能なオプションも，上級者向けのPerl/Tkイ
 \begin{description}
 \item[\sopt{gui}]
 インストーラを（もし利用可能なら）GUIモードで起動します．GUIモードの実行には
-バージョン8.5以上のTcl/Tkが必要です．これはmacOSではご自身でインストールしていただく
-必要がありますが，Windows用の\TL には同梱されているため特に何もする必要はありません．
-古いオプションである\sopt{gui=perltk}と\sopt{gui=wizard}は現在も利用可能です．
-これらの実行のためにはXFTサポートが有効なPerl/Tkモジュールが必要です (\url{https://%
-tug.org/texlive/distro.html#perltk})．Tcl/TkとPerl/Tkが利用可能でない場合，この
-オプションが指定された場合でもインストーラはテキストモードで続行されます．
+バージョン8.5以上のTcl/Tkが必要です．これはmacOSではご自身でインストールする
+必要がありますが，Windows用の\TL には同梱されているため特に何もする必要は
+ありません．古いオプションである\sopt{gui=perltk}と\sopt{gui=wizard}は現在も
+利用可能ですが，普通のGUIインターフェースを起動します．Tcl/Tkが利用可能でない
+場合，このオプションが指定された場合でもインストーラはテキストモードで続行
+されます．
 
 \item[\sopt{no-gui}]
 インストーラを必ずテキストモードで起動します．
@@ -1107,9 +1109,10 @@ tug.org/texlive/distro.html#perltk})．Tcl/TkとPerl/Tkが利用可能でない�
 よって自動的に選択されるCTANミラーです．
 
 このデフォルトを上書きしたい場合は，使用したいリポジトリを\code{ftp:}, \code{%
-http:}, \code{file:/}のいずれかからはじまるURL，または通常のディレクトリパスに
-よって指定します（\code{http:}または\code{ftp:}から始まるリポジトリ指定を
-行った場合，末尾の`\code{/}'や`\code{/tlpkg}'は無視されます）．
+http:}, \code{https:}, \code{file:/}のいずれかからはじまるURL，または通常の
+ディレクトリパスによって指定します（\code{http:}, \code{https:}, \code{ftp:}から
+始まるリポジトリ指定を行った場合，末尾の`\code{/}'や`\code{/tlpkg}'は無視
+されます）．
 
 例えばCTANの特定のミラーサーバを\url{http://ctan.example.org/tex-archive/%
 systems/texlive/tlnet/}のように指定した場合，実際のホスト名と，そのホストに
@@ -1148,18 +1151,18 @@ Unix系システムではご使用のプラットフォーム向けのバイナ�
 ファイルでも構いません）に次のような行を追加することで環境変数を設定できます：
 %
 \begin{sverbatim}
-PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH; export PATH
-MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH; export MANPATH
-INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH; export INFOPATH
+PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH; export PATH
+MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH; export MANPATH
+INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH; export INFOPATH
 \end{sverbatim}
 %
 cshやtcshの場合は，編集すべきファイルは典型的には\file{$HOME/.cshrc}で，次の
 ような行を追加します：
 %
 \begin{sverbatim}
-setenv PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
-setenv MANPATH /usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
-setenv INFOPATH /usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
+setenv PATH /usr/local/texlive/2021/bin/x86_64-linux:$PATH
+setenv MANPATH /usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH
+setenv INFOPATH /usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH
 \end{sverbatim}
 %
 もちろん，既にいわゆる「ドットファイル」（各種の設定ファイル）に何かしらの設定
@@ -1177,8 +1180,8 @@ setenv INFOPATH /usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 というファイルの存在を確かめて，もし存在していたら次のような内容を追記します：
 %
 \begin{sverbatim}
-MANPATH_MAP /usr/local/texlive/2020/bin/x86_64-linux \
-            /usr/local/texlive/2020/texmf-dist/doc/man
+MANPATH_MAP /usr/local/texlive/2021/bin/x86_64-linux \
+            /usr/local/texlive/2021/texmf-dist/doc/man
 \end{sverbatim}
 %
 第二に各種の検索パスや環境変数のデフォルト値を設定するためのファイル\file{%
@@ -1301,19 +1304,22 @@ TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下�
 
 \subsubsection{サードパーティフォントを利用する}
 
-これは残念ながら泥沼への入り口です．\TeX インストールの深淵に飛び込みたい場合を
-除いては，すべての\TeX 処理系でサードパーティフォントを利用できるようにすること
-は諦めた方が無難です．\TL には数多くのフォントが含まれているので，それらの中に
-適当なものがないか探してみてください（既に適するものがないとわかっている場合は
-仕方ありませんが）．
-
-ただし\XeTeX または\LuaTeX （\ref{sec:tex-extensions}節）であれば\TeX のために
-特別な設定を行わなくてもOSにインストールされたあらゆるフォントを利用することが
-できます．
+残念ながら\TeX と\pdfTeX に関しては，これは泥沼への入り口です．\TeX インストール
+の深淵に飛び込みたい場合を除いては，すべての\TeX 処理系でサードパーティフォント
+を利用できるようにすることは諦めた方が無難です．\TL には数多くのフォントが
+含まれているので，それらの中に適当なものがないか探してみてください．TUGのウェブ
+ページ\url{https://tug.org/FontCatalogue}には主要な\TeX ディストリビューションで
+利用可能なフォントのほとんどすべてが，さまざまな観点から分類されて，一覧になって
+います．
 
 もしどうしてもサードパーティフォントを一般の\TeX 処理系で利用できるように設定を
 行う必要がある場合は，\url{https://tug.org/fonts/fontinstall.html}にその方法に
 ついて（可能な範囲での）解説がありますので，参考にしてください．
+
+また\XeTeX または\LuaTeX （\ref{sec:tex-extensions}節）の利用も検討に値します．
+これらの処理系であれば\TeX のために特別な設定を行わなくてもOSにインストール
+されたあらゆるフォントを利用することができます（ただし，システムフォントを利用
+すると，その文書は他の環境では簡単に作成できなくなる点には注意してください）．
 
 \begin{janote}
 上述の通り，\XeTeX や\LuaTeX を除く古典的な\TeX 処理系でサードパーティフォント
@@ -1356,16 +1362,16 @@ Copyright ... D.E. Knuth.
 %
 もしこれを実行したとき，正しいバージョン情報・コピーライト情報の代わりに`command
 not found'エラーが出たり，古いバージョン情報が表示される場合は，正しい\dir{bin}%
-ディレクトリが\code{PATH}に追加されていない可能性が高いです．そのような場合は\p.%
+ディレクトリが\code{PATH}に追加されていない可能性があります．そのような場合は\p.%
 \pageref{sec:env}にある環境変数設定の情報を確認してください．
 
-\item 基本的な\LaTeX ファイルを処理してみましょう：
+\item 基本的な\LaTeX ファイルを処理して，PDFを生成してみましょう：
 %
 \begin{alltt}
-> latex sample2e.tex
+> pdflatex sample2e.tex
 This is pdfTeX 3.14...
 ...
-Output written on sample2e.dvi (3 pages, 7484 bytes).
+Output written on sample2e.pdf (3 pages, 142120 bytes).
 Transcript written on sample2e.log.
 \end{alltt}
 %
@@ -1375,49 +1381,54 @@ Transcript written on sample2e.log.
 分析したい場合は，\TeX 自身に何を検索し，何を見つけたのか報告させるのが良い
 でしょう．詳細は\ref{sec:debugging}節を参照してください．）
 
-\item 次に処理結果をプレビューしてみましょう：
+\item 処理結果のPDFファイルをプレビューしてみます．例えば次のようにします：
+%
+\begin{alltt}
+> xpdf sample2e.pdf
+\end{alltt}
+%
+すると，新しいウィンドウがポップして\LaTeX の基礎について説明した素敵な文書が
+表示されるはずです（ところで，もし\TeX を使うのが初めてでしたら，その内容も
+一読の価値があります）．
+
+もちろんPDFビューアは他にも色々なものがあります．Unix系システムでは
+\cmd{evince}や\cmd{okular}がよく用いられます．Windows向けのものとしては
+Sumatra PDF (\url{https://www.sumatrapdfreader.org/free-pdf-reader.html})
+をおすすめします．\TL にはPDFビューアは含まれていないので，PDFの閲覧には
+何かしらを必ず別途インストールする必要があります．
+
+\item もちろん，いまでも\TeX の元来の出力フォーマットであるDVIを生成する
+こともできます：
+%
+\begin{alltt}
+> latex sample2e.tex
+\end{alltt}
+
+\item DVIをプレビューするには：
 %
 \begin{alltt}
 > xdvi sample2e.dvi    # Unix
 > dviout sample2e.dvi  # Windows
 \end{alltt}
 %
-すると，新しいウィンドウがポップして\LaTeX の基礎について説明した素敵な文書が
-表示されるはずです（ところで，もし\TeX を使うのが初めてでしたら，その内容も
-一読の価値があります）．なお\cmd{xdvi}コマンドを利用するにはXウィンドウシステム
-が正しく動作している必要があります．正常に動作していない場合や，環境変数\code{%
-DISPLAY}の設定がまずい場合は\samp{Can't open display}エラーが発生します．
+なお\cmd{xdvi}コマンドを利用するにはXウィンドウシステムが正しく動作している
+必要があります．正常に動作していない場合や，環境変数\code{DISPLAY}の設定が
+まずい場合は\samp{Can't open display}エラーが発生します．
 
-\item 続いて\PS ファイルを作成してみましょう：
+\item 続いてDVIから\PS ファイルを作成してみましょう：
 %
 \begin{alltt}
 > dvips sample2e.dvi -o sample2e.ps
 \end{alltt}
 
-\item 今度はDVIファイルの代わりにPDFファイルを作成します．今回は\file{.tex}%
-ファイルから直接PDFを生成してみます：
+\item あるいはDVIからPDFに変換することもできます．これは\pdfTeX （あるいは
+\XeTeX や\LuaTeX）を使わない手段として有用な場合があります（訳注：日本語組版
+では今でもよく用いられる\pTeX 系の処理系はDVIを出力するため，現在も
+\cmd{dvipdfmx}を用いてPDF生成を行う手順は一般的です）．
 %
 \begin{alltt}
-> pdflatex sample2e.tex
+> dvipdfmx sample2e.dvi -o sample2e.pdf
 \end{alltt}
-
-\item 生成したPDFもプレビューしてみましょう：
-%
-\begin{alltt}
-> gv sample2e.pdf
-\end{alltt}
-%
-または
-%
-\begin{alltt}
-> xpdf sample2e.pdf
-\end{alltt}
-%
-\cmd{gv}も\cmd{xpdf}も\TL には含まれていないので，ご自身でインストールする必要
-があります．詳細はそれぞれ\url{https://www.gnu.org/software/gv}と\url{https://%
-www.xpdfreader.com/}を参照してください．PDFビューアは他にもたくさんあります．
-例えばWindowsではSumatra PDF (\url{https://www.sumatrapdfreader.org/free-pdf-%
-reader.html}) をおすすめします．
 
 \item \file{sample2e.tex}以外でテストのために利用できる標準的なファイルを以下に
 示しておきます：
@@ -1482,9 +1493,8 @@ Transcript written on opentype-info.log.
   \item \prog{SciTE}: \url{https://www.scintilla.org/SciTE.html}
   \item \prog{Texmaker}: \url{https://www.xm1math.net/texmaker}
   \item \prog{\TeX studio}: \url{https://texstudio.org/}%
-    （\prog{Texmaker}のフォークプロジェクト）
-  \item \prog{\TeX nicCenter}: \url{http://www.texniccenter.org}%
-    （pro\TeX{}tでは標準添付）
+    （\prog{Texmaker}の拡張プロジェクト．pro\TeX{}tでは標準添付）
+  \item \prog{\TeX nicCenter}: \url{http://www.texniccenter.org}
   \item \prog{\TeX works}: \url{https://tug.org/texworks}%
     （Windows版\TL では標準添付）
   \item \prog{Vim}: \url{https://www.vim.org}
@@ -1541,6 +1551,11 @@ ctan.org/pkg/tlaunch}にアクセスすると閲覧できます）．
 は完全に自己完備のインストールを標準的なルート以下に作成します．これはシステムの
 いかなる環境にも依存しません．このような構成の\TL はUSBメモリに直接インストール
 したり，後からUSBにコピーしたりすることができます．
+
+具体的には，ポータブルインストールでは\code{TEXMFHOME}, \code{TEXMFVAR}, \code{%
+TEXMFCONFIG}のデフォルト値をそれぞれ\code{TEXMFLOCAL}, \code{TEXMFSYSVAR},
+\code{TEXMFSYSCONFIG}と一致するように設定することで，自己完結するようになって
+います．そのため，ユーザごとの設定やキャッシュが作られることはありません．
 
 ポータブルインストールされた\TeX を実行するには，通常通り実行ファイルのある適切な
 ディレクトリを（端末セッションの間）検索パスに追加する必要があります．
@@ -1649,12 +1664,12 @@ running post install action for xetex
 install: xetex-def
 ...
 running mktexlsr
-mktexlsr: Updating /usr/local/texlive/2020/texmf-dist/ls-R...
+mktexlsr: Updating /usr/local/texlive/2021/texmf-dist/ls-R...
 ...
 running fmtutil-sys --missing
 ...
 Transcript written on xelatex.log.
-fmtutil: /usr/local/texlive/2020/texmf-var/web2c/xetex/xelatex.fmt installed.
+fmtutil: /usr/local/texlive/2021/texmf-var/web2c/xetex/xelatex.fmt installed.
 \end{fverbatim}
 
 上の出力からわかるように，\prog{tlmgr}は依存パッケージもインストールし，ファイル名
@@ -1789,8 +1804,9 @@ Windowsではほとんどすべての設定データはレジストリに保存�
 \subsection{パーミッション}
 \label{sec:winpermissions}
 
-最近のバージョンのWindowsでは，管理者のみにOS全体へのアクセス権があり，一般ユーザには
-ありません．\TL は管理者権限がなくてもインストール可能なように工夫されています．
+最近のバージョンのWindowsでは，管理者のみにOSのほぼ全体へのアクセス権があり，一般
+ユーザにはありません．\TL は管理者権限がなくてもインストール可能なように工夫されて
+います．
 
 管理者権限でインストーラが実行されているときは，全ユーザ向けにインストールを行うため
 のオプションが利用可能です．このオプションを選択した場合，全ユーザ向けにショートカット
@@ -1804,12 +1820,12 @@ Windowsではほとんどすべての設定データはレジストリに保存�
 
 検索パスに\TeX が存在する状態で，一般ユーザとして\TL のインストールを実行しようとする
 と問題が発生します．システムの検索パスはユーザの検索パスよりも優先されるので，この
-状況で\TL をインストールしても優先的に利用されることはありません．安全策として，
-インストーラは新しくインストールされた\TL バイナリのディレクトリがローカル検索パスの
-先頭にくるようコマンドプロンプトにショートカットを作成します．そのため，この安全策が
-有効なコマンドプロンプトからは常に新しい\TL が利用可能です．\TeX worksがインストール
-されている場合，その検索パスについても\TL が先頭にくるよう設定されるため，同様に検索
-パスの問題は回避されるはずです．
+状況で\TL をインストールしても優先的に利用されることはありません．フォールバック
+として，インストーラは新しくインストールされた\TL バイナリのディレクトリがローカル
+検索パスの先頭にくるようコマンドプロンプトにショートカットを作成します．そのため，
+このフォールバックが有効なコマンドプロンプトからは常に新しい\TL が利用可能です．
+\TeX worksがインストールされている場合，その検索パスについても\TL が先頭にくるよう
+設定されるため，同様に検索パスの問題は回避されるはずです．
 
 Windowsでは管理者アカウントにログインしていても，明示的に管理者権限としての実行を指示
 する必要があることに注意してください．実際のところ，管理者アカウントにログインする
@@ -1966,9 +1982,9 @@ sec:filename-database}節）が$p$について用意されているかを調べ�
 この変数の内容を変更したりシステムディレクトリを上書きするように環境変数の値を
 設定することは推奨されません．
 
-代わりに，通常のインストールを行うと\file{.../2020/texmf.cnf}が生成されます．
+代わりに，通常のインストールを行うと\file{.../2021/texmf.cnf}が生成されます．
 どうしてもデフォルト設定を変更する必要が生じた場合は（通常は必要ありません），この
-ファイルに変更を加えてください．メインの設定ファイルは\file{.../2020/texmf-dist/%
+ファイルに変更を加えてください．メインの設定ファイルは\file{.../2021/texmf-dist/%
 web2c/texmf.cnf}です．このファイルを変更してもディストリビューション側でアップデート
 があると変更内容が失われてしまうため，ユーザはこのファイルを編集すべきではありません．
 
@@ -2540,10 +2556,7 @@ kdebug:search(cmr10.pfb) => /usr/local/texmf/fonts/type1/public/cm/cmr10.pfb
 ファイルの合計サイズと概ね一致します．
 
 \item[\var{hash\_extra}]
-制御綴を格納するハッシュテーブルのための追加領域．デフォルトでは，わずか10,000個
-程度の制御綴しかメインのハッシュテーブルに格納することができません．これでは多く
-の相互参照を含む大きな本の組版には不十分でしょう．\var{hash\_extra}のデフォルト値
-は\code{50000}です．
+制御綴を格納するハッシュテーブルのための追加領域．デフォルト値は\code{600000}です．
 \end{description}
 %
 こうしたパラメタの存在は動的な配列・メモリ確保の完全な代替となるものではありません．
@@ -2583,9 +2596,8 @@ TEXINPUTS=$TEXMFDOTDIR;$TEXMF/tex//
 
 また別のケースでは，カレントディレクトリを一切検索したくないという場合も
 考えられます．それは例えば，すべてのファイルを明示的なパスで記述している
-ような状況で起こり得ます．そのような場合，\var{TEXMFDOTDIR}の値は
-\code{/nonesuch}やその他任意の存在しないディレクトリに設定しておくと
-よいでしょう．
+ような状況で起こり得ます．そのような場合，\var{TEXMFDOTDIR}の値は\code{%
+/nonesuch}や任意の存在しないディレクトリに設定しておくとよいでしょう．
 
 \code{\$TEXMFDOTDIR}のデフォルト値は，\TL の\file{texmf.cnf}に定義されて
 いるように単に\samp{.}です．
@@ -2633,12 +2645,14 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
   に対して多くの貢献をしてくれました．
 \item Pawe{\l} Jackowski．Windows用インストーラ\cmd{tlpm}，Tomasz {\L}uczak氏は\cmd
   {tlpmgui}を開発してくれました．これらのプログラムは過去の\TL で使用されていました．
-\item 角藤亮．日本語\TeX 用のW32\TeX ディストリビューション (\url{http://w32tex.org})
-  のためにWindowsバイナリを提供し，さらに開発に関わる数々の貢献をしてくれました．
+\item 角藤亮．日本語\TeX 用のW32\TeX, W64\TeX ディストリビューション (\url{%
+  http://w32tex.org}) のためにWindowsバイナリを提供し，さらに開発に関わる数々の貢献を
+  してくれました．
 \item Jonathan Kew．優れた\TeX エンジンである\XeTeX を開発し，時間と労力を割いてその
   処理系を\TL に導入してくれました．彼はさらに初期バージョンの\MacTeX を開発し，我々の
   おすすめするフロントエンドである\TeX worksも開発しました．
-\item 北川弘典．\pTeX と関連する多くのサポートを担ってくれました．
+\item 北川弘典．($\varepsilon$-)\pTeX のメンテナンスと関連する多くのサポートを担って
+  くれました．
 \item Dick Koch．\TL チームと友好的かつ緊密に連携しながらMac{\TeX} (\url{https://tug.%
   org/mactex}) のメンテナンスを行ってくれています．
 \item Reinhard Kotucha．{\TL} 2008のインフラとインストーラに対する主要な貢献者で，
@@ -2667,7 +2681,10 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Sebastian Rahtz．\TL の創始者で，長年そのメンテナンスを行っていました．
   彼は2016年3月に亡くなりましたが，私たちは彼のことを忘れません．
 \item Luigi Scarso．\MP, \LuaTeX その他のプログラムを継続的に開発してくれています．
-\item Andreas Scherer．\TL で用いているCWEB実装である\code{cwebbin}の開発．
+\item Andreas Scherer．\TL で用いているCWEB実装である\code{cwebbin}の開発および
+  オリジナルCWEBの継続的なメンテナンスを行ってくれました．
+\item 田中琢爾．($\varepsilon$-)(u)\pTeX のメンテナンスと関連する多くのサポートを
+  担ってくれました．
 \item Tomasz Trzeciak．Windowsについて広範な協力をしてくれました．
 \item Vladimir Volovich．さまざまなプログラムの\TL への組み込みとメンテナンスの
   ために多くの手伝いをしてくれました．特に\cmd{xindy}の組み込みが実現したのは彼の
@@ -2690,20 +2707,23 @@ Ken Brown (\pkg{i386-cygwin}, \pkg{x86\_64-cygwin}),
 Simon Dales (\pkg{armhf-linux}),
 Johannes Hielscher (\pkg{aarch64-linux}),
 角藤亮 (\pkg{win32}),
-Dick Koch (\pkg{x86\_64-darwin}),
-Nikola Le\v{c}i\'c (\pkg{amd64-freebsd}, \pkg{i386-freebsd}),
-Henri Menke (\pkg{x86\_64-linuxmusl}),
-Mojca Miklavec (\pkg{i386-linux},
+Dick Koch (\pkg{universal-darwin}),
+Mojca Miklavec (\pkg{amd64-freebsd},
+                \pkg{i386-freebsd}
+                \pkg{i386-linux},
                 \pkg{x86\_64-darwinlegacy},
                 \pkg{i386-solaris}, \pkg{x86\_64-solaris},
                 \pkg{sparc-solaris}),
-Norbert Preining (\pkg{x86\_64-linux})．
+Norbert Preining (\pkg{i386-linux},
+                  \pkg{x86\_64-linux},
+                  \pkg{x86\_64-linuxmusl})．
 %
 \TL のビルドプロセスについては\url{https://tug.org/texlive/build.html}を参照して
 ください．
 
 このマニュアルの翻訳者：
 %
+朝倉卓人（日本語），
 Denis Bitouz\'e，Patrick Bideault（フランス語），
 Carlos Enriquez Figueras（スペイン語），
 Jjgod Jiang，Jinsong Zhao，Yue Wang，Helin Gai（中国語），
@@ -3644,8 +3664,7 @@ Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降
 
 プラットフォーム：\pkg{sparc-solaris}は削除されました．
 
-\subsection{現在：2020}
-\label{sec:tlcurrent}
+\subsection{2020}
 
 全般：
 %
@@ -3716,6 +3735,9 @@ macOS 10.6以上をサポートします．Apple社の要請に基づき，\MacT
 \item \code{catalogue-date}情報は，パッケージアップデートには関係がないことが
   多いため，\TeX カタログには伝達されないことになりました．
 \end{itemize*}
+
+\subsection{現在：2021}
+\label{sec:tlcurrent}
 
 \subsection{未来}
 
