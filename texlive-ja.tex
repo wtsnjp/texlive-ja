@@ -105,7 +105,7 @@ DVDインストーラはあなたのローカルディスクに\TL をインス�
 後ほど詳述しますが (\p.\pageref{sec:install})，ここでは「クイックスタート」
 として簡単に説明します：
 
-\begin{itemize*}
+\begin{itemize}
 \item Unix系ではインストールスクリプトは\cmd{install-tl}です．Windowsでは
 代わりに\cmd{install-tl-windows}を実行する必要があります．このプログラムに
 \sopt{gui}オプションを与えると「GUIモード」（WindowsとmacOSでデフォルト），
@@ -116,7 +116,7 @@ DVDインストーラはあなたのローカルディスクに\TL をインス�
 インストーラと同様，このプログラムにもGUIモードとテキストモードがあります．\TL
 マネージャを用いてパッケージのインストールやアンインストール，その他さまざまな設定
 タスクを実行することができます．
-\end{itemize*}
+\end{itemize}
 
 \subsection{セキュリティについて}
 \label{sec:security}
@@ -310,7 +310,7 @@ CTANおよび\pkg{protext}は\TL と同じライセンスで配布されてい�
 この\TL ガイド自体は\dir{texmf-dist/doc/texlive}以下にあり，多数の言語に翻訳
 されています：
 %
-\begin{itemize*}
+\begin{itemize}
 \item チェコ・スロバキア語：\dir{texmf-dist/doc/texlive/texlive-cz}
 \item ドイツ語\dir{texmf-dist/doc/texlive/texlive-de}
 \item 英語：\dir{texmf-dist/doc/texlive/texlive-en}
@@ -321,7 +321,7 @@ CTANおよび\pkg{protext}は\TL と同じライセンスで配布されてい�
 \item ロシア語：\dir{texmf-dist/doc/texlive/texlive-ru}
 \item セルビア語：\dir{texmf-dist/doc/texlive/texlive-sr}
 \item 簡体字中国語：\dir{texmf-dist/doc/texlive/texlive-zh-cn}
-\end{itemize*}
+\end{itemize}
 
 \subsection{いろいろなTEXMFツリー（概要）}
 \label{sec:texmftrees}
@@ -755,12 +755,12 @@ Cygwinでは，\TL のインストールを始める前に\file{setup.exe}プロ
 （もし未導入の場合は）\prog{perl}と\prog{wget}をインストールするようにしてくだ
 さい．また以下のパッケージも予めインストールしておくことをおすすめします：
 %
-\begin{itemize*}
+\begin{itemize}
 \item \prog{fontconfig}（\XeTeX と\LuaTeX のため）
 \item \prog{ghostscript}（多くの\TeX エンジンのため）
 \item \prog{libXaw7}（\prog{xdvi}のため）
 \item \prog{ncurses}（インストーラの\code{clear}コマンドの実行に必要）
-\end{itemize*}
+\end{itemize}
 
 \subsubsection{テキストモード}
 
@@ -1228,11 +1228,11 @@ conf/texlive-fontconfig.conf}に作成されます．\TL フォントをシス�
 ようにするためには，次の手順を実行します（そのために必要な権限は持っているものと
 します）：
 %
-\begin{enumerate*}
+\begin{enumerate}[nosep]
 \item \file{texlive-fontconfig.conf}を\dir{/etc/fonts/conf.d/09-texlive.conf}に
   コピーする．
 \item \code{fc-cache -fsv}を実行する．
-\end{enumerate*}
+\end{enumerate}
 
 \cmd{fc-list}を実行するとシステムにあるフォントの一覧を確認することができます．
 また\code{fc-list : family style file spacing}（タイプミスに注意してください）
@@ -1485,7 +1485,7 @@ Transcript written on opentype-info.log.
 \item[\TeX 向きのエディタ] テキストエディタの選択肢はかなり多岐にわたり，その
   選択は完全に各自の好みによります．ここでは主なものをアルファベット順に紹介
   しておきます（一部はWindows専用です）．
-  \begin{itemize*}
+  \begin{itemize}
   \item \prog{GNU Emacs}: \url{https://www.gnu.org/software/emacs/emacs.html}%
     （Windowsでも利用可）
   \item \prog{Emacs Auc\TeX}: \url{https://www.gnu.org/software/auctex}%
@@ -1501,7 +1501,7 @@ Transcript written on opentype-info.log.
   \item \prog{WinEdt}: \url{https://tug.org/winedt}, \url{http://www.winedt.com}%
     （シェアウェア）
   \item \prog{WinShell}: \url{https://www.winshell.de}
-  \end{itemize*}
+  \end{itemize}
 \end{description}
 
 \section{特殊なインストール}
@@ -1595,13 +1595,13 @@ Windowsでは，ポータブルインストールのルートにある\cmd{tl-tr
 \TL にはインストール後の\TL 管理のために\prog{tlmgr}というプログラムが同梱されて
 います．その主な機能は：
 %
-\begin{itemize*}
+\begin{itemize}
 \item 個別パッケージのインストール，アップデート，バックアップ，アンインストール
   （依存関係管理も可）
 \item パッケージの検索と詳細の表示
 \item プラットフォームの表示，追加，削除
 \item インストールオプションの変更（デフォルトの用紙サイズやソースの場所）
-\end{itemize*}
+\end{itemize}
 
 \prog{texconfig}の機能はすべて\prog{tlmgr}にも備わっています．\TL チームは\prog{%
 texconfig}の操作に慣れている方々のために依然としてその配布およびメンテナンスを継続
@@ -2006,7 +2006,7 @@ web2c/texmf.cnf}です．このファイルを変更してもディストリビ�
 されます．例えば，検索パス\code{.:\$TEXMF}の下で，\file{./texmf.cnf}は\file{$TEXMF/%
 texmf.cnf}の内容を上書きします．
 
-\begin{itemize*}
+\begin{itemize}
 \item \code{\%}はコメント開始文字で，行頭に置くとその行の末尾までコメントとして
   扱われます．\code{\%}の前に空白文字があっても同様です．
 \item 空行は無視されます．
@@ -2040,7 +2040,7 @@ texmf.cnf}の内容を上書きします．
   として，そのようなことをしたい場合には新しい変数を追加してください．
 \item すべての定義は展開される前に読み込まれるので，定義前の変数も右辺に含めることが
   可能です．
-\end{itemize*}
+\end{itemize}
 %
 上記の仕様のほとんどを活用した設定ファイルの例を示しておきます：
 %
@@ -2608,7 +2608,7 @@ TEXINPUTS=$TEXMFDOTDIR;$TEXMF/tex//
 Berryです．過去から現在に至るまでの，その他の主要な貢献者は以下の通りです
 （敬称略）：
 %
-\begin{itemize*}
+\begin{itemize}
 \item 英語圏，ドイツ，オランダ，ポーランドの\TeX ユーザ会（それぞれTUG, DANTE e.V.,
   NTG, GUST）．技術的・経営的なインフラの提供してくれました．ぜひお近くの\TeX ユーザ
   会に加入してください！（\url{https://tug.org/usergroups.html}を参照）
@@ -2698,7 +2698,7 @@ Berryです．過去から現在に至るまでの，その他の主要な貢献
 \item Joseph Wright．各種エンジンで同じプリミティブを使用できるようにするため多くの
   貢献をしてくれました．
 \item 山下弘展．\pTeX と関連する多くのサポートを担ってくれました．
-\end{itemize*}
+\end{itemize}
 
 バイナリのビルド担当者：
 %
@@ -2800,7 +2800,7 @@ dat}も用意されるようになりました．
 異なるディストリビューションに分離しました（\ref{sec:tl-coll-dists}節 (\p.%
 \pageref{sec:tl-coll-dists}) を参照）．その他の変更点：
 %
-\begin{itemize*}
+\begin{itemize}
 \item \LaTeX チームからのリクエストを受けて，標準設定における\cmd{latex},
   \cmd{pdflatex}コマンドが\eTeX エンジンを使用するように変更
   （\p.\pageref{text:etex}参照）
@@ -2827,7 +2827,7 @@ dat}も用意されるようになりました．
 \item このドキュメントを全面的に改訂しました．
 \item 最後に，バージョン番号が大きくなってきたので，今後は単にリリース年で
   表すことにしました．すなわち今回のバージョンは{\TL} 2003となります．
-\end{itemize*}
+\end{itemize}
 
 \subsubsection{2004}
 
@@ -2891,7 +2891,7 @@ PDF出力が行われているかどうかを判定できなくなったから�
 
 \item {\pdfTeX} (\url{https://tug.org/applications/pdftex/}) には多くの新機能が
 追加されました：
-\begin{itemize*}
+\begin{itemize}
 \item \cs{pdfmapfile}と\cs{pdfmapline}がドキュメント内からのフォントマップ
 アクセスをサポートします．
 \item Microtypographicフォント展開がより簡単に利用できるようになりました．\\
@@ -2903,7 +2903,7 @@ pdftexconfig.tex}が変更された場合，すべての\file{.fmt}ファイル�
 があります．
 \item その他の更新点については\pdfTeX のマニュアルを参照してください：
 \file{texmf-dist/doc/pdftex/manual/pdftex-a.pdf}
-\end{itemize*}
+\end{itemize}
 
 \item \prog{tex}（および\prog{mf}と\prog{mpost}）の\cs{input}プリミティブが
 ダブルクオートで囲うことによって空白やその他の特殊文字を含む入力を受け付ける
@@ -3140,14 +3140,14 @@ dvipdfm}の最後のリリースから何年にも渡って蓄積された数多
 
 その他の雑多な変更：
 %
-\begin{itemize*}
+\begin{itemize}[nosep]
 \item \pkg{lzma}の安定した代替として\pkg{xz}圧縮 (\url{https://tukaani.org/%
   xz/})を採用しました．
 \item 後続の文字列が定義済みの変数と一致しない限り\samp{\$}をファイル名に使用
   できるようになりました．
 \item \KPS ライブラリがマルチスレッド化されました（\MP で使用されています）．
 \item \TL 全体のビルドがAutomakeベースになりました．
-\end{itemize*}
+\end{itemize}
 
 最後に過去のバージョンに関することについて告知します．\TL のすべてのリリース
 は\url{ftp://tug.org/historic/systems/texlive}から入手できます（CDラベル等
@@ -3197,14 +3197,14 @@ escape} 0}を実行して設定を上書きしてください．
 
 新規に追加されたプログラム：
 %
-\begin{itemize*}
+\begin{itemize}[nosep]
 \item \pTeX エンジンと関連する日本語組版のためのユーティリティ
 \item {\BibTeX}U: Unicodeサポートが有効な\BibTeX
 \item \prog{chktex}: \LaTeXTeX 文書をチェックするツール
   （元々\url{http://baruch.ev-en.org/proj/chktex}から提供されていたもの）
 \item \prog{dvisvgm}: DVIをSVGに変換するツール
   (\url{https://dvisvgm.de})
-\end{itemize*}
+\end{itemize}
 
 新しいプラットフォーム向けの実行バイナリも追加されました：
 \pkg{amd64-freebsd}, \pkg{amd64-kfreebsd}, \pkg{i386-freebsd},
@@ -3293,7 +3293,7 @@ DIST}は今後ともに\dir{texmf-dist}を参照することになります．
 
 \XeTeX （ウェブサイトにさらに多くの情報があります）：
 %
-\begin{itemize*}
+\begin{itemize}[nosep]
 \item フォントレイアウトにICUに代わってHarfBuzzライブラリを使用するようになり
   ました（ICUも入力エンコーディング，双方向組版，オプショナルなUnicode改行を
   サポートするために依然として利用されてはいます）．
@@ -3305,7 +3305,7 @@ DIST}は今後ともに\dir{texmf-dist}を参照することになります．
 \item 稀に\XeTeX と\prog{xdvipdfmx}でフォント検索の挙動に違いが生じる問題を
   修正しました．
 \item OpenTypeのmath cut-insをサポートしました．
-\end{itemize*}
+\end{itemize}
 
 \prog{xdvi}: レンダリングに\prog{t1lib}に代わってFreeTypeを使用するように
 なりました．
@@ -3463,7 +3463,7 @@ pdfinfoomitdate}, \cs{pdftrailerid}, \cs{pdfsuppressptexinfo}が追加されま�
 
 その他のユーティリティ：
 %
-\begin{itemize*}
+\begin{itemize}[nosep]
 \item \cmd{gregorio}はグレゴリオ聖歌楽譜を組版するためのパッケージ\pkg{%
   gregoriotex}に含まれる新しいプログラムです．このツールは\var{shell\_escape%
   \_commands}にデフォルトで含まれています．
@@ -3472,7 +3472,7 @@ pdfinfoomitdate}, \cs{pdftrailerid}, \cs{pdfsuppressptexinfo}が追加されま�
 \item \cmd{afm2tfm}はアクセントベースの高さ調整を上向きのみに行うようになり
   ました．\sopt{a}を使用するとすべての調整を省略します．
 \item \cmd{ps2pk}が拡張PK/GFフォントを扱えるようになりました．
-\end{itemize*}
+\end{itemize}
 
 \MacTeX: システム環境設定の``\TeX\ Distribution''ペインが廃止され，そこで
 取り扱われていた機能は\TL ユーティリティに移されました．同梱のGUIアプリケー
@@ -3594,7 +3594,7 @@ UTF-8やプリミティブ周りのさまざまな不具合が修正されまし
 
 プラットフォーム：
 %
-\begin{itemize*}
+\begin{itemize}[nosep]
 \item \pkg{armel-linux}と\pkg{powerpc-linux}は削除されました．
 \item \pkg{x86\_64-darwin}のサポート対象はmacOS 10.10--10.13 (Yosemite, El~%
   Capitan, Sierra, High~Sierra) になりました．
@@ -3603,7 +3603,7 @@ UTF-8やプリミティブ周りのさまざまな不具合が修正されまし
   i386-darwin}が削除されたことによって，10.5 (Leopard) のサポートは完全的に
   終了しました．
 \item Windows XPはもはやサポートされません．
-\end{itemize*}
+\end{itemize}
 
 \subsubsection{2019}
 
@@ -3648,14 +3648,14 @@ omitcharset}が\code{1}に設定されている場合，\code{/CharSet}はPDF出
 
 ユーティリティ：
 %
-\begin{itemize*}
+\begin{itemize}[nosep]
 \item \cmd{cwebbin} (\url{https://ctan.org/pkg/cwebbin}) が\TL における
   CWEB実装となりました．この実装ではより多くの言語がサポートされ，簡易な
   索引を作成する\cmd{ctwill}プログラムが追加されています．
 \item \cmd{chkdvifont}: DVIファイルやtfm/ofm, vf, gf, pkからフォント情報
   を抽出して報告します．
 \item \cmd{dvispc}: スペシャルを考慮して，DVIをページ独立にします．
-\end{itemize*}
+\end{itemize}
 
 \MacTeX: \pkg{x86\_64-darwin}のサポート対象は10.12以上 (Sierra, High~Sierra,
 Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降をサポート
@@ -3668,7 +3668,7 @@ Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降
 
 全般：
 %
-\begin{itemize}
+\begin{itemize}[nosep]
 \item すべての\TeX エンジン（\cmd{tex}を含む）の\cs{input}プリミティブが，
   システム依存の拡張としてファイル名をグループ区切りの引数として受け取れる
   ようになりました．標準的なスペーストークン区切りのファイル名に関する
@@ -3678,15 +3678,12 @@ Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降
   その他の変更が引数に対してトークン化後に行われることはありません．この変更は
   今のところ\LaTeX の\cs{input}コマンドには影響を与えません．このコマンドは
   標準の\cs{input}プリミティブを再定義したマクロだからです．
-%
 \item 新しいオプション\lopt{cnf-line}が\cmd{kpsewhich}, \cmd{tex}, \cmd{mf}と
   その他すべてのエンジンで利用可能になりました．このオプションは任意の
   texmf設定項目をコマンドラインで指定するためのものです．
-%
 \item ここ数年でさまざまなプリミティブが各種エンジンに追加されたのは，すべての
   処理系で共通の機能を利用可能にするためです．
   (cf.\,\textsl{\LaTeX\ News \#31}, \url{https://latex-project.org/news})
-
 \end{itemize}
 
 \epTeX, \eupTeX: 新しいプリミティブ\cs{Uchar}, \cs{Ucharcat},
@@ -3705,7 +3702,7 @@ PDF出力のバージョン番号を変更するもので，PDFの内容その�
 方法で画像ファイルを検索するようになりました．
 
 \pTeX: 新プリミティブ\cs{ifjfont}, \cs{iftfont}が追加されました．\epTeX,
-\upTeX, \eupTeX についても同様です．
+\upTeX, \eupTeX も同様です．
 
 \XeTeX: \cs{Umathchardef}, \cs{XeTeXinterchartoks}, \cs{pdfsavepos}の
 挙動が修正されました．
@@ -3723,7 +3720,7 @@ macOS 10.6以上をサポートします．Apple社の要請に基づき，\MacT
 
 \cmd{tlmgr}とインフラ：
 %
-\begin{itemize*}
+\begin{itemize}[nosep]
 \item ダウンロード失敗時に（一度だけ）自動的に再試行するようになりました．
 \item 新オプション\code{tlmgr check texmfdbs}が追加されました．これにより
   \file{ls-R}ファイルと各ツリーにおける\code{!!}指定の整合性を確認する
@@ -3734,20 +3731,141 @@ macOS 10.6以上をサポートします．Apple社の要請に基づき，\MacT
   大きな変更点です．
 \item \code{catalogue-date}情報は，パッケージアップデートには関係がないことが
   多いため，\TeX カタログには伝達されないことになりました．
-\end{itemize*}
+\end{itemize}
 
 \subsection{現在：2021}
 \label{sec:tlcurrent}
 
+全般：
+%
+\begin{itemize}[nosep]
+\item Donald Knuthによる{\TeX\slash\MF} Tuneup 2021の変更内容を取り込み
+  ました (\url{https://tug.org/TUGboat/tb42-1/tb130knuth-tuneup21.pdf})．
+  こうしたコードは\code{knuth-dist}および\code{knuth-local}パッケージとして
+  CTANから入手することもできます．大方の予想通り，このTuneupによる修正は
+  極めて特殊なケースに対するもので，実用的な挙動に関しては何ら影響は
+  ありません．
+\item オリジナルの\TeX 以外：\cs{tracinglostchars}が3以上に設定されている
+  場合，存在しない文字が入力された際は単にメッセージをログファイルに出力
+  するだけではなく，エラーを起こすようになりました．また当該文字コードは
+  16進数で表示されます．
+\item オリジナルの\TeX 以外：新しい整数パラメタ\cs{tracingstacklevels}が
+  導入されました．その値が正かつ，\cs{tracingmacros}の値も正の場合，
+  関連するログ出力でマクロ展開の深さを示すプレフィックスが付くように
+  なります（例えば，深さ2のときは\verb|~..|）．また，マクロ展開の
+  トレースはこのパラメタで指定された数値以上に深いものについては
+  切り捨てられます．
+\end{itemize}
+
+{\ALEPH} (Aleph): \ALEPH 上の\LaTeX フォーマットである\prog{lamed}は
+\TL から除かれました．\code{aleph}バイナリそのものは\TL に残り，また
+サポートも続きます．
+
+% Note: 第3項目の訳は怪しい
+\LuaTeX:
+%
+\begin{itemize}[nosep]
+\item Luaインタプリタのバージョンが5.3.6になりました．
+\item 新しい\cs{tracingstacklevels}の一般化として，\cs{tracingmacros}%
+  で用いられるネストレベルへのコールバックが追加されました．
+\item 数式グリフはテキストとして処理されないようにマークされました．
+\item 伝統的な数式コードパスのためにwidth/id補正をやめました．
+\end{itemize}
+
+% Note: 第2項目の訳が怪しい
+\MP:
+%
+\begin{itemize}[nosep]
+\item 再現可能な出力を行うため，環境変数\var{SOURCE\_DATE\_EPOCH}が
+  サポートされました．
+\item \code{mpto}で誤った末尾\code{\%}は禁止されました．
+\item \sopt{T}オプションをドキュメント化したほか，マニュアルに細かい
+  修正を行いました．
+\item \verb|mp_solve_rising_cubic|が期待通り動作するように，
+  \code{epsilon}の値が2進モードか10進モードかで変化するように
+  なりました．
+\end{itemize}
+
+\pdfTeX:
+%
+\begin{itemize}[nosep]
+\item 新プリミティブ\cs{pdfrunninglinkoff}, \cs{pdfrunninglinkon}を
+  導入しました．これらは例えばヘッダーやフッターでリンクが生成される
+  のを防止するのに使うことができます．
+\item \cs{pdfendlink}が\cs{pdfstartlink}と異なるネストレベルで現れた
+  場合に，停止する代わりに警告を発するようになりました．
+\item \cs{pdfglyphtounicode}の代入結果を\code{fmt}ファイルにダンプ
+  するようになりました．
+\item ソース：upstreamへの追随が困難なので，\code{poppler}サポート
+  は除去されました．\TL では，\pdfTeX は常に\code{libs/xpdf}（調整
+  された\cmd{xpdf}の内部ライブラリ）が使われてきました．
+\end{itemize}
+
+\XeTeX: 数式カーニングに関する修正をしました．
+
+DVIPDFM$x$:
+%
+\begin{itemize}[nosep]
+\item 画像ファイルが見つからなかった場合，失敗ステータスで終了します．
+\item カラーサポートのためにspecial書式を拡張しました．
+\item \code{ExtGState}を操作するためのspecialを追加しました．
+\item \code{pdfcolorstack}, \code{pdffontattr}と互換のspecialを
+  追加しました．
+\item \code{dviluatex}の拡張\verb|fnt_def|を試験的にサポートしました．
+\item 仮想フォントに関する新機能として日本語フォント定義のフォール
+  バックを実装しました．
+\end{itemize}
+
+Dvips:
+%
+\begin{itemize}[nosep]
+\item デフォルトのPostScript文書のタイトルは入力ファイルのベースネーム
+  になりました．またこの設定は新オプション\sopt{title}でも上書きする
+  ことができます．
+\item EPSやその他の画像ファイルが見つからない場合，失敗ステータスで
+  終了します．
+\item 仮想フォントに関する新機能として日本語フォント定義のフォール
+  バックを実装しました．
+\end{itemize}
+
+\MacTeX: \MacTeX とその新しいバイナリフォルダ\pkg{universal-darwin}は
+macOS 10.14以上 (Mojave, Catalina, Big~Sur) を要求するようになりました．
+\pkg{x86\_64-darwin}バイナリフォルダは廃止されました．\pkg{x86\_64-%
+darwinlegacy}はUnix版の\cmd{install-tl}でのみ利用可能で，macOS 10.6以上
+をサポートしています．
+
+今年はMacにとっては重要な年です．というのも，Appleが新しいARMマシンを
+11月に発表し，今後何年もARMとIntelの販売・サポートを行うとしたからです．
+\pkg{universal-darwin}にあるすべてのプログラムはARMとIntelの両方に
+対応した実行ファイルを持っています．いずれのバイナリも同じソースから
+コンパイルされています．
+
+\MacTeX の追加プログラムであるGhostscript, LaTeXiT, {\TL} Utility,
+{\TeX}Shopもすべて両方のアーキテクチャに対応しており，また署名済みの
+hardened runtimeを持っています．
+
+\cmd{tlmgr}とインフラ：
+%
+\begin{itemize}[nosep]
+\item メインリポジトリの\file{texlive.tlpdb}バックアップを1つに
+  限定しました．
+\item システム・Perlバージョン依存性をさらに軽減しました．
+\item \cmd{tlmgr info}が新しいエントリ\code{lcat-*}と\code{rcat-*}%
+  （それぞれローカル・リモートカタログに対応）を表示するように
+  なりました．
+\item サブコマンドの完全なログは\file{texmf-var/web2c/tlmgr-%
+  commands.log}に移動しました．
+\end{itemize}
+
 \subsection{未来}
 
-\TL は完璧ではなく，これからも成長し続けます．私たちはこれからも新しい
-バージョンのリリースを続けるつもりで，より多くのドキュメントとプログラム
-を提供し，これまで以上に良質で品質の保証されたマクロ，フォント，その他\TeX
-に関連するあらゆる成果物を含むツリーを作っていくつもりです．こうした仕事は
-すべてボランティアが余暇を使用して行っており，そのために常にやるべきことが
-残っています．ぜひ\url{https://tug.org/texlive/contribute.html}を読んで，
-コントリビューションを検討してください．
+私たちはこれからも新しいバージョンのリリースを続けるつもりで，より多くの
+ドキュメントとプログラムを提供し，これまで以上に良質で品質の保証された
+マクロ，フォント，その他\TeX に関連するあらゆる成果物を含むツリーを作って
+いくつもりです．こうした仕事はすべてボランティアが余暇を使用して行って
+おり，そのために常にやるべきことが残っています．ぜひ\url{%
+https://tug.org/texlive/contribute.html}を読んで，コントリビューションを
+検討してください．
 
 間違いの指摘や提案，ヘルプの要望は以下に送ってください（英語）：
 %

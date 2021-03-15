@@ -6,6 +6,7 @@
 
 % ------------------------------------------------------------- Packages
 
+\RequirePackage[T1]{fontenc}
 \RequirePackage{alltt}
 \RequirePackage{array}
 \RequirePackage{colortbl}
@@ -13,14 +14,14 @@
 \RequirePackage{float}
 \RequirePackage{graphicx}
 \RequirePackage{longtable}
+\RequirePackage{enumitem}
 \RequirePackage[normalem]{ulem}
 \RequirePackage[obeyspaces]{url}
 \RequirePackage{textcomp}% including \textbullet
 \RequirePackage{fancyvrb}
-\RequirePackage{bxghost}
+\RequirePackage[verb]{bxghost}
 \RequirePackage{pxrubrica}
 \RequirePackage{hyperref}
-\RequirePackage{pxjahyper}
 
 % ------------------------------------------------------------- LaTeX style
 
@@ -49,7 +50,7 @@
 \renewcommand*{\slash}{/\penalty\z@\hskip\z@skip }
 
 % various sorts of names
-\newcommand*{\pkg}[1]{\eghostguarded{\textsf{#1}}}
+\newcommand*{\pkg}[1]{\eghostguarded{{\chardef\_=`\_\textsf{#1}}}}
 \newcommand*{\prog}[1]{\eghostguarded{\textsf{#1}}}
 \newcommand*{\dir}[1]{\path{#1}}% \eghostguarded is unnecessary for \path
 \newcommand*{\file}[1]{\path{#1}}
@@ -155,19 +156,6 @@
 \newcommand*\cmddescriptionlabel[1]{%
   %\hspace\labelsep
   \normalfont\sffamily #1\hfil}
-
-% General squeezed itemize/enumerate.
-\newenvironment{itemize*}%
-  {\begin{itemize}%
-    \setlength{\itemsep}{0pt}%
-    \setlength{\parskip}{0pt}}%
-  {\end{itemize}}
-
-\newenvironment{enumerate*}%
-  {\begin{enumerate}%
-    \setlength{\itemsep}{0pt}%
-    \setlength{\parskip}{0pt}}%
-  {\end{enumerate}}
 
 \newsavebox{\wbox}
 \newenvironment{warningbox}
