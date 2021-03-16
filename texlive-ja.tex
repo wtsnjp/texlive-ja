@@ -161,7 +161,7 @@ chroot}を利用したりしてください．
 ご利用ください．\url{https://tug.org/interest.html#vendors}には\TeX に関連する
 商用サービスを提供する団体の一覧があります）．
 
-以下に\TeX 関連の情報源をリストアップにしておきます．順番は概ねおすすめ順です：
+以下に\TeX 関連の情報源をリストアップしておきます．順番は概ねおすすめ順です：
 %
 \begin{description}
 \item[はじめての方へ]
@@ -188,7 +188,7 @@ org/})．\TeX について質問がある場合は，まずここをチェック
 \item[サポート・アーカイブ]
 \LaTeX コミュニティ\url{https://latex.org/forum/}やQ\&Aサイト\url{https://tex.%
 stackexchange.com}，Usenetニュースグループ\url{news:comp.text.tex}，メーリング
-リスト\email{texhax@tug.org}などは\TeX コミュニティの擁する主なサポートフォーラム
+リスト\email{texhax@tug.org}などが，\TeX コミュニティの主なサポートフォーラム
 です．これらのアーカイブには過去数十年分の質問と回答が蓄積されています．特に後者
 2つのアーカイブは\url{https://groups.google.com/group/comp.text.tex/topics}と
 \url{https://tug.org/mail-archives/texhax}にて閲覧できます．また，より一般の
@@ -591,7 +591,7 @@ ISOから\TL をインストールした後，インターネットを利用し�
 入手方法の違いによって生じる差異のうち，ユーザにとって最も重要なことは，
 インターネット・インストーラを利用した場合はすべてのパッケージについて入手可能
 な最新バージョンがインストールされますが，DVDやISOイメージを用いた場合には
-年に1度のパブリックリリース時点での最新版がインストールされるということです．
+年に一度のパブリックリリース時点での最新版がインストールされるということです．
 
 もしプロキシを利用してダウンロードする必要がある場合は，\file{~/.wgetrc}ファイル
 または環境変数を利用してWgetに対して適切なプロキシ設定を行うか (\url{https://%
@@ -1338,7 +1338,7 @@ TEXMFLOCAL/tex/latex}や\dir{TEXMFHOME/tex/latex}，あるいはそれより下�
 動作するかテストしたいと思うのが普通でしょう．
 
 おそらく，多くの人がまず最初に動作確認したいのはファイル編集を行うフロントエンド
-でしょう．\TL はWidows（のみ）では{\TeX}works (\url{https://tug.org/texworks}) を，
+でしょう．\TL はWindows（のみ）では{\TeX}works (\url{https://tug.org/texworks}) を，
 \MacTeX は{\TeX}Shop (\url{https://pages.uoregon.edu/koch/texshop}) をインストール
 します．他のUnix系システムではどのエディタを利用するかはユーザが決めてください．
 エディタの選択肢はとてもたくさんあり，その一部は次のセクションでリストアップされて
@@ -1718,7 +1718,7 @@ Windowsでは\TL インストーラはいくつか追加の処理を行います
 \item[拡張子の関連付け]
 設定が有効になっている場合，\prog{\TeX works}, \prog{Dviout}などを，それぞれが
 扱う拡張子に関連付けます．あるいは，関連するファイルを右クリックして「プログラム
-から開く」を選択した場合にこれらのプログラムが候補に上がるようになります．
+から開く」を選択した場合にこれらのプログラムが候補に挙がるようになります．
 
 \item[ビットマップからEPSへの変換]
 各種のビットマップ画像を右クリックして「プログラムから開く」を選択した場合に\prog{%
@@ -1995,7 +1995,7 @@ web2c/texmf.cnf}です．このファイルを変更してもディストリビ�
   TEXINPUTS=.:/my/macro/dir:
 \end{verbatim}
 %
-設定をメンテナンスしやすく，また何年にも渡って使えるようにするためには，すべての
+設定をメンテナンスしやすく，また何年にも亘って使えるようにするためには，すべての
 要素を明示的に記入するのではなく，末尾に\samp{:}（Windowsでは\samp{;}）を置いて
 システムのパスが挿入されるようにしましょう（\ref{sec:default-expansion}節を参照）．
 また，他にも\code{TEXMFHOME}ツリーを利用する方法もあります（\ref{sec:directories}%
@@ -2502,7 +2502,7 @@ kdebug:search(texc.pro) => /usr/local/texmf/dvips/base/texc.pro
 \end{alltt}
 
 以上で必要なファイルが揃ったので，\cmd{dvips}は日付と時刻を出力し，そして
-\file{hello-world.ps}というファイルが生成されることを予告します．合わせて，
+\file{hello-world.ps}というファイルが生成されることを予告します．併せて，
 そのファイル生成の際にはフォントファイル\file{cmr10}が必要であることと，その
 フォントが``resident''（ビットマップ不要）として扱われる旨が表示されます．
 %
