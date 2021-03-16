@@ -3664,7 +3664,7 @@ Mojave) になりました．\pkg{x86\_64-darwinlegacy}は引き続き10.6以降
 
 プラットフォーム：\pkg{sparc-solaris}は削除されました．
 
-\subsection{2020}
+\subsubsection{2020}
 
 全般：
 %
@@ -3761,7 +3761,7 @@ macOS 10.6以上をサポートします．Apple社の要請に基づき，\MacT
 \TL から除かれました．\code{aleph}バイナリそのものは\TL に残り，また
 サポートも続きます．
 
-% Note: 第3項目の訳は怪しい
+% Note: 第4項目の訳は怪しい
 \LuaTeX:
 %
 \begin{itemize}[nosep]
@@ -3803,9 +3803,17 @@ macOS 10.6以上をサポートします．Apple社の要請に基づき，\MacT
 
 \XeTeX: 数式カーニングに関する修正をしました．
 
+\begin{samepage}
 DVIPDFM$x$:
 %
 \begin{itemize}[nosep]
+\item Ghostscriptはデフォルトで安全に呼び出されるようになりました．
+  （すべての入力ファイルが信頼できるという前提の下で）この安全な
+  呼び出しを無効化する場合は\sopt{i dvipdfmx-unsafe.cfg}を使用して
+  ください．これはPSTricksを\XeTeX で使用する場合には必須です．
+  すなわち
+  \verb|xetex -output-driver="xdvipdfmx -i dvipdfmx-unsafe.cfg -q -E" ...|%
+  としてください．
 \item 画像ファイルが見つからなかった場合，失敗ステータスで終了します．
 \item カラーサポートのためにspecial書式を拡張しました．
 \item \code{ExtGState}を操作するためのspecialを追加しました．
@@ -3815,6 +3823,7 @@ DVIPDFM$x$:
 \item 仮想フォントに関する新機能として日本語フォント定義のフォール
   バックを実装しました．
 \end{itemize}
+\end{samepage}
 
 Dvips:
 %
@@ -3835,10 +3844,10 @@ darwinlegacy}はUnix版の\cmd{install-tl}でのみ利用可能で，macOS 10.6�
 をサポートしています．
 
 今年はMacにとっては重要な年です．というのも，Appleが新しいARMマシンを
-11月に発表し，今後何年もARMとIntelの販売・サポートを行うとしたからです．
-\pkg{universal-darwin}にあるすべてのプログラムはARMとIntelの両方に
-対応した実行ファイルを持っています．いずれのバイナリも同じソースから
-コンパイルされています．
+11月に発表し，今後何年もARMマシンとIntelマシンの販売・サポートを行う
+としたからです．\pkg{universal-darwin}にあるすべてのプログラムはARMと
+Intelの両方に対応した実行ファイルを持っています．いずれのバイナリも
+同じソースからコンパイルされています．
 
 \MacTeX の追加プログラムであるGhostscript, LaTeXiT, {\TL} Utility,
 {\TeX}Shopもすべて両方のアーキテクチャに対応しており，また署名済みの
@@ -3867,6 +3876,7 @@ hardened runtimeを持っています．
 https://tug.org/texlive/contribute.html}を読んで，コントリビューションを
 検討してください．
 
+\begin{samepage}
 間違いの指摘や提案，ヘルプの要望は以下に送ってください（英語）：
 %
 \begin{quote}
@@ -3876,5 +3886,6 @@ https://tug.org/texlive/contribute.html}を読んで，コントリビューシ�
 %
 \medskip
 \noindent \textsl{Happy \TeX ing!}
+\end{samepage}
 
 \end{document}
