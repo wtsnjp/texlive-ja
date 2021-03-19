@@ -109,7 +109,7 @@ DVDインストーラはあなたのローカルディスクに\TL をインス�
 \item Unix系ではインストールスクリプトは\cmd{install-tl}です．Windowsでは
 代わりに\cmd{install-tl-windows}を実行する必要があります．このプログラムに
 \sopt{gui}オプションを与えると「GUIモード」（WindowsとmacOSでデフォルト），
-\sopt{no-gui}を与えると「テキストモード」（その他のプラットフォームで
+\sopt{gui=text}を与えると「テキストモード」（その他のプラットフォームで
 デフォルト）が実行されます．
 
 \item \TL をインストールすると「\TL マネージャ」(\cmd{tlmgr}) も利用可能になります．
@@ -3778,12 +3778,11 @@ macOS 10.6以上をサポートします．Apple社の要請に基づき，\MacT
 \begin{itemize}[nosep]
 \item 再現可能な出力を行うため，環境変数\var{SOURCE\_DATE\_EPOCH}が
   サポートされました．
-\item \code{mpto}で誤った末尾\code{\%}は禁止されました．
+\item \code{mpto}で不要な\code{\%}が付いていたバグが修正されました．
 \item \sopt{T}オプションをドキュメント化したほか，マニュアルに細かい
   修正を行いました．
 \item \verb|mp_solve_rising_cubic|が期待通り動作するように，
-  \code{epsilon}の値が2進モードか10進モードかで変化するように
-  なりました．
+  2進モードと10進モードにおける\code{epsilon}の値を変更しました．
 \end{itemize}
 
 \pdfTeX:
@@ -3815,7 +3814,7 @@ DVIPDFM$x$:
   \verb|xetex -output-driver="xdvipdfmx -i dvipdfmx-unsafe.cfg -q -E" ...|%
   としてください．
 \item 画像ファイルが見つからなかった場合，失敗ステータスで終了します．
-\item カラーサポートのためにspecial書式を拡張しました．
+\item カラーサポートのためのspecial書式を拡張しました．
 \item \code{ExtGState}を操作するためのspecialを追加しました．
 \item \code{pdfcolorstack}, \code{pdffontattr}と互換のspecialを
   追加しました．
@@ -3850,8 +3849,9 @@ Intelの両方に対応した実行ファイルを持っています．いずれ
 同じソースからコンパイルされています．
 
 \MacTeX の追加プログラムであるGhostscript, LaTeXiT, {\TL} Utility,
-{\TeX}Shopもすべて両方のアーキテクチャに対応しており，また署名済みの
-hardened runtimeを持っています．
+{\TeX}Shopはいずれも両方のアーキテクチャに対応しており，また署名済み
+のhardened runtimeを持つようになったので，すべて今年の\MacTeX に
+含められました．
 
 \cmd{tlmgr}とインフラ：
 %
@@ -3869,12 +3869,11 @@ hardened runtimeを持っています．
 \subsection{未来}
 
 私たちはこれからも新しいバージョンのリリースを続けるつもりで，より多くの
-ドキュメントとプログラムを提供し，これまで以上に良質で品質の保証された
-マクロ，フォント，その他\TeX に関連するあらゆる成果物を含むツリーを作って
-いくつもりです．こうした仕事はすべてボランティアが余暇を使用して行って
-おり，そのために常にやるべきことが残っています．ぜひ\url{%
-https://tug.org/texlive/contribute.html}を読んで，コントリビューションを
-検討してください．
+ドキュメントとプログラム，これまで以上に良質で品質の保証されたマクロと
+フォントのツリー，その他\TeX に関連するあらゆる成果物を提供していく
+つもりです．こうした仕事はすべてボランティアが余暇を使用して行っており，
+そのために常にやるべきことが残っています．ぜひ\url{https://tug.org/%
+texlive/contribute.html}を読んで，コントリビューションを検討してください．
 
 \begin{samepage}
 間違いの指摘や提案，ヘルプの要望は以下に送ってください（英語）：
