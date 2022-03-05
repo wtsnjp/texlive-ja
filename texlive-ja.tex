@@ -3940,7 +3940,7 @@ Intelの両方に対応した実行ファイルを持っています．いずれ
 エンジン共通の拡張（Knuthian \TeX, Aleph, hi\TeX を除く）：
 %
 \begin{itemize}[nosep]
-\item \cs{show}の出力をファイルにリレダイレクトする\cs{showstream}プリミティブ
+\item \cs{show}の出力をファイルにリダイレクトする\cs{showstream}プリミティブ
   が追加されました．
 \item 空行や垂直ボックスの終端などに挿入される\cs{par}トークンを別のトークンに
   変更するためのプリミティブ\cs{partokenname}, \cs{partokencontext}が追加
@@ -3962,8 +3962,7 @@ Intelの両方に対応した実行ファイルを持っています．いずれ
 \item PDF 2.0のPNG /Smaskもサポートされました．
 \item バリアブルフォントのインターフェースが\cmd{luahbtex}に追加されました．
 \item \cs{mathdefaultsmode}の規定ラジカルスタイルが変更されました．
-% Note: Optionally block selected discretionary creation. の訳だが詳細不明
-\item 任意でブロック選択discretionaryを作成するようになりました．
+\item 選択したdiscretionaryの作成を阻害するオプション機能が追加されました．
 \item TrueTypeフォント実装を改善しました．
 \item \cs{fontdimen}アロケーションがより効率的になりました．
 \item 方向同期ノードが後ろに続くローカルparノードのみからなる段落は無視する
@@ -4012,8 +4011,8 @@ DVIPDFM$x$:
 Dvips: デフォルトでは回転されたページサイズ用の自動メディア調整を試行しないように
 なりました．新設の\sopt{landscaperotate}オプションを指定すると再度有効化されます．
 
-\prog{upmendex}: 実験的にアラビア語・ヘブライ語をサポートしました．全般的に文字分類
-と多言語サポートが強化されました．
+\prog{upmendex}: 実験的にアラビア文字・ヘブライ文字をサポートしました．全般的に
+文字分類と多言語サポートが強化されました．
 
 Kpathsea: \code{kpsewchih -all}の結果において通常（非\sopt{all}）の探索の結果が
 一番に出力されるようになりました．
@@ -4021,7 +4020,7 @@ Kpathsea: \code{kpsewchih -all}の結果において通常（非\sopt{all}）の
 \prog{tlmgr}とインフラ：
 %
 \begin{itemize}[nosep]
-\item \url{mirror.ctan.org}についてデフォルトでHTTPSを使うようになりました．
+\item \code{mirror.ctan.org}についてデフォルトでHTTPSを使うようになりました．
 \item 再配置が簡単になるように\code{SELFAUTOPARENT}の代わりに\code{TEXMFROOT}を
   使うようになりました．
 \item \prog{install-tl}: あるパッケージのダウンロードやインストールに失敗した際，
