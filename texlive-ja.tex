@@ -3924,6 +3924,120 @@ Intelの両方に対応した実行ファイルを持っています．いずれ
 \subsection{現在：2022}
 \label{sec:tlcurrent}
 
+全般：
+%
+\begin{itemize}[nosep]
+\item 独自の形式HINTを出力するhi\TeX が追加されました．HINTは技術文書を
+  モバイル端末で読むのに適するようにデザインされたものです．HINTビューアは
+  GNU/Linux, Windows, Android向けのものが開発されていますが，\TL には含まれて
+  いません．
+\item \prog{tangle}, \prog{weave}: 3つ目の引数（省略可）に出力先のファイルを
+  指定できるようになりました．
+\item \WEB プログラムについて「ミニインデックス」を作成するためのKnuth製の
+  プログラム\prog{twill}が収録されました．
+\end{itemize}
+
+エンジン共通の拡張（Knuthian \TeX, Aleph, hi\TeX を除く）：
+%
+\begin{itemize}[nosep]
+\item \cs{show}の出力をファイルにリレダイレクトする\cs{showstream}プリミティブ
+  が追加されました．
+\item 空行や垂直ボックスの終端などに挿入される\cs{par}トークンを別のトークンに
+  変更するためのプリミティブ\cs{partokenname}, \cs{partokencontext}が追加
+  されました．
+\end{itemize}
+
+\epTeX, \eupTeX:
+%
+\begin{itemize}[nosep]
+\item 新プリミティブ\cs{lastnodefont}, \cs{suppresslongerror},
+  \cs{suppressoutererror}, \cs{suppressmathparerror}が追加されました．
+\item \pdfTeX の拡張\code{\cs{vadjust} pre}がサポートされました．
+\end{itemize}
+
+\LuaTeX:
+%
+\begin{itemize}[nosep]
+\item 構造化PDF 2.0出力がサポートされました．
+\item PDF 2.0のPNG /Smaskもサポートされました．
+\item バリアブルフォントのインターフェースが\cmd{luahbtex}に追加されました．
+\item \cs{mathdefaultsmode}の規定ラジカルスタイルが変更されました．
+% Note: Optionally block selected discretionary creation. の訳だが詳細不明
+\item 任意でブロック選択discretionaryを作成するようになりました．
+\item TrueTypeフォント実装を改善しました．
+\item \cs{fontdimen}アロケーションがより効率的になりました．
+\item 方向同期ノードが後ろに続くローカルparノードのみからなる段落は無視する
+  ようになりました．
+\end{itemize}
+
+\MP: マクロ展開が停止しなくなるバグを修正しました．
+
+\pdfTeX:
+%
+\begin{itemize}[nosep]
+\item 構造化PDF 2.0出力がサポートされました．
+\item レタースペーシング済みフォントについて，指定のある場合は明示的に
+  \cs{fontdimen6}を使用するようになりました．
+\item 警告は常に行頭に出力されるようになりました．
+\item 自動カーニング（\cs{pdfappendkern}と\cs{pdfprependkern}）についても
+  protrusionを行うようになりました．同様に自動カーニングの位置にも明示的
+  もしくは暗黙的なハイフネーションが行われます．
+\end{itemize}
+
+\pTeX など：
+%
+\begin{itemize}[nosep]
+\item 現在の\LaTeX をより強力にサポートする\pTeX\ 4.0.0にメジャー
+  アップデートされました．
+\item 新プリミティブ\cs{ptexlineendmode}, \cs{toucs}が追加されました．
+\item これまでは\upTeX, \eupTeX でのみサポートされていた\cs{ucs}が\pTeX と\epTeX
+  でもサポートされました．
+\item 北川氏のTUGboat記事 (\url{https://tug.org/TUGboat/tb41-3/%
+  tb129kitagawa-char.pdf}) にあるように，8-bit文字と和文文字が区別される
+  ようになりました．
+\end{itemize}
+
+\XeTeX: \XeTeX とPSTricksの透過機能（Ghostscriptの実装の問題で，この機能を
+使うと安全性が損なわれます）を必要とする文書を簡単に処理できるように，新たな
+ラッパ\cmd{xetex-unsafe}と\cmd{xelatex-unsafe}が追加されました．
+
+DVIPDFM$x$:
+%
+\begin{itemize}[nosep]
+\item \sopt{dNOSAFER}を指定しなくてもPSTricksをサポートするようになりました
+  （透過機能を除く）．
+\item ビットマップフォントの解像度を指定する\sopt{r}が再び動作するようになりました．
+\end{itemize}
+
+Dvips: デフォルトでは回転されたページサイズ用の自動メディア調整を試行しないように
+なりました．新設の\sopt{landscaperotate}オプションを指定すると再度有効化されます．
+
+\prog{upmendex}: 実験的にアラビア語・ヘブライ語をサポートしました．全般的に文字分類
+と多言語サポートが強化されました．
+
+Kpathsea: \code{kpsewchih -all}の結果において通常（非\sopt{all}）の探索の結果が
+一番に出力されるようになりました．
+
+\prog{tlmgr}とインフラ：
+%
+\begin{itemize}[nosep]
+\item \url{mirror.ctan.org}についてデフォルトでHTTPSを使うようになりました．
+\item 再配置が簡単になるように\code{SELFAUTOPARENT}の代わりに\code{TEXMFROOT}を
+  使うようになりました．
+\item \prog{install-tl}: あるパッケージのダウンロードやインストールに失敗した際，
+ 自動的に後続のパッケージのインストールを続行し，後で（一度だけ）再試行するように
+ なりました．
+\end{itemize}
+
+\MacTeX: \MacTeX とそのバイナリフォルダ\dir{universal-darwin}がmacOS 10.14以上 (Mojave,
+Catalina, Big Sur, Monterey) になりました．\dir{x86\_64-darwinlegacy}フォルダのバイナリ
+（Unix版の\prog{install-tl}でのみインストール可能）macOS 10.6 (Snow Leopard) 以降を
+サポートします．
+
+プラットフォーム：サポート対象のプラットフォームに増減はありません．
+来年（2023年）のリリースからはWindows向けのバイナリを32-bitから64-bitに変更する
+予定です．残念ながら両方を同時にうまくサポートすることはできません．
+
 \subsection{未来}
 
 私たちはこれからも新しいバージョンのリリースを続けるつもりで，より多くの
