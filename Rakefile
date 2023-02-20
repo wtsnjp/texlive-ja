@@ -12,7 +12,7 @@ TMP_DIR = REPO_ROOT / "tmp"
 BUILD_DIR = TMP_DIR / "build"
 TARGET_DIR = TMP_DIR / PKG_NAME
 
-SVN_ROOT = Pathname(Dir.home) / "repos/tug.org"
+SVN_ROOT = Pathname(Dir.home) / "repos/tug.org/texlive"
 TEXLIVE_EN = "Master/texmf-dist/doc/texlive/texlive-en"
 
 # cleaning
