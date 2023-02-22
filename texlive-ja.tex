@@ -2,18 +2,18 @@
 % TeX Live documentation (Japanese edition).
 % English version is originally written by Sebastian Rahtz and
 % Michel Goossens, now maintained by Karl Berry and others.
-% Japanese edition is by Takuto ASAKURA. Public domain.
+% Japanese edition is by Takuto Asakura. Public domain.
 \RequirePackage{plautopatch}
 \documentclass[uplatex,dvipdfmx,tombow]{jsarticle}
 
 \usepackage{texlive-ja}
 
-\Title{\TL ガイド 2022}
+\Title{\TL ガイド 2023}
 \Editor{Karl Berry}
 \Translator{朝倉卓人 (wtsnjp)}
 \Website{https://tug.org/texlive/}
 
-\date{2022年3月}
+\date{2023年3月}
 
 \begin{document}
 \maketitle
@@ -387,8 +387,8 @@ user}などが変更された設定データを保存するために利用する
 \item[システム用ルート] 複数の\TL を配置できます
   （デフォルト値はUnix系では\dir{/usr/local/texlive}）
   \begin{description}
-  \item[\dir{2021}] 前年のリリース
-  \item[\dir{2022}] 最新のリリース
+  \item[\dir{2022}] 前年のリリース
+  \item[\dir{2023}] 最新のリリース
     \begin{description}
     \item[\dir{bin}] ~
       \begin{description}
@@ -406,8 +406,8 @@ user}などが変更された設定データを保存するために利用する
   \end{description}
 \item[ユーザのホームディレクトリ] （\dir{$HOME}または\winenv{USERPROFILE}）
   \begin{description}
-  \item[\dir{.texlive2021}] 前年リリースに適用するユーザごとのデータ（設定や生成物）
-  \item[\dir{.texlive2022}] 最新リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[\dir{.texlive2022}] 前年リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[\dir{.texlive2023}] 最新リリースに適用するユーザごとのデータ（設定や生成物）
     \begin{description}
     \item[\dir{texmf-var}] \var{TEXMFVAR}, \var{TEXMFCACHE}
     \item[\dir{texmf-config}] \var{TEXMFCONFIG}
@@ -706,7 +706,7 @@ tl}はPerlスクリプトです．Unix系システムでこのスクリプトを
 
 \begin{figure}[tb]
 \begin{boxedverbatim}
-Installing TeX Live 2022 from: ...
+Installing TeX Live 2023 from: ...
 Platform: x86_64-linux => 'GNU/Linux on x86_64'
 Distribution: inst (compressed)
 Directory for temporary files: /tmp
@@ -718,11 +718,11 @@ Directory for temporary files: /tmp
  <S> set installation scheme: scheme-full
 
  <C> customizing installation collections
-     40 collections out of 41, disk space required: 7239 MB
+     40 collections out of 41, disk space required: 7620 MB (free: 138718 MB)
 
  <D> directories:
    TEXDIR (the main TeX directory):
-     /usr/local/texlive/2022
+     /usr/local/texlive/2023
    ...
 
  <O> options:
@@ -815,22 +815,21 @@ perltk}や\sopt{gui=wizard}オプションを与えると起動できます．
 \begin{boxedverbatim}
 Available platforms:
 ===============================================================================
-   a [ ] Cygwin on Intel x86 (i386-cygwin)
-   b [ ] Cygwin on x86_64 (x86_64-cygwin)
-   c [ ] MacOSX current (10.14-) on ARM/x86_64 (universal-darwin)
-   d [ ] MacOSX legacy (10.6-) on x86_64 (x86_64-darwinlegacy)
-   e [ ] FreeBSD on x86_64 (amd64-freebsd)
-   f [ ] FreeBSD on Intel x86 (i386-freebsd)
-   g [ ] GNU/Linux on ARM64 (aarch64-linux)
-   h [ ] GNU/Linux on ARMv6/RPi (armhf-linux)
-   i [ ] GNU/Linux on Intel x86 (i386-linux)
-   j [X] GNU/Linux on x86_64 (x86_64-linux)
-   k [ ] GNU/Linux on x86_64 with musl (x86_64-linuxmusl)
-   l [ ] NetBSD on x86_64 (amd64-netbsd)
-   m [ ] NetBSD on Intel x86 (i386-netbsd)
-   o [ ] Solaris on Intel x86 (i386-solaris)
-   p [ ] Solaris on x86_64 (x86_64-solaris)
-   s [ ] Windows (win32)
+   a [ ] Cygwin on x86_64 (x86_64-cygwin)
+   b [ ] MacOSX current (10.14-) on ARM/x86_64 (universal-darwin)
+   c [ ] MacOSX legacy (10.6-) on x86_64 (x86_64-darwinlegacy)
+   d [ ] FreeBSD on x86_64 (amd64-freebsd)
+   e [ ] FreeBSD on Intel x86 (i386-freebsd)
+   f [ ] GNU/Linux on ARM64 (aarch64-linux)
+   g [ ] GNU/Linux on RPi(32-bit) and ARMv7 (armhf-linux)
+   h [ ] GNU/Linux on Intel x86 (i386-linux)
+   i [X] GNU/Linux on x86_64 (x86_64-linux)
+   j [ ] GNU/Linux on x86_64 with musl (x86_64-linuxmusl)
+   k [ ] NetBSD on x86_64 (amd64-netbsd)
+   l [ ] NetBSD on Intel x86 (i386-netbsd)
+   m [ ] Solaris on Intel x86 (i386-solaris)
+   o [ ] Solaris on x86_64 (x86_64-solaris)
+   p [ ] Windows (64-bit) (windows)
 \end{boxedverbatim}
 \vspace{-1zh}
 \caption{バイナリ選択メニュー}\label{fig:bin-text}
@@ -854,11 +853,12 @@ Select scheme:
  c [ ] small scheme (basic + xetex, metapost, a few languages)
  d [ ] basic scheme (plain and latex)
  e [ ] minimal scheme (plain only)
- f [ ] ConTeXt scheme
- g [ ] GUST TeX Live scheme
- h [ ] infrastructure-only scheme (no TeX at all)
- i [ ] teTeX scheme (more than medium, but nowhere near full)
- j [ ] custom selection of collections
+ f [ ] infrastructure-only scheme (no TeX at all)
+ g [ ] book publishing scheme (core LaTeX and add-ons)
+ h [ ] ConTeXt scheme
+ i [ ] GUST TeX Live scheme
+ j [ ] teTeX scheme (more than medium, but nowhere near full)
+ k [ ] custom selection of collections
 \end{boxedverbatim}
 \vspace{-1zh}
 \caption{スキーム選択メニュー}\label{fig:scheme-text}
@@ -899,8 +899,8 @@ Select scheme:
 \label{sec:directories}
 
 デフォルトの\TL 構成については\ref{sec:texmftrees}節 (\p.\pageref{sec:texmftrees})
-で説明しました．デフォルトのインストール先はUnix系では\dir{/usr/local/texlive/2022}，
-Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2022}です．この配置は複数の\TL
+で説明しました．デフォルトのインストール先はUnix系では\dir{/usr/local/texlive/2023}，
+Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2023}です．この配置は複数の\TL
 を同時にインストールすることを可能にします．例えば複数のリリース（典型的には，年度
 ごと）の\TL をインストールしておき，単純に検索パスを変更することによってどの
 リリースを使用するか切り替えるようなことができます．
@@ -913,8 +913,8 @@ Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2022}です．この配置�
 書き込み権限がない場合です（\TL をインストールするのに管理者 (root) 権限は必要
 ありませんが，インストール先ディレクトリへの書き込み権限は必要です）．
 
-Windowsでは，通常\winpath{C:\\texlive\\2022}（より一般的に言えば\winpath{%
-\winenv{SystemDrive}\\texlive\\2022}）を作成するのに管理者権限は必要ありません．
+Windowsでは，通常\winpath{C:\\texlive\\2023}（より一般的に言えば\winpath{%
+\winenv{SystemDrive}\\texlive\\2023}）を作成するのに管理者権限は必要ありません．
 
 インストール先のディレクトリは，インストーラを実行する前にいくつかの環境変数（よく
 用いられるのは\var{TEXLIVE\_INSTALL\_PREFIX}と\var{TEXLIVE\_INSTALL\_TEXDIR}）を
@@ -924,7 +924,7 @@ Windowsでは，通常\winpath{C:\\texlive\\2022}（より一般的に言えば\
 
 合理的なインストール場所の変更先は（特にあなたが\TL を利用する単独のユーザである
 場合には）ホームディレクトリ以下でしょう．メタ文字\dir{~}（チルダ）を用いるとこれを
-簡単に指定することができます（例：\dir{~/texlive/2022}）．
+簡単に指定することができます（例：\dir{~/texlive/2023}）．
 
 複数の\TL リリースを同時にインストールできるようにするためにも，インストール先の
 ディレクトリ名には「年」を含めることをおすすめします（もし\dir{/usr/local/texlive-%
@@ -1156,18 +1156,18 @@ Unix系システムでは各自適切なプラットフォーム向けのバイ�
 別のファイルでも構いません）に次のような行を追加することで環境変数を設定できます：
 %
 \begin{sverbatim}
-PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH; export PATH
-MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH; export MANPATH
-INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH; export INFOPATH
+PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH; export PATH
+MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH; export MANPATH
+INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH; export INFOPATH
 \end{sverbatim}
 %
 cshやtcshの場合は，編集すべきファイルは典型的には\file{$HOME/.cshrc}で，次の
 ような行を追加します：
 %
 \begin{sverbatim}
-setenv PATH /usr/local/texlive/2022/bin/x86_64-linux:$PATH
-setenv MANPATH /usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
-setenv INFOPATH /usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
+setenv PATH /usr/local/texlive/2023/bin/x86_64-linux:$PATH
+setenv MANPATH /usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH
+setenv INFOPATH /usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH
 \end{sverbatim}
 %
 利用しているプラットフォームが\code{x86\_64-linux}でない場合は，適切な
@@ -1190,8 +1190,8 @@ setenv INFOPATH /usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
 というファイルの存在を確かめて，もし存在していたら次のような内容を追記します：
 %
 \begin{sverbatim}
-MANPATH_MAP /usr/local/texlive/2022/bin/x86_64-linux \
-            /usr/local/texlive/2022/texmf-dist/doc/man
+MANPATH_MAP /usr/local/texlive/2023/bin/x86_64-linux \
+            /usr/local/texlive/2023/texmf-dist/doc/man
 \end{sverbatim}
 %
 第二に各種の検索パスや環境変数のデフォルト値を設定するためのファイル\file{%
@@ -1720,12 +1720,12 @@ running post install action for xetex
 install: xetex-def
 ...
 running mktexlsr
-mktexlsr: Updating /usr/local/texlive/2022/texmf-dist/ls-R...
+mktexlsr: Updating /usr/local/texlive/2023/texmf-dist/ls-R...
 ...
 running fmtutil-sys --missing
 ...
 Transcript written on xelatex.log.
-fmtutil: /usr/local/texlive/2022/texmf-var/web2c/xetex/xelatex.fmt installed.
+fmtutil: /usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt installed.
 \end{fverbatim}
 
 上の出力からわかるように，\prog{tlmgr}は依存パッケージもインストールし，ファイル名
@@ -1836,6 +1836,44 @@ gzip}, \cmd{zip}, \cmd{unzip}や\prog{poppler}関連の\cmd{pdfinfo}, \cmd{pdffo
 することができます．必要に応じて\prog{fc-cache}を事前に実行してフォント情報を更新して
 ください．
 \end{description}
+
+%\subsection{Using external Perl, Tcl/Tk and Ghostscript
+%  installations}
+%\label{sec:externalwndws}
+%
+%Normally, \TL{} will use its built-in Perl, Tcl/Tk and Ghostscript also
+%for contributed scripts within \TL. If you wish to use your own external
+%versions, then you can configure that in the \file{texmf.cnf} file
+%\emph{in the root of the installation}.
+%
+%For Perl, you need to add a line
+%\begin{verbatim}
+%TEXLIVE_WINDOWS_TRY_EXTERNAL_PERL = 1
+%\end{verbatim}
+%\TL{} (specifically, \file{bin/windows/runscript.tlu}) will then search
+%for \file{perl.exe} on the search path, except for scripts which belong
+%to the \TL{} infrastructure. This is the most likely setting of the
+%three to be useful; although the \TL{} Perl includes many additional
+%modules, it cannot support all third-party scripts.
+%
+%Similarly, for Tcl/Tk you need a line
+%\begin{verbatim}
+%TEXLIVE_WINDOWS_TRY_EXTERNAL_TCL = 1
+%\end{verbatim}
+%\TL{} will then search for \file{tclkit.exe}, \file{wish.exe},
+%\file{wish85.exe}, \file{wish86.exe} and \file{wish87.exe} on the
+%searchpath.
+%
+%Ghostscript is handled differently, in that you need to specify the
+%filename or the full path of your command-line Ghostscript:
+%\begin{alltt}
+%TEXLIVE_WINDOWS_EXTERNAL_GS = \var{path of command-line ghostscript}
+%\end{alltt}
+%Another difference is that the Ghostscript shipped with \TeX\ Live
+%is complete, with only documentation and printer drivers omitted.  So
+%it's unlikely you'll have any need to override it.
+%
+%See also section \ref{sec:configfiles} about \file{texmf.cnf}.
 
 \subsection{ユーザプロファイルがホームディレクトリ扱い}
 \label{sec:winhome}
@@ -2040,9 +2078,9 @@ sec:filename-database}節）が$p$について用意されているかを調べ�
 この変数の内容を変更したりシステムディレクトリを上書きするように環境変数の値を
 設定することは推奨されません．
 
-代わりに，通常のインストールを行うと\file{.../2022/texmf.cnf}が生成されます．
+代わりに，通常のインストールを行うと\file{.../2023/texmf.cnf}が生成されます．
 どうしてもデフォルト設定を変更する必要が生じた場合は（通常は必要ありません），この
-ファイルに変更を加えてください．メインの設定ファイルは\file{.../2022/texmf-dist/%
+ファイルに変更を加えてください．メインの設定ファイルは\file{.../2023/texmf-dist/%
 web2c/texmf.cnf}です．このファイルを変更してもディストリビューション側でアップデート
 があると変更内容が失われてしまうため，ユーザはこのファイルを編集すべきではありません．
 
@@ -3921,8 +3959,7 @@ Intelの両方に対応した実行ファイルを持っています．いずれ
   commands.log}に移動しました．
 \end{itemize}
 
-\subsection{現在：2022}
-\label{sec:tlcurrent}
+\subsubsection{2022}
 
 全般：
 %
@@ -4036,6 +4073,118 @@ Catalina, Big Sur, Monterey) になりました．\dir{x86_64-darwinlegacy}フ�
 プラットフォーム：サポート対象のプラットフォームに増減はありません．
 来年（2023年）のリリースからはWindows向けのバイナリを32-bitから64-bitに変更する
 予定です．残念ながら両方を同時にうまくサポートすることはできません．
+
+\subsection{現在：2023}
+\label{sec:tlcurrent}
+
+%Windows:
+%As announced previously, \TL{} now contains 64-bit Windows
+%binaries instead of 32-bit. The new directory name is
+%\texttt{bin/windows} (it did not seem right to put 64-bit binaries into a
+%directory named with ``32''). We know this will cause extra
+%work for Windows users, but there seemed no better alternative. See the
+%separate \TL{} Windows web page
+%(\url{https://tug.org/texlive/windows.html}).
+%
+%Cross-engine extensions (except in original \TeX{} and e-\TeX{}):
+%\cs{special} followed by a new keyword
+%``\texttt{shipout}'' delays expansion of the argument tokens
+%until \cs{shipout} time, as with a
+%non-\verb|\immediate\write|.{\raggedright\par}
+%
+%\noindent ep\TeX{}, eup\TeX{}:\begin{itemize*}
+%\item ``Raw'' (u)ptex no longer built; (u)ptex now runs in
+%e(u)ptex's compatibility mode. Same for p\TeX{} tools, listed below.
+%\item New primitives: \cs{tojis}, \cs{ptextracingfonts},
+%\cs{ptexfontname}.
+%\item For \cs{font}, new syntax for JIS/UCS is supported.
+%\end{itemize*}
+%
+%\noindent Lua\TeX: \begin{itemize*}
+%\item new primitive \cs{variablefam} to allow math characters to keep
+%their class while still letting the family adapt.
+%\item improved r2l annotation areas
+%\item cross-engine ``late \cs{special}'' described above.
+%\end{itemize*}
+%
+%\noindent MetaPost: Bug fixes. \texttt{svg->dx} and \texttt{svg->dy} are now
+%\texttt{double}, for better precision; \verb|mp_begin_iteration|
+%updated; memory leak in \texttt{mplib} fixed.
+%
+%\noindent pdf\TeX{}: \begin{itemize*}
+%\item new primitive \cs{pdfinfoomitdict} to omit \texttt{/Info}
+%dictionary completely.
+%\item new primitive \cs{pdfomitprocset} to control omitting
+%\texttt{/ProcSet} array: \texttt{/ProcSet} is included if this
+%parameter is negative, or if this parameter is zero and pdftex is
+%generating PDF~1.x output.
+%\item with \cs{pdfinterwordspaceon}, if the current font's encoding
+%has a \texttt{/space} character at slot 32, it is used; otherwise,
+%the \texttt{/space} from the (new) default font \texttt{pdftexspace}
+%is used. That default font can be overridden with the new primitive
+%\cs{pdfspacefont}. This same new procedure is used for
+%\cs{pdffakespace}.
+%\end{itemize*}
+%
+%\noindent p\TeX{} et al.: \begin{itemize*}
+%\item As mentioned above, \texttt{ptex} now runs \texttt{eptex} in
+%compatibility mode instead of being built separately.
+%
+%\item p\TeX{} tools (pbibtex, pdvitype, ppltotf, ptftopl) merged into
+%corresponding up\TeX{} versions, running in compatibility mode.
+%\end{itemize*}
+%
+%\noindent Xe\TeX: bug fix for \cs{topskip} and \cs{splittopskip}
+%computation when \cs{XeTeXupwardsmode} is active; the cross-engine
+%``late \cs{special}'' described above.
+%
+%\noindent Dvipdfmx: new option \texttt{--pdfm-str-utf8} to make pdfmark and/or bookmark.
+%
+%\noindent \BibTeX{}u: \begin{itemize*}
+%\item This Bib\TeX{} variant is mostly upward-compatible with \BibTeX,
+%with much better (Unicode-based) multilingual support. It's been in
+%\TL{} for some years.
+%\item This year, more features to support CJK languages have been added,
+%some extended from the Japanese (u)pbibtex and other programs.
+%\end{itemize*}
+%
+%\noindent Kpathsea: Support guessing input file encodings for Unix-ish
+%platforms, as on Windows; enabled for
+%(\texttt{e})\texttt{p}(\texttt{la})\texttt{tex}, \texttt{pbibtex},
+%\texttt{mendex}.
+%
+%\noindent \code{tlmgr} and infrastructure: \begin{itemize*}
+%\item default to text interface on macOS.
+%\item install core packages first, retry other packages once.
+%\item simplistic checks for enough disk space.
+%\end{itemize*}
+%
+%\noindent Mac\TeX{}: \begin{itemize*}
+%\item Mac\TeX{} and its binary folder \texttt{universal-darwin}
+%require macOS 10.14 or higher (Mojave, Catalina, Big~Sur, Monterey,
+%Ventura). The \texttt{x86\_64-darwinlegacy} binary folder, available only
+%with the Unix \texttt{install-tl}, supports 10.6 (Snow~Leopard) and
+%later.
+%
+%\item The GUI package in Mac\TeX{} now contains \texttt{hintview}, a macOS
+%viewer for HINT documents (created by the \texttt{hitex} and
+%\texttt{hilatex} engines for mobile devices; see the Hi\TeX{} web page,
+%\url{https://hint.userweb.mwn.de/hint/hitex.html}). The GUI package no
+%longer installs a folder of documents, replacing them with a short
+%\texttt{READ~ME} for new users and a page about \texttt{hintview}.
+%
+%\item The \texttt{Extras} folder of additional \TeX{} sofware on the DVD has
+%been replaced with a document containing links to download sites.
+%\end{itemize*}
+%
+%\noindent Platforms: \begin{itemize*}
+%\item As mentioned above, the new \texttt{windows} binary directory
+%contains 64-bit Windows binaries, and
+%\item the \texttt{bin/win32} binary directory is gone, since we cannot
+%support 32-bit and 64-bit Windows simultaneously.
+%\item The \texttt{i386-cygwin} binary directory is gone, since Cygwin no
+%longer supports i386.
+%\end{itemize*}
 
 \subsection{未来}
 
