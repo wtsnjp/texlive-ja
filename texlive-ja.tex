@@ -4085,13 +4085,23 @@ Catalina, Big Sur, Monterey) になりました．\dir{x86_64-darwinlegacy}フ�
 %work for Windows users, but there seemed no better alternative. See the
 %separate \TL{} Windows web page
 %(\url{https://tug.org/texlive/windows.html}).
-%
+
+Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナリの代わりに64-bitバイナリを
+収録するようになりました．新しいディレクトリ名は\dir{bin/windows}です（64-bitバイナリを
+名前に``32''と付くディレクトリに配置するのは不適当に思われたため）．この変更がWindowsユーザ
+に余計な仕事を発生させることは承知の上ですが，これよりも良い方法は見つかりませんでした．
+\TL のWindows向け特別ページ（\url{https://tug.org/texlive/windows.html}）も参照してください．
+
 %Cross-engine extensions (except in original \TeX{} and e-\TeX{}):
 %\cs{special} followed by a new keyword
 %``\texttt{shipout}'' delays expansion of the argument tokens
 %until \cs{shipout} time, as with a
 %non-\verb|\immediate\write|.{\raggedright\par}
-%
+
+\TeX エンジン共通の拡張（オリジナルの\TeX と\eTeX を除く）：\cs{special}の直後に新しい
+キーワード``\code{shipout}''が置かれた場合，その引数トークンの展開が\cs{shipout}時
+（すなわち\cs{immediate}なしの\cs{write}と同じタイミング）まで遅延されるようになりました．
+
 %\noindent ep\TeX{}, eup\TeX{}:\begin{itemize*}
 %\item ``Raw'' (u)ptex no longer built; (u)ptex now runs in
 %e(u)ptex's compatibility mode. Same for p\TeX{} tools, listed below.
@@ -4099,18 +4109,41 @@ Catalina, Big Sur, Monterey) になりました．\dir{x86_64-darwinlegacy}フ�
 %\cs{ptexfontname}.
 %\item For \cs{font}, new syntax for JIS/UCS is supported.
 %\end{itemize*}
+
+\epTeX と\eupTeX:
 %
+\begin{itemize}[nosep]
+\item 素の(u)\pTeX はビルドされなくなりました．今後\code{ptex}, \code{uptex}コマンドは
+  それぞれ\code{eptex}, \code{euptex}の互換モードを起動します．\pTeX toolsについても
+  同様です（後述）．
+\item 新プリミティブ：\cs{tojis}, \cs{ptextracingfonts}, \cs{ptexfontname}．
+\item \cs{font}で新しいJIS/UCSシンタックスがサポートされました．
+\end{itemize}
+
 %\noindent Lua\TeX: \begin{itemize*}
 %\item new primitive \cs{variablefam} to allow math characters to keep
 %their class while still letting the family adapt.
 %\item improved r2l annotation areas
 %\item cross-engine ``late \cs{special}'' described above.
 %\end{itemize*}
+
+\LuaTeX:
 %
+\begin{itemize}[nosep]
+\item ファミリ適用を許容したまま，数式文字のクラスを保持するための新プリミティブ
+  \cs{variablefam}．
+\item r2lアノテーション領域の改善．
+\item エンジン共通の遅延\cs{special}（上述）．
+\end{itemize}
+
 %\noindent MetaPost: Bug fixes. \texttt{svg->dx} and \texttt{svg->dy} are now
 %\texttt{double}, for better precision; \verb|mp_begin_iteration|
 %updated; memory leak in \texttt{mplib} fixed.
-%
+
+\MP: バグ修正を行いました．精度改善のため\code{svg->dx}と\code{svg->dy}は
+\code{double}になりました．\code{mp\_begin\_iteration}が更新されました．
+\code{mplib}のメモリリークが修正されました．
+
 %\noindent pdf\TeX{}: \begin{itemize*}
 %\item new primitive \cs{pdfinfoomitdict} to omit \texttt{/Info}
 %dictionary completely.
@@ -4125,21 +4158,48 @@ Catalina, Big Sur, Monterey) になりました．\dir{x86_64-darwinlegacy}フ�
 %\cs{pdfspacefont}. This same new procedure is used for
 %\cs{pdffakespace}.
 %\end{itemize*}
+
+\pdfTeX:
 %
+\begin{itemize}[nosep]
+\item \code{/Info}辞書を完全に省略するための新プリミティブ\cs{pdfinfoomitdict}．
+\item \code{/ProcSet}配列の省略をコントロールする新プリミティブ\cs{pdfomitprocset}：
+  このパラメタの値が負のとき，または値がゼロで\pdfTeX がPDF~1.x出力を生成中の場合は
+  \code{/ProcSet}が含められます．
+\item \cs{pdfinterwordspaceon}下において，現在のフォントエンコーディングが
+  \code{/space}文字をスロット32に持っている場合はそれが利用されます．そうでない場合は
+  \code{/space}には（新規の）規定フォント\code{pdftexspace}が用いられます．この規定
+  フォントは新プリミティブ\cs{pdfspacefont}によって上書きすることが可能です．
+  この新手順は\cs{pdffakespace}でも用いられます．
+\end{itemize}
+
 %\noindent p\TeX{} et al.: \begin{itemize*}
 %\item As mentioned above, \texttt{ptex} now runs \texttt{eptex} in
 %compatibility mode instead of being built separately.
-%
 %\item p\TeX{} tools (pbibtex, pdvitype, ppltotf, ptftopl) merged into
 %corresponding up\TeX{} versions, running in compatibility mode.
 %\end{itemize*}
+
+\pTeX など：
 %
+\begin{itemize}[nosep]
+\item 前述の通り，\code{ptex}は独自のバイナリではなく\code{eptex}の互換モードを
+  起動するようになりました．
+\item {\pTeX} tools (\prog{pbibtex}, \prog{pdvitype}, \prog{ppltotf}, \prog{ptftopl})
+  はそれぞれ\upTeX バージョンの対応ツールに統合され，互換モードで動作するようになりました．
+\end{itemize}
+
 %\noindent Xe\TeX: bug fix for \cs{topskip} and \cs{splittopskip}
 %computation when \cs{XeTeXupwardsmode} is active; the cross-engine
 %``late \cs{special}'' described above.
-%
+
+\XeTeX: \cs{XeTeXupwardsmode}が有効になっている際の\cs{topskip}と\cs{splittopskip}の
+計算に関するバグ修正と，上述のエンジン共通の遅延\cs{special}追加が行われました．
+
 %\noindent Dvipdfmx: new option \texttt{--pdfm-str-utf8} to make pdfmark and/or bookmark.
-%
+
+DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8}が追加されました．
+
 %\noindent \BibTeX{}u: \begin{itemize*}
 %\item This Bib\TeX{} variant is mostly upward-compatible with \BibTeX,
 %with much better (Unicode-based) multilingual support. It's been in
@@ -4147,18 +4207,41 @@ Catalina, Big Sur, Monterey) になりました．\dir{x86_64-darwinlegacy}フ�
 %\item This year, more features to support CJK languages have been added,
 %some extended from the Japanese (u)pbibtex and other programs.
 %\end{itemize*}
+
+{\BibTeX}u:
 %
+\begin{itemize}[nosep]
+\item この\BibTeX 拡張は，オリジナルよりも遥かに強力な（Unicodeベースの）多言語
+  サポートを備えた\BibTeX のほぼ完全上位互換プログラムです．\TL には数年前に
+  取り込まれました．
+\item 今年はCJK言語をサポートするための機能がさらに追加されました．また日本語
+  組版用の\prog{(u)pbibitex}その他のプログラムと同様の拡張も行われました．
+\end{itemize}
+
 %\noindent Kpathsea: Support guessing input file encodings for Unix-ish
 %platforms, as on Windows; enabled for
 %(\texttt{e})\texttt{p}(\texttt{la})\texttt{tex}, \texttt{pbibtex},
 %\texttt{mendex}.
-%
+
+\KPS: Windows版と同様，Unix系プラットフォームでもファイルエンコーディング推定を
+サポートしました．(\code{e})\code{p}(\code{la})\code{tex}と\code{pbibtex}で
+有効になっています．
+
 %\noindent \code{tlmgr} and infrastructure: \begin{itemize*}
 %\item default to text interface on macOS.
 %\item install core packages first, retry other packages once.
 %\item simplistic checks for enough disk space.
 %\end{itemize*}
+
+\prog{tlmgr}とインフラ：
 %
+\begin{itemize}[nosep]
+\item macOSでの規定をテキストモードに変更しました．
+\item コアパッケージを先にインストールし，それ以外のパッケージのリトライは1回に
+  なりました．
+\item ディスクの空き容量が十分かどうか，簡易チェックを行うようになりました．
+\end{itemize}
+
 %\noindent Mac\TeX{}: \begin{itemize*}
 %\item Mac\TeX{} and its binary folder \texttt{universal-darwin}
 %require macOS 10.14 or higher (Mojave, Catalina, Big~Sur, Monterey,
@@ -4176,7 +4259,24 @@ Catalina, Big Sur, Monterey) になりました．\dir{x86_64-darwinlegacy}フ�
 %\item The \texttt{Extras} folder of additional \TeX{} sofware on the DVD has
 %been replaced with a document containing links to download sites.
 %\end{itemize*}
+
+\MacTeX:
 %
+\begin{itemize}[nosep]
+\item \MacTeX とそのバイナリディレクトリ\dir{universal-darwin}の要求は
+  macOS 10.14以上になりました（Mojave, Catalina, Big~Sur, Monterey, Ventura）．
+  Unix版の\prog{install-tl}でのみ利用可能な\dir{x86_64-darwinlegacy}バイナリ
+  ディレクトリはmacOS 10.6（Snow~Leopard）以降をサポートしています．
+\item \MacTeX のGUIパッケージに，macOS向けのHINT文書\footnote{\prog{hitex}や
+  \prog{hilatex}エンジンで作成される，モバイル向け文書．詳細はHi\TeX の
+  ウェブサイト（\url{https://hint.userweb.mwn.de/hint/hitex.html}）を参照して
+  ください．}ビューア\prog{hintview}が追加されました．GUIパッケージはドキュメント
+  フォルダはインストールしなくなりました．代わりに，新規ユーザのための短い
+  \file{READ~ME}と\prog{hintview}に関するページが追加されました．
+\item DVDの\dir{Extra}ディレクトリ内の追加\TeX ソフトウェアは，ダウンロード
+  サイトのリンクを含むドキュメントに置き換えられました．
+\end{itemize}
+
 %\noindent Platforms: \begin{itemize*}
 %\item As mentioned above, the new \texttt{windows} binary directory
 %contains 64-bit Windows binaries, and
@@ -4185,6 +4285,17 @@ Catalina, Big Sur, Monterey) になりました．\dir{x86_64-darwinlegacy}フ�
 %\item The \texttt{i386-cygwin} binary directory is gone, since Cygwin no
 %longer supports i386.
 %\end{itemize*}
+
+プラットフォーム：
+%
+\begin{itemize}[nosep]
+\item 前述の通り，新しい\dir{windows}バイナリディレクトリは64-bit Windowsバイナリを
+  格納しています．
+\item \dir{bin/win32}バイナリディレクトリは削除されました．32-bitと64-bitの両方を
+  同時にサポートすることはできないためです．
+\item \dir{i386-cygwin}バイナリディレクトリも削除されました．Cygwinがi386のサポートを
+  終了したためです．
+\end{itemize}
 
 \subsection{未来}
 
