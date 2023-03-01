@@ -108,7 +108,7 @@ DVDインストーラはあなたのローカルディスクに\TL をインス�
 \begin{itemize}
 \item Unix系ではインストールスクリプトは\cmd{install-tl}です．Windowsでは
 代わりに\cmd{install-tl-windows}を実行する必要があります．このプログラムに
-\sopt{gui}オプションを与えると「GUIモード」（Windowsと古いmacOSでデフォルト），
+\sopt{gui}オプションを与えると「GUIモード」（Windowsでデフォルト），
 \sopt{gui=text}を与えると「テキストモード」（その他のプラットフォームで
 デフォルト）が実行されます．
 
@@ -247,33 +247,32 @@ texwiki.texjp.org/?質問のしかた}) ページがありますので，初め�
 
 このセクションでは\TL と\TeX コレクションの収録物について紹介します．
 
-\subsection{\TeX コレクション: \TL, pro\TeX{}t, \MacTeX}
+\subsection{\TeX コレクション: \TL, \MIKTEX, \MacTeX}
 \label{sec:tl-coll-dists}
 
 \TeX コレクションDVDには以下のものが含まれています：
 
 \begin{description}
 \item[\TL]
-ディスクにインストールするための完全な\TeX システム（ディストリビューション）
-です．ウェブサイト：\url{https://tug.org/texlive/}
+ディスクにインストールするための包括的でクロスプラットフォームな\TeX
+ディストリビューションです．ウェブサイト：\url{https://tug.org/texlive/}
 
 \item[\MacTeX]
-macOS向けの\TeX ディストリビューションで，専用のインストーラといくつかの
-Mac用アプリケーションを\TL に追加しています．
-ウェブサイト：\url{https://tug.org/mactex/}
+macOS向けの\TeX システムで，\TL に専用のインストーラといくつかのMac用
+アプリケーションを追加しています．ウェブサイト：\url{https://tug.org/mactex/}
 
-\item[\ProTeXt]
-\MIKTEX ディストリビューションのWindows向け拡張です．\ProTeXt は\MIKTEX に
-いくつかのツールを追加しているほかインストール手順を簡略化しています．
-これは完全に\TL とは独立で，独自のインストールガイドがあります．
-ウェブサイト：\url{https://tug.org/protext/}
+\item[\MIKTEX]
+これも包括的でクロスプラットフォームな\TeX ディストリビューションです．
+Windows, GNU/Linux, macOSをサポートしていますが，DVDに含まれているのは
+Windows向けのバイナリのみです．\MIKTEX は専用のパッケージマネージャを備えて
+おり，必要なコンポーネントを必要に応じてインターネットからインストールする
+ようになっています．ウェブサイト：\url{https://miktex.org/}
 
 \item[CTAN]
-CTANリポジトリ (\url{https://ctan.org/}) のスナップショットです．
+CTANリポジトリ (\url{https://ctan.org/}) のスナップショットです．CTANは\TL
+と同じライセンスで配布されているわけではないので，再配布や変更を行う場合は
+十分注意してください．
 \end{description}
-
-CTANおよび\pkg{protext}は\TL と同じライセンスで配布されているわけでは
-ないので，再配布や変更を行う場合は十分注意してください．
 
 \subsection{\TL のトップレベルディレクトリ}
 \label{sec:tld}
@@ -321,6 +320,7 @@ CTANおよび\pkg{protext}は\TL と同じライセンスで配布されてい�
 \item ポーランド語：\dir{texmf-dist/doc/texlive/texlive-pl}
 \item ロシア語：\dir{texmf-dist/doc/texlive/texlive-ru}
 \item セルビア語：\dir{texmf-dist/doc/texlive/texlive-sr}
+\item スペイン語：\dir{texmf-dist/doc/texlive/texlive-es}
 \item 簡体字中国語：\dir{texmf-dist/doc/texlive/texlive-zh-cn}
 \end{itemize}
 
@@ -1062,8 +1062,8 @@ Windowsのみで利用可能なオプションも，上級者向けのGUIイン�
 \begin{description}
 \item[\sopt{gui}]
 インストーラを（もし利用可能なら）GUIモードで起動します．GUIモードの実行には
-バージョン8.5以上のTcl/Tkが必要です．Monterey以前のmacOSには同梱されていましたが，
-それより後のバージョンの場合は\MacTeX インストーラを使用しないのであれば，別途
+バージョン8.5以上のTcl/Tkが必要です．古いmacOSには同梱されていましたが，
+Big Surより後のバージョンの場合は\MacTeX インストーラを使用しないのであれば，別途
 自力でインストールする必要があります．Windows用の\TL にはTcl/Tkが同梱されている
 ため特に何もする必要はありません．古いオプションである\sopt{gui=perltk}と
 \sopt{gui=wizard}は現在も利用可能ですが，普通のGUIインターフェースを起動します．
@@ -1223,57 +1223,135 @@ CTANミラーを指定することもできます．その際は\dir{tlnet}サ�
 \subsubsection{\XeTeX と\LuaTeX のためのシステム設定}
 \label{sec:font-conf-sys}
 
-\XeTeX と\LuaTeX では，\TeX ツリーに存在するものだけでなく，システムにインストール
-されているあらゆるフォントを利用することができます．これらのエンジンは互いに関連
-する方法でこれを実現していますが，そのしくみはまったく同じではありません．
+%\XeTeX\ and Lua\TeX\ can use any font installed on the system, not just
+%those in the \TeX\ trees. Such system fonts (not part of \TL) are
+%usually accessed by giving the font name, e.g., `\code{Liberation
+%Serif}', although the system filename can also be used.
 
-Windowsでは，\TL に含まれているフォントは自動的にフォント名を指定するだけで\XeTeX
-から利用できるように設定されます．macOSでは，フォント名による検索を有効にする
-ためにはいくつかの手順が必要です（詳細は\MacTeX のウェブサイト\url{https://tug.org/%
-mactex}を参照してください）．他のUnix系システムでの設定方法は，以下の通りです．
+\XeTeX と\LuaTeX は\TeX ツリーにあるものだけでなく，システムにインストール
+されているすべてのフォントを使用することができます．\TL 外のシステムフォントは
+通常フォント名（例えば\code{Liberation Serif}）を利用してアクセスされますが，
+システムにおけるファイル名も使用することができます．
 
-この設定を簡単にするために，\pkg{xetex}パッケージのインストール時（最初の\TL
-インストール時または追加インストール時）に必要な設定が\file{TEXMFSYSVAR/fonts/%
-conf/texlive-fontconfig.conf}に作成されます．\TL フォントをシステム全体で利用できる
-ようにするためには，次の手順を実行します（そのために必要な権限は持っているものと
-します）：
+%A related issue is making the fonts from the \TL\ distribution available
+%as system fonts, which will in turn make them available by font name.
+
+関連する話題として，\TL ディストリビューションが提供するフォントをシステム
+フォントとして利用可能にする（すなわちフォント名でアクセスできるようにする）
+にはどうすればよいかというものがあります．
+
+%For Lua\TeX: for access by font name, nothing special need be done. All
+%fonts in \TL\ should be equally accessible by either font name or
+%filename to Lua\TeX, via the \pkgname{luaotfload} package, which
+%supports both \LaTeX\ and plain \TeX. The \pkgname{luaotfload} font name
+%index may need to be rebuilt for new fonts; this is triggered
+%automatically when trying to load a font which isn't known yet.
+
+\paragraph{\LuaTeX の場合}
+特に何もしなくてもフォント名でアクセスすることが可能です．\TL に含まれる
+すべてのフォントは，フォント名でもファイル名でも同じように
+アクセス可能であるはずです．これは\LaTeX とplain \TeX の両方をサポートする
+\pkg{luaotfload}パッケージのおかげです．なお\pkg{luaotfload}のフォント名
+インデックスは新しいフォントについては再生成される必要がありますが，これは
+未知のフォントを読み込もうとすると自動的に実行されます．
+
+%For \XeTeX: on Windows, fonts shipped with \TL\ are automatically made
+%available (by running the \cmdname{fc-cache} program provided for
+%Windows as part of \TL). For the Mac, you'll need to consult other
+%documentation. For Unix systems other than \macOS, the procedure is the
+%following.
+
+\paragraph{\XeTeX の場合}
+Windowsでは\TL のフォントも自動的に利用できる状態になっているはずです
+\footnote{Windows向け\TL に含まれる\prog{{fc-cache}}プログラムを実行する
+ことで実現されています}．macOSについては，別の文献を参照してください．
+macOS以外のUnix系システムの場合の手順は以下の通りです．
+
+%When the \pkgname{xetex} package is installed (either at initial
+%installation or later), the necessary configuration file is created in
+%\filename{TEXMFSYSVAR/fonts/conf/texlive-fontconfig.conf}. To make the
+%\TL\ fonts available as system fonts,
 %
-\begin{enumerate}[nosep]
-\item \file{texlive-fontconfig.conf}を\dir{/etc/fonts/conf.d/09-texlive.conf}に
-  コピーする．
-\item \code{fc-cache -fsv}を実行する．
+%\begin{enumerate*}
+%\item Copy that \filename{texlive-fontconfig.conf} file to (typically)
+%\dirname{/etc/fonts/conf.d/09-texlive.conf}.
+%\item Run \Ucom{fc-cache -fsv}.
+%\end{enumerate*}
+
+\pkg{xetex}パッケージがインストールされている場合\footnote{最初から
+インストールされている場合も，後から追加された場合も同様です．}，必要な
+設定ファイルが\file{TEXMFSYSVAR/fonts/conf/texlive-fontconfig.conf}に
+作成されています．\TL のフォントをシステムフォントとして利用可能にするため
+には以下を実施します：
+%
+\begin{enumerate}
+\item その\file{texlive-fontconfig.conf}ファイルを（典型的には）\file{%
+  /etc/fonts/conf.d/09-texlive.conf}にコピー
+\item \code{fc-cache -fsv}を実行
 \end{enumerate}
+
+%If you do not have sufficient privileges to carry out the steps above,
+%or if you want to make the \TL{} fonts available to only one user,
+%you can do the following:
+%
+%\begin{enumerate*}
+%\item Copy the \filename{texlive-fontconfig.conf} file to (typically)
+%      \filename{~/.fonts.conf.d/09-texlive.conf}, where \filename{~} is
+%      your home directory.
+%\item Run \Ucom{fc-cache -fv}.
+%\end{enumerate*}
+
+上記を実行するのに十分な権限がない場合や，1ユーザのみを対象に設定を
+適用したい場合には以下のようにします：
+%
+\begin{enumerate}
+\item その\file{texlive-fontconfig.conf}ファイルを（典型的には）\file{%
+  ~/.fonts.conf.d/09-texlive.conf}（\dir{~}はホームディレクトリを表す）にコピー
+\item \code{fc-cache -fv}を実行
+\end{enumerate}
+
+%You can run \code{fc-list} to see the names of the available system
+%fonts. The incantation \code{fc-list : family style file spacing} (all
+%those arguments are literal strings) shows some generally interesting
+%information.
 
 \cmd{fc-list}を実行するとシステムにあるフォントの一覧を確認することができます．
 また\code{fc-list : family style file spacing}（タイプミスに注意してください）
 とすると，もう少し詳細な情報を表示することができます．
 
-\subsubsection{{\ConTeXt} Mark IV}
+\subsubsection{{\ConTeXt} LMTXとMKIV}
 \label{sec:context-mkiv}
 
-「古い」{\ConTeXt} (Mark II)と「新しい」{\ConTeXt} (Mark IV)はいずれも\TL の
+「古い」\ConTeXt （Mark IVとMkIV）と「新しい」\ConTeXt （LMTX）はいずれも\TL の
 インストール後はそのままで動く状態になっているはずで，\cmd{tlmgr}を使用して
 アップデートを行っている限りは特に特別な設定を行う必要はありません．
 
-しかしながら，{\ConTeXt} MkIVは\KPS ライブラリを使用していないので，\cmd{tlmgr}%
-を使用せず手動で新しいファイルをインストールした場合にはいくつかの設定を行う
-必要があります．そのような手動インストールを行った場合には，MkIVユーザは次を
-実行して\ConTeXt のディスクキャッシュデータをクリアする必要があります：
+しかしながら，\ConTeXt は\KPS ライブラリを使用していないので，\cmd{tlmgr}を
+使用せず手動で新しいファイルをインストールした場合にはいくつかの設定を行う
+必要があります．そのような手動インストールを行った場合，各ユーザはLMTX向けには
 %
 \begin{alltt}
 > context -generate
 \end{alltt}
 %
+そしてMkIV向けには
+%
+\begin{alltt}
+> context --luatex --generate
+\end{alltt}
+%
+を実行して\ConTeXt のディスクキャッシュデータをクリアする必要があります：
+
 なお，この操作によって生成されるファイルは\code{TEXMFCACHE}（デフォルト値は
 \code{TEXMFSYSVAR;TEXMFVAR}）以下に保存されます．
 
-{\ConTeXt} MkIVは\code{TEXMFCACHE}に列挙されているパスを前から確認し，そして
+\ConTeXt は\code{TEXMFCACHE}に列挙されているパスを前から確認し，そして
 書込み可能な最初の場所にキャッシュを作成します．読み込みの際は，複数の
 キャッシュが見つかった場合は（見つかったキャッシュの中で）一番最後のパスに
 あるものが優先されます．
 
-より詳細な情報については\url{https://wiki.contextgarden.net/Running_Mark_IV}%
-を参照してください．
+より詳細な情報については\url{https://wiki.contextgarden.net/LMTX}および
+\url{https://wiki.contextgarden.net/Running_Mark_IV}を参照してください．
 
 \subsubsection{ローカルおよび個人用のマクロを利用する}
 \label{sec:local-personal-macros}
@@ -1481,8 +1559,7 @@ Transcript written on opentype-info.log.
 \subsection{アンインストール}
 \label{sec:uninstall}
 
-（一度インストールに成功した後に）\TL をアンインストールには，以下のコマンドを
-実行します：
+\TL をアンインストールには，以下のコマンドを実行します（Windowsについては後述）：
 %
 \begin{alltt}
 > tlmgr uninstall --all
@@ -1549,7 +1626,7 @@ WindowsではGUIを用いてアンインストールを行うことができま�
   \item \prog{SciTE}: \url{https://www.scintilla.org/SciTE.html}
   \item \prog{Texmaker}: \url{https://www.xm1math.net/texmaker}
   \item \prog{\TeX studio}: \url{https://texstudio.org/}%
-    （\prog{Texmaker}の拡張プロジェクト．pro\TeX{}tでは標準添付）
+    （\prog{Texmaker}の拡張プロジェクト）
   \item \prog{\TeX nicCenter}: \url{http://www.texniccenter.org}
   \item \prog{\TeX works}: \url{https://tug.org/texworks}%
     （Windows版\TL では標準添付）
@@ -1667,9 +1744,9 @@ texconfig}の操作に慣れている方々のために依然としてその配�
 
 \TL には\prog{tlmgr}のGUIフロントエンドが複数含まれています．重要なものが2つあり
 ます．ひとつは図\ref{fig:tlshell}で示されている\prog{tlshell}というTcl/Tkを利用
-したGUIで，WindowsとmacOSで利用可能です．もうひとつは図\ref{fig:tlcockpit}で
-示されている\prog{tlcockpit}で，動作にはバージョン8以降のJavaとJavaFXが必要です．
-これらはいずれも独立したパッケージです．
+したGUIで，Windowsで利用可能です．もうひとつは図\ref{fig:tlcockpit}で示されている
+\prog{tlcockpit}で，動作にはバージョン8以降のJavaとJavaFXが必要です．これらは
+いずれも独立したパッケージです．
 
 \prog{tlmgr}もネイティブのGUIモードを持っています（図\ref{fig:tlmgr-gui}）：
 %
@@ -1812,8 +1889,9 @@ PerlとGhostscriptは重要なプログラムであること，また\TL イン�
 \prog{tlshell}がTcl/Tkを利用することから\TL には\kenten{隠された}それらのコピーが
 含まれています．これらのプログラムは\TL のプログラムからは利用可能ですが，環境変数や
 レジストリ設定の上では存在していないことになっています．\TL に同梱されているPerlと
-Ghostscriptは完全版ではなく，またシステムに別途インストールされたものとは一切干渉
-しません．
+Tcl/Tkは完全版ではなく，また3プログラムともシステムに別途インストールされたものとは
+一切干渉しないはずです．\TL に含まれるインフラ以外のスクリプトを，外部のPerl等で
+動作させたい場合の設定方法については\ref{sec:windows-external}節を参照してください．
 
 \item[dviout]
 DVIビューア．初期状態では，ファイルを\prog{dviout}でプレビューしようとすると，
@@ -1839,13 +1917,20 @@ gzip}, \cmd{zip}, \cmd{unzip}や\prog{poppler}関連の\cmd{pdfinfo}, \cmd{pdffo
 
 %\subsection{Using external Perl, Tcl/Tk and Ghostscript
 %  installations}
-%\label{sec:externalwndws}
-%
+
+\subsection{外部のPerl, Tcl/Tk, Ghostscriptを利用する}
+\label{sec:windows-external}
+
 %Normally, \TL{} will use its built-in Perl, Tcl/Tk and Ghostscript also
 %for contributed scripts within \TL. If you wish to use your own external
 %versions, then you can configure that in the \file{texmf.cnf} file
 %\emph{in the root of the installation}.
-%
+
+通常\TL は同梱のPerl, Tcl/Tk, Ghostscriptを使用します．これはインフラだけでなく，
+\TL が収録するすべてのスクリプトについても同様です．ユーザ自身が別途インストール
+した外部のPerl等を使用したい場合には，\emph{\TL ルート直下の}\file{texmf.cnf}で
+設定を行うことができます．
+
 %For Perl, you need to add a line
 %\begin{verbatim}
 %TEXLIVE_WINDOWS_TRY_EXTERNAL_PERL = 1
@@ -1855,7 +1940,19 @@ gzip}, \cmd{zip}, \cmd{unzip}や\prog{poppler}関連の\cmd{pdfinfo}, \cmd{pdffo
 %to the \TL{} infrastructure. This is the most likely setting of the
 %three to be useful; although the \TL{} Perl includes many additional
 %modules, it cannot support all third-party scripts.
+
+外部のPerlを使用するには\file{texmf.cnf}に
 %
+\begin{verbatim}
+TEXLIVE_WINDOWS_TRY_EXTERNAL_PERL = 1
+\end{verbatim}
+%
+という行を追加します．こうすることで，\TL （特に\file{bin/windows/runscript.tlu}）
+は\TL のインフラツール以外について検索パス内の\file{perl.exe}を探すようになります．
+これはここで紹介する3つの設定のうちで最も有益なケースが多いと考えられます．\TL の
+Perlも多数の追加モジュールをサポートしていますが，すべてのサードパーティスクリプトを
+サポートできるほどではありません．
+
 %Similarly, for Tcl/Tk you need a line
 %\begin{verbatim}
 %TEXLIVE_WINDOWS_TRY_EXTERNAL_TCL = 1
@@ -1863,7 +1960,16 @@ gzip}, \cmd{zip}, \cmd{unzip}や\prog{poppler}関連の\cmd{pdfinfo}, \cmd{pdffo
 %\TL{} will then search for \file{tclkit.exe}, \file{wish.exe},
 %\file{wish85.exe}, \file{wish86.exe} and \file{wish87.exe} on the
 %searchpath.
+
+Tcl/Tkの場合も同様で
 %
+\begin{verbatim}
+TEXLIVE_WINDOWS_TRY_EXTERNAL_TCL = 1
+\end{verbatim}
+%
+という行を追加することで，\TL は検索パス内の\file{tclkit.exe}, \file{wish.exe},
+\file{wish85.exe}, \file{wish86.exe}, \file{wish87.exe}を探すようになります．
+
 %Ghostscript is handled differently, in that you need to specify the
 %filename or the full path of your command-line Ghostscript:
 %\begin{alltt}
@@ -1872,8 +1978,21 @@ gzip}, \cmd{zip}, \cmd{unzip}や\prog{poppler}関連の\cmd{pdfinfo}, \cmd{pdffo
 %Another difference is that the Ghostscript shipped with \TeX\ Live
 %is complete, with only documentation and printer drivers omitted.  So
 %it's unlikely you'll have any need to override it.
+
+Ghostscriptの場合は設定方法が異なります．この場合，使用したいGhostscriptコマンドの
+ファイル名もしくはフルパスを与える必要があります．
 %
+\begin{alltt}
+TEXLIVE_WINDOWS_EXTERNAL_GS = \meta{Ghostscriptコマンドのパス}
+\end{alltt}
+%
+もう1つの違いは，\TL 同梱のGhostscriptは完全なものであることです．ドキュメントと
+プリンタドライバのみが省略されています．したがって，ここに示した方法で\TL の設定を
+上書きする必要が生じることはほとんどないでしょう．
+
 %See also section \ref{sec:configfiles} about \file{texmf.cnf}.
+
+\file{texmf.cnf}については\ref{sec:configfiles}節も参照してください．
 
 \subsection{ユーザプロファイルがホームディレクトリ扱い}
 \label{sec:winhome}
@@ -2071,6 +2190,7 @@ sec:filename-database}節）が$p$について用意されているかを調べ�
 ことができます（p.\,\pageref{sec:debugging}の「デバッグアクション」項を参照）．
 
 \subsubsection{設定ファイル}
+\label{sec:configfiles}
 
 % Note: この段落最後の1文は訳が怪しい
 \KPS は\file{texmf.cnf}という名前の実行時設定ファイルを読み込み，検索パスやその他の
@@ -4145,7 +4265,7 @@ Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナ�
 \code{mplib}のメモリリークが修正されました．
 
 %\noindent pdf\TeX{}: \begin{itemize*}
-%\item new primitive \cs{pdfinfoomitdict} to omit \texttt{/Info}
+%\item new primitive \cs{pdfomitinfodict} to omit \texttt{/Info}
 %dictionary completely.
 %\item new primitive \cs{pdfomitprocset} to control omitting
 %\texttt{/ProcSet} array: \texttt{/ProcSet} is included if this
@@ -4162,7 +4282,7 @@ Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナ�
 \pdfTeX:
 %
 \begin{itemize}[nosep]
-\item \code{/Info}辞書を完全に省略するための新プリミティブ\cs{pdfinfoomitdict}．
+\item \code{/Info}辞書を完全に省略するための新プリミティブ\cs{pdfomitinfodict}．
 \item \code{/ProcSet}配列の省略をコントロールする新プリミティブ\cs{pdfomitprocset}：
   このパラメタの値が負のとき，または値がゼロで\pdfTeX がPDF~1.x出力を生成中の場合は
   \code{/ProcSet}が含められます．
