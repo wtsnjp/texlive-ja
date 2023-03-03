@@ -82,10 +82,8 @@
 
 Windowsについては，Windows~7以上のバージョンをサポートしています．いまのところ
 Windows Vistaでも概ね動作する\emph{可能性があります}が，Windows XPよりも古いものに
-ついては\TL のインストールすら成功しません．Windowsについては64-bit向けに個別の実行
-ファイルを用意していませんが，32-bit実行ファイルは問題なく64-bit環境でも
-動作するはずです．ただし64-bitバイナリを追加するオプションについては
-\url{https://tug.org/texlive/windows.html}を参照してください．
+ついては\TL のインストールすら成功しません．\TL はWindows向けには64-bitバイナリを
+収録しています。
 
 WindowsおよびmacOSに対する\TL 以外のディストリビューションについては\ref{sec:%
 tl-coll-dists}節を参照してください．
@@ -224,8 +222,8 @@ stackexchange.com}，Usenetニュースグループ\url{news:comp.text.tex}，�
 公式のものではありません．
 
 \item[{\TeX} Forum]
-\url{https://oku.edu.mie-u.ac.jp/tex/}は歴史の長いQ\&Aサイトで，現在も日本語で\TeX
-に関連する質問ができる場所としては最もアクティブユーザが多く，熟練の\TeX ユーザが
+\url{https://okumuralab.org/tex/}は歴史の長いQ\&Aサイトで，現在も日本語で\TeX に
+関連する質問ができる場所としては最もアクティブユーザが多く，熟練の\TeX ユーザが
 多数参加しています．上記{\TeX} Wikiに日本語版の「質問のしかた」(\url{https://%
 texwiki.texjp.org/?質問のしかた}) ページがありますので，初めて質問を投稿する際は
 必ず目を通すようにしましょう．
@@ -396,7 +394,7 @@ user}などが変更された設定データを保存するために利用する
       \item[\quad\vdots]
       \item[\dir{universal-darwin}] macOS向けバイナリ
       \item[\dir{x86_64-linux}] GNU/Linux向けバイナリ (64-bit)
-      \item[\dir{win32}] Windows向けバイナリ
+      \item[\dir{windows}] Windows向けバイナリ (64-bit)
       \end{description}
     \item[\dir{texmf-dist}] \var{TEXMFDIST}, \var{TEXMFMAIN}
     \item[\dir{texmf-var}] \var{TEXMFSYSVAR}, \var{TEXMFCACHE}
@@ -2085,7 +2083,7 @@ CurtisによるUnix系システム下のchangefileをベースにしていまし
 Karl Berryが多くの協力者の助けを得ながらメンテナンスを引き継ぎました．1997年に
 Olaf Weberがメンテナになりましたが，2006年には再びKarl Berryの管理下に戻りました．
 
-\Webc システムはUnix系, 32-bit Windows, macOSなどのOSで動作します．このシステムでは
+\Webc システムはUnix系，Windows，macOSなどのOSで動作します．このシステムでは
 Knuthによる\TeX のオリジナルソースと，文芸的プログラミングシステム\WEB で書かれた
 いくつかの基本的なプログラムを使用し，それらをC言語ソースコードに変換します．このような
 方法で管理されている\TeX 関連のプログラムは以下の通りです：
