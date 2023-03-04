@@ -4116,7 +4116,7 @@ Intelの両方に対応した実行ファイルを持っています．いずれ
 \item 構造化PDF 2.0出力がサポートされました．
 \item PDF 2.0のPNG /Smaskもサポートされました．
 \item バリアブルフォントのインターフェースが\cmd{luahbtex}に追加されました．
-\item \cs{mathdefaultsmode}の規定ラジカルスタイルが変更されました．
+\item \cs{mathdefaultsmode}のデフォルトラジカルスタイルが変更されました．
 \item 選択したdiscretionaryの作成しないようにするオプション機能が追加されました．
 \item TrueTypeフォント実装を改善しました．
 \item \cs{fontdimen}アロケーションがより効率的になりました．
@@ -4286,8 +4286,8 @@ Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナ�
   \code{/ProcSet}が含められます．
 \item \cs{pdfinterwordspaceon}下において，現在のフォントエンコーディングが
   \code{/space}文字をスロット32に持っている場合はそれが利用されます．そうでない場合は
-  \code{/space}には（新規の）規定フォント\code{pdftexspace}が用いられます．この規定
-  フォントは新プリミティブ\cs{pdfspacefont}によって上書きすることが可能です．
+  \code{/space}には（新規の）デフォルトフォント\code{pdftexspace}が用いられます．この
+  デフォルトフォントは新プリミティブ\cs{pdfspacefont}によって上書きすることが可能です．
   この新手順は\cs{pdffakespace}でも用いられます．
 \end{itemize}
 
@@ -4354,7 +4354,7 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
 \prog{tlmgr}とインフラ：
 %
 \begin{itemize}[nosep]
-\item macOSでの規定をテキストモードに変更しました．
+\item macOSでのデフォルトをテキストモードに変更しました．
 \item コアパッケージを先にインストールし，それ以外のパッケージのリトライは1回に
   なりました．
 \item ディスクの空き容量が十分かどうか，簡易チェックを行うようになりました．
