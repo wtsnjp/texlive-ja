@@ -1221,29 +1221,14 @@ CTANミラーを指定することもできます．その際は\dir{tlnet}サ�
 \subsubsection{\XeTeX と\LuaTeX のためのシステム設定}
 \label{sec:font-conf-sys}
 
-%\XeTeX\ and Lua\TeX\ can use any font installed on the system, not just
-%those in the \TeX\ trees. Such system fonts (not part of \TL) are
-%usually accessed by giving the font name, e.g., `\code{Liberation
-%Serif}', although the system filename can also be used.
-
 \XeTeX と\LuaTeX は\TeX ツリーにあるものだけでなく，システムにインストール
 されているすべてのフォントを使用することができます．\TL 外のシステムフォントは
 通常フォント名（例えば\code{Liberation Serif}）を利用してアクセスされますが，
 システムにおけるファイル名も使用することができます．
 
-%A related issue is making the fonts from the \TL\ distribution available
-%as system fonts, which will in turn make them available by font name.
-
 関連する話題として，\TL ディストリビューションが提供するフォントをシステム
 フォントとして利用可能にする（すなわちフォント名でアクセスできるようにする）
 にはどうすればよいかというものがあります．
-
-%For Lua\TeX: for access by font name, nothing special need be done. All
-%fonts in \TL\ should be equally accessible by either font name or
-%filename to Lua\TeX, via the \pkgname{luaotfload} package, which
-%supports both \LaTeX\ and plain \TeX. The \pkgname{luaotfload} font name
-%index may need to be rebuilt for new fonts; this is triggered
-%automatically when trying to load a font which isn't known yet.
 
 \paragraph{\LuaTeX の場合}
 特に何もしなくてもフォント名でアクセスすることが可能です．\TL に含まれる
@@ -1253,28 +1238,11 @@ CTANミラーを指定することもできます．その際は\dir{tlnet}サ�
 インデックスは新しいフォントについては再生成される必要がありますが，これは
 未知のフォントを読み込もうとすると自動的に実行されます．
 
-%For \XeTeX: on Windows, fonts shipped with \TL\ are automatically made
-%available (by running the \cmdname{fc-cache} program provided for
-%Windows as part of \TL). For the Mac, you'll need to consult other
-%documentation. For Unix systems other than \macOS, the procedure is the
-%following.
-
 \paragraph{\XeTeX の場合}
 Windowsでは\TL のフォントも自動的に利用できる状態になっているはずです
 \footnote{Windows向け\TL に含まれる\prog{{fc-cache}}プログラムを実行する
 ことで実現されています}．macOSについては，別の文献を参照してください．
 macOS以外のUnix系システムの場合の手順は以下の通りです．
-
-%When the \pkgname{xetex} package is installed (either at initial
-%installation or later), the necessary configuration file is created in
-%\filename{TEXMFSYSVAR/fonts/conf/texlive-fontconfig.conf}. To make the
-%\TL\ fonts available as system fonts,
-%
-%\begin{enumerate*}
-%\item Copy that \filename{texlive-fontconfig.conf} file to (typically)
-%\dirname{/etc/fonts/conf.d/09-texlive.conf}.
-%\item Run \Ucom{fc-cache -fsv}.
-%\end{enumerate*}
 
 \pkg{xetex}パッケージがインストールされている場合\footnote{最初から
 インストールされている場合も，後から追加された場合も同様です．}，必要な
@@ -1288,17 +1256,6 @@ macOS以外のUnix系システムの場合の手順は以下の通りです．
 \item \code{fc-cache -fsv}を実行
 \end{enumerate}
 
-%If you do not have sufficient privileges to carry out the steps above,
-%or if you want to make the \TL{} fonts available to only one user,
-%you can do the following:
-%
-%\begin{enumerate*}
-%\item Copy the \filename{texlive-fontconfig.conf} file to (typically)
-%      \filename{~/.fonts.conf.d/09-texlive.conf}, where \filename{~} is
-%      your home directory.
-%\item Run \Ucom{fc-cache -fv}.
-%\end{enumerate*}
-
 上記を実行するのに十分な権限がない場合や，1ユーザのみを対象に設定を
 適用したい場合には以下のようにします：
 %
@@ -1307,11 +1264,6 @@ macOS以外のUnix系システムの場合の手順は以下の通りです．
   ~/.fonts.conf.d/09-texlive.conf}（\dir{~}はホームディレクトリを表す）にコピー
 \item \code{fc-cache -fv}を実行
 \end{enumerate}
-
-%You can run \code{fc-list} to see the names of the available system
-%fonts. The incantation \code{fc-list : family style file spacing} (all
-%those arguments are literal strings) shows some generally interesting
-%information.
 
 \cmd{fc-list}を実行するとシステムにあるフォントの一覧を確認することができます．
 また\code{fc-list : family style file spacing}（タイプミスに注意してください）
@@ -1913,31 +1865,13 @@ gzip}, \cmd{zip}, \cmd{unzip}や\prog{poppler}関連の\cmd{pdfinfo}, \cmd{pdffo
 ください．
 \end{description}
 
-%\subsection{Using external Perl, Tcl/Tk and Ghostscript
-%  installations}
-
 \subsection{外部のPerl, Tcl/Tk, Ghostscriptを利用する}
 \label{sec:windows-external}
-
-%Normally, \TL{} will use its built-in Perl, Tcl/Tk and Ghostscript also
-%for contributed scripts within \TL. If you wish to use your own external
-%versions, then you can configure that in the \file{texmf.cnf} file
-%\emph{in the root of the installation}.
 
 通常\TL は同梱のPerl, Tcl/Tk, Ghostscriptを使用します．これはインフラだけでなく，
 \TL が収録するすべてのスクリプトについても同様です．ユーザ自身が別途インストール
 した外部のPerl等を使用したい場合には，\emph{\TL ルート直下の}\file{texmf.cnf}で
 設定を行うことができます．
-
-%For Perl, you need to add a line
-%\begin{verbatim}
-%TEXLIVE_WINDOWS_TRY_EXTERNAL_PERL = 1
-%\end{verbatim}
-%\TL{} (specifically, \file{bin/windows/runscript.tlu}) will then search
-%for \file{perl.exe} on the search path, except for scripts which belong
-%to the \TL{} infrastructure. This is the most likely setting of the
-%three to be useful; although the \TL{} Perl includes many additional
-%modules, it cannot support all third-party scripts.
 
 外部のPerlを使用するには\file{texmf.cnf}に
 %
@@ -1951,14 +1885,6 @@ TEXLIVE_WINDOWS_TRY_EXTERNAL_PERL = 1
 Perlも多数の追加モジュールをサポートしていますが，すべてのサードパーティスクリプトを
 サポートできるほどではありません．
 
-%Similarly, for Tcl/Tk you need a line
-%\begin{verbatim}
-%TEXLIVE_WINDOWS_TRY_EXTERNAL_TCL = 1
-%\end{verbatim}
-%\TL{} will then search for \file{tclkit.exe}, \file{wish.exe},
-%\file{wish85.exe}, \file{wish86.exe} and \file{wish87.exe} on the
-%searchpath.
-
 Tcl/Tkの場合も同様で
 %
 \begin{verbatim}
@@ -1967,15 +1893,6 @@ TEXLIVE_WINDOWS_TRY_EXTERNAL_TCL = 1
 %
 という行を追加することで，\TL は検索パス内の\file{tclkit.exe}, \file{wish.exe},
 \file{wish85.exe}, \file{wish86.exe}, \file{wish87.exe}を探すようになります．
-
-%Ghostscript is handled differently, in that you need to specify the
-%filename or the full path of your command-line Ghostscript:
-%\begin{alltt}
-%TEXLIVE_WINDOWS_EXTERNAL_GS = \var{path of command-line ghostscript}
-%\end{alltt}
-%Another difference is that the Ghostscript shipped with \TeX\ Live
-%is complete, with only documentation and printer drivers omitted.  So
-%it's unlikely you'll have any need to override it.
 
 Ghostscriptの場合は設定方法が異なります．この場合，使用したいGhostscriptコマンドの
 ファイル名もしくはフルパスを与える必要があります．
@@ -1987,8 +1904,6 @@ TEXLIVE_WINDOWS_EXTERNAL_GS = \meta{Ghostscriptコマンドのパス}
 もう1つの違いは，\TL 同梱のGhostscriptは完全なものであることです．ドキュメントと
 プリンタドライバのみが省略されています．したがって，ここに示した方法で\TL の設定を
 上書きする必要が生じることはほとんどないでしょう．
-
-%See also section \ref{sec:configfiles} about \file{texmf.cnf}.
 
 \file{texmf.cnf}については\ref{sec:configfiles}節も参照してください．
 
@@ -4195,38 +4110,15 @@ Catalina, Big Sur, Monterey) になりました．\dir{x86_64-darwinlegacy}フ�
 \subsection{現在：2023}
 \label{sec:tlcurrent}
 
-%Windows:
-%As announced previously, \TL{} now contains 64-bit Windows
-%binaries instead of 32-bit. The new directory name is
-%\texttt{bin/windows} (it did not seem right to put 64-bit binaries into a
-%directory named with ``32''). We know this will cause extra
-%work for Windows users, but there seemed no better alternative. See the
-%separate \TL{} Windows web page
-%(\url{https://tug.org/texlive/windows.html}).
-
 Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナリの代わりに64-bitバイナリを
 収録するようになりました．新しいディレクトリ名は\dir{bin/windows}です（64-bitバイナリを
 名前に``32''と付くディレクトリに配置するのは不適当に思われたため）．この変更がWindowsユーザ
 に余計な仕事を発生させることは承知の上ですが，これよりも良い方法は見つかりませんでした．
 \TL のWindows向け特別ページ（\url{https://tug.org/texlive/windows.html}）も参照してください．
 
-%Cross-engine extensions (except in original \TeX{} and e-\TeX{}):
-%\cs{special} followed by a new keyword
-%``\texttt{shipout}'' delays expansion of the argument tokens
-%until \cs{shipout} time, as with a
-%non-\verb|\immediate\write|.{\raggedright\par}
-
 \TeX エンジン共通の拡張（オリジナルの\TeX と\eTeX を除く）：\cs{special}の直後に新しい
 キーワード``\code{shipout}''が置かれた場合，その引数トークンの展開が\cs{shipout}時
 （すなわち\cs{immediate}なしの\cs{write}と同じタイミング）まで遅延されるようになりました．
-
-%\noindent ep\TeX{}, eup\TeX{}:\begin{itemize*}
-%\item ``Raw'' (u)ptex no longer built; (u)ptex now runs in
-%e(u)ptex's compatibility mode. Same for p\TeX{} tools, listed below.
-%\item New primitives: \cs{tojis}, \cs{ptextracingfonts},
-%\cs{ptexfontname}.
-%\item For \cs{font}, new syntax for JIS/UCS is supported.
-%\end{itemize*}
 
 \epTeX と\eupTeX:
 %
@@ -4238,13 +4130,6 @@ Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナ�
 \item \cs{font}で新しいJIS/UCSシンタックスがサポートされました．
 \end{itemize}
 
-%\noindent Lua\TeX: \begin{itemize*}
-%\item new primitive \cs{variablefam} to allow math characters to keep
-%their class while still letting the family adapt.
-%\item improved r2l annotation areas
-%\item cross-engine ``late \cs{special}'' described above.
-%\end{itemize*}
-
 \LuaTeX:
 %
 \begin{itemize}[nosep]
@@ -4254,28 +4139,9 @@ Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナ�
 \item エンジン共通の遅延\cs{special}（上述）．
 \end{itemize}
 
-%\noindent MetaPost: Bug fixes. \texttt{svg->dx} and \texttt{svg->dy} are now
-%\texttt{double}, for better precision; \verb|mp_begin_iteration|
-%updated; memory leak in \texttt{mplib} fixed.
-
 \MP: バグ修正を行いました．精度改善のため\code{svg->dx}と\code{svg->dy}は
 \code{double}になりました．\code{mp\_begin\_iteration}が更新されました．
 \code{mplib}のメモリリークが修正されました．
-
-%\noindent pdf\TeX{}: \begin{itemize*}
-%\item new primitive \cs{pdfomitinfodict} to omit \texttt{/Info}
-%dictionary completely.
-%\item new primitive \cs{pdfomitprocset} to control omitting
-%\texttt{/ProcSet} array: \texttt{/ProcSet} is included if this
-%parameter is negative, or if this parameter is zero and pdftex is
-%generating PDF~1.x output.
-%\item with \cs{pdfinterwordspaceon}, if the current font's encoding
-%has a \texttt{/space} character at slot 32, it is used; otherwise,
-%the \texttt{/space} from the (new) default font \texttt{pdftexspace}
-%is used. That default font can be overridden with the new primitive
-%\cs{pdfspacefont}. This same new procedure is used for
-%\cs{pdffakespace}.
-%\end{itemize*}
 
 \pdfTeX:
 %
@@ -4291,13 +4157,6 @@ Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナ�
   この新手順は\cs{pdffakespace}でも用いられます．
 \end{itemize}
 
-%\noindent p\TeX{} et al.: \begin{itemize*}
-%\item As mentioned above, \texttt{ptex} now runs \texttt{eptex} in
-%compatibility mode instead of being built separately.
-%\item p\TeX{} tools (pbibtex, pdvitype, ppltotf, ptftopl) merged into
-%corresponding up\TeX{} versions, running in compatibility mode.
-%\end{itemize*}
-
 \pTeX など：
 %
 \begin{itemize}[nosep]
@@ -4307,24 +4166,10 @@ Windows: 以前からアナウンスしていた通り，\TL は32-bitバイナ�
   はそれぞれ\upTeX バージョンの対応ツールに統合され，互換モードで動作するようになりました．
 \end{itemize}
 
-%\noindent Xe\TeX: bug fix for \cs{topskip} and \cs{splittopskip}
-%computation when \cs{XeTeXupwardsmode} is active; the cross-engine
-%``late \cs{special}'' described above.
-
 \XeTeX: \cs{XeTeXupwardsmode}が有効になっている際の\cs{topskip}と\cs{splittopskip}の
 計算に関するバグ修正と，上述のエンジン共通の遅延\cs{special}追加が行われました．
 
-%\noindent Dvipdfmx: new option \texttt{--pdfm-str-utf8} to make pdfmark and/or bookmark.
-
 DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8}が追加されました．
-
-%\noindent \BibTeX{}u: \begin{itemize*}
-%\item This Bib\TeX{} variant is mostly upward-compatible with \BibTeX,
-%with much better (Unicode-based) multilingual support. It's been in
-%\TL{} for some years.
-%\item This year, more features to support CJK languages have been added,
-%some extended from the Japanese (u)pbibtex and other programs.
-%\end{itemize*}
 
 {\BibTeX}u:
 %
@@ -4336,20 +4181,9 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
   組版用の\prog{(u)pbibitex}その他のプログラムと同様の拡張も行われました．
 \end{itemize}
 
-%\noindent Kpathsea: Support guessing input file encodings for Unix-ish
-%platforms, as on Windows; enabled for
-%(\texttt{e})\texttt{p}(\texttt{la})\texttt{tex}, \texttt{pbibtex},
-%\texttt{mendex}.
-
 \KPS: Windows版と同様，Unix系プラットフォームでもファイルエンコーディング推定を
 サポートしました．(\code{e})\code{p}(\code{la})\code{tex}と\code{pbibtex}で
 有効になっています．
-
-%\noindent \code{tlmgr} and infrastructure: \begin{itemize*}
-%\item default to text interface on macOS.
-%\item install core packages first, retry other packages once.
-%\item simplistic checks for enough disk space.
-%\end{itemize*}
 
 \prog{tlmgr}とインフラ：
 %
@@ -4359,24 +4193,6 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
   なりました．
 \item ディスクの空き容量が十分かどうか，簡易チェックを行うようになりました．
 \end{itemize}
-
-%\noindent Mac\TeX{}: \begin{itemize*}
-%\item Mac\TeX{} and its binary folder \texttt{universal-darwin}
-%require macOS 10.14 or higher (Mojave, Catalina, Big~Sur, Monterey,
-%Ventura). The \texttt{x86\_64-darwinlegacy} binary folder, available only
-%with the Unix \texttt{install-tl}, supports 10.6 (Snow~Leopard) and
-%later.
-%
-%\item The GUI package in Mac\TeX{} now contains \texttt{hintview}, a macOS
-%viewer for HINT documents (created by the \texttt{hitex} and
-%\texttt{hilatex} engines for mobile devices; see the Hi\TeX{} web page,
-%\url{https://hint.userweb.mwn.de/hint/hitex.html}). The GUI package no
-%longer installs a folder of documents, replacing them with a short
-%\texttt{READ~ME} for new users and a page about \texttt{hintview}.
-%
-%\item The \texttt{Extras} folder of additional \TeX{} sofware on the DVD has
-%been replaced with a document containing links to download sites.
-%\end{itemize*}
 
 \MacTeX:
 %
@@ -4394,15 +4210,6 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
 \item DVDの\dir{Extra}ディレクトリ内の追加\TeX ソフトウェアは，ダウンロード
   サイトのリンクを含むドキュメントに置き換えられました．
 \end{itemize}
-
-%\noindent Platforms: \begin{itemize*}
-%\item As mentioned above, the new \texttt{windows} binary directory
-%contains 64-bit Windows binaries, and
-%\item the \texttt{bin/win32} binary directory is gone, since we cannot
-%support 32-bit and 64-bit Windows simultaneously.
-%\item The \texttt{i386-cygwin} binary directory is gone, since Cygwin no
-%longer supports i386.
-%\end{itemize*}
 
 プラットフォーム：
 %
@@ -4425,7 +4232,7 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
 texlive/contribute.html}を読んで，コントリビューションを検討してください．
 
 \begin{samepage}
-間違いの指摘や提案，ヘルプの要望は以下に送ってください（英語）：
+間違いの指摘や提案，ヘルプの要望は下記にご連絡ください（英語）：
 %
 \begin{quote}
 \email{tex-live@tug.org} \\
