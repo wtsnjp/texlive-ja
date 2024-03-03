@@ -968,14 +968,14 @@ Options customization:
 図\ref{fig:options-text}はテキストモードにおけるオプションメニューです。以下に
 各オプションの詳細を列挙します：
 %
-\begin{description}
+\begin{description}[style=unboxed]
 \item[use letter size instead of A4 by default%
-（A4サイズの代わりにレターサイズをデフォルトで使用）]
+  （A4サイズの代わりにレターサイズをデフォルトで使用）]
 デフォルトの用紙サイズを選択します。当然ながら、各ドキュメントのサイズはその都度
 ドキュメントに合わせて指定することもできます。
 
 \item[execution of restricted list of programs%
-（制限リストにあるプログラムの実行を許可）]
+  （制限リストにあるプログラムの実行を許可）]
 \TL{} 2010以降、いくつかの外部プログラムの実行がデフォルトで許可されるようになり
 ました。実行が許可されている（数少ない）プログラムのリストは\file{texmf.cnf}に
 記載されています。詳細については\TL{} 2010のリリースノート（\ref{sec:2010news}%
@@ -987,12 +987,12 @@ Options customization:
 問題を生じる可能性があります。詳細は\prog{fmtutil}のドキュメントを参照してください。
 
 \item[install font/macro \dots\ tree%
-（フォント・マクロの 〜 ツリーをインストール）]
+  （フォント・マクロの 〜 ツリーをインストール）]
 多くのパッケージに付属するソースファイルとドキュメントをダウンロード・インストール
 するか否かを選択するオプションです。このオプションを無効化することは非推奨です。
 
 \item[create symlinks in standard directories%
-（標準ディレクトリにシンボリックリンクを作成）]
+  （標準ディレクトリにシンボリックリンクを作成）]
 このオプションはUnix系のみで利用可能で、環境変数の変更を回避する手段です。この
 オプションを有効にしない場合、\TL のディレクトリは通常手動で\code{PATH}, \code{%
 MANPATH}, \code{INFOPATH}に追加する必要があります。ただし、シンボリックリンクの
@@ -1004,7 +1004,7 @@ MANPATH}, \code{INFOPATH}に追加する必要があります。ただし、シ�
 ことをおすすめします。
 
 \item[after install, set CTAN as source for package updates%
-（CTANをインストール後のパッケージ更新元に設定）]
+  （CTANをインストール後のパッケージ更新元に設定）]
 \TL をDVDまたはISOからインストールする場合、このオプションはデフォルトで有効です。
 ほとんどの場合、\TL のユーザは年内に行われるパッケージのアップデートを受け取りたいと
 考えるためです。このオプションを無効化する場合があるとしたら、例えばDVDからは一部の
