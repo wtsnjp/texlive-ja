@@ -2663,7 +2663,7 @@ kdebug:search(cmr10.pfb) => /usr/local/texmf/fonts/type1/public/cm/cmr10.pfb
 
 \subsection{ランタイムオプション}
 
-その他の\Webc の便利な機能として、数々のメモリパラメータ（例えば配列サイズ）
+その他の\Webc の便利な機能として、数々のメモリパラメタ（例えば配列サイズ）
 を\KPS が読み込む設定ファイル\file{texmf.cnf}でコントロールできることが挙げられ
 ます。メモリ設定は\TL ディストリビューションに含まれる\file{texmf.cnf}のPart 3%
 に記述されています。より重要なことは：
@@ -3022,7 +3022,7 @@ PDF出力が行われているかどうかを判定できなくなったから�
 アクセスをサポートします。
 \item Microtypographicフォント展開がより簡単に利用できるようになりました。\\
 \url{https://www.ntg.nl/pipermail/ntg-pdftex/2004-May/000504.html}
-\item 従来は専用の設定ファイル\file{pdftex.cfg}で設定していたパラメータは、今後
+\item 従来は専用の設定ファイル\file{pdftex.cfg}で設定していたパラメタは、今後
 プリミティブを用いて設定されなければなりません。具体的には\file{pdftexconfig.%
 tex}で設定されています。\file{pdftex.cfg}はもはやサポートされません。\file{%
 pdftexconfig.tex}が変更された場合、すべての\file{.fmt}ファイルを再生成する必要
@@ -4233,7 +4233,81 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
 \subsection{現在：2024}
 \label{sec:tlcurrent}
 
-TBW
+エンジン共通の拡張（Knuthian \TeX と\eTeX を除く）：
+%
+\begin{itemize}[nosep]
+\item \cs{output}と\cs{write}のブレースの不正利用によるクラッシュを防止。
+\item 内部ループのわずかな最適化（いずれの変更もDavid Fuchs由来）。
+\end{itemize}
+
+\LuaTeX:
+%
+\begin{itemize}[nosep]
+\item ファイル書き込み時のLuaレベルチェックを\TeX レベルチェックと同等に。
+\item \cs{tracingmacros}の値が256以上の場合、ログファイルの各マクロパラメタの間に
+  改行を出力。2020--2023年はこれが規定の挙動でした。それ以前は、他のエンジンと同様
+  このような空行は一切出力されませんでした。
+\end{itemize}
+
+\MP: 区間演算のためのMPFIライブラリが導入されました。
+このライブラリは\lopt{numbersystem=interval}で有効化されます。
+
+\pdfTeX:
+%
+\begin{itemize}[nosep]
+\item ビッグエンディアンシステムにおけるテキスト抽出の信頼性向上。
+\item 破損したPFB, FMT, PDFファイルに対するチェックの強化。
+\item 異常なPDFのインクルードがあった場合に、破損したPDFを生成するのを抑止。
+\item マニュアルを\LaTeX に変換し、校正も実施。ただし重要な更新はわずかです。
+\end{itemize}
+
+\epTeX, \eupTeX:
+%
+\begin{itemize}[nosep]
+\item 新しいシンプルなエンコーディング変換ユーティリティ\cmd{ptekf}。
+\item \cmd{eptex}の独立バイナリを廃止。このコマンドは、今後は\cmd{euptex}のレガシー
+  エンコーディングモードを起動するようになります。
+\end{itemize}
+
+DVIPDFM$x$:
+%
+\begin{itemize}[nosep]
+\item \pdfTeX と同じ方法でタイムゾーンオフセットを計算。
+\item 新しいAdobe-Japan1-UCS2 CMapに対応するバリエーションセレクタ。
+\item (u)\pTeX のため仮想フォントのマルチバイト文字をOFMフォントにフォールバック。
+\end{itemize}
+
+\KPS:
+%
+\begin{itemize}[nosep]
+\item \code{TEXMF}(\code{SYS})\code{VAR}以下への書き出しも許可するため、ファイル名の
+  拡張された安全性チェックをサポート。
+\item 新しい環境変数\var{TEXMF\_OUTPUT\_DIRECTORY}を追加（従来の\var{TEXMFOUTPUT}とは別）。
+  これによりサブプログラムが\lopt{output-directory}設定にアクセスできるようになります。
+\end{itemize}
+
+CWEB:
+%
+\begin{itemize}[nosep]
+\item バックエンド\TeX エンジンとして\LuaTeX をサポート。
+\item ブレークポイントのない行におけるバッファオーバーフローを修正。
+\end{itemize}
+
+\prog{tlmgr}:
+%
+\begin{itemize}[nosep]
+\item バグ報告情報にアクセスするための新アクション\code{tlmgr bug}。
+\item LWPサポートを強化するため（特にmacOSで重要）、独自のルート証明書バンドルをすべての
+  プラットフォームで利用。
+\item ローカルの\TL より古いリモートリポジトリ（つまりミラーの状態）を検出した場合は
+  アップデートを行わないことで、誤ったパッケージ削除を防止。
+\item \ConTeXt の紙面サイズ設定をサポート。
+\item ミラーリポジトリ（mainとtlcontrib）用のtlpdbsakeバックアップを除去。
+\end{itemize}
+
+\MacTeX: 最新版のGhostscript 10.02.1を同梱。4つのGUIプログラムと最新\TL を収録。バイナリは
+macOS 10.14（Mojave, 2018）以降のサポートを維持（いつも通り、古いMacは\TL に含まれる
+\pkg{x86\_64-darwinlegacy}バイナリではサポートされていますが、\MacTeX ではサポート外です）。
 
 \subsection{未来}
 
