@@ -4273,18 +4273,21 @@ DVIPDFM$x$:
 %
 \begin{itemize}[nosep]
 \item \pdfTeX と同じ方法でタイムゾーンオフセットを計算。
-\item 新しいAdobe-Japan1-UCS2 CMapに対応するバリエーションセレクタ。
+\item 新しいAdobe-Japan1-UCS2 CMapに対応するために異体字セレクタを処理。
 \item (u)\pTeX のため仮想フォントのマルチバイト文字をOFMフォントにフォールバック。
 \end{itemize}
 
+\begin{samepage}
 \KPS:
 %
 \begin{itemize}[nosep]
-\item \code{TEXMF}(\code{SYS})\code{VAR}以下への書き出しも許可するため、ファイル名の
-  拡張された安全性チェックをサポート。
+\item Lua\LaTeXTeX に向けて、\code{TEXMF}(\code{SYS})\code{VAR}以下への書き出しも許可するべく
+  ファイル名の拡張された安全性チェックをサポート。これにともない、新しい関数と対応する
+  \cmd{kpsewhich}のオプションを追加。
 \item 新しい環境変数\var{TEXMF\_OUTPUT\_DIRECTORY}を追加（従来の\var{TEXMFOUTPUT}とは別）。
   これによりサブプログラムが\lopt{output-directory}設定にアクセスできるようになります。
 \end{itemize}
+\end{samepage}
 
 CWEB:
 %
