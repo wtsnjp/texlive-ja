@@ -696,6 +696,10 @@ tl}はPerlスクリプトです。Unix系システムでこのスクリプトを
 起動時に拡張子\code{.bat}を付けてください。もっとも、基本的にはそのような状態には
 ならないはずです例外はローカルに\dir{tlnet}ディレクトリをミラーしている場合です。
 
+\TL のインストールパスに非ASCII文字を含めることは、必ず避ける必要があります。これは
+特に、Microsoftネットワークアカウントの使用を強要されるWindows~11で問題となり得ます。
+回避策については\url{https://tug.org/texlive/windows.html\#nonascii}を参照してください。
+
 \begin{figure}[tb]
 \begin{boxedverbatim}
 Installing TeX Live 2024 from: ...
@@ -4233,7 +4237,7 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
 \subsection{現在：2024}
 \label{sec:tlcurrent}
 
-エンジン共通の拡張（Knuthian \TeX と\eTeX を除く）：
+エンジン共通の拡張（Knuthian {\TeX}, {\eTeX}, {\LuaTeX}を除く）：
 %
 \begin{itemize}[nosep]
 \item \cs{output}と\cs{write}のブレースの不正利用によるクラッシュを防止。
@@ -4244,9 +4248,9 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
 %
 \begin{itemize}[nosep]
 \item ファイル書き込み時のLuaレベルチェックを\TeX レベルチェックと同等に。
-\item \cs{tracingmacros}の値が256以上の場合、ログファイルの各マクロパラメタの間に
-  改行を出力。2020--2023年はこれが規定の挙動でした。それ以前は、他のエンジンと同様
-  このような空行は一切出力されませんでした。
+\item Lua変数\code{texconfig.trace\_extra\_newline}が設定されている場合、ログファイル
+  の各マクロパラメタの間に改行を出力。2020--2023年はこれが規定の挙動でした。それ以前は、
+  他のエンジンと同様このような空行は一切出力されませんでした。
 \end{itemize}
 
 \MP: 区間演算のためのMPFIライブラリが導入されました。
@@ -4269,6 +4273,8 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
   エンコーディングモードを起動するようになります。
 \end{itemize}
 
+\XeTeX: BMP範囲外のUnicode文字を含むファイル名をサポート。
+
 DVIPDFM$x$:
 %
 \begin{itemize}[nosep]
@@ -4277,7 +4283,6 @@ DVIPDFM$x$:
 \item (u)\pTeX のため仮想フォントのマルチバイト文字をOFMフォントにフォールバック。
 \end{itemize}
 
-\begin{samepage}
 \KPS:
 %
 \begin{itemize}[nosep]
@@ -4287,7 +4292,6 @@ DVIPDFM$x$:
 \item 新しい環境変数\var{TEXMF\_OUTPUT\_DIRECTORY}を追加（従来の\var{TEXMFOUTPUT}とは別）。
   これによりサブプログラムが\lopt{output-directory}設定にアクセスできるようになります。
 \end{itemize}
-\end{samepage}
 
 CWEB:
 %
