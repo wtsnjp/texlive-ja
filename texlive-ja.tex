@@ -1947,7 +1947,7 @@ Windowsではほとんどすべての設定データはレジストリに保存�
 場合はシュートカットとメニュー項目はインストーラを実行したユーザ向けにのみ作成され、
 そのユーザの検索パスだけが更新されます。
 
-管理者として実行するか否かに関わらず、インストーラは常にデフォルトの\TL ルートを
+管理者として実行するか否かにかかわらず、インストーラは常にデフォルトの\TL ルートを
 \winenv{System\-Drive}以下に設定します。インストーラは、必ず設定しようとしているルート
 位置が現在の実行権限で書き込み可能かどうか確認します。
 
@@ -4234,8 +4234,7 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
   終了したためです。
 \end{itemize}
 
-\subsection{現在：2024}
-\label{sec:tlcurrent}
+\subsection{2024}
 
 エンジン共通の拡張（Knuthian {\TeX}, {\eTeX}, {\LuaTeX}を除く）：
 %
@@ -4315,6 +4314,146 @@ CWEB:
 \MacTeX: 最新版のGhostscript 10.02.1を同梱。4つのGUIプログラムと最新\TL を収録。バイナリは
 macOS 10.14（Mojave, 2018）以降のサポートを維持（いつも通り、古いMacは\TL に含まれる
 \pkg{x86\_64-darwinlegacy}バイナリではサポートされていますが、\MacTeX ではサポート外です）。
+
+\subsection{現在：2025}
+\label{sec:tlcurrent}
+
+エンジン共通の拡張（Knuthian \TeX を除く）：
+%
+\begin{itemize}[nosep]
+\item すべてのフォーマット（plain \TeX と\LaTeX の両方）でPDF-1.7を生成するように変更。
+  以前は1.5でした。印刷所などのために、古いバージョンを出力したい場合があり得ます。
+  そのような場合はいくつか方法があり、例えばPDF-1.4を出力したい場合は次のようにします：
+  \begin{itemize}[nosep]
+  \item \cmd{ps2pdf14}を\TeX が生成したPDFに対して実行します。このシンプルなラッパーは
+    Ghostscriptに含まれています。それ以外の外部ソフトウェアも同様の処理が可能です。
+  \item \LaTeX のPDFバックエンドを用いる場合：\verb|pdf_version_gset:n{1.4}|
+  \item \pdfTeX: \verb|\pdfmajorversion=1 \pdfminorversion=4|
+  \item \LuaTeX: \verb|\pdfvariable majorversion=1 \pdfvariable minorversion=4|
+  \item \XeTeX: \verb|\special{pdf:majorversion:1}\special{pdf:minorversion:4}|
+  \end{itemize}
+\item \TeX が\sopt{halt-on-error}オプションが原因で終了した場合、ヘルプメッセージを
+  ログファイルに書き出します。これはデフォルトの挙動と一致します。
+\item 新しいプリミティブパラメータ\cs{ignoreprimitiveerror}：1に設定された場合、
+  ``\code{Infinite glue shrinkage found in box being split}''のエラーは警告に
+  下げられ、プログラムの終了ステータスが失敗に変更されません。それ以外の数値は
+  将来的な変更のために予約されています（背景は\href{https://www.latex-project.org/%
+  news/latex2e-news/ltnews39.pdf}{{\LaTeX} News 39}の``Enhancements to the new
+  mark mechanism''セクション）。
+\item フォントを2048\,pt以上に設定した際にはエラーメッセージを出力します。以前は
+  （手当されることのない）算術オーバーフローまたはユーザの指定値の暗黙的変更が
+  行われていました。
+\end{itemize}
+
+\LuaTeX:
+%
+\begin{itemize}[nosep]
+\item LuaJIT 2.1.1736781742。
+\item 新しい\code{luaffi}ライブラリ、aarch64のサポート。
+\item \cs{tracinglostchars=4}指定時には、組版時に必要になるのを待たずにグリフ
+  処理時に欠落文字について警告を出します。\cs{tracinglostchars=5}ではこの
+  \kenten{早めの}診断情報をエラーにします。
+\item 新しいプリミティブ\cs{mathemptydisplaymode}：1に設定された場合、
+  ディスプレイ数式の前の空の段落は無視されます。デフォルトでは、ディスプレイ数式
+  前のdirノードを含む段落は無視されません。これは伝統的な挙動と一致します。
+\item PNG処理時、今後はマスクにattrは設定されません。この削除変更について要望を
+  受けた場合には\code{makeattr}機能を追加することは可能ですが、そのような場合は
+  画像ではなく適切なPDFを埋め込むことを推奨します（その方が堅牢です）。
+\item 即時代入時にトークン結合子を処理。
+\item 先述のエンジン共通変更。
+\end{itemize}
+
+\pdfTeX:
+%
+\begin{itemize}[nosep]
+\item 新しい\cs{pdfptexuseunderscore}プリミティブ：さまざまな辞書エントリで
+  \code{.}の代わりに\code{\_}を使用するようになります。例えば\code{%
+  PTEX.Fullbanner}は\code{PTEX\_Fullbanner}になります。
+\item フォントが変更されたからといってリアルスペースを省略しないように
+  なりました。
+\item 単語間スペースをoverfullした行で検出した際はtoleranceを増加させます。
+\item \cs{maxdimen}を超過する代わりに、画像内に埋め込まれた$1\times 1$のような
+  極小解像度を無視します。
+\item 先述のエンジン共通変更。
+\end{itemize}
+
+\epTeX, \eupTeX
+%
+\begin{itemize}[nosep]
+\item 新しい\cs{kcatcode}によりUnicodeラテン文字と16-bit OFM Level-0の結合文字を
+  サポート（\code{modifier}: 20, \code{latin\_ucs}: 14）。
+\item 先述のエンジン共通変更。
+\end{itemize}
+
+\XeTeX: 先述のエンジン共通変更。
+
+DVIPDFM$x$:
+%
+\begin{itemize}[nosep]
+\item \cmd{xbb}実行ファイルは\prog{dvipdfmx}へのリンクではなく、独立にメンテナンス
+  されるスクリプトとなりました。
+\item 仮想フォントを介した文字結合のため\upTeX の新しいエンコーディングをサポート。
+\item 127個以上のグリフを持つTrueTypeフォント埋め込みの修正。
+\item 画像を複数回読み込む際の問題の修正。
+\end{itemize}
+
+CWEB:
+%
+\begin{itemize}[nosep]
+\item \prog{cweave}と\prog{ctwill}に混合ステートメントのための新しい\code{+F}%
+  オプションを追加。
+\item PDFのブックマークページとtable-of-contentsを同期。
+\item Martin Ruckert氏の手法によるインデックスソートの高速化。
+\item names-of-the-sectionsをソートするための新しいマクロ\cs{9}。
+\item \prog{ctwill-proofsort}のソートアルゴリズムを改善。
+\item \prog{ctwill}フォーマットでnames-of-the-sectionsを出力。
+\end{itemize}
+
+Dvips: 仮想フォントを介した文字結合のため\upTeX の新しいエンコーディングをサポート。
+
+\KPS: \cmd{kpsewhich}に1つ以上のファイル検索が指定された場合、ファイルが見つからない
+  場合には空行を出力。
+
+\prog{tlmgr}:
+%
+\begin{itemize}[nosep]
+\item \cmd{tlmgr info}：与えられたパッケージのもつファイルを報告するだけの
+  新オプション\lopt{only-files}。
+\item \cmd{tlmgr search}：新オプション\lopt{json}。
+\end{itemize}
+
+プラットフォーム：
+%
+\begin{itemize}[nosep]
+\item CentOS 7のサポートが2024年7月30日に（セキュリティアップデートも含めて）終了
+  したことにともない、\pkg{x86\_64-linux}バイナリはAlma Linux 8でビルドされるように
+  なりました。我々はこのことを残念に思っていますが、他の代替が見つかりませんでした。
+  古いシステム向けのバイナリは利用可能です（\url{https://tug.org/texlive/custom-%
+  bin.html}を参照）。
+\item \TL は\file{scripts-targets.lst}ファイルの提供を開始します。このファイルは
+  シンボリックリンクの貼られたスクリプトのリンク名とターゲットを含んでおり、
+  ディストリビューション作成者の利便性が念頭にあります。このファイルは\TL の
+  ソースディレクトリ\dir{Build/source/texk/texlive/linked_scripts}にあります。
+  同ディレクトリに以前より長く存在するファイル\file{scripts.lst}のメンテナンスは
+  継続されます。
+\end{itemize}
+
+Windows: \prog{uninstall-windows}や\prog{runscript}で使用されていたVisual Basicは
+Powershellに置き換えられました。これはVBはWindows 11ではオプショナルであるためです。
+
+\MacTeX: 今年も\MacTeX-2025はmacOS 10.14（Mojave, 2018）以上でArmとIntelの両方の
+プロセッサをサポートします。これによってインストールされるものは以下の通りです。
+%
+\begin{itemize}[nosep]
+\item \TL 2025。
+\item Ghostscript-10.04.0。
+\item \pkg{dvisvgm}の\pkg{libgs}と\pkg{mutool}。従来は\pkg{dvisvgm}サポートはX11を
+  必要としていましたが、2025年にこの要件は削除され、\pkg{dvisvgm}はX11の有無に
+  かかわらず動作するようになりました。
+\item HintView 2.0：最新のHi\TeX に追加された色拡張にも対応。
+\item Asymptote：macOS 10.11（Big Sur, 2020）以上が必要。
+\item {\TeX}Shop 5.49：作文ツールなど最新のApple Intelligence機能をサポート。
+\end{itemize}
 
 \subsection{未来}
 
