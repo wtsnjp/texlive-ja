@@ -697,8 +697,9 @@ tl}はPerlスクリプトです。Unix系システムでこのスクリプトを
 ならないはずです例外はローカルに\dir{tlnet}ディレクトリをミラーしている場合です。
 
 \TL のインストールパスに非ASCII文字を含めることは、必ず避ける必要があります。これは
-特に、Microsoftネットワークアカウントの使用を強要されるWindows~11で問題となり得ます。
-回避策については\url{https://tug.org/texlive/windows.html\#nonascii}を参照してください。
+特に、Windowsのインストールに際しユーザがMicrosoftネットワークアカウントを作成することを
+強制されるWindows~11で問題となり得ます。回避策については\url{https://tug.org/texlive/%
+windows.html\#nonascii}を参照してください。
 
 \begin{figure}[tb]
 \begin{boxedverbatim}
@@ -4380,8 +4381,9 @@ macOS 10.14（Mojave, 2018）以降のサポートを維持（いつも通り、
 \epTeX, \eupTeX
 %
 \begin{itemize}[nosep]
-\item 新しい\cs{kcatcode}によりUnicodeラテン文字と16-bit OFM Level-0の結合文字を
-  サポート（\code{modifier}: 20, \code{latin\_ucs}: 14）。
+\item 新しい\cs{kcatcode}（\code{modifier}: 20, \code{latin\_ucs}: 14）により
+  複数のコードポイントをもつ結合文字、Unicodeラテン文字および16-bit OFM
+  Level-0をサポート。
 \item 先述のエンジン共通変更。
 \end{itemize}
 
@@ -4390,8 +4392,8 @@ macOS 10.14（Mojave, 2018）以降のサポートを維持（いつも通り、
 DVIPDFM$x$:
 %
 \begin{itemize}[nosep]
-\item \cmd{xbb}実行ファイルは\prog{dvipdfmx}へのリンクではなく、独立にメンテナンス
-  されるスクリプトとなりました。
+\item \cmd{extractbb}実行ファイルは\prog{dvipdfmx}へのリンクではなく、独立に
+  メンテナンスされるスクリプトとなりました。
 \item 仮想フォントを介した文字結合のため\upTeX の新しいエンコーディングをサポート。
 \item 127個以上のグリフを持つTrueTypeフォント埋め込みの修正。
 \item 画像を複数回読み込む際の問題の修正。
@@ -4439,7 +4441,7 @@ Dvips: 仮想フォントを介した文字結合のため\upTeX の新しいエ
 \end{itemize}
 
 Windows: \prog{uninstall-windows}や\prog{runscript}で使用されていたVisual Basicは
-Powershellに置き換えられました。これはVBはWindows 11ではオプショナルであるためです。
+Powershellに置き換えられました。これはVBはWindows~11ではオプショナルであるためです。
 
 \MacTeX: 今年も\MacTeX-2025はmacOS 10.14（Mojave, 2018）以上でArmとIntelの両方の
 プロセッサをサポートします。これによってインストールされるものは以下の通りです。
