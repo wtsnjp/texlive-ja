@@ -4235,7 +4235,7 @@ DVIPDFM$x$: pdfmark/bookmarkを作成する新オプション\lopt{pdfm-str-utf8
   終了したためです。
 \end{itemize}
 
-\subsection{2024}
+\subsubsection{2024}
 
 エンジン共通の拡張（Knuthian {\TeX}, {\eTeX}, {\LuaTeX}を除く）：
 %
@@ -4370,9 +4370,9 @@ macOS 10.14（Mojave, 2018）以降のサポートを維持（いつも通り、
 \item 新しい\cs{pdfptexuseunderscore}プリミティブ：さまざまな辞書エントリで
   \code{.}の代わりに\code{\_}を使用するようになります。例えば\code{%
   PTEX.Fullbanner}は\code{PTEX\_Fullbanner}になります。
-\item フォントが変更されたからといってリアルスペースを省略しないように
+\item フォントが変更されたからといって本物のスペースを省略しないように
   なりました。
-\item 単語間スペースをoverfullした行で検出した際はtoleranceを増加させます。
+\item 単語間スペースをoverfullした行で検出した際は上限値を増加させます。
 \item \cs{maxdimen}を超過する代わりに、画像内に埋め込まれた$1\times 1$のような
   極小解像度を無視します。
 \item 先述のエンジン共通変更。
@@ -4413,7 +4413,7 @@ CWEB:
 
 Dvips: 仮想フォントを介した文字結合のため\upTeX の新しいエンコーディングをサポート。
 
-\KPS: \cmd{kpsewhich}に1つ以上のファイル検索が指定された場合、ファイルが見つからない
+\KPS: \cmd{kpsewhich}に2つ以上のファイル検索が指定された場合、ファイルが見つからない
   場合には空行を出力。
 
 \prog{tlmgr}:
