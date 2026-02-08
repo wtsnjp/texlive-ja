@@ -8,12 +8,12 @@
 
 \usepackage{texlive-ja}
 
-\Title{\TL ガイド 2025}
+\Title{\TL ガイド 2026}
 \Editor{Karl Berry}
-\Translator{朝倉卓人（wtsnjp）}
+\Translator{朝倉卓人}
 \Website{https://tug.org/texlive/}
 
-\date{2025年3月}
+\date{2026年2月}
 
 \begin{document}
 \maketitle
@@ -383,8 +383,8 @@ user}などが変更された設定データを保存するために利用する
 \item[システム用ルート] 複数の\TL を配置できます
   （デフォルト値はUnix系では\dir{/usr/local/texlive}）
   \begin{description}
-  \item[\dir{2024}] 前年のリリース
-  \item[\dir{2025}] 最新のリリース
+  \item[\dir{2025}] 前年のリリース
+  \item[\dir{2026}] 最新のリリース
     \begin{description}
     \item[\dir{bin}] ~
       \begin{description}
@@ -402,8 +402,8 @@ user}などが変更された設定データを保存するために利用する
   \end{description}
 \item[ユーザのホームディレクトリ] （\dir{$HOME}または\winenv{USERPROFILE}）
   \begin{description}
-  \item[\dir{.texlive2024}] 前年リリースに適用するユーザごとのデータ（設定や生成物）
-  \item[\dir{.texlive2025}] 最新リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[\dir{.texlive2025}] 前年リリースに適用するユーザごとのデータ（設定や生成物）
+  \item[\dir{.texlive2026}] 最新リリースに適用するユーザごとのデータ（設定や生成物）
     \begin{description}
     \item[\dir{texmf-var}] \var{TEXMFVAR}, \var{TEXMFCACHE}
     \item[\dir{texmf-config}] \var{TEXMFCONFIG}
@@ -703,23 +703,23 @@ windows.html\#nonascii}を参照してください。
 
 \begin{figure}[tb]
 \begin{boxedverbatim}
-Installing TeX Live 2025 from: ...
+Installing TeX Live 2026 from: ...
 Platform: x86_64-linux => 'GNU/Linux on x86_64'
 Distribution: inst (compressed)
 Directory for temporary files: /tmp
 ...
  Detected platform: GNU/Linux on Intel x86_64
  
- <B> binary platforms: 1 out of 16
+ <B> binary platforms: 1 out of 15
 
  <S> set installation scheme: scheme-full
 
  <C> customizing installation collections
-     40 collections out of 41, disk space required: 8648 MB (free: 138718 MB)
+     40 collections out of 41, disk space required: 9402 MB (free: 138718 MB)
 
  <D> directories:
    TEXDIR (the main TeX directory):
-     /usr/local/texlive/2025
+     /usr/local/texlive/2026
    ...
 
  <O> options:
@@ -813,7 +813,7 @@ perltk}や\sopt{gui=wizard}オプションを与えると起動できます。
 Available platforms:
 ===============================================================================
    a [ ] Cygwin on x86_64 (x86_64-cygwin)
-   b [ ] MacOSX current (10.14-) on ARM/x86_64 (universal-darwin)
+   b [ ] macOS current (11-) on ARM/x86_64 (universal-darwin)
    c [ ] MacOSX legacy (10.6-) on x86_64 (x86_64-darwinlegacy)
    d [ ] FreeBSD on x86_64 (amd64-freebsd)
    e [ ] FreeBSD on Intel x86 (i386-freebsd)
@@ -896,8 +896,8 @@ Select scheme:
 \label{sec:directories}
 
 デフォルトの\TL 構成については\ref{sec:texmftrees}節（\p.\pageref{sec:texmftrees}）
-で説明しました。デフォルトのインストール先はUnix系では\dir{/usr/local/texlive/2025}、
-Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2025}です。この配置は複数の\TL
+で説明しました。デフォルトのインストール先はUnix系では\dir{/usr/local/texlive/2026}、
+Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2026}です。この配置は複数の\TL
 を同時にインストールすることを可能にします。例えば複数のリリース（典型的には、年度
 ごと）の\TL をインストールしておき、単純に検索パスを変更することによってどの
 リリースを使用するか切り替えるようなことができます。
@@ -911,8 +911,8 @@ Windowsでは\winpath{\winenv{SystemDrive}\\texlive\\2025}です。この配置�
 （root）権限は必要ありませんが、インストール先ディレクトリへの書き込み権限は必要
 です。}。
 
-Windowsでは、通常\winpath{C:\\texlive\\2025}（より一般的に言えば\winpath{%
-\winenv{SystemDrive}\\texlive\\2025}）を作成するのに管理者権限は必要ありません。
+Windowsでは、通常\winpath{C:\\texlive\\2026}（より一般的に言えば\winpath{%
+\winenv{SystemDrive}\\texlive\\2026}）を作成するのに管理者権限は必要ありません。
 
 インストール先のディレクトリは、インストーラを実行する前にいくつかの環境変数（よく
 用いられるのは\var{TEXLIVE\_INSTALL\_PREFIX}と\var{TEXLIVE\_INSTALL\_TEXDIR}）を
@@ -922,7 +922,7 @@ Windowsでは、通常\winpath{C:\\texlive\\2025}（より一般的に言えば\
 
 合理的なインストール場所の変更先は（特にあなたが\TL を利用する単独のユーザである
 場合には）ホームディレクトリ以下でしょう。メタ文字\dir{~}（チルダ）を用いるとこれを
-簡単に指定することができます（例：\dir{~/texlive/2025}）。
+簡単に指定することができます（例：\dir{~/texlive/2026}）。
 
 複数の\TL リリースを同時にインストールできるようにするためにも、インストール先の
 ディレクトリ名には「年」を含めることをおすすめします（もし\dir{/usr/local/texlive-%
@@ -1154,18 +1154,18 @@ Unix系システムでは各自適切なプラットフォーム向けのバイ�
 別のファイルでも構いません）に次のような行を追加することで環境変数を設定できます：
 %
 \begin{sverbatim}
-PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH; export PATH
-MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH; export MANPATH
-INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH; export INFOPATH
+PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH; export PATH
+MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH; export MANPATH
+INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH; export INFOPATH
 \end{sverbatim}
 %
 cshやtcshの場合は、編集すべきファイルは典型的には\file{$HOME/.cshrc}で、次の
 ような行を追加します：
 %
 \begin{sverbatim}
-setenv PATH /usr/local/texlive/2025/bin/x86_64-linux:$PATH
-setenv MANPATH /usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
-setenv INFOPATH /usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+setenv PATH /usr/local/texlive/2026/bin/x86_64-linux:$PATH
+setenv MANPATH /usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
+setenv INFOPATH /usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 \end{sverbatim}
 %
 利用しているプラットフォームが\code{x86\_64-linux}でない場合は、適切な
@@ -1188,8 +1188,8 @@ setenv INFOPATH /usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 というファイルの存在を確かめて、もし存在していたら次のような内容を追記します：
 %
 \begin{sverbatim}
-MANPATH_MAP /usr/local/texlive/2025/bin/x86_64-linux \
-            /usr/local/texlive/2025/texmf-dist/doc/man
+MANPATH_MAP /usr/local/texlive/2026/bin/x86_64-linux \
+            /usr/local/texlive/2026/texmf-dist/doc/man
 \end{sverbatim}
 %
 第二に各種の検索パスや環境変数のデフォルト値を設定するためのファイル\file{%
@@ -1753,12 +1753,12 @@ running post install action for xetex
 install: xetex-def
 ...
 running mktexlsr
-mktexlsr: Updating /usr/local/texlive/2025/texmf-dist/ls-R...
+mktexlsr: Updating /usr/local/texlive/2026/texmf-dist/ls-R...
 ...
 running fmtutil-sys --missing
 ...
 Transcript written on xelatex.log.
-fmtutil: /usr/local/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt installed.
+fmtutil: /usr/local/texlive/2026/texmf-var/web2c/xetex/xelatex.fmt installed.
 \end{fverbatim}
 
 上の出力からわかるように、\prog{tlmgr}は依存パッケージもインストールし、ファイル名
@@ -2117,9 +2117,9 @@ sec:filename-database}節）が$p$について用意されているかを調べ�
 この変数の内容を変更したりシステムディレクトリを上書きするように環境変数の値を
 設定することは推奨されません。
 
-代わりに、通常のインストールを行うと\file{.../2025/texmf.cnf}が生成されます。
+代わりに、通常のインストールを行うと\file{.../2026/texmf.cnf}が生成されます。
 どうしてもデフォルト設定を変更する必要が生じた場合は（通常は必要ありません）、この
-ファイルに変更を加えてください。メインの設定ファイルは\file{.../2025/texmf-dist/%
+ファイルに変更を加えてください。メインの設定ファイルは\file{.../2026/texmf-dist/%
 web2c/texmf.cnf}です。このファイルを変更してもディストリビューション側でアップデート
 があると変更内容が失われてしまうため、ユーザはこのファイルを編集すべきではありません。
 
@@ -4316,8 +4316,7 @@ CWEB:
 macOS 10.14（Mojave, 2018）以降のサポートを維持（いつも通り、古いMacは\TL に含まれる
 \pkg{x86\_64-darwinlegacy}バイナリではサポートされていますが、\MacTeX ではサポート外です）。
 
-\subsection{現在：2025}
-\label{sec:tlcurrent}
+\subsubsection{2025}
 
 エンジン共通の拡張（Knuthian \TeX を除く）：
 %
@@ -4456,6 +4455,9 @@ Powershellに置き換えられました。これはVBはWindows~11ではオプ�
 \item Asymptote：macOS 10.11（Big Sur, 2020）以上が必要。
 \item {\TeX}Shop 5.49：作文ツールなど最新のApple Intelligence機能をサポート。
 \end{itemize}
+
+\subsection{現在：2026}
+\label{sec:tlcurrent}
 
 \subsection{未来}
 
