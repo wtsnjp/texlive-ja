@@ -53,25 +53,17 @@
 
 \section{イントロダクション}\label{sec:intro}
 
-\subsection{\TL と\TeX コレクション}
+\subsection{\TL}
 
 このドキュメントはGNU/Linuxやその他のUnix系システム、macOS、Windows向けに
 \TeX 関連プログラムを集めたディストリビューション\TL の概要について解説する
-ものです。
-
-この文書の読者は既にインターネット、{\TeX} Users Groupの配布する\TeX
-コレクションDVDまたはその他の方法を利用して\TL を入手していることと思います。
-\ref{sec:tl-coll-dists}節は\TeX コレクションDVDの収録物について簡単に説明して
-います。\TL と\TeX コレクションは{\TeX} Users Group（TUG）の協力によって維持され
-ています。このドキュメントは主として\TL それ自体を解説するものです。
+ものです。この文書の読者はすでにダウンロード、DVDからの読み込み、もしくは
+その他の方法により\TL を入手していることと思います。
 
 \TL には\TeX, \LaTeXe, \ConTeXt, \MF, \MP, \BibTeX 実行プログラムはもちろん、
 \TeX を拡張する多数のマクロパッケージやフォント、そしてそれらの付属ドキュメント
 が含まれています。また、世界中で利用されるさまざまな言語における組版もサポート
 されています。
-
-\TL のバージョンごとの主な変更点については、このドキュメントの末尾にある
-\ref{sec:history}節（\p.\pageref{sec:history}）を参照してください。
 
 \subsection{サポートOS}
 \label{sec:os-support}
@@ -91,17 +83,15 @@ tl-coll-dists}節を参照してください。
 \subsection{\TL のインストール（基本）}
 \label{sec:basic}
 
-\TL はDVDまたはインターネットを利用してインストールすることができます（\url{%
-https://tug.org/texlive/acquire.html}）。インターネット・インストーラ自体はとても
-小さなプログラムで、これを実行すると必要とされるすべてのファイルをインターネット
-からダウンロードします。
+\TL はDVD（またはISOイメージ）やインターネット経由でインストールすることができます
+（\url{https://tug.org/texlive/acquire.html}）。インターネット・インストーラ自体は
+とても小さなプログラムで、これを実行すると必要とされるすべてのファイルを
+インターネットからダウンロードします。
 
-DVDインストーラはあなたのローカルディスクに\TL をインストールするものですが、
-\TeX コレクションDVD上にある\TL のデータ（またはその\file{.iso}イメージ）
-を直接実行することはできません。USBディスクなどにポータブルインストールを
-行うことも\emph{可能です}（\ref{sec:portable-tl}節を参照）。インストールに
-ついては後ほど詳述しますが（\p.\pageref{sec:install}）、ここではクイック
-スタートとして簡単に説明します：
+\TL はUSBディスクなどに実行可能な形でインストール（ポータブルインストール）する
+ことも可能です（\ref{sec:portable-tl}節を参照）。インストール方法については後ほど
+詳述しますが（\p.\pageref{sec:install}）、ここではクイックスタートとして簡易的に
+説明します：
 
 \begin{itemize}
 \item Unix系ではインストールスクリプトは\cmd{install-tl}です。Windowsでは
@@ -241,35 +231,6 @@ texwiki.texjp.org/?質問のしかた}）ページがありますので、初め
 \section{\TL の概要}
 \label{sec:overview-tl}
 
-このセクションでは\TL と\TeX コレクションの収録物について紹介します。
-
-\subsection{\TeX コレクション: \TL, \MIKTEX, \MacTeX}
-\label{sec:tl-coll-dists}
-
-\TeX コレクションDVDには以下のものが含まれています：
-
-\begin{description}
-\item[\TL]
-ディスクにインストールするための包括的でクロスプラットフォームな\TeX
-ディストリビューションです。ウェブサイト：\url{https://tug.org/texlive/}
-
-\item[\MacTeX]
-macOS向けの\TeX システムで、\TL に専用のインストーラといくつかのMac用
-アプリケーションを追加しています。ウェブサイト：\url{https://tug.org/mactex/}
-
-\item[\MIKTEX]
-これも包括的でクロスプラットフォームな\TeX ディストリビューションです。
-Windows, GNU/Linux, macOSをサポートしていますが、DVDに含まれているのは
-Windows向けのバイナリのみです。\MIKTEX は専用のパッケージマネージャを備えて
-おり、必要なコンポーネントを必要に応じてインターネットからインストールする
-ようになっています。ウェブサイト：\url{https://miktex.org/}
-
-\item[CTAN]
-CTANリポジトリ（\url{https://ctan.org/}）のスナップショットです。CTANは\TL
-と同じライセンスで配布されているわけではないので、再配布や変更を行う場合は
-十分注意してください。
-\end{description}
-
 \subsection{\TL のトップレベルディレクトリ}
 \label{sec:tld}
 
@@ -320,7 +281,7 @@ CTANリポジトリ（\url{https://ctan.org/}）のスナップショットで�
 \item 簡体字中国語：\dir{texmf-dist/doc/texlive/texlive-zh-cn}
 \end{itemize}
 
-\subsection{いろいろなTEXMFツリー（概要）}
+\subsection{いろいろなTEXMFツリー}
 \label{sec:texmftrees}
 
 この節では、システムに利用される種々のTEXMFツリーを指定するために予め定義
@@ -438,21 +399,32 @@ samplepdf.tex}）も収録されています。
 
 \item[\LuaTeX]
 Unicodeによる入力とOpenType\slash TrueTypeフォントおよびシステムフォントのサポート
-を追加した処理系です。この\TeX エンジンには軽量スクリプト言語Lua（\url{%
+を追加した処理系です。この\TeX エンジンにはMetaPostがライブラリとして組み込まれて
+おり、高速なグラフィック生成が可能です。そして何よりも軽量スクリプト言語Lua（\url{%
 https://www.lua.org/}）のインタプリタが組み込まれており、\TeX における厄介な問題に
 対処するのにとても役立ちます。\cmd{texlua}として呼び出した場合は独立のLua処理系の
 ように振る舞います。ウェブサイト：\url{https://luatex.org/}、マニュアル：\file{%
 texmf-dist/doc/luatex/base/luatex.pdf}。
 
-\item[($\varepsilon$-)(u)\pTeX]
-日本語組版をネイティブにサポートする処理系です。\pTeX がベースですが、\eTeX 拡張
-が利用可能な\epTeX とUnicodeサポートを含む\upTeX もあります（詳細はこのリストの
-下のコラムを参照）。
+\item[LuaMeta\TeX]
+\LuaTeX の後継エンジンで、\ConTeXt のデフォルトエンジンです。柔軟性を最大化する
+ため、フォントの取り扱いやバックエンド出力も含め、ほとんどの機能がLuaで実装されて
+います。ウェブサイト：\url{https://ctan.org/pkg/context}、リファレンスマニュアル：
+\file{texmf-dist/doc/luametatex/base/luametatex.pdf}。
 
 \item[\XeTeX]
 Unicodeによる入力とOpenType\slash TrueTypeフォントおよびシステムフォントの利用を
 サードパーティ製のライブラリを利用してサポートする\TeX 処理系です。
 ウェブサイト：\url{https://tug.org/xetex}。
+
+\item[Hi\TeX]
+モバイル端末のためにデザインされたHINTという独自フォーマットを出力するエンジンです。
+ウェブサイト：\url{https://ctan.org/pkg/hitex}。
+
+\item[($\varepsilon$-)(u)\pTeX]
+日本語組版をネイティブにサポートする処理系です。\pTeX がベースですが、\eTeX 拡張
+が利用可能な\epTeX とUnicodeサポートを含む\upTeX もあります（詳細はこのリストの
+下のコラムを参照）。
 
 \item[{\OMEGA} (Omega)]
 Unicode（16-bit文字）ベースの処理系で、すなわち世界中のほとんどあらゆる言語で
@@ -642,17 +614,16 @@ tl}はPerlスクリプトです。Unix系システムでこのスクリプトを
 \subsubsection{macOS}
 \label{sec:macos}
 
-\ref{sec:tl-coll-dists}節でも言及したように、macOSには\MacTeX という専用の
-ディストリビューションがあります（\url{https://tug.org/mactex}）。\MacTeX の
-インストーラはmacOS向けにいくつかの最適化をしている（たとえば、いわゆる
-「{\TeX}Distデータ構造」を利用してMac上の複数の\TL リリースを簡単に切り替える
-機能があります）ので、\TL インストーラを利用するよりも、\MacTeX を利用した
-インストールをおすすめします\footnote{訳注：ただし敢えて\TL インストーラを
-利用することも可能です。}。
+macOSには\MacTeX という専用のディストリビューションがあります
+（\url{https://tug.org/mactex}）。\MacTeX のインストーラはmacOS向けにいくつかの
+最適化をしている（たとえば、いわゆる「{\TeX}Distデータ構造」を利用してMac上の
+複数の\TL リリースを簡単に切り替える機能があります）ので、\TL インストーラを
+利用するよりも、\MacTeX を利用したインストールをおすすめします\footnote{訳注：
+ただしUnix向けの\TL インストーラも問題なく利用できます。}。
 
-\MacTeX は完全な\TL ベースのディストリビューションで、主要な\TeX ツリーと
-含まれる実行バイナリはまったく同一です。通常の\TL に、macOS専用のドキュメント
-とアプリケーションがいくつか追加されています。
+\MacTeX は\TL の上位集合で、主要な\TeX ツリーと含まれる実行バイナリはまったく
+同一です。通常の\TL に、macOS専用のドキュメントとアプリケーションがいくつか
+追加されています。
 
 \subsubsection{Windows}\label{sec:wininst}
 
@@ -669,11 +640,10 @@ tl}はPerlスクリプトです。Unix系システムでこのスクリプトを
 > install-tl-windows
 \end{alltt}
 %
-を実行してください。もちろん絶対パスを指定して起動することも可能です。例えば、
-\TeX コレクションDVDを利用していて、その光学ドライブが\dir{D:}であれば：
+を実行してください。もちろん絶対パスを指定して起動することも可能です。
 %
 \begin{alltt}
-> \winpath{D:\\texlive\\install-tl-windows}
+> \winpath{C:\\tltemp\\install-tl-windows}
 \end{alltt}
 %
 図\ref{fig:installer-basic}はGUIインストーラ（Windowsではデフォルト）の初期画面を
@@ -2746,7 +2716,7 @@ Berryです。過去から現在に至るまでの、その他の主要な貢献
 \begin{itemize}
 \item 英語圏、ドイツ、オランダ、ポーランドの\TeX ユーザ会（それぞれTUG, DANTE e.V.,
   NTG, GUST）。技術的・経営的なインフラの提供してくれました。ぜひお近くの\TeX ユーザ
-  会に加入してください！（\url{https://tug.org/usergroups.html}を参照）
+  会に加入してください！ \url{https://tug.org/usergroups.html}を参照。
 \item CTANチーム（url{https://ctan.org}）。\TL イメージを配布し、\TL が依存する各種の
   パッケージアップデートを行うための共通基盤の提供をしてくれています。
 \item Nelson Beebe。\TL 開発陣に数々のプラットフォームを提供し、彼自身も多くの包括的
@@ -2780,9 +2750,8 @@ Berryです。過去から現在に至るまでの、その他の主要な貢献
   に対して多くの貢献をしてくれました。
 \item Pawe{\l} Jackowski。Windows用インストーラ\cmd{tlpm}、Tomasz {\L}uczak氏は\cmd
   {tlpmgui}を開発してくれました。これらのプログラムは過去の\TL で使用されていました。
-\item 角藤亮。日本語\TeX 用のW32\TeX, W64\TeX ディストリビューション（\url{%
-  http://w32tex.org}）のためにWindowsバイナリを提供し、さらに開発に関わる数々の貢献を
-  してくれました。
+\item 角藤亮。日本語\TeX 用のWindowsバイナリを提供（\url{http://w32tex.org}）し、
+  さらに開発に関わる数々の顕著な貢献をしてくれました。
 \item Jonathan Kew。優れた\TeX エンジンである\XeTeX を開発し、時間と労力を割いてその
   処理系を\TL に導入してくれました。彼はさらに初期バージョンの\MacTeX を開発し、我々の
   おすすめするフロントエンドである\TeX worksも開発しました。
@@ -2858,11 +2827,12 @@ Norbert Preining (\pkg{aarch64-linux},
 朝倉卓人（日本語）、
 Denis Bitouz\'e、Patrick Bideault（フランス語）、
 Carlos Enriquez Figueras（スペイン語）、
-Jjgod Jiang、Jinsong Zhao、Yue Wang、Helin Gai（中国語）、
+Wang Ran、S YS、Jjgod Jiang、Jinsong Zhao、Yue Wang、Helin Gai（中国語）、
 Nikola Le\v{c}i\'c（セルビア語）、
 Marco Pallante、Carla Maggi（イタリア語）、
 Petr Sojka、Jan Busa（チェコ・スロバキア語）、
 Boris Veytsman、Vladimir Lomov（ロシア語）、
+Zofia Walczak（ポーランド語）、
 Uwe Ziegenhagen（ドイツ語）。
 %
 \TL のドキュメントウェブページは\url{https://tug.org/texlive/doc.html}です。
@@ -2928,8 +2898,7 @@ dat}も用意されるようになりました。
 
 2003年も例年通り数多くのアップデートと追加パッケージがあり\TL は巨大化して
 もはや1枚のCDに収まらないことがわかりました。そのため、私たちはこれを3つの
-異なるディストリビューションに分離しました（\ref{sec:tl-coll-dists}節（\p.%
-\pageref{sec:tl-coll-dists}）を参照）。その他の変更点：
+異なるディストリビューションに分離しました。その他の変更点：
 %
 \begin{itemize}
 \item \LaTeX チームからのリクエストを受けて、標準設定における\cmd{latex},
