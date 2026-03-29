@@ -4,7 +4,7 @@ require 'pathname'
 
 # basics
 PKG_NAME = "texlive-ja"
-REF_REV = "r74739"
+REF_REV = "r78534"
 
 # directories
 REPO_ROOT = Pathname.pwd
